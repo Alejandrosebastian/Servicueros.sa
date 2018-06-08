@@ -1,0 +1,66 @@
+﻿@model ServicuerosSA.Models.Lote
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigolote)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Codigolote)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Numerodepieles)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Numerodepieles)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fechaingreso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fechaingreso)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medida)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medida.Abreviatura)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Personal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Personal.Apellidos)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPieles)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoPieles.Detalle)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LoteId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

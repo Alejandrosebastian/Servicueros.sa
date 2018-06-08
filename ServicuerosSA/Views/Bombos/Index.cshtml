@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ServicuerosSA.Models.Bombo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Lista de bombos disponibles</h2>
+
+<p>
+    <a asp-action="Create">Ingreso de nuevo bombo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                   @* @Html.DisplayNameFor(model => model.Num_bombo)*@
+                    Numero de bombos
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Capacidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaIngreso)
+                </th>
+                
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_bombo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BomboId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.BomboId">Detailles</a> |
+                <a asp-action="Delete" asp-route-id="@item.BomboId">Elimina</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

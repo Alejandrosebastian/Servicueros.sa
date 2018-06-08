@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ServicuerosSA.Models.Formula>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Formulas</h2>
+
+<p>
+    <a asp-action="Create">Ingresar nueva formula</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_Creacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoProceso)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoPiel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Creacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoProceso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoPiel.Detalle)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FormulaId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.FormulaId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.FormulaId">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

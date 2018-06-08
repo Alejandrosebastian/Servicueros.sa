@@ -1,0 +1,67 @@
+﻿@model ServicuerosSA.Models.Lote
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Registro de lote</h2>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Codigolote" class="control-label"></label>
+                <input asp-for="Codigolote" onfocusout="CodigoLotes();" class="form-control" />
+                <span asp-validation-for="Codigolote" id="codigolote" class="text-danger"></span>
+                <span id="codigo" name="codigo" class="text-danger" style="visibility:hidden">El codigo ya se encuentra registrado</span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Numerodepieles" class="control-label"></label>
+                <input asp-for="Numerodepieles" class="form-control" />
+                <span asp-validation-for="Numerodepieles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fechaingreso" class="control-label"></label>
+                <input asp-for="Fechaingreso" class="form-control" />
+                <span asp-validation-for="Fechaingreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Peso" class="control-label"></label>
+                <input asp-for="Peso" class="form-control" />
+                <span asp-validation-for="Peso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedidaId" class="control-label"></label>
+                <select asp-for="MedidaId" class ="form-control" asp-items="ViewBag.MedidaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalId" class="control-label"></label>
+                <select asp-for="PersonalId" class ="form-control" asp-items="ViewBag.PersonalId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoPielId" class="control-label">Tipo de piel</label>
+                <select asp-for="TipoPielId" class ="form-control" asp-items="ViewBag.TipoPielId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="graba" name="graba" value="Crear" class="btn btn-default" style="" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista de lotes</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

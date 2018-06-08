@@ -1,0 +1,47 @@
+﻿@model ServicuerosSA.Models.Formula
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Crear nueva formula</h2>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha_Creacion" class="control-label"></label>
+                <input asp-for="Fecha_Creacion" class="form-control" />
+                <span asp-validation-for="Fecha_Creacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoProceso" class="control-label"></label>
+                <input asp-for="TipoProceso" class="form-control" />
+                <span asp-validation-for="TipoProceso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoPielId" class="control-label">Tipo de Piel</label>
+                <select asp-for="TipoPielId" class ="form-control" asp-items="ViewBag.TipoPielId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista de formulas</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

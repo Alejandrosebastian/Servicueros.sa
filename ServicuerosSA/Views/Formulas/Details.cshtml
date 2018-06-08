@@ -1,0 +1,42 @@
+﻿@model ServicuerosSA.Models.Formula
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Formula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Creacion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoProceso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoProceso)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoPiel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tipoPiel.Detalle)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FormulaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

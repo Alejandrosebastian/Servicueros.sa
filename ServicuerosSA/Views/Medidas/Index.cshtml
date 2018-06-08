@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ServicuerosSA.Models.Medida>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Medidas</h2>
+
+<p>
+    <a asp-action="Create">Ingresar nuevo tipo de media</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Detalle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Abreviatura)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abreviatura)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MedidaId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.MedidaId">Detailles</a> |
+                <a asp-action="Delete" asp-route-id="@item.MedidaId">Eliminar</a>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

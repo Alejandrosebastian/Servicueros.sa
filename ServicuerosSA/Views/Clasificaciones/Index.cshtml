@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ServicuerosSA.Models.Clasificacion>
+
+@{
+    ViewData["Title"] = "Clasificaciones";
+}
+
+<h2>Tipos de Clasificaciones</h2>
+
+<p>
+    <a asp-action="Create">Ingreso nuevo nombre de clasificacion</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                  Clasficación Pelo
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Selecciones)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClasificacionId" class="btn btn-info">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ClasificacionId" class="btn btn-info">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClasificacionId" class="btn btn-info">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
