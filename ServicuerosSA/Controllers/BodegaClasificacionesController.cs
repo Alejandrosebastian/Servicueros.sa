@@ -70,6 +70,9 @@ namespace ServicuerosSA.Controllers
             {
                 _context.Add(bodega1);
                 await _context.SaveChangesAsync();
+
+                
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega", bodega1.BodegaId);

@@ -143,11 +143,20 @@ namespace ServicuerosSA.Models
             var total = _contexto.Bodega1.Where(b1 => b1.LoteId == codilote).Sum(b1 => b1.NumeroPieles);
 
             int totalpieles = total + valor;
-            if (totalpieles < lotenumero)
+
+            if (lotenumero >= totalpieles)
             {
-                if (valor < lotenumero)
+                er = new IdentityError
                 {
-               
+                    Code = "no",
+                    Description = "no"
+                };
+
+            }
+            else
+            {
+                if (valor <= lotenumero)
+                {
                     er = new IdentityError
                     {
                         Code = "vale",
@@ -162,19 +171,10 @@ namespace ServicuerosSA.Models
                         Description = "no"
                     };
                 }
-                
-            }
-            else
-            {
-                er = new IdentityError
-                {
-                    Code = "no",
-                    Description = "no"
-                };
+               
             }
             Lista.Add(er);
             return Lista;
-
         }
 
        
