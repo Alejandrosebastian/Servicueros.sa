@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ServicuerosSA.Migrations
 {
-    public partial class ya : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,6 +74,23 @@ namespace ServicuerosSA.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clasificacion", x => x.ClasificacionId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Clientes",
+                columns: table => new
+                {
+                    ClienteId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Direccion = table.Column<string>(nullable: false),
+                    Nombre = table.Column<string>(nullable: false),
+                    RUC = table.Column<string>(nullable: false),
+                    Teleofno = table.Column<string>(nullable: false),
+                    correo = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clientes", x => x.ClienteId);
                 });
 
             migrationBuilder.CreateTable(
@@ -472,8 +489,10 @@ namespace ServicuerosSA.Migrations
                 {
                     PelambreId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Activo = table.Column<bool>(nullable: false),
                     Bodega1Id = table.Column<int>(nullable: false),
                     BomboId = table.Column<int>(nullable: false),
+                    Codigo = table.Column<string>(nullable: true),
                     Fecha = table.Column<DateTime>(nullable: false),
                     FormulaId = table.Column<int>(nullable: false),
                     MedidaId = table.Column<int>(nullable: false),
@@ -667,6 +686,9 @@ namespace ServicuerosSA.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Componente");

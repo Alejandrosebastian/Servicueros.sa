@@ -61,5 +61,14 @@ namespace ServicuerosSA.Data
 
 
         public DbSet<Cliente> Clientes { get; set; }
+
+
+        public DbSet<ServicuerosSA.Models.Descarne> Descarne { get; set; }
+
+
+        public DbSet<ServicuerosSA.Models.Bodegatripa> Bodegatripa { get; set; }
+
+
+        public DbSet<ServicuerosSA.Models.ClasificacionTripa> ClasificacionTripa { get; set; }
     }
 }

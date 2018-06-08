@@ -11,8 +11,8 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180606180004_pelambrecodigo")]
-    partial class pelambrecodigo
+    [Migration("20180608162304_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
