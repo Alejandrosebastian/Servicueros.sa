@@ -55,6 +55,7 @@ namespace ServicuerosSA.Models
                         join tp in _contexto.TipoPiel on l.TipoPielId equals tp.TipoPielId
                         select new MostrarListaLoteModel
                         {
+                            LoteId = l.LoteId,
                            Codigolote = l.Codigolote,
                            Fechaingreso = l.Fechaingreso,
                            Numerodepieles = l.Numerodepieles,
@@ -81,7 +82,7 @@ namespace ServicuerosSA.Models
                     "<td>" + item.Detalle + "</td>" +
                     "<td>" + item.Observaciones + "</td>" +
                     "<td>" +
-                    "<a class='btn btn-success'>Editar</a>"+
+                    "<a class='btn btn-success' href='Lotes/edit/"+ item.LoteId + "'>Editar</a>"+
                     "</td>"
 
                     +"</tr>";

@@ -7,6 +7,7 @@ namespace ServicuerosSA.Models
 {
     public class MostrarListaLoteModel
     {
+        public int LoteId { get; set; }
         public string Codigolote { get; set; }
         public DateTime Fechaingreso { get; set; }
         public int Numerodepieles { get; set; }

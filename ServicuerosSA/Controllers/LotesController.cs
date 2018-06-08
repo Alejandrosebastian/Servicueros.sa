@@ -48,7 +48,7 @@ namespace ServicuerosSA.Controllers
         // GET: Lotes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Lote.Include(l => l.Medida).Include(l => l.Personal).Include(l => l.TipoPieles);
+            var applicationDbContext = _context.Lote.Include(l => l.Personal).Include(l => l.TipoPieles);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -61,7 +61,7 @@ namespace ServicuerosSA.Controllers
             }
 
             var lote = await _context.Lote
-                .Include(l => l.Medida)
+                
                 .Include(l => l.Personal)
                 .Include(l => l.TipoPieles)
                 .SingleOrDefaultAsync(m => m.LoteId == id);
@@ -76,7 +76,7 @@ namespace ServicuerosSA.Controllers
         // GET: Lotes/Create
         public IActionResult Create()
         {
-            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura");
+          
             ViewData["PersonalId"] = new SelectList(_context.Personal, "PersonalId", "Apellidos");
             ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle");
             return View();
@@ -87,7 +87,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LoteId,Codigolote,Numerodepieles,Fechaingreso,Peso,MedidaId,PersonalId,TipoPielId,Observaciones")] Lote lote)
+        public async Task<IActionResult> Create([Bind("LoteId,Codigolote,Numerodepieles,Fechaingreso,PersonalId,TipoPielId,Observaciones")] Lote lote)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace ServicuerosSA.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura", lote.MedidaId);
+          
             ViewData["PersonalId"] = new SelectList(_context.Personal, "PersonalId", "Apellidos", lote.PersonalId);
             ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle", lote.TipoPielId);
             return View(lote);
@@ -114,7 +114,7 @@ namespace ServicuerosSA.Controllers
             {
                 return NotFound();
             }
-            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura", lote.MedidaId);
+           
             ViewData["PersonalId"] = new SelectList(_context.Personal, "PersonalId", "Apellidos", lote.PersonalId);
             ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle", lote.TipoPielId);
             return View(lote);
@@ -125,7 +125,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LoteId,Codigolote,Numerodepieles,Fechaingreso,Peso,MedidaId,PersonalId,TipoPielId,Observaciones")] Lote lote)
+        public async Task<IActionResult> Edit(int id, [Bind("LoteId,Codigolote,Numerodepieles,Fechaingreso,PersonalId,TipoPielId,Observaciones")] Lote lote)
         {
             if (id != lote.LoteId)
             {
@@ -152,7 +152,7 @@ namespace ServicuerosSA.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura", lote.MedidaId);
+            
             ViewData["PersonalId"] = new SelectList(_context.Personal, "PersonalId", "Apellidos", lote.PersonalId);
             ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle", lote.TipoPielId);
             return View(lote);
@@ -167,7 +167,7 @@ namespace ServicuerosSA.Controllers
             }
 
             var lote = await _context.Lote
-                .Include(l => l.Medida)
+                
                 .Include(l => l.Personal)
                 .Include(l => l.TipoPieles)
                 .SingleOrDefaultAsync(m => m.LoteId == id);

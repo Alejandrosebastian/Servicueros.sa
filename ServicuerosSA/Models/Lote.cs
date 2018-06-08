@@ -24,11 +24,7 @@ namespace ServicuerosSA.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fechaingreso { get; set; }
 
-        [Display(Name = "Peso total del Lote en kilos")]
-        public int Peso { get; set; }
-        [Display(Name = "Unidad de Medida del peso total del lote ")]
-        public int MedidaId { get; set; }
-        public Medida Medida { get; set; }
+        
         //RELACIONES
         [Display(Name = "Nombre del responsable de lote ")]
         public int PersonalId { get; set; }
