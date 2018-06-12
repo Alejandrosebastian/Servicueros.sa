@@ -241,6 +241,26 @@ namespace ServicuerosSA.Migrations
                     b.ToTable("Bodega1");
                 });
 
+            modelBuilder.Entity("ServicuerosSA.Models.Bodegatripa", b =>
+                {
+                    b.Property<int>("BodegaTripaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ClasificacionTripaId");
+
+                    b.Property<int>("DescarneId");
+
+                    b.Property<bool>("activo");
+
+                    b.HasKey("BodegaTripaId");
+
+                    b.HasIndex("ClasificacionTripaId");
+
+                    b.HasIndex("DescarneId");
+
+                    b.ToTable("Bodegatripa");
+                });
+
             modelBuilder.Entity("ServicuerosSA.Models.Bombo", b =>
                 {
                     b.Property<int>("BomboId")
@@ -268,6 +288,18 @@ namespace ServicuerosSA.Migrations
                     b.HasKey("ClasificacionId");
 
                     b.ToTable("Clasificacion");
+                });
+
+            modelBuilder.Entity("ServicuerosSA.Models.ClasificacionTripa", b =>
+                {
+                    b.Property<int>("ClasificacionTripaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Detalle");
+
+                    b.HasKey("ClasificacionTripaId");
+
+                    b.ToTable("ClasificacionTripa");
                 });
 
             modelBuilder.Entity("ServicuerosSA.Models.Cliente", b =>
@@ -321,6 +353,27 @@ namespace ServicuerosSA.Migrations
                     b.ToTable("Componente");
                 });
 
+            modelBuilder.Entity("ServicuerosSA.Models.Descarne", b =>
+                {
+                    b.Property<int>("DescarneId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Activo");
+
+                    b.Property<string>("Cantidad")
+                        .IsRequired();
+
+                    b.Property<DateTime>("Fecha");
+
+                    b.Property<int>("PelambreId");
+
+                    b.HasKey("DescarneId");
+
+                    b.HasIndex("PelambreId");
+
+                    b.ToTable("Descarne");
+                });
+
             modelBuilder.Entity("ServicuerosSA.Models.Formula", b =>
                 {
                     b.Property<int>("FormulaId")
@@ -353,21 +406,15 @@ namespace ServicuerosSA.Migrations
 
                     b.Property<DateTime>("Fechaingreso");
 
-                    b.Property<int>("MedidaId");
-
                     b.Property<int>("Numerodepieles");
 
                     b.Property<string>("Observaciones");
 
                     b.Property<int>("PersonalId");
 
-                    b.Property<int>("Peso");
-
                     b.Property<int>("TipoPielId");
 
                     b.HasKey("LoteId");
-
-                    b.HasIndex("MedidaId");
 
                     b.HasIndex("PersonalId");
 
@@ -638,6 +685,19 @@ namespace ServicuerosSA.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("ServicuerosSA.Models.Bodegatripa", b =>
+                {
+                    b.HasOne("ServicuerosSA.Models.ClasificacionTripa", "ClasificacionTripa")
+                        .WithMany()
+                        .HasForeignKey("ClasificacionTripaId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ServicuerosSA.Models.Descarne", "Descarnes")
+                        .WithMany()
+                        .HasForeignKey("DescarneId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("ServicuerosSA.Models.Componente", b =>
                 {
                     b.HasOne("ServicuerosSA.Models.Formula", "formula")
@@ -651,6 +711,14 @@ namespace ServicuerosSA.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("ServicuerosSA.Models.Descarne", b =>
+                {
+                    b.HasOne("ServicuerosSA.Models.Pelambre", "Pelambres")
+                        .WithMany()
+                        .HasForeignKey("PelambreId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("ServicuerosSA.Models.Formula", b =>
                 {
                     b.HasOne("ServicuerosSA.Models.TipoPiel", "tipoPiel")
@@ -661,11 +729,6 @@ namespace ServicuerosSA.Migrations
 
             modelBuilder.Entity("ServicuerosSA.Models.Lote", b =>
                 {
-                    b.HasOne("ServicuerosSA.Models.Medida", "Medida")
-                        .WithMany()
-                        .HasForeignKey("MedidaId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("ServicuerosSA.Models.Personal", "Personal")
                         .WithMany()
                         .HasForeignKey("PersonalId")
