@@ -77,6 +77,19 @@ namespace ServicuerosSA.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClasificacionTripa",
+                columns: table => new
+                {
+                    ClasificacionTripaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Detalle = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClasificacionTripa", x => x.ClasificacionTripaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
                 {
@@ -352,22 +365,14 @@ namespace ServicuerosSA.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Codigolote = table.Column<string>(nullable: false),
                     Fechaingreso = table.Column<DateTime>(nullable: false),
-                    MedidaId = table.Column<int>(nullable: false),
                     Numerodepieles = table.Column<int>(nullable: false),
                     Observaciones = table.Column<string>(nullable: true),
                     PersonalId = table.Column<int>(nullable: false),
-                    Peso = table.Column<int>(nullable: false),
                     TipoPielId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Lote", x => x.LoteId);
-                    table.ForeignKey(
-                        name: "FK_Lote_Medida_MedidaId",
-                        column: x => x.MedidaId,
-                        principalTable: "Medida",
-                        principalColumn: "MedidaId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Lote_Personal_PersonalId",
                         column: x => x.PersonalId,
@@ -535,6 +540,55 @@ namespace ServicuerosSA.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Descarne",
+                columns: table => new
+                {
+                    DescarneId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Activo = table.Column<bool>(nullable: false),
+                    Cantidad = table.Column<string>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    PelambreId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Descarne", x => x.DescarneId);
+                    table.ForeignKey(
+                        name: "FK_Descarne_Pelambre_PelambreId",
+                        column: x => x.PelambreId,
+                        principalTable: "Pelambre",
+                        principalColumn: "PelambreId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bodegatripa",
+                columns: table => new
+                {
+                    BodegaTripaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ClasificacionTripaId = table.Column<int>(nullable: false),
+                    DescarneId = table.Column<int>(nullable: false),
+                    activo = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bodegatripa", x => x.BodegaTripaId);
+                    table.ForeignKey(
+                        name: "FK_Bodegatripa_ClasificacionTripa_ClasificacionTripaId",
+                        column: x => x.ClasificacionTripaId,
+                        principalTable: "ClasificacionTripa",
+                        principalColumn: "ClasificacionTripaId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Bodegatripa_Descarne_DescarneId",
+                        column: x => x.DescarneId,
+                        principalTable: "Descarne",
+                        principalColumn: "DescarneId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -600,6 +654,16 @@ namespace ServicuerosSA.Migrations
                 column: "MedidaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Bodegatripa_ClasificacionTripaId",
+                table: "Bodegatripa",
+                column: "ClasificacionTripaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bodegatripa_DescarneId",
+                table: "Bodegatripa",
+                column: "DescarneId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Componente_FormulaId",
                 table: "Componente",
                 column: "FormulaId");
@@ -610,14 +674,14 @@ namespace ServicuerosSA.Migrations
                 column: "MedidaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Descarne_PelambreId",
+                table: "Descarne",
+                column: "PelambreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Formula_TipoPielId",
                 table: "Formula",
                 column: "TipoPielId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Lote_MedidaId",
-                table: "Lote",
-                column: "MedidaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lote_PersonalId",
@@ -688,13 +752,13 @@ namespace ServicuerosSA.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Bodegatripa");
+
+            migrationBuilder.DropTable(
                 name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Componente");
-
-            migrationBuilder.DropTable(
-                name: "Pelambre");
 
             migrationBuilder.DropTable(
                 name: "Proveedor_Lote");
@@ -706,6 +770,18 @@ namespace ServicuerosSA.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "ClasificacionTripa");
+
+            migrationBuilder.DropTable(
+                name: "Descarne");
+
+            migrationBuilder.DropTable(
+                name: "Proveedor");
+
+            migrationBuilder.DropTable(
+                name: "Pelambre");
+
+            migrationBuilder.DropTable(
                 name: "Bodega1");
 
             migrationBuilder.DropTable(
@@ -713,9 +789,6 @@ namespace ServicuerosSA.Migrations
 
             migrationBuilder.DropTable(
                 name: "Formula");
-
-            migrationBuilder.DropTable(
-                name: "Proveedor");
 
             migrationBuilder.DropTable(
                 name: "Bodega");
@@ -727,10 +800,10 @@ namespace ServicuerosSA.Migrations
                 name: "Lote");
 
             migrationBuilder.DropTable(
-                name: "TipoBodega");
+                name: "Medida");
 
             migrationBuilder.DropTable(
-                name: "Medida");
+                name: "TipoBodega");
 
             migrationBuilder.DropTable(
                 name: "Personal");
