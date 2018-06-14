@@ -22,9 +22,7 @@ namespace ServicuerosSA.Models
         public Bombo Bombo { get; set; }
         public int FormulaId { get; set; }
         public Formula Formula { get; set; }
-        public int Peso { get; set; }
-        public int MedidaId { get; set; }
-        public Medida Medida { get; set; }
+       
         public int PersonalId { get; set; }
         public Personal personal { get; set; }
         public bool Activo { get; set; }

@@ -162,7 +162,7 @@ namespace ServicuerosSA.Models
             return ListaPelambre;
         }     
 
-        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula, int peso, int personal, string codlote)
+        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
             
@@ -175,9 +175,9 @@ namespace ServicuerosSA.Models
                     Fecha = DateTime.Now,
                     Observaciones = obsrvaciones,
                     FormulaId = formula,
-                    MedidaId = 1,
+                   
                     PersonalId = personal,
-                    Peso = peso,
+                    
                     Activo = true,
                     Codigo = "A"
                     };
@@ -196,7 +196,7 @@ namespace ServicuerosSA.Models
                                        BodegaId = b1.BodegaId,
                                        Bodega1Id = b1.Bodega1Id,
                                        NumeroPieles=b1.NumeroPieles,
-                                       MedidaId = b1.MedidaId,
+                                       
                                        Observaciones = b1.Observaciones,
                                        Peso = b1.Peso
                                    }).FirstOrDefault();
