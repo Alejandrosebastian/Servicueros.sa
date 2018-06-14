@@ -196,7 +196,7 @@ namespace ServicuerosSA.Models
                                        BodegaId = b1.BodegaId,
                                        Bodega1Id = b1.Bodega1Id,
                                        NumeroPieles=b1.NumeroPieles,
-                                       
+                                         
                                        Observaciones = b1.Observaciones,
                                        Peso = b1.Peso
                                    }).FirstOrDefault();
