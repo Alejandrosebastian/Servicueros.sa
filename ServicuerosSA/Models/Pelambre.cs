@@ -29,5 +29,6 @@ namespace ServicuerosSA.Models
         public Personal personal { get; set; }
         public bool Activo { get; set; }
         public string Codigo { get; set; }
+        public int TotalPieles { get; set; }
     }
 }
