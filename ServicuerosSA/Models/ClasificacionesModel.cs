@@ -41,13 +41,13 @@ namespace ServicuerosSA.Models
             {
                 res += "<tr>" +
                     "<td>" +
-                    "<input type='checkbox' class='form-control' value=" + item.Bodega1Id + "/>" +
+                    "<input type='checkbox' class='form-control' name='chb' id='chb' value=" + item.Bodega1Id + "/>" +
                     "</td>" +
                     "<td>" + item.Codigolote + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
                     "<td>" + item.Selecciones + "</td>" +
-                    "<td>" + item.NumeroPieles + "</td>" +
-                    "<td>" + item.Peso + "</td>" +
+                    "<td><label id='cantidad'>" + item.NumeroPieles + "</label></td>" +
+                    "<td><label id='peso'>" + item.Peso + "</label></td>" +
                     "</tr>";
             }
             object[] ya = { res };

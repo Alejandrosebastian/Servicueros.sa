@@ -63,35 +63,18 @@ var GuardaPelambre = () => {
     guardaPelambre.GuardaPelambre(totalcheck, personal, codlote);
 }
 var contardatos = () => {
-    
-    //utilizamos esta variable solo de ayuda y mostrar que se encontro
-    encontradoResultado = false;
+    var contador = 0;
+    $("input:checkbox:checked").each(function () {
+
         
-    //realizamos el recorrido solo por las celdas que contienen el código, que es la primera
-    $("#tablaPlambre tr").find('td:eq(0)').each(function () {
-      
-        //obtenemos el codigo de la celda
-        codigo = $(this).html();
+        var prueba = $("#tablaPlambre tr(" + contador + ")").find('td:eq(4)').html();
+       
 
-        //comparamos para ver si el código es igual a la busqueda
-        if (codigo == buscar) {
+        alert(prueba);
 
-            //aqui ya que tenemos el td que contiene el codigo utilizaremos parent para obtener el tr.
-            trDelResultado = $(this).parent();
+    });
 
-            //ya que tenemos el tr seleccionado ahora podemos navegar a las otras celdas con find
-            nombre = trDelResultado.find("td:eq(3)").html();
-            edad = trDelResultado.find("td:eq(4)").html();
-
-            //mostramos el resultado en el div
-            alert("El nombre es: " + nombre + ", la edad es: " + edad);
-        }
-
-    })
-
-    //si no se encontro resultado mostramos que no existe.
-    if (!encontradoResultado)
-        alert("No existe el código: " + buscar);
+   
 }
 
 var ListaIndex = () => {
