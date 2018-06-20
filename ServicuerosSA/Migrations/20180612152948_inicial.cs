@@ -503,8 +503,7 @@ namespace ServicuerosSA.Migrations
                     MedidaId = table.Column<int>(nullable: false),
                     Observaciones = table.Column<string>(nullable: true),
                     PersonalId = table.Column<int>(nullable: false),
-                    Peso = table.Column<int>(nullable: false),
-                    TotalPieles = table.Column<int>(nullable: false)
+                    Peso = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
