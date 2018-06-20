@@ -393,6 +393,7 @@ namespace ServicuerosSA.Migrations
                 {
                     ComponenteId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Cantidad = table.Column<int>(nullable: false),
                     Detalle = table.Column<string>(nullable: false),
                     FormulaId = table.Column<int>(nullable: false),
                     MedidaId = table.Column<int>(nullable: false),
@@ -500,10 +501,9 @@ namespace ServicuerosSA.Migrations
                     Codigo = table.Column<string>(nullable: true),
                     Fecha = table.Column<DateTime>(nullable: false),
                     FormulaId = table.Column<int>(nullable: false),
-                    MedidaId = table.Column<int>(nullable: false),
                     Observaciones = table.Column<string>(nullable: true),
                     PersonalId = table.Column<int>(nullable: false),
-                    Peso = table.Column<int>(nullable: false)
+                    TotalPieles = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -525,12 +525,6 @@ namespace ServicuerosSA.Migrations
                         column: x => x.FormulaId,
                         principalTable: "Formula",
                         principalColumn: "FormulaId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Pelambre_Medida_MedidaId",
-                        column: x => x.MedidaId,
-                        principalTable: "Medida",
-                        principalColumn: "MedidaId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Pelambre_Personal_PersonalId",
@@ -707,11 +701,6 @@ namespace ServicuerosSA.Migrations
                 name: "IX_Pelambre_FormulaId",
                 table: "Pelambre",
                 column: "FormulaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pelambre_MedidaId",
-                table: "Pelambre",
-                column: "MedidaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pelambre_PersonalId",

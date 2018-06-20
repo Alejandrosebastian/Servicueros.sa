@@ -332,6 +332,8 @@ namespace ServicuerosSA.Migrations
                     b.Property<int>("ComponenteId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("Cantidad");
+
                     b.Property<string>("Detalle")
                         .IsRequired();
 
@@ -456,13 +458,11 @@ namespace ServicuerosSA.Migrations
 
                     b.Property<int>("FormulaId");
 
-                    b.Property<int>("MedidaId");
-
                     b.Property<string>("Observaciones");
 
                     b.Property<int>("PersonalId");
 
-                    b.Property<int>("Peso");
+                    b.Property<int>("TotalPieles");
 
                     b.HasKey("PelambreId");
 
@@ -471,8 +471,6 @@ namespace ServicuerosSA.Migrations
                     b.HasIndex("BomboId");
 
                     b.HasIndex("FormulaId");
-
-                    b.HasIndex("MedidaId");
 
                     b.HasIndex("PersonalId");
 
@@ -755,11 +753,6 @@ namespace ServicuerosSA.Migrations
                     b.HasOne("ServicuerosSA.Models.Formula", "Formula")
                         .WithMany()
                         .HasForeignKey("FormulaId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("ServicuerosSA.Models.Medida", "Medida")
-                        .WithMany()
-                        .HasForeignKey("MedidaId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ServicuerosSA.Models.Personal", "personal")
