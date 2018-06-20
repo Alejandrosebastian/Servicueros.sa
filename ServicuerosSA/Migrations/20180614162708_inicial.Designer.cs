@@ -11,8 +11,8 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180612152840_ini")]
-    partial class ini
+    [Migration("20180614162708_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -464,6 +464,8 @@ namespace ServicuerosSA.Migrations
                     b.Property<int>("PersonalId");
 
                     b.Property<int>("Peso");
+
+                    b.Property<int>("TotalPieles");
 
                     b.HasKey("PelambreId");
 

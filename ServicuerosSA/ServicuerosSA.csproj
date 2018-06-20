@@ -5,13 +5,6 @@
     <UserSecretsId>aspnet-ServicuerosSA-20F5FE08-2EEB-447E-8D68-A6166AE6702E</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Migrations\20180612152246_ini.cs" />
-    <Compile Remove="Migrations\20180612152246_ini.Designer.cs" />
-    <Compile Remove="Migrations\20180612152516_ini.cs" />
-    <Compile Remove="Migrations\20180612152516_ini.Designer.cs" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="jQuery.UI.Combined" Version="1.12.1" />
