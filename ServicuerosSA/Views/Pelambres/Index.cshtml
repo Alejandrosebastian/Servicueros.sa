@@ -7,6 +7,7 @@
 <h2>Proceso en Pelambre</h2>
 <p>
     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoPelambre" onclick="ListaFormulas(); ListaBombos(); ListaPelambre(); listaTipoPiel(); listaClasificaciones(); listaPersonal()">Nuevo Proceso</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoPelambre" onclick="ListaFormulas()">Impresion</a>
 </p>
 <table class="table">
     <thead>
@@ -168,6 +169,69 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ImpresionPelambre" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="EtiquetaModal">
+                    Impresion de Formula Pelambre
+                </h4>
+            </div>
+            <div class="modal-body" id="impresion">
+                
+                <div class="form-group">
+                    <table class="table">
+                        <tr>PROCESO DE GESTION DE PRODUCCION</tr>
+                        <tr> LOGO </tr>
+                        <tr>
+                            <th>CODIGO: <label id="codigo" class="control-label"></label></th>
+                            <th>VERSION: <label id="version" class="control-label"></label></th>
+                            <th>FECHA DE ACTUALIZACION: <label id="fecha" class="control-label"></label></th>
+                        </tr>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    TIPO PIEL: <label id="TipoPiel" class="control-label"> </label>
+                                </th>
+                                <th>
+                                    FECHA: <label id="fecha" class="control-label"> </label>
+                                </th>
+
+                                <th>
+                                    PARADA:<label id="parada" class="control-label"></label>
+                                </th>
+                                <th> BOMBO:<label id="bombo" class="control-label"></label> </th>
+                            </tr>
+                            <tr>
+                                <th>PESO: <label id="peso" class="control-label"></label></th>
+                                <th>CANTIDAD:<label id="cantidad" class="control-label"></label></th>
+                                <th>PROMEDIO:<label id="promedio" class="control-label"></label></th>
+                            </tr>
+                            <tr>
+                                <th>AUTORIZADO POR:<label id="autorizado" class="control-label"></label></th>
+                                <th>PROCESADO POR:<label id="procesado" class="control-label"></label></th>
+                                <th>ENTREGADO POR:<label id="entregado" class="control-label"></label></th>
+                            </tr>
+                        </thead>
+                        <tbody id="LotesLista"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
             </div>
         </div>
     </div>

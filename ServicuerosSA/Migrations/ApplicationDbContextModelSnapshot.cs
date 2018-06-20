@@ -464,6 +464,8 @@ namespace ServicuerosSA.Migrations
 
                     b.Property<int>("Peso");
 
+                    b.Property<int>("TotalPieles");
+
                     b.HasKey("PelambreId");
 
                     b.HasIndex("Bodega1Id");

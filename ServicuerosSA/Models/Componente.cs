@@ -17,6 +17,7 @@ namespace ServicuerosSA.Models
        [Display(Name = " Tiempo ")]
         [Required(ErrorMessage = "Campo Requerido")]   
         public int Tiempo  { get; set; }
+      
 
         //RELACIONES
         public int FormulaId { get; set; }
