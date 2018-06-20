@@ -145,17 +145,8 @@ namespace ServicuerosSA.Models
 
             int totalpieles = total + valor;
 
-            if (lotenumero >= totalpieles)
-            {
-                er = new IdentityError
+            if (totalpieles <= lotenumero)
                 {
-                    Code = "no",
-                    Description = "no"
-                };
-
-            }
-            else
-            {
                 if (valor <= lotenumero)
                 {
                     er = new IdentityError
@@ -173,6 +164,16 @@ namespace ServicuerosSA.Models
                     };
                 }
                
+
+            }
+            else
+            {
+                er = new IdentityError
+                {
+                    Code = "no",
+                    Description = "no"
+                };
+
             }
             Lista.Add(er);
             return Lista;
