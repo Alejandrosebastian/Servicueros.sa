@@ -13,10 +13,12 @@ namespace ServicuerosSA.Controllers
     public class FormulasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private FormulaModel claseFormula;
 
         public FormulasController(ApplicationDbContext context)
         {
             _context = context;
+            claseFormula = new FormulaModel(context);
         }
 
         // GET: Formulas
@@ -25,7 +27,10 @@ namespace ServicuerosSA.Controllers
             var applicationDbContext = _context.Formula.Include(f => f.tipoPiel);
             return View(await applicationDbContext.ToListAsync());
         }
-
+        public List<Formula> ControladorListaFormulas()
+        {
+            return claseFormula.ModelListaFormula();
+        }
         // GET: Formulas/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -64,15 +64,12 @@ var GuardaPelambre = () => {
 }
 var contardatos = () => {
     
-
     //utilizamos esta variable solo de ayuda y mostrar que se encontro
     encontradoResultado = false;
-    
-
-    
+        
     //realizamos el recorrido solo por las celdas que contienen el código, que es la primera
     $("#tablaPlambre tr").find('td:eq(0)').each(function () {
-       
+      
         //obtenemos el codigo de la celda
         codigo = $(this).html();
 
