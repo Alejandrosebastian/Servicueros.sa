@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ServicuerosSA.Migrations
 {
-    public partial class inicial : Migration
+    public partial class ya : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -344,7 +344,8 @@ namespace ServicuerosSA.Migrations
                     Fecha_Creacion = table.Column<DateTime>(nullable: false),
                     Nombre = table.Column<string>(nullable: false),
                     TipoPielId = table.Column<int>(nullable: false),
-                    TipoProceso = table.Column<string>(nullable: false)
+                    TipoProceso = table.Column<string>(nullable: false),
+                    Version = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

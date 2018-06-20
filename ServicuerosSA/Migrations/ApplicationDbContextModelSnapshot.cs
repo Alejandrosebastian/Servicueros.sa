@@ -391,6 +391,8 @@ namespace ServicuerosSA.Migrations
                     b.Property<string>("TipoProceso")
                         .IsRequired();
 
+                    b.Property<string>("Version");
+
                     b.HasKey("FormulaId");
 
                     b.HasIndex("TipoPielId");
@@ -461,8 +463,6 @@ namespace ServicuerosSA.Migrations
                     b.Property<string>("Observaciones");
 
                     b.Property<int>("PersonalId");
-
-                    b.Property<int>("TotalPieles");
 
                     b.Property<int>("TotalPieles");
 

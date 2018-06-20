@@ -18,6 +18,7 @@ namespace ServicuerosSA.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Creacion { get; set; }
 
+        public string Version { get; set; }
         [Display(Name ="Ingrese Proceso")]
         [Required(ErrorMessage ="Campo Obligatori")]
         public string TipoProceso { get; set; }

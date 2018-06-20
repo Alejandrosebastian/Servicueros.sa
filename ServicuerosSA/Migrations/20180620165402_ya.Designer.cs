@@ -11,8 +11,8 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180619162513_inicial")]
-    partial class inicial
+    [Migration("20180620165402_ya")]
+    partial class ya
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -391,6 +391,8 @@ namespace ServicuerosSA.Migrations
 
                     b.Property<string>("TipoProceso")
                         .IsRequired();
+
+                    b.Property<string>("Version");
 
                     b.HasKey("FormulaId");
 
