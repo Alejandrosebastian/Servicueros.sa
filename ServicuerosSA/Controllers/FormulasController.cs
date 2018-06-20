@@ -13,16 +13,12 @@ namespace ServicuerosSA.Controllers
     public class FormulasController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private FormulaModel claseFormulaModel;
+
         public FormulasController(ApplicationDbContext context)
         {
             _context = context;
-            claseFormulaModel = new FormulaModel(context);
         }
-        public List<Formula> ControladorListaFormulas()
-        {
-            return claseFormulaModel.ModelListaFormula();
-        }
+
         // GET: Formulas
         public async Task<IActionResult> Index()
         {
@@ -61,7 +57,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FormulaId,Nombre,Fecha_Creacion,TipoProceso,TipoPielId")] Formula formula)
+        public async Task<IActionResult> Create([Bind("FormulaId,Nombre,Fecha_Creacion,Version,TipoProceso,TipoPielId")] Formula formula)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +91,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FormulaId,Nombre,Fecha_Creacion,TipoProceso,TipoPielId")] Formula formula)
+        public async Task<IActionResult> Edit(int id, [Bind("FormulaId,Nombre,Fecha_Creacion,Version,TipoProceso,TipoPielId")] Formula formula)
         {
             if (id != formula.FormulaId)
             {
