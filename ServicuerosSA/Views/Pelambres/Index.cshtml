@@ -189,90 +189,106 @@
                 </h4>
             </div>
             <div class="modal-body" id="impresion">
-                
+
                 <div class="form-group">
 
                     <table class="table table-bordered">
                         <tr>
-                            <td class="auto-style79" rowspan="3">PROCESO DE GESTION DE PRODUCCION</td>
+                            <td style="font-size:smaller" rowspan="3">PROCESO DE GESTION DE PRODUCCION</td>
                             <td colspan="2" rowspan="3">
-                                <img src="~/images/logo.jpg" style="width:75%"/>
+                                <img src="~/images/logo.jpg" style="width:75%" />
                             </td>
-                            <td class="auto-style96">CODIGO:</td>
-                            <td class="auto-style92" colspan="2"></td>
+                            <td style="font-size:xx-small">CODIGO: <label id="codigo" name="codigo" class="control-label"></label></td>
+                            <td colspan="2"><label id="codigo" name="codigo" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style76">VERSIÓ:</td>
-                            <td class="auto-style47" colspan="2"></td>
+                            <td style="font-size:xx-small">VERSIÓN:</td>
+                            <td colspan="2"><label id="version" name="version" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style27" colspan="2">FECHA DE ACTUALIZACION:</td>
-                            <td class="auto-style80"></td>
+                            <td style="font-size:xx-small" colspan="2">FECHA DE ACTUALIZACION:</td>
+                            <td><label id="fecha_act" name="fecha_act" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style83" colspan="6">FORMULACION DE OPERACIÓN</td>
+                            <td align="center" style="font-size:smaller" colspan="6">FORMULACION DE OPERACIÓN</td>
                         </tr>
                         <tr>
-                            <td class="auto-style95" rowspan="3">FP-COFRNO/12</td>
-                            <td class="auto-style6" colspan="2" rowspan="3">
+                            <td style="font-size:smaller" rowspan="3">
+                                FP-COFRNO/12: <label id="nombre_formul" name="nombre_formula"
+                                                     class="control-label"></label>
+                            </td>
+                            <td colspan="2" rowspan="3">
+                                <label id="guia" name="guia" class="control-label"></label>
                                 <p>
-                                    <span class="auto-style78">
-                                        GUIA DE PROCESO PELAMBRE PIEL
+                                    <span style="font-size:x-small">
+                                        GUIA DE PROCESO PELAMBRE PIEL FRESCA PELLITAL - BORRON DL
                                     </span>
-                                    <br class="auto-style78" />
-                                    <span class="auto-style78">FRESCA PELLITAL - BORRON DL</span>
                                 </p>
                             </td>
-                            <td class="auto-style89">FECHA:</td>
-                            <td class="auto-style46" colspan="2"></td>
+                            <td style="font-size:xx-small">FECHA:</td>
+                            <td style="font-size:xx-small" colspan="2">&nbsp;<label id="fecha_vigencia" name="fecha_vigencia" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style89">VIGENCIA:</td>
-                            <td class="auto-style90" colspan="2"></td>
+                            <td style="font-size:xx-small">VIGENCIA:</td>
+                            <td style="font-size:xx-small" colspan="2"><label id="vigencia" name="vigencia" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style76">PAGINA:</td>
-                            <td class="auto-style47" colspan="2"></td>
+                            <td style="font-size:xx-small">PAGINA:</td>
+                            <td colspan="2"><label id="pagina" name="pagina" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style95">TIPO DE PIEL: </td>
-                            <td class="auto-style79">COSTEÑO</td>
-                            <td class="auto-style94" colspan="4">&nbsp;</td>
+                            <td style="font-size:xx-small">TIPO DE PIEL: </td>
+                            <td style="font-size:xx-small"><label id="tipo_piel" name="tipo_piel" class="control-label"></label></td>
+                            <td style="font-size:xx-small" colspan="4">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style95">FECHA:</td>
-                            <td class="auto-style95">&nbsp;</td>
-                            <td class="auto-style95">PESO:</td>
-                            <td class="auto-style94">&nbsp;</td>
-                            <td class="auto-style95">AUTORIZADO POR:</td>
-                            <td class="auto-style74">&nbsp;</td>
+                            <td style="font-size:x-small">FECHA:</td>
+                            <td style="font-size:x-small">&nbsp;<label id="fecha" name="fecha" class="control-label"></label></td>
+                            <td style="font-size:x-small">PESO:</td>
+                            <td style="font-size:x-small">&nbsp;<label id="peso" name="peso" class="control-label"></label></td>
+                            <td style="font-size:xx-small">AUTORIZADO POR:</td>
+                            <td style="font-size:xx-small">&nbsp;<label id="autorizado" name="autorizado" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style95">PARADA:</td>
-                            <td class="auto-style95">&nbsp;</td>
-                            <td class="auto-style95">CANTIDAD:</td>
-                            <td class="auto-style94">&nbsp;</td>
-                            <td class="auto-style94">PROCESADO POR:</td>
-                            <td class="auto-style80">&nbsp;</td>
+                            <td style="font-size:x-small">PARADA:</td>
+                            <td style="font-size:x-small">&nbsp;<label id="parada" name="parada" class="control-label"></label></td>
+                            <td style="font-size:x-small">CANTIDAD:</td>
+                            <td style="font-size:x-small">&nbsp;<label id="cantidad" name="cantidad" class="control-label"></label></td>
+                            <td style="font-size:xx-small">PROCESADO POR:</td>
+                            <td style="font-size:xx-small">&nbsp;<label id="procesado" name="procesado" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style95">BOMBO:</td>
-                            <td class="auto-style95">&nbsp;</td>
-                            <td class="auto-style95">PROMEDIO:</td>
-                            <td class="auto-style94">&nbsp;</td>
-                            <td class="auto-style94">ENTREGADO POR:</td>
-                            <td class="auto-style74">&nbsp;</td>
+                            <td style="font-size:x-small">BOMBO:</td>
+                            <td style="font-size:x-small">&nbsp;<label id="bombo" name="bombo" class="control-label"></label></td>
+                            <td style="font-size:x-small">PROMEDIO:</td>
+                            <td style="font-size:x-small">&nbsp;<label id="promedio" name="promedio" class="control-label"></label></td>
+                            <td style="font-size:xx-small">ENTREGADO POR:</td>
+                            <td style="font-size:xx-small">&nbsp;<label id="entregado" name="entregado" class="control-label"></label></td>
                         </tr>
                         <tr>
-                            <td class="auto-style82">INGREDIENTES</td>
-                            <td class="auto-style82">PORCENTAJE %</td>
-                            <td class="auto-style95">CANTIDAD</td>
-                            <td class="auto-style77">TIEMPO</td>
-                            <td class="auto-style42" colspan="2">OBSERVACIONES</td>
+                            <td style="font-size:x-small">INGREDIENTES</td>
+                            <td style="font-size:x-small">PORCENTAJE %</td>
+                            <td style="font-size:x-small">CANTIDAD</td>
+                            <td style="font-size:x-small">TIEMPO</td>
+                            <td style="font-size:x-small" colspan="2">OBSERVACIONES</td>
                         </tr>
                     </table>
-                   
+
                 </div>
+                <div class="form-group">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <td style="font-size:x-small" > <input type="text" readonly/> </td>
+                        <td style="font-size:x-small"><input type="text" readonly /></td>
+                        <td style="font-size:x-small"><input type="text" readonly /></td>
+                        <td style="font-size:x-small"><input type="text" readonly /></td>
+                        <td style="font-size:x-small" colspan="2"><input type="text" readonly /></td>
+                    </tr>
+                </table>
+
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
