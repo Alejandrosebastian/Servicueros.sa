@@ -160,11 +160,7 @@ namespace ServicuerosSA.Models
             try
             {
                 
-                var res = (from b1 in _contexto.Bodega1
-                           join p in _contexto.Pelambre on b1.Bodega1Id equals p.Bodega1Id
-                           join l in _contexto.Lote on b1.LoteId equals l.LoteId
-                           where l.Codigolote == codlote && p.Fecha <= fecha
-                           select p).Count();
+              
                 
 
                 var guardaPelambre = new Pelambre
@@ -177,30 +173,42 @@ namespace ServicuerosSA.Models
                    TotalPieles = pieles,
                     PersonalId = personal,
                     Activo = true,
+                    Peso = pesototal,
+                    CodigoLote = codlote,
                     Codigo = "A"
                 };
                     _contexto.Pelambre.Add(guardaPelambre);
                     _contexto.SaveChanges();
-                
-                    var bodega1 = (from b1 in _contexto.Bodega1
-                                   where b1.Bodega1Id == bogeda
-                                   select new Bodega1
-                                   {
-                                       activo = false,
-                                       ClasificacionId = b1.ClasificacionId,
-                                       Fechaingreso = b1.Fechaingreso,
-                                       LoteId = b1.LoteId,
-                                       NumeroEstanteria = b1.NumeroEstanteria,
-                                       BodegaId = b1.BodegaId,
-                                       Bodega1Id = b1.Bodega1Id,
-                                       NumeroPieles=b1.NumeroPieles,
-                                         
-                                       Observaciones = b1.Observaciones,
-                                       Peso = b1.Peso
-                                   }).FirstOrDefault();
+
+                var bodega1 = (from b1 in _contexto.Bodega1
+                               where b1.Bodega1Id == bogeda
+                               select new Bodega1
+                               {
+                                   activo = false,
+                                   ClasificacionId = b1.ClasificacionId,
+                                   Fechaingreso = b1.Fechaingreso,
+                                   LoteId = b1.LoteId,
+                                   NumeroEstanteria = b1.NumeroEstanteria,
+                                   BodegaId = b1.BodegaId,
+                                   Bodega1Id = b1.Bodega1Id,
+                                   NumeroPieles = b1.NumeroPieles,
+                                   Observaciones = b1.Observaciones,
+                                   Peso = b1.Peso,
+                                   MedidaId = b1.MedidaId
                                    
+                               }).FirstOrDefault();
+               
+                try
+                {
                     _contexto.Bodega1.Update(bodega1);
                     _contexto.SaveChanges();
+                }
+                catch (Exception e)
+                {
+
+                    throw e;
+                }              
+                   
                 
                
                 listaerrores.Add(new IdentityError
@@ -268,35 +276,28 @@ namespace ServicuerosSA.Models
 
         public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(int id)
         {
-            
-            //var res = from p in _contexto.Pelambre
-            //          join f in _contexto.Formula on p.FormulaId equals f.FormulaId
-            //          join c in _contexto.Componente on f.FormulaId equals c.FormulaId
-            //          select new
-            //          {
 
-            //          };
 
             var res = (from p in _contexto.Pelambre
-                      join pe in _contexto.Personal on p.PersonalId equals pe.PersonalId
-                      join b in _contexto.Bombo on p.BomboId equals b.BomboId
-                      join fo in _contexto.Formula on p.FormulaId equals fo.FormulaId
-                      join tp in _contexto.TipoPiel on fo.TipoPielId equals tp.TipoPielId
-                      where p.PelambreId == id
-                      select new ModeloEncabezadoFormula
-                      {
-                          Bombo = b.Num_bombo.ToString(),
-                          Cantidad = p.TotalPieles.ToString(),
-                          FechaCreacionFormula = fo.Fecha_Creacion.ToString(),
-                          FechaImpresion = DateTime.Now.ToString(),
-                          NombreAutoirzado = pe.Nombres + " " + pe.Apellidos,
-                          FechaValida = DateTime.Now.ToString(),
-                          NombreEntregado = pe.Nombres + " " + pe.Apellidos,
-                          NombreProcesado = fo.TipoProceso,
-                          Codigo = p.Codigo,
+                       join pe in _contexto.Personal on p.PersonalId equals pe.PersonalId
+                       join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                       join fo in _contexto.Formula on p.FormulaId equals fo.FormulaId
+                       join tp in _contexto.TipoPiel on fo.TipoPielId equals tp.TipoPielId
+                       where p.PelambreId == id
+                       select new ModeloEncabezadoFormula
+                       {
+                           Bombo = b.Num_bombo.ToString(),
+                           Cantidad = p.TotalPieles.ToString(),
+                           FechaCreacionFormula = fo.Fecha_Creacion.ToString(),
+                           FechaImpresion = DateTime.Now.ToString(),
+                           NombreAutoirzado = pe.Nombres + " " + pe.Apellidos,
+                           FechaValida = DateTime.Now.ToString(),
+                           NombreEntregado = pe.Nombres + " " + pe.Apellidos,
+                           NombreProcesado = fo.TipoProceso,
+                           Codigo = p.CodigoLote + p.Codigo,
                           Parada = p.PelambreId.ToString(),
-                          Peso = p.TotalPieles.ToString(),
-                          //Promedio = falta peso total en modelo pelambre
+                          Peso = p.Peso.ToString(),
+                          Promedio = (p.Peso / p.TotalPieles).ToString(),
                           Version = fo.Version,
                           TipoPiel = tp.Detalle
                       }).ToList();
