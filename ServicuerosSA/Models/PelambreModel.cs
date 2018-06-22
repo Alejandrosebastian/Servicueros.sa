@@ -325,6 +325,7 @@ namespace ServicuerosSA.Models
                 "<td>" + item.Porcentaje + "</td>" +
                 "<td>" + item.Cantidad + "</td>" +
                 "<td>" + item.Tiempo + "</td>" +
+                "<td> </td>" +
                 "</tr>";
 
             }

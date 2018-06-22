@@ -31,20 +31,20 @@ class Formulas {
             { id },
             (respuesta) => {
                 console.log(respuesta);
-                document.getElementById('codigo').val = respuesta[0].codigo;
-                document.getElementById('version').val = respuesta[0].version;
-                document.getElementById('fechaCreacion').val = respuesta[0].fechaCreacionFormula;
-                document.getElementById('tipoPiel').val = respuesta[0].tipoPiel;
-                document.getElementById('fechaValida').val = respuesta[0].fechaValida;
-                document.getElementById('fechaImpresion').val = respuesta[0].fechaImpresion;
-                document.getElementById('parada').val = respuesta[0].parada;
-                document.getElementById('bombo').val = respuesta[0].bombo;
-                document.getElementById('peso').val = respuesta[0].peso;
-                document.getElementById('cantidad').val = respuesta[0].cantidad;
-                document.getElementById('promedio').val = respuesta[0].promedio;
-                document.getElementById('autorizado').val = respuesta[0].nombreAutorizado;
-                document.getElementById('procesado').val = respuesta[0].nombreProcesado;
-                document.getElementById('entregado').val = respuesta[0].nombreEntregado;
+                document.getElementById('codigo').value = respuesta[0].codigo;
+                document.getElementById('version').value = respuesta[0].version;
+                document.getElementById('fecha_act').value = respuesta[0].fechaCreacionFormula;
+                document.getElementById('tipoPiel').value = respuesta[0].tipoPiel;
+                document.getElementById('fecha_vigencia').value = respuesta[0].fechaValida;
+                document.getElementById('fechaImpresion').value = respuesta[0].fechaImpresion;
+                document.getElementById('parada').value = respuesta[0].parada;
+                document.getElementById('bombo').value = respuesta[0].bombo;
+                document.getElementById('peso').value = respuesta[0].peso;
+                document.getElementById('cantidad').value = respuesta[0].cantidad;
+                document.getElementById('promedio').value = respuesta[0].promedio;
+                document.getElementById('autorizado').value = respuesta[0].nombreAutorizado;
+                document.getElementById('procesado').value = respuesta[0].nombreProcesado;
+                document.getElementById('entregado').value = respuesta[0].nombreEntregado;
             }
         );
     }
@@ -55,7 +55,7 @@ class Formulas {
             { id },
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
-                    $('#tabla_formula_componente').html(val[0]);
+                    $('#TablaDetalleForula').html(val[0]);
                 });
             }
         );
