@@ -160,3 +160,8 @@ var ImprimirPelambre = (id) => {
     var impresionformula = new Formulas('', '', '', '', accion);
     impresionformula.CabeceraFormula(id);
 }
+var componentesFormula = (id) => {
+    var accion = 'Pelambres/ControladorComponentesFormula';
+    var componente = new Formulas('', '', '', '', accion);
+    componente.CuerpoFormula(id);
+}

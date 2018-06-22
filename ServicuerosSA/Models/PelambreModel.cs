@@ -303,5 +303,15 @@ namespace ServicuerosSA.Models
 
 
         }
+        public List<object[]> ModeloImprimirComponentes(int id)
+        {
+            //var res = from p in _contexto.Pelambre
+            //          join f in _contexto.Formula on p.FormulaId equals f.FormulaId
+            //          join c in _contexto.Componente on f.FormulaId equals c.FormulaId
+            //          select new
+            //          {
+
+            //          };
+        }
     }
 }

@@ -49,6 +49,15 @@ class Formulas {
         );
     }
     CuerpoFormula(id) {
-
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#tabla_formula_componente').html(val[0]);
+                });
+            }
+        );
     }
 }
