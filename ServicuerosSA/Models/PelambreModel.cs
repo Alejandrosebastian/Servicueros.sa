@@ -159,7 +159,11 @@ namespace ServicuerosSA.Models
             
             try
             {
-                
+                var res = (from b1 in _contexto.Bodega1
+                           join p in _contexto.Pelambre on b1.Bodega1Id equals p.Bodega1Id
+                           join l in _contexto.Lote on b1.LoteId equals l.LoteId
+                           where l.Codigolote == codlote && p.Fecha <= fecha
+                           select p).Count();
                 
 
                 var guardaPelambre = new Pelambre

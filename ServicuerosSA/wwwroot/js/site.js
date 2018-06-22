@@ -156,7 +156,7 @@ var DetallePelambre = (id) => {
 }
 
 var ImprimirPelambre = (id) => {
-    var accion = 'Pelambre/ControladorImprimirEmcabezadoFormula';
+    var accion = 'Pelambres/ControladorImprimirEmcabezadoFormula';
     var impresionformula = new Formulas('', '', '', '', accion);
     impresionformula.CabeceraFormula(id);
 }

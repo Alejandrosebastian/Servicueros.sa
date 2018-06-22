@@ -30,6 +30,7 @@ class Formulas {
         $.post(accion,
             { id },
             (respuesta) => {
+                console.log(respuesta);
                 $('#codigo').val = respuesta[0].codigo;
                 $('#version').val = respuesta[0].version;
                 $('#fechaCreacion').val = respuesta[0].fechaCreacion;
