@@ -37,7 +37,7 @@ class Pelambre {
         });
     }
 
-    GuardaPelambre(total, personal, codlote) {
+    GuardaPelambre(total, personal, codlote, pesototal, pieles) {
 
         if (this.formula == '0') {
             document.getElementById('mensajef').innerHTML = "Seleccione una formula";
@@ -71,7 +71,7 @@ class Pelambre {
                             type: "POST",
                             url: accion,
                             data: {
-                                fecha, obsrvaciones, bodegaid, bombo, formula, peso, personal, codlote
+                                fecha, obsrvaciones, bodegaid, bombo, formula, peso, personal, codlote, pesototal, pieles
                             },
                             success: (respuesta) => {
                                 if (contador == total) {

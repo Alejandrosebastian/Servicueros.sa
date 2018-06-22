@@ -36,7 +36,7 @@ namespace ServicuerosSA.Models
             {
                 datos += "<tr>" + 
                     "<td>" +
-                    "<input type='checkbox' class='form-control' value=" + item.Bodega1Id + "|"+ item.Codigolote + "/>" +
+                    "<input type='checkbox' class='form-control' value=" + item.Bodega1Id + "|"+ item.Codigolote + "|" + item.NumeroPieles + "|" + item.Peso + ' ' + "/>" +
                     "</td>" +
                     "<td>" + item.Codigolote + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
@@ -162,12 +162,15 @@ namespace ServicuerosSA.Models
             return ListaPelambre;
         }     
 
-        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote)
+        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
             
             try
             {
+                
+                
+
                 var guardaPelambre = new Pelambre
                 {
                     Bodega1Id = bogeda,
@@ -175,12 +178,11 @@ namespace ServicuerosSA.Models
                     Fecha = DateTime.Now,
                     Observaciones = obsrvaciones,
                     FormulaId = formula,
-                   
+                   TotalPieles = pieles,
                     PersonalId = personal,
-                    
                     Activo = true,
                     Codigo = "A"
-                    };
+                };
                     _contexto.Pelambre.Add(guardaPelambre);
                     _contexto.SaveChanges();
                 

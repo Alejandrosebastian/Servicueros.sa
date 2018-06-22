@@ -60,9 +60,9 @@ namespace ServicuerosSA.Controllers
             return View(pelambre);
         }
 
-        public List<IdentityError> ControladorGuardarPelambre(DateTime fecha, string obsrvaciones, int bodegaid, int bombo, int formula,  int personal, string codlote)
+        public List<IdentityError> ControladorGuardarPelambre(DateTime fecha, string obsrvaciones, int bodegaid, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles)
         {
-            return clasePelambre.ClaseGuardaPelambre(fecha, obsrvaciones, bodegaid, bombo, formula,  personal, codlote);
+            return clasePelambre.ClaseGuardaPelambre(fecha, obsrvaciones, bodegaid, bombo, formula,  personal, codlote, pesototal, pieles);
         }
 
 

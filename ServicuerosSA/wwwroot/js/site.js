@@ -47,6 +47,8 @@ var GuardaPelambre = () => {
     var contador = 0;
     var bodegaid = new Array;
     var codlote = new Array;
+    var peso = 0;
+    var pieles = 0;
     var d = new Date();
     var fecha = d.getDate();
     $("input:checkbox:checked").each(function () {
@@ -54,28 +56,17 @@ var GuardaPelambre = () => {
             var ya = ($(this).val()).split("|");
             bodegaid[contador] = ya[0];
             codlote[contador] = ya[1];
+            peso += parseInt(ya[3]);
+            pieles += parseInt(ya[2]);
             contador = contador + 1;
     });
+    
 
-   // alert(bodegaid.join('\n'));
     var guardaPelambre = new Pelambre(fecha, obsrvaciones, bodegaid, bombo, formula,peso, accion);
     
-    guardaPelambre.GuardaPelambre(totalcheck, personal, codlote);
+   guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles);
 }
-var contardatos = () => {
-    var contador = 0;
-    $("input:checkbox:checked").each(function () {
 
-        
-        var prueba = $("#tablaPlambre tr(" + contador + ")").find('td:eq(4)').html();
-       
-
-        alert(prueba);
-
-    });
-
-   
-}
 
 var ListaIndex = () => {
     var accion = '../Pelambres/ControladorListaIndex';
