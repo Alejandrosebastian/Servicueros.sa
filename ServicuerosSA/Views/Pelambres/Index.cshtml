@@ -188,7 +188,7 @@
                     Impresion de Formula Pelambre
                 </h4>
             </div>
-            <div class="modal-body" id="impresion">
+            <div class="modal-body" id="areaImprimir">
 
                 <div class="form-group">
 
@@ -227,7 +227,7 @@
                         </tr>
                         <tr>
                             <td style="font-size:xx-small">VIGENCIA:</td>
-                            <td style="font-size:xx-small" colspan="2"></td>
+                            <td style="font-size:xx-small" colspan="2"><label id="vigencia" name="vigencia" class="control-label"></label></td>
                         </tr>
                         <tr>
                             <td style="font-size:xx-small">PAGINA:</td>
@@ -284,9 +284,8 @@
 
             </div>
             <div class="modal-footer">
-                
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Imprimir</button>
+                <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');" >Imprimir</button>
             </div>
         </div>
     </div>

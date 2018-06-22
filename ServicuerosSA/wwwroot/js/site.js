@@ -3,10 +3,16 @@
 $().ready(() => {
     claseJsLlamarListaProveedor();
     claseJsLlamarListaLotes(1);
-    
     ListaIndex();
 })
+var Impresion = (id) => {
+    var contenido = document.getElementById(id).innerHTML;
+    var contenidooriginal = document.body.innerHTML;
+    document.body.innerHTML = contenido;
+    window.print();
+    document.body.innerHTML = contenidooriginal;
 
+}
 var claseJsLlamarListaLotes = (id) => {
     var accion = '../Lotes/ContraladorListaLotes';
     var listalotes = new ClaseJSLotes('', '', '', '', '', '', accion);
@@ -173,3 +179,4 @@ var Impresion = () => {
     window.print();
 
 }
+
