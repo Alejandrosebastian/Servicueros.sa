@@ -263,7 +263,7 @@ namespace ServicuerosSA.Models
 
         public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(int id)
         {
-            List<ModeloEncabezadoFormula> lista = new List<ModeloEncabezadoFormula>();
+            
             //var res = from p in _contexto.Pelambre
             //          join f in _contexto.Formula on p.FormulaId equals f.FormulaId
             //          join c in _contexto.Componente on f.FormulaId equals c.FormulaId
@@ -272,10 +272,12 @@ namespace ServicuerosSA.Models
 
             //          };
 
-            var res = from p in _contexto.Pelambre
+            var res = (from p in _contexto.Pelambre
                       join pe in _contexto.Personal on p.PersonalId equals pe.PersonalId
                       join b in _contexto.Bombo on p.BomboId equals b.BomboId
                       join fo in _contexto.Formula on p.FormulaId equals fo.FormulaId
+                      join tp in _contexto.TipoPiel on fo.TipoPielId equals tp.TipoPielId
+                      where p.PelambreId == id
                       select new ModeloEncabezadoFormula
                       {
                           Bombo = b.Num_bombo.ToString(),
@@ -285,10 +287,16 @@ namespace ServicuerosSA.Models
                           NombreAutoirzado = pe.Nombres + " " + pe.Apellidos,
                           FechaValida = DateTime.Now.ToString(),
                           NombreEntregado = pe.Nombres + " " + pe.Apellidos,
+                          NombreProcesado = fo.TipoProceso,
+                          Codigo = p.Codigo,
+                          Parada = p.PelambreId.ToString(),
+                          Peso = p.TotalPieles.ToString(),
+                          //Promedio = falta peso total en modelo pelambre
+                          Version = fo.Version,
+                          TipoPiel = tp.Detalle
+                      }).ToList();
+            return res;
 
-
-
-                      };
 
         }
     }
