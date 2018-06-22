@@ -19,4 +19,7 @@ class ClaseFormula {
             }
         );
     }
+    CuerpoFormula(id) {
+
+    }
 }

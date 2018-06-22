@@ -27,6 +27,9 @@ namespace ServicuerosSA.Controllers
             return View();
         }
 
+        public List<object[]> ControladorImprimirEmcabezadoFormula(int id) {
+            return clasePelambre.ModeloImprimirEncabezadoFormula();
+        }
         public List<object[]> ControladorListaIndex(int id)
         {
             return clasePelambre.ClaseIndexPelambre(id);
