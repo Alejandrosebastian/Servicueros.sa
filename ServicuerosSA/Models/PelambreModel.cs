@@ -48,16 +48,7 @@ namespace ServicuerosSA.Models
             object[] objetodatos = { datos };
             ListaPelambre.Add(objetodatos);
             return ListaPelambre;
-            ////SUMA
-            //var sum = (from p in _contexto.Pelambre
-            //           join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
-            //           where p.Activo == false && b1.LoteId == 
-
-            //           select new
-            //           {
-            //               b1.LoteId, p.PelambreId, b1.NumeroPieles
-                                                   
-            //           });
+           
         }
 
         public List<object[]> ClaseListaPelambrexTipoPiel(int tipopielId, int clasificacionId )
@@ -260,7 +251,7 @@ namespace ServicuerosSA.Models
                     "<td>" + item.Num_bombo + "</td>" +
                     "<td>" + item.Nombre + "</td>" +
                     "<td>" +
-                    "<a class='btn btn-info' onclick='ImprimirPelambre(" + item.PelambreId + ")'>Imprimir Detalle con Formula</a> " +
+                    "<a class='btn btn-info' data-toogle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(" + item.PelambreId + ")'>Imprimir Detalle con Formula</a> " +
                     "<a class='btn btn-info' data-toggle='modal' data-target='#DetallePelambre' onclick='DetallePelambre" + item.PelambreId + "'>Detalles</a>" +
                         "</td>" +
                         "</tr>";

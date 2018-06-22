@@ -154,3 +154,8 @@ var DetallePelambre = (id) => {
     var pelambre = new Pelambre('', '', '', '', '', '', accion);
     pelambre.ListaDetalle(id);
 }
+
+var ImprimirPelambre = (id) => {
+    var accion = 'Pelambre/ControladorImprimirFormula';
+    
+}
