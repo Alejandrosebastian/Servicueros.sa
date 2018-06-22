@@ -261,7 +261,7 @@ namespace ServicuerosSA.Models
             return ListaPelambre;
         }
 
-        public List<object[]> ModeloImprimirEncabezadoFormula(int id)
+        public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(int id)
         {
             
         }
