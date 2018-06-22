@@ -31,21 +31,20 @@ class Formulas {
             { id },
             (respuesta) => {
                 console.log(respuesta);
-
-              document.getElementById('codigo').val = respuesta[0].codigo;
-                $('#version').val = respuesta[0].version;
-                $('#fechaCreacion').val = respuesta[0].fechaCreacionFormula;
-                $('#tipoPiel').val = respuesta[0].tipoPiel;
-                $('#fechaValida').val = respuesta[0].fechaValida;
-                $('#fechaImpresion').val = respuesta[0].fechaImpresion;
-                $('#parada').val = respuesta[0].parada;
-                $('#bombo').val = respuesta[0].bombo;
-                $('#peso').val = respuesta[0].peso;
-                $('cantidad').val = respuesta[0].cantidad;
-                $('#promedio').val = respuesta[0].promedio;
-                $('#autorizado').val = respuesta[0].nombreAutorizado;
-                $('#procesado').val = respuesta[0].nombreProcesado;
-                $('#entregado').val = respuesta[0].nombreEntregado;
+                document.getElementById('codigo').val = respuesta[0].codigo;
+                document.getElementById('version').val = respuesta[0].version;
+                document.getElementById('fechaCreacion').val = respuesta[0].fechaCreacionFormula;
+                document.getElementById('tipoPiel').val = respuesta[0].tipoPiel;
+                document.getElementById('fechaValida').val = respuesta[0].fechaValida;
+                document.getElementById('fechaImpresion').val = respuesta[0].fechaImpresion;
+                document.getElementById('parada').val = respuesta[0].parada;
+                document.getElementById('bombo').val = respuesta[0].bombo;
+                document.getElementById('peso').val = respuesta[0].peso;
+                document.getElementById('cantidad').val = respuesta[0].cantidad;
+                document.getElementById('promedio').val = respuesta[0].promedio;
+                document.getElementById('autorizado').val = respuesta[0].nombreAutorizado;
+                document.getElementById('procesado').val = respuesta[0].nombreProcesado;
+                document.getElementById('entregado').val = respuesta[0].nombreEntregado;
             }
         );
     }
