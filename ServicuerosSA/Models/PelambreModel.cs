@@ -263,7 +263,9 @@ namespace ServicuerosSA.Models
 
         public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(int id)
         {
-            
+            List<ModeloEncabezadoFormula> lista = new List<ModeloEncabezadoFormula>();
+            var res = from p in _contexto.Pelambre
+                      join 
         }
     }
 }
