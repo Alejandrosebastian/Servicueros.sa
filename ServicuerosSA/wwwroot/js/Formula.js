@@ -25,8 +25,8 @@ class ClaseFormula {
         $.post(accion,
             { id },
             (respuesta) => {
-                $('#codigo').val = respuesta[0].codigo;
-                $('#version').val = respuesta[0].version;
+                $('#codigo').val(respuesta[0].codigo);
+                $('#version').val(respuesta[0].version);
                 $('#fechaCreacion').val = respuesta[0].fechaCreacion;
                 $('#nombre').val = respuesta[0].nombre;
                 $('#tipoProceso').val = respuesta[0].tipoProces;

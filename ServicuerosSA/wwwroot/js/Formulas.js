@@ -27,26 +27,35 @@ class Formulas {
     }
     CabeceraFormula(id) {
         var accion = this.accion;
-        $.post(accion,
-            { id },
-            (respuesta) => {
+        $.ajax({
+            type: 'POST',
+            url: accion,
+            data: { id },
+            success: (respuesta) => {
                 console.log(respuesta);
-                document.getElementById('codigo').value = respuesta[0].codigo;
-                document.getElementById('version').value = respuesta[0].version;
-                document.getElementById('fecha_act').value = respuesta[0].fechaCreacionFormula;
-                document.getElementById('tipoPiel').value = respuesta[0].tipoPiel;
-                document.getElementById('fecha_vigencia').value = respuesta[0].fechaValida;
-                document.getElementById('fechaImpresion').value = respuesta[0].fechaImpresion;
-                document.getElementById('parada').value = respuesta[0].parada;
-                document.getElementById('bombo').value = respuesta[0].bombo;
-                document.getElementById('peso').value = respuesta[0].peso;
-                document.getElementById('cantidad').value = respuesta[0].cantidad;
-                document.getElementById('promedio').value = respuesta[0].promedio;
-                document.getElementById('autorizado').value = respuesta[0].nombreAutorizado;
-                document.getElementById('procesado').value = respuesta[0].nombreProcesado;
-                document.getElementById('entregado').value = respuesta[0].nombreEntregado;
+                $('#codigo').text(respuesta[0].codigo);
+                $('#version').text(respuesta[0].version);
+                $('#fecha_act').text(respuesta[0].fechaCreacionFormula);
+
+                $('#fechaCreacion').text(respuesta[0].fechaCreacion);
+                $('#nombre').text(respuesta[0].nombre);
+                $('#tipoProceso').text(respuesta[0].tipoProces);
+                $('#tipoPiel').text(respuesta[0].tipoPiel);
+                $('#fecha_vigencia').text(respuesta[0].fechaImpresion);
+                $('#vigencia').text(respuesta[0].fechaImpresion);
+                $('#pagina').text(respuesta[0].pagina);
+                $('#fecha').text(respuesta[0].fecha);
+                $('#parada').text(respuesta[0].parada);
+                $('#bombo').text(respuesta[0].bombo);
+                $('#peso').text(respuesta[0].peso);
+                $('#cantidad').text(respuesta[0].cantidad);
+                $('#promedio').text(respuesta[0].promedio);
+                $('#autorizado').text(respuesta[0].nombreAutoirzado);
+                $('#procesado').text(respuesta[0].nombreProcesado);
+                $('#entregado').text(respuesta[0].nombreEntregado);
             }
-        );
+        });
+        
     }
     CuerpoFormula(id) {
         var accion = this.accion;
