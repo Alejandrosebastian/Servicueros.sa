@@ -30,6 +30,9 @@ namespace ServicuerosSA.Controllers
         public List<ModeloEncabezadoFormula> ControladorImprimirEmcabezadoFormula(int id) {
             return clasePelambre.ModeloImprimirEncabezadoFormula(id);
         }
+        public List<object[]> ControladorImprimirCuerpoFormula(int id) {
+            return clasePelambre.ModeloImprimirComponentes(id);
+        }
         public List<object[]> ControladorListaIndex(int id)
         {
             return clasePelambre.ClaseIndexPelambre(id);
