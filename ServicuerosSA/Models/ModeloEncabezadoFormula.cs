@@ -21,6 +21,6 @@ namespace ServicuerosSA.Models
         public string NombreProcesado { get; set; }
         public string NombreEntregado { get; set; }
         public string TipoPiel { get; set; }
-
+        public string TipoProceso { get; set; }
     }
 }
