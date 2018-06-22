@@ -159,6 +159,7 @@ namespace ServicuerosSA.Models
             
             try
             {
+                
                 var res = (from b1 in _contexto.Bodega1
                            join p in _contexto.Pelambre on b1.Bodega1Id equals p.Bodega1Id
                            join l in _contexto.Lote on b1.LoteId equals l.LoteId
@@ -255,7 +256,7 @@ namespace ServicuerosSA.Models
                     "<td>" + item.Num_bombo + "</td>" +
                     "<td>" + item.Nombre + "</td>" +
                     "<td>" +
-                    "<a class='btn btn-info' data-toogle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(" + item.PelambreId + ")'>Imprimir Detalle con Formula</a> " +
+                    "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(" + item.PelambreId +"); componentesFormula(" + item.PelambreId + ");'>Imprimir Detalle con Formula</a> " +
                     "<a class='btn btn-info' data-toggle='modal' data-target='#DetallePelambre' onclick='DetallePelambre" + item.PelambreId + "'>Detalles</a>" +
                         "</td>" +
                         "</tr>";

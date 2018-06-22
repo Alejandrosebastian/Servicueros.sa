@@ -28,5 +28,7 @@ namespace ServicuerosSA.Models
         public bool Activo { get; set; }
         public string Codigo { get; set; }
         public int TotalPieles { get; set; }
+        public int Peso { get; set; }
+        public string CodigoLote { get; set; }
     }
 }
