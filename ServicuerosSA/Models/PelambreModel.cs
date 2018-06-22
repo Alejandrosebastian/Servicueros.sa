@@ -260,5 +260,10 @@ namespace ServicuerosSA.Models
             ListaPelambre.Add(objeto);
             return ListaPelambre;
         }
+
+        public List<object[]> ModeloImprimirEncabezadoFormula(int id)
+        {
+            
+        }
     }
 }

@@ -156,6 +156,6 @@ var DetallePelambre = (id) => {
 }
 
 var ImprimirPelambre = (id) => {
-    var accion = 'Pelambre/ControladorImprimirFormula';
+    var accion = 'Pelambre/ControladorImprimirEmcabezadoFormula';
     
 }
