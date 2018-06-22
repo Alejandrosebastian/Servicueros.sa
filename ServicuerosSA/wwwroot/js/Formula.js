@@ -2,8 +2,7 @@
 class ClaseFormula {
     constructor(codigo, nombre, fechaCreacion, version, tipoProceso, tipoPiel,
         fechaVigencia, vigencia, pagina, fecha, parada, bombo, peso,
-        cantidad, promedio, autorizado, procesado, entregado, ingrediente,
-        porcentaje,cantidadFormula, tiempo, observaciones, accion) {
+        cantidad, promedio, autorizado, procesado, entregado, accion) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
@@ -11,6 +10,10 @@ class ClaseFormula {
         this.tipoProceso = tipoProceso;
         this.tipoPiel = tipoPiel;
         this.fechaVigencia = fechaVigencia;
+        this.vigencia = vigencia;
+        this.pagina = pagina;
+        this.fecha = fecha;
+
     }
 
     CabeceraFormula(id) {
@@ -36,12 +39,7 @@ class ClaseFormula {
                 $('#autorizado').val = respuesta[0].autorizado;
                 $('#procesado').val = respuesta[0].procesado;
                 $('#entregado').val = respuesta[0].entregado;
-                $('#ingrediente').val = respuesta[0].ingrediente;
-                $('#porcentaje').val = respuesta[0].porcentaje;
-                $('#cantidadFormula').val = respuesta[0].cantidadFormula;
-                $('#tiempo').val = respuesta[0].tiempo;
-                $('#observaciones').val = respuesta[0].observaciones;
-                $('#accion').val = respuesta[0].accion;
+                
 
 
 
