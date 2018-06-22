@@ -48,10 +48,6 @@ class Formulas {
                 $('#autorizado').val = respuesta[0].autorizado;
                 $('#procesado').val = respuesta[0].procesado;
                 $('#entregado').val = respuesta[0].entregado;
-
-
-
-
             }
         );
     }

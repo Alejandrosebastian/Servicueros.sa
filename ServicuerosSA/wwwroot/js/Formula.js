@@ -1,8 +1,6 @@
 ﻿
 class ClaseFormula {
-    constructor(codigo, fechaCreacion, version, tipoPiel,
-        fechaVigencia, vigencia, pagina, fecha, parada, bombo, peso,
-        cantidad, promedio, autorizado, procesado, entregado, accion) {
+    constructor(codigo, fechaCreacion, version, tipoPiel,fechaVigencia, vigencia, pagina, fecha, parada, bombo, peso,cantidad, promedio, autorizado, procesado, entregado, accion) {
         this.codigo = codigo;
         this.fechaCreacion = fechaCreacion;
         this.version = version;
