@@ -30,6 +30,7 @@ class Formulas {
         $.post(accion,
             { id },
             (respuesta) => {
+                console.log(respuesta);
                 $('#codigo').val = respuesta[0].codigo;
                 $('#version').val = respuesta[0].version;
                 $('#fechaCreacion').val = respuesta[0].fechaCreacion;
@@ -48,10 +49,6 @@ class Formulas {
                 $('#autorizado').val = respuesta[0].autorizado;
                 $('#procesado').val = respuesta[0].procesado;
                 $('#entregado').val = respuesta[0].entregado;
-
-
-
-
             }
         );
     }
