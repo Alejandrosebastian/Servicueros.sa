@@ -65,6 +65,7 @@ var GuardaPelambre = () => {
     var guardaPelambre = new Pelambre(fecha, obsrvaciones, bodegaid, bombo, formula,peso, accion);
     
    guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles);
+
 }
 
 
@@ -164,4 +165,11 @@ var componentesFormula = (id) => {
     var accion = 'Pelambres/ControladorComponentesFormula';
     var componente = new Formulas('', '', '', '', accion);
     componente.CuerpoFormula(id);
+}
+var Impresion = () => {
+    var contenido = document.getElementById('areaImprimir').innerHTML;
+    var contenidooriginal = document.body.innerHTML;
+    document.body.innerHTML = contenido;
+    window.print();
+
 }
