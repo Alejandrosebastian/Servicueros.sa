@@ -35,16 +35,16 @@ class Formulas {
                 document.getElementById('version').value = respuesta[0].version;
                 document.getElementById('fecha_act').value = respuesta[0].fechaCreacionFormula;
                 document.getElementById('tipoPiel').value = respuesta[0].tipoPiel;
-                //document.getElementById('fecha_vigencia').value = respuesta[0].fechaValida;
-                //document.getElementById('fechaImpresion').value = respuesta[0].fechaImpresion;
-                //document.getElementById('parada').value = respuesta[0].parada;
-                //document.getElementById('bombo').value = respuesta[0].bombo;
-                //document.getElementById('peso').value = respuesta[0].peso;
-                //document.getElementById('cantidad').value = respuesta[0].cantidad;
-                //document.getElementById('promedio').value = respuesta[0].promedio;
-                //document.getElementById('autorizado').value = respuesta[0].nombreAutorizado;
-                //document.getElementById('procesado').value = respuesta[0].nombreProcesado;
-                //document.getElementById('entregado').value = respuesta[0].nombreEntregado;
+                document.getElementById('fecha_vigencia').value = respuesta[0].fechaValida;
+                document.getElementById('fechaImpresion').value = respuesta[0].fechaImpresion;
+                document.getElementById('parada').value = respuesta[0].parada;
+                document.getElementById('bombo').value = respuesta[0].bombo;
+                document.getElementById('peso').value = respuesta[0].peso;
+                document.getElementById('cantidad').value = respuesta[0].cantidad;
+                document.getElementById('promedio').value = respuesta[0].promedio;
+                document.getElementById('autorizado').value = respuesta[0].nombreAutorizado;
+                document.getElementById('procesado').value = respuesta[0].nombreProcesado;
+                document.getElementById('entregado').value = respuesta[0].nombreEntregado;
             }
         );
     }
