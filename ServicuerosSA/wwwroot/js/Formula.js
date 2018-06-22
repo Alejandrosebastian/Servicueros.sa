@@ -1,14 +1,16 @@
 ﻿
 class ClaseFormula {
-    constructor(nombre, fechaCreacion, version, tipoProceso, tipoPiel,
+    constructor(codigo, nombre, fechaCreacion, version, tipoProceso, tipoPiel,
         fechaVigencia, vigencia, pagina, fecha, parada, bombo, peso,
         cantidad, promedio, autorizado, procesado, entregado, ingrediente,
         porcentaje,cantidadFormula, tiempo, observaciones, accion) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
         this.version = version;
         this.tipoProceso = tipoProceso;
         this.tipoPiel = tipoPiel;
+        this.fechaVigencia = fechaVigencia;
     }
 
     CabeceraFormula(id) {
