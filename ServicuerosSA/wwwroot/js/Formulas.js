@@ -1,6 +1,6 @@
 ﻿
 class Formulas {
-    constructor(fechaCreacionFormula, version, tipoPiel,fechaValida,fechaImpresion, parada, bombo, peso, cantidad, promedio, nombreAutorizado, nombreProcesado,nombreEntregado,  accion) {
+    constructor(fecha_creacion, nombre, tipo_proceso, tipo_piel,  accion) {
         this.fecha_creacion = fecha_creacion;
         this.nombre = nombre;
         this.tipo_proceso = tipo_proceso;
