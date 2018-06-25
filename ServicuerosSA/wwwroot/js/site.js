@@ -182,7 +182,7 @@ var componentesFormula = (id) => {
     var componente = new Formulas('', '', '', '', accion);
     componente.CuerpoFormula(id);
 }
-var Impresion = () => {
+var impresion = () => {
     var contenido = document.getElementById('areaImprimir').innerHTML;
     var contenidooriginal = document.body.innerHTML;
     document.body.innerHTML = contenido;
