@@ -153,17 +153,66 @@ namespace ServicuerosSA.Models
             object[] objetodatos = { datos };
             ListaPelambre.Add(objetodatos);
             return ListaPelambre;
-        }     
+        }
+
+
+        public List<IdentityError> ActualizaClasificacionPelo(int bogeda)
+        {
+            List<IdentityError> listaerrores = new List<IdentityError>();
+            try
+            { 
+                var bodega1 = (from b1 in _contexto.Bodega1
+                               where b1.Bodega1Id == bogeda
+                               select new Bodega1
+                               {
+                                   activo = false,
+                                   ClasificacionId = b1.ClasificacionId,
+                                   Fechaingreso = b1.Fechaingreso,
+                                   LoteId = b1.LoteId,
+                                   NumeroEstanteria = b1.NumeroEstanteria,
+                                   BodegaId = b1.BodegaId,
+                                   Bodega1Id = b1.Bodega1Id,
+                                   NumeroPieles = b1.NumeroPieles,
+                                   Observaciones = b1.Observaciones,
+                                   Peso = b1.Peso,
+                                   MedidaId = b1.MedidaId
+
+                               }).FirstOrDefault();
+                try
+                {
+                    _contexto.Bodega1.Update(bodega1);
+                    _contexto.SaveChanges();
+                }
+                catch (Exception e)
+                {
+
+                    throw e;
+                }
+                
+                listaerrores.Add(new IdentityError
+                {
+                    Code = "Save",
+                    Description = "Save"
+                });
+            }
+            catch (Exception e)
+            {
+                listaerrores.Add(new IdentityError
+                {
+                    Code = e.Message,
+                    Description = e.Message
+                });
+
+            }
+            return listaerrores;
+        }
 
         public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
-            
             try
             {
-                
-              
-                
+               
 
                 var guardaPelambre = new Pelambre
                 {
@@ -180,38 +229,7 @@ namespace ServicuerosSA.Models
                     Codigo = "A"
                 };
                     _contexto.Pelambre.Add(guardaPelambre);
-                    _contexto.SaveChanges();
-
-                var bodega1 = (from b1 in _contexto.Bodega1
-                               where b1.Bodega1Id == bogeda
-                               select new Bodega1
-                               {
-                                   activo = false,
-                                   ClasificacionId = b1.ClasificacionId,
-                                   Fechaingreso = b1.Fechaingreso,
-                                   LoteId = b1.LoteId,
-                                   NumeroEstanteria = b1.NumeroEstanteria,
-                                   BodegaId = b1.BodegaId,
-                                   Bodega1Id = b1.Bodega1Id,
-                                   NumeroPieles = b1.NumeroPieles,
-                                   Observaciones = b1.Observaciones,
-                                   Peso = b1.Peso,
-                                   MedidaId = b1.MedidaId
-                                   
-                               }).FirstOrDefault();
-               
-                try
-                {
-                    _contexto.Bodega1.Update(bodega1);
-                    _contexto.SaveChanges();
-                }
-                catch (Exception e)
-                {
-
-                    throw e;
-                }              
-                   
-                
+                    _contexto.SaveChanges();               
                
                 listaerrores.Add(new IdentityError
                 {
@@ -226,12 +244,8 @@ namespace ServicuerosSA.Models
                     Code = e.Message,
                     Description = e.Message
                 });
-               
             }
-
             return listaerrores;
-
-
         }
 
         public List<object[]> ClaseIndexPelambre(int numeroPagina)

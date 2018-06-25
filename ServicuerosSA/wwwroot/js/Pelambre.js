@@ -37,6 +37,37 @@ class Pelambre {
         });
     }
 
+    DesactivaClasificacionPelo(total, personal, codlote, pesototal, pieles, accion) {
+        var fecha = this.fecha;
+        var obsrvaciones = this.observacion;
+        var bodega = this.bodega;
+        var bombo = this.bombo;
+        var formula = this.formula;
+        var peso = this.peso;
+        var mensaje = '';
+        var accion = this.accion;
+        var contador = 0;
+
+        $.each(bodega, (index, val) => {
+
+            var bodegaid = bodega[contador];
+            $.ajax({
+                type: "POST",
+                url: accion,
+                data: {
+                     bodegaid
+                },
+                success: (respuesta) => {
+                    if (contador == total) {
+                        this.limpiarcajas();
+                    }
+
+                }
+            });
+            contador++;
+        });
+    }
+
     GuardaPelambre(total, personal, codlote, pesototal, pieles) {
 
         if (this.formula == '0') {
