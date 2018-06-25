@@ -14,9 +14,11 @@ namespace ServicuerosSA.Models
         [Display(Name ="Porcentaje de Componente")]
         [Required (ErrorMessage ="Campo requerido")]
         public string Porcentaje{ get; set; }
-        [Display(Name = " Cantidad ")]
-        [Required(ErrorMessage = "Campo Requerido")]
-        public int Cantidad { get; set; }
+
+
+     
+
+
         [Display(Name = " Tiempo ")]
         [Required(ErrorMessage = "Campo Requerido")]   
         public int Tiempo  { get; set; }

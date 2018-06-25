@@ -8,6 +8,8 @@ namespace ServicuerosSA.Models
 {
     public class PelambreModel
     {
+        string dato = "";
+
         private ApplicationDbContext _contexto;
         public PelambreModel(ApplicationDbContext contexto)
         {
@@ -311,25 +313,49 @@ namespace ServicuerosSA.Models
             var res = from p in _contexto.Pelambre
                       join f in _contexto.Formula on p.FormulaId equals f.FormulaId
                       join c in _contexto.Componente on f.FormulaId equals c.FormulaId
+                      join m in _contexto.Medida on c.MedidaId equals m.MedidaId
                       where p.PelambreId == id
                       select new
                       {
                           c.Detalle,
                           c.Porcentaje,
-                          c.Cantidad,
-                          c.Tiempo
+                          p.Peso,
+                          c.Tiempo,
+                          m.Abreviatura
                       };
-            string dato = "";
             foreach (var item in res.ToList())
             {
-                dato += "<tr>" +
-                    "<td>" + item.Detalle +"</td>" +
-                "<td>" + item.Porcentaje + "</td>" +
-                "<td>" + item.Cantidad + "</td>" +
-                "<td>" + item.Tiempo + "</td>" +
-                "<td> </td>" +
-                "</tr>";
+                if (item.Detalle.ToUpper() == "BORRON DL")
+                {
+                    dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
+                };
 
+                dato += "<tr>" +
+                    "<td>" + item.Detalle.ToUpper() + "</td>" +                             
+                "<td>" + item.Porcentaje.ToUpper() + "</td>" +
+                "<td>" + (item.Peso * Int32.Parse(item.Porcentaje) ) + "</td>" +
+                "<td>" + item.Tiempo + " "+ item.Abreviatura.ToUpper() + "</td>" +
+                "<td> </td>"  +
+                "</tr>";
+                if (item.Detalle.ToUpper() == "AGUA")
+                {
+                    dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
+                };
+                if (item.Detalle.ToUpper() == "SAL LIMPIA")
+                {
+                    dato += "<tr><td>CONTROL</td><td></td><td></td><td></td><td></td></tr>";
+                    dato += "<tr><td>PH = 9,0-9,5</td><td></td><td></td><td></td><td></td></tr>";
+                    dato += "<tr><td>PH = ºB = 0-1,0</td><td></td><td></td><td></td><td></td></tr>";
+                    dato += "<tr><td>ºB = TEMP 25ºC - 28ºC</td><td></td><td></td><td></td><td></td></tr>";
+                    dato += "<tr><td>TEMP = LAVADO 10 MIN </td><td></td><td></td><td></td><td></td></tr>";
+                    dato += "<tr><td>ESCURRIR BAÑO</td><td></td><td></td><td></td><td></td></tr>";
+                };
+                if (item.Detalle.ToUpper() == "ESCURRIR BAÑO")
+                {
+                    dato += "<tr><td>AGUA A 28 ºC</td><td></td><td></td><td></td><td></td></tr>";
+                    
+
+                };
             }
             object[] objeto = { dato };
             lista.Add(objeto);
