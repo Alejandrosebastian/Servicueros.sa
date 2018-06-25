@@ -23,6 +23,11 @@ var claseJsLlamarListaProveedor = () => {
     var listaproveedor = new ClaseJSProveedor('', '', '', '', '', '', '', '', '', accion);
     listaproveedor.claseJsListaProveedor();
 }
+var claseJsLlamarListaDescarne = () => {
+    var accion = '../Descarnes/ControladorListaDescarne';
+    var Listadescarne = new ClaseJsDescarne('', '', accion);
+    Listadescarne.ClaseJsDescarne();
+}
 var ListaFormulas = () => {
     var accion = 'Formulas/ControladorListaFormulas';
     var listaformulas = new Formulas('', '', '', '', accion);
@@ -37,6 +42,11 @@ var ListaPelambre = () => {
     var accion = 'Pelambres/ControladorListaPelambre';
     var listaPelambre = new Pelambre('', '', '', '', '','', accion);
     listaPelambre.ListaPelabre();
+}
+var ListaDescarne = () => {
+    var accion = 'Descarnes/ControladorListaDescarne';
+    var listaDescarne = new Descarne('', '', accion);
+    listaDescarne.ListaDescarne();
 }
 
 var GuardaPelambre = () => {

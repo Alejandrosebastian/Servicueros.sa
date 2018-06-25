@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,17 +14,22 @@ namespace ServicuerosSA.Controllers
     public class DescarnesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private DescarneModel claseDescarne;
 
         public DescarnesController(ApplicationDbContext context)
         {
             _context = context;
+            claseDescarne = new DescarneModel(context);
         }
 
         // GET: Descarnes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Descarne.Include(d => d.Pelambres);
-            return View(await applicationDbContext.ToListAsync());
+            return View();
+        }
+        public List<object[]>ControladorListaDescarne()
+        {
+            return claseDescarne.ClaseListaDescarne();
         }
 
         // GET: Descarnes/Details/5

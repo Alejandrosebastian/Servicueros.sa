@@ -36,7 +36,6 @@ class Formulas {
                 $('#codigo').text(respuesta[0].codigo);
                 $('#version').text(respuesta[0].version);
                 $('#fecha_act').text(respuesta[0].fechaCreacionFormula);
-
                 $('#fechaCreacion').text(respuesta[0].fechaCreacion);
                 $('#nombre').text(respuesta[0].nombre);
                 $('#tipoProceso').text(respuesta[0].tipoProces);
