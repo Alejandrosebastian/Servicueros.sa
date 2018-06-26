@@ -37,20 +37,13 @@ class Pelambre {
         });
     }
 
-    DesactivaClasificacionPelo(total, personal, codlote, pesototal, pieles, accion) {
-        var fecha = this.fecha;
-        var obsrvaciones = this.observacion;
+    DesactivaClasificacionPelo(total, accion) {
+        
         var bodega = this.bodega;
-        var bombo = this.bombo;
-        var formula = this.formula;
-        var peso = this.peso;
-        var mensaje = '';
-        var accion = this.accion;
+        var bodegaid;
         var contador = 0;
-
         $.each(bodega, (index, val) => {
-
-            var bodegaid = bodega[contador];
+            bodegaid = bodega[contador];
             $.ajax({
                 type: "POST",
                 url: accion,
@@ -58,17 +51,16 @@ class Pelambre {
                      bodegaid
                 },
                 success: (respuesta) => {
-                    if (contador == total) {
-                        this.limpiarcajas();
-                    }
+                   
 
                 }
             });
             contador++;
         });
+        return bodegaid;
     }
 
-    GuardaPelambre(total, personal, codlote, pesototal, pieles) {
+    GuardaPelambre(total, personal, codlote, pesototal, pieles, idb) {
 
         if (this.formula == '0') {
             document.getElementById('mensajef').innerHTML = "Seleccione una formula";
@@ -91,28 +83,20 @@ class Pelambre {
                     var bombo = this.bombo;
                     var formula = this.formula;
                     var peso = this.peso;
-                    var mensaje = '';
+                    
                     var accion = this.accion;
-                    var contador = 0;
-
-                    $.each(bodega, (index, val) => {
-
-                        var bodegaid = bodega[contador];
                         $.ajax({
                             type: "POST",
                             url: accion,
                             data: {
-                                fecha, obsrvaciones, bodegaid, bombo, formula, peso, personal, codlote, pesototal, pieles
+                                fecha, obsrvaciones, idb, bombo, formula, personal, codlote, pesototal, pieles
                             },
                             success: (respuesta) => {
-                                if (contador == total) {
-                                    this.limpiarcajas();
-                                }
-                            
+                                this.limpiarcajas();
                             }
                         });
-                        contador++;
-                    });
+                        
+                    
                 }
             }
             

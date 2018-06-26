@@ -68,7 +68,6 @@ var GuardaPelambre = () => {
     var d = new Date();
     var fecha = d.getDate();
     $("input:checkbox:checked").each(function () {
-
             var ya = ($(this).val()).split("|");
             bodegaid[contador] = ya[0];
             codlote[contador] = ya[1];
@@ -76,11 +75,10 @@ var GuardaPelambre = () => {
             pieles += parseInt(ya[2]);
             contador = contador + 1;
     });
-    
-
     var guardaPelambre = new Pelambre(fecha, obsrvaciones, bodegaid, bombo, formula,peso, accion);
-    
-   guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles);
+    var idb = guardaPelambre.DesactivaClasificacionPelo(totalcheck, "Pelambres/ControladorActualizaClasificacionPelo");
+
+    guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles, idb);
 
 }
 
