@@ -354,6 +354,7 @@ namespace ServicuerosSA.Models
                 {
                     dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
                 };
+               
                 if (item.Detalle.ToUpper() == "SAL LIMPIA")
                 {
                    dato += "<tr><td>CONTROL</td><td></td><td></td><td></td><td></td></tr>";

@@ -28,6 +28,7 @@ namespace ServicuerosSA.Models
                            des.Fecha,
                            p.TotalPieles,
                            p.PelambreId
+                           
 
                        });
             foreach (var item in res)

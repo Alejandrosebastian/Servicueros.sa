@@ -21,5 +21,8 @@ namespace ServicuerosSA.Models
         //RELACIONES
         public int PelambreId { get; set; }
         public Pelambre Pelambres { get; set; }
+        public int PersonalId { get; set; }
+        public Personal personal { get; set; }
+       
     }
 }
