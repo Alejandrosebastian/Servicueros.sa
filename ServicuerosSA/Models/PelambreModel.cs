@@ -211,6 +211,92 @@ namespace ServicuerosSA.Models
             List<IdentityError> listaerrores = new List<IdentityError>();
             try
             {
+                string ingresocod = "";
+                int codigoDes = (from p in _contexto.Pelambre
+                                 where p.Activo == true && p.CodigoLote == codlote && p.Fecha < DateTime.Now
+                                 select p).Count();
+                switch (codigoDes)
+                {
+                    case 0:
+                        ingresocod = "A";
+                        break;
+                    case 1:
+                        ingresocod = "B";
+                        break;
+                    case 3:
+                        ingresocod = "C";
+                        break;
+                    case 4:
+                        ingresocod = "D";
+                        break;
+                    case 5:
+                        ingresocod = "E";
+                        break;
+                    case 6:
+                        ingresocod = "F";
+                        break;
+                    case 7:
+                        ingresocod = "G";
+                        break;
+                    case 8:
+                        ingresocod = "H";
+                        break;
+                    case 9:
+                        ingresocod = "I";
+                        break;
+                    case 10:
+                        ingresocod = "J";
+                        break;
+                    case 11:
+                        ingresocod = "K";
+                        break;
+                    case 12:
+                        ingresocod = "L";
+                        break;
+                    case 13:
+                        ingresocod = "M";
+                        break;
+                    case 14:
+                        ingresocod = "N";
+                        break;
+                    case 15:
+                        ingresocod = "O";
+                        break;
+                    case 16:
+                        ingresocod = "P";
+                        break;
+                    case 17:
+                        ingresocod = "Q";
+                        break;
+                    case 18:
+                        ingresocod = "R";
+                        break;
+                    case 19:
+                        ingresocod = "S";
+                        break;
+                    case 20:
+                        ingresocod = "T";
+                        break;
+                    case 21:
+                        ingresocod = "U";
+                        break;
+                    case 22:
+                        ingresocod = "V";
+                        break;
+                    case 23:
+                        ingresocod = "W";
+                        break;
+                    case 24:
+                        ingresocod = "X";
+                        break;
+                    case 25:
+                        ingresocod = "Y";
+                        break;
+                    case 26:
+                        ingresocod = "Z";
+                        break;
+
+                }
                 var guardaPelambre = new Pelambre
                 {
                     Bodega1Id = bogeda,
@@ -223,7 +309,7 @@ namespace ServicuerosSA.Models
                     Activo = true,
                     Peso = pesototal,
                     CodigoLote = codlote,
-                    Codigo = "A"
+                    Codigo = ingresocod
                 };
                     _contexto.Pelambre.Add(guardaPelambre);
                     _contexto.SaveChanges();               
