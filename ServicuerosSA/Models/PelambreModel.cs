@@ -155,7 +155,6 @@ namespace ServicuerosSA.Models
             return ListaPelambre;
         }
 
-
         public List<IdentityError> ActualizaClasificacionPelo(int bogeda)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
@@ -324,7 +323,7 @@ namespace ServicuerosSA.Models
         public List<object[]> ModeloImprimirComponentes(int id)
         {
             List<object[]> lista = new List<object[]>();
-            var res = from p in _contexto.Pelambre
+            var res = (from p in _contexto.Pelambre
                       join f in _contexto.Formula on p.FormulaId equals f.FormulaId
                       join c in _contexto.Componente on f.FormulaId equals c.FormulaId
                       join m in _contexto.Medida on c.MedidaId equals m.MedidaId
@@ -336,8 +335,8 @@ namespace ServicuerosSA.Models
                           p.Peso,
                           c.Tiempo,
                           m.Abreviatura
-                      };
-            foreach (var item in res.ToList())
+                      }).ToList();
+            foreach (var item in res)
             {
                 if (item.Detalle.ToUpper() == "BORRON DL")
                 {
@@ -367,7 +366,6 @@ namespace ServicuerosSA.Models
                 if (item.Detalle.ToUpper() == "ESCURRIR BAÑO")
                 {
                     dato += "<tr><td>AGUA A 28 ºC</td><td></td><td></td><td></td><td></td></tr>";
-                    
 
                 };
             }
