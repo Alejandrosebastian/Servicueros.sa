@@ -211,8 +211,6 @@ namespace ServicuerosSA.Models
             List<IdentityError> listaerrores = new List<IdentityError>();
             try
             {
-               
-
                 var guardaPelambre = new Pelambre
                 {
                     Bodega1Id = bogeda,
@@ -251,8 +249,6 @@ namespace ServicuerosSA.Models
         {
             List<object[]> ListaPelambre = new List<object[]>();
             string dato = "";
-            
-
             var res = (from p in _contexto.Pelambre
                        join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
                        join f in _contexto.Formula on p.FormulaId equals f.FormulaId
@@ -272,7 +268,6 @@ namespace ServicuerosSA.Models
             foreach (var item in res)
             {
                 dato += "<tr><td>" + item.Codigolote + "</td>"+
-                
                     "<td>" + item.Detalle + "</td>" +
                     "<td>" + item.Selecciones + "</td>" +
                     "<td>" + item.Fecha.ToString("dd-MM-yyyy hh:mm") + "</td>" +
@@ -346,7 +341,7 @@ namespace ServicuerosSA.Models
                 dato += "<tr>" +
                 "<td>" + item.Detalle.ToUpper() + "</td>" +                             
                 "<td>" + item.Porcentaje.ToUpper() + "</td>" +
-                "<td>" + (item.Peso / Int32.Parse(item.Porcentaje) ) + "</td>" +
+                "<td>" + (item.Peso * Int32.Parse(item.Porcentaje))/100 + "</td>" +
                 "<td>" + item.Tiempo + " "+ item.Abreviatura.ToUpper() + "</td>" +
                 "<td> </td>"  +
                 "</tr>";
