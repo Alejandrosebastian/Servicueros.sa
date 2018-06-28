@@ -18,13 +18,17 @@ namespace ServicuerosSA.Models
         {
             List<object[]> ListaDescarne = new List<object[]>();
             string datos = "";
-            var res = (from des in _contexto.Descarne
-                           
+            var res = (from p in _contexto.Pelambre
+                       join des in _contexto.Descarne on p.PelambreId equals des.PelambreId
+                       where p.Activo == true
                        select new
                        {
                            des.Cantidad,
                            des.Activo,
-                           des.Fecha
+                           des.Fecha,
+                           p.TotalPieles,
+                           p.PelambreId
+
                        });
             foreach (var item in res)
             {
