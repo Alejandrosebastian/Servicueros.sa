@@ -346,7 +346,7 @@ namespace ServicuerosSA.Models
                 dato += "<tr>" +
                 "<td>" + item.Detalle.ToUpper() + "</td>" +                             
                 "<td>" + item.Porcentaje.ToUpper() + "</td>" +
-                "<td>" + (item.Peso * Int32.Parse(item.Porcentaje) ) + "</td>" +
+                "<td>" + (item.Peso / Int32.Parse(item.Porcentaje) ) + "</td>" +
                 "<td>" + item.Tiempo + " "+ item.Abreviatura.ToUpper() + "</td>" +
                 "<td> </td>"  +
                 "</tr>";
