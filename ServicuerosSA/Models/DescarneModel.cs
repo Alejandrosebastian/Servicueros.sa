@@ -20,32 +20,27 @@ namespace ServicuerosSA.Models
             string datos = "";
             var res = (from p in _contexto.Pelambre
                        join des in _contexto.Descarne on p.PelambreId equals des.PelambreId
-                       join per in _contexto.Personal on des.PersonalId equals per.PersonalId
                        where p.Activo == true
                        select new
                        {
                            des.Cantidad,
-                           des.Activo,
                            des.Fecha,
                            p.TotalPieles,
-                           p.PelambreId,
-                           per.Nombres
-                           
-
+                           p.PelambreId
                        });
             foreach (var item in res)
             {
                 datos += "<tr>" +
                     "<td>"+item.Cantidad+"</td>" +
-                    "<td>"+item.Activo+"</td>" +
                     "<td>"+item.Fecha+"</td>" +
+                    "<td>"+item.TotalPieles+"</td>"+
                     "</tr>";
             }
             object[] objetodatos = { datos };
             ListaDescarne.Add(objetodatos);
             return ListaDescarne;
         }
-        public List<IdentityError> ClaseGuardarDescarne(string cantidad, DateTime fecha )
+        public List<IdentityError> ClaseGuardarDescarne(string cantidad, int personalId)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             try
@@ -53,8 +48,10 @@ namespace ServicuerosSA.Models
                 var guardarDescarne = new Descarne
                 {
                     Cantidad = cantidad,
-                    Fecha = DateTime.Now,
-                    Activo = true
+                    Fecha= DateTime.Now,
+                    PersonalId = personalId,
+                    Activo= true
+                
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();
