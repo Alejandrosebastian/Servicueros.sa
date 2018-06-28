@@ -11,6 +11,6 @@ namespace ServicuerosSA.Models
         public int ClasificacionTripaId { get; set; }
         [Display(Name = "Tipo de Clasificacion")]
         [Required(ErrorMessage = "Campo Obligatorio")]
-        public int Detalle { get; set; }
+        public string Detalle { get; set; }
     }
 }
