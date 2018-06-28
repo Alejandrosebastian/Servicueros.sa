@@ -20,6 +20,7 @@ namespace ServicuerosSA.Models
             string datos = "";
             var res = (from p in _contexto.Pelambre
                        join des in _contexto.Descarne on p.PelambreId equals des.PelambreId
+                       join per in _contexto.Personal on des.PersonalId equals per.PersonalId
                        where p.Activo == true
                        select new
                        {
@@ -27,7 +28,8 @@ namespace ServicuerosSA.Models
                            des.Activo,
                            des.Fecha,
                            p.TotalPieles,
-                           p.PelambreId
+                           p.PelambreId,
+                           per.Nombres
                            
 
                        });
