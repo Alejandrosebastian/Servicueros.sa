@@ -725,7 +725,7 @@ namespace ServicuerosSA.Migrations
                         .HasForeignKey("PelambreId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("ServicuerosSA.Models.Personal", "personal")
+                    b.HasOne("ServicuerosSA.Models.Personal", "personales")
                         .WithMany()
                         .HasForeignKey("PersonalId")
                         .OnDelete(DeleteBehavior.Restrict);

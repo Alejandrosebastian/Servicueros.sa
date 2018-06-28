@@ -10,6 +10,8 @@
     <Compile Remove="Migrations\20180620163457_ya.Designer.cs" />
     <Compile Remove="Migrations\20180620164654_ya.cs" />
     <Compile Remove="Migrations\20180620164654_ya.Designer.cs" />
+    <Compile Remove="Migrations\20180628154359_descarneRelacion.cs" />
+    <Compile Remove="Migrations\20180628154359_descarneRelacion.Designer.cs" />
   </ItemGroup>
 
 

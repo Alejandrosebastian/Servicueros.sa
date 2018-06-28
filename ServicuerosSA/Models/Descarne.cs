@@ -22,7 +22,7 @@ namespace ServicuerosSA.Models
         public int PelambreId { get; set; }
         public Pelambre Pelambres { get; set; }
         public int PersonalId { get; set; }
-        public Personal personal { get; set; }
+        public Personal personales { get; set; }
        
     }
 }

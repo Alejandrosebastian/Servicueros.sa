@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ServicuerosSA.Migrations
 {
-    public partial class descarneRelacion : Migration
+    public partial class descarnerel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -11,8 +11,8 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180628154359_descarneRelacion")]
-    partial class descarneRelacion
+    [Migration("20180628155313_descarnerel")]
+    partial class descarnerel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -726,7 +726,7 @@ namespace ServicuerosSA.Migrations
                         .HasForeignKey("PelambreId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("ServicuerosSA.Models.Personal", "personal")
+                    b.HasOne("ServicuerosSA.Models.Personal", "personales")
                         .WithMany()
                         .HasForeignKey("PersonalId")
                         .OnDelete(DeleteBehavior.Restrict);
