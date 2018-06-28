@@ -63,6 +63,7 @@ class Formulas {
             { id },
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
+                    alert(respuesta);
                     $('#TablaDetalleForula').html(val[0]);
                 });
             }
