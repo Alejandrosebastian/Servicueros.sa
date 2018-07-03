@@ -42,6 +42,9 @@
          
         }
     }
+
+
+  
     limpiarcajas() {
         document.getElementById('cantidad').value = '';
         document.getElementById('fecha').selectedIndex = 0;
@@ -50,4 +53,5 @@
         ListaIndex();
 
     }
+   
 }
