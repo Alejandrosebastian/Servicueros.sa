@@ -24,7 +24,9 @@ namespace ServicuerosSA.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fechaingreso { get; set; }
 
-        
+        public Boolean estado { get; set; }
+
+
         //RELACIONES
         [Display(Name = "Nombre del responsable de lote ")]
         public int PersonalId { get; set; }
