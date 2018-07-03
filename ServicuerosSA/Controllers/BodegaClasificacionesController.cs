@@ -22,7 +22,8 @@ namespace ServicuerosSA.Controllers
         // GET: BodegaClasificaciones
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Where(B1 => B1.activo == true );
+           
+            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Where(B1 => B1.activo == true ).Where(b => b.activo ==true);
             
             return View(await applicationDbContext.ToListAsync());
         }
@@ -66,6 +67,10 @@ namespace ServicuerosSA.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Bodega1Id,BodegaId,LoteId,ClasificacionId,MedidaId,Fechaingreso,NumeroEstanteria,NumeroPieles,Peso,Observaciones,activo")] Bodega1 bodega1)
         {
+
+
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(bodega1);

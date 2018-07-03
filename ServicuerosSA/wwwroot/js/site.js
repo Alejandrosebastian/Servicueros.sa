@@ -187,4 +187,8 @@ var impresion = () => {
     window.print();
 
 }
+var mensaje = () => {
+    $.notify("Hello World");
+
+}
 

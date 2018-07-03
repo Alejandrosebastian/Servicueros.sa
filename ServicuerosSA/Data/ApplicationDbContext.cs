@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ServicuerosSA.Models;
@@ -28,6 +29,7 @@ namespace ServicuerosSA.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
+        public DbSet<IdentityRole> identityRole { get; set; }
         public DbSet<ServicuerosSA.Models.Bodega> Bodega { get; set; }
 
         public DbSet<ServicuerosSA.Models.Lote> Lote { get; set; }

@@ -40,8 +40,9 @@ namespace ServicuerosSA
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -63,6 +64,22 @@ namespace ServicuerosSA
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //CrearRoles(serviceProvider).Wait();
+        }
+        private async Task CrearRoles(IServiceProvider serviceProvider)
+        {
+            var roleMagar = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userMagar = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            string[] NombreRoles = { "Admin", "Secre", "Obrero" };
+            IdentityResult resultado;
+            foreach (var NombreRol in NombreRoles)
+            {
+                var roleExist = await roleMagar.RoleExistsAsync(NombreRol);
+                if (!roleExist)
+                {
+                    resultado = await roleMagar.CreateAsync(new IdentityRole(NombreRol));
+                }
+            }
         }
     }
 }

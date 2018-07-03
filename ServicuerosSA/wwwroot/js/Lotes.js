@@ -71,10 +71,14 @@ class ClaseJSLotes {
                 if (respuesta[0].code == 'no') {
                     $('#numpieles').css('visibility', 'visible');
                     $('#graba').prop('disabled', true);
+                } else if (respuesta[0].code == 'no!') {
+                    alert("Se actualizó el estado de los lotes. La pagina de volvera a vargar");
+                    location.reload();
                 } else {
+
                     $('#numpieles').css('visibility', 'hidden');
                     $('#graba').prop('disabled', false);
-                } 
+                }
             }
         );
 

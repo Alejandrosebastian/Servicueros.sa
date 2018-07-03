@@ -146,7 +146,7 @@ namespace ServicuerosSA.Models
             int totalpieles = total + valor;
 
             if (totalpieles <= lotenumero)
-                {
+            {
                 if (valor <= lotenumero)
                 {
                     er = new IdentityError
@@ -163,15 +163,35 @@ namespace ServicuerosSA.Models
                         Description = "no"
                     };
                 }
-               
-
             }
             else
             {
+                var lot = (from lote in _contexto.Lote
+                           where lote.LoteId == codilote
+                           select new Lote {
+                               LoteId = lote.LoteId,
+                               estado = false,
+                               Codigolote = lote.Codigolote,
+                               Fechaingreso = lote.Fechaingreso,
+                               Numerodepieles = lote.Numerodepieles,
+                               Observaciones = lote.Observaciones,
+                               PersonalId = lote.PersonalId,
+                               TipoPielId = lote.TipoPielId
+                           }).FirstOrDefault();
+                try
+                {
+                    _contexto.Lote.Update(lot);
+                    _contexto.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
                 er = new IdentityError
                 {
-                    Code = "no",
-                    Description = "no"
+                    Code = "no!",
+                    Description = "no!"
                 };
 
             }
