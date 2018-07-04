@@ -42,7 +42,20 @@
          
         }
     }
-
+    listapelambre() {
+        var accion = this.accion;
+        var contador = 1;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            success: (respuesta) => {
+                if (0 < respuesta.length) {
+                    document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].cantidad);
+                }
+            }
+        });
+    }
 
   
     limpiarcajas() {
