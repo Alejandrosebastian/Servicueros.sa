@@ -51,15 +51,29 @@
             data: {},
             success: (respuesta) => {
                 if (0 < respuesta.length) {
+                    
                     for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].listapelambre);
+                        document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote +  respuesta[i].codigo, respuesta[i].pelambreId );
                         contador++;
                     }
                 }   
             }
         });
     }
-
+    NumeroPielesPelambre(id) {
+        
+        var accion = this.accion;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: { id },
+            success: (respuesta) => {
+                document.getElementById('descarne').value = respuesta.totalPieles;
+                $('#descarne').val(respuesta[0].totalPieles);
+                console.log(respuesta);
+            }
+        });
+    }
   
     limpiarcajas() {
         document.getElementById('cantidad').value = '';

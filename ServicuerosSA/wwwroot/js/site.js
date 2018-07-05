@@ -188,9 +188,17 @@ var impresion = () => {
 
 }
 var ListaPelambreDescarne = () => {
-    var accion = '';
+    var accion = 'Descarnes/ControladorListaPelambre';
     var descarne = new Descarne('', '', accion);
     descarne.listapelambre();
 }
 
+var NumeroPielesPelambre = () => {
+    var accion = 'Descarnes/ControladorUnPelambreDescarne';
+    var combopelambres = document.getElementById('PelambreId');
+    var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].value;
+
+    var des = new Descarne('', '', accion);
+    des.NumeroPielesPelambre(unpelabrecombo);
+}
 

@@ -15,11 +15,12 @@ namespace ServicuerosSA.Controllers
     {
         private readonly ApplicationDbContext _context;
         private DescarneModel claseDescarne;
-
+        private PelambreModel clasePelambre;
         public DescarnesController(ApplicationDbContext context)
         {
             _context = context;
             claseDescarne = new DescarneModel(context);
+            clasePelambre = new PelambreModel(context);
         }
 
         // GET: Descarnes
@@ -90,6 +91,15 @@ namespace ServicuerosSA.Controllers
             }
             ViewData["PelambreId"] = new SelectList(_context.Pelambre, "PelambreId", "PelambreId", descarne.PelambreId);
             return View(descarne);
+        }
+
+        public List<Pelambre> ControladorUnPelambreDescarne(int id)
+        {
+            return _context.Pelambre.Where(p => p.PelambreId == id).ToList();
+        }
+        public List<Pelambre> ControladorListaPelambre()
+        {
+            return clasePelambre.Listapelambres();
         }
 
         // POST: Descarnes/Edit/5
