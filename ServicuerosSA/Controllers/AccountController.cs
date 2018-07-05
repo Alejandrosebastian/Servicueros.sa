@@ -216,7 +216,6 @@ namespace ServicuerosSA.Controllers
             RegisterViewModel r = new RegisterViewModel();
             r.getRoles(_context);
              ViewData["ReturnUrl"] = returnUrl;
-           
             return View();
         }
 
