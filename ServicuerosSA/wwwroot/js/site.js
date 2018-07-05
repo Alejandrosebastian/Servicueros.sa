@@ -204,5 +204,10 @@ var NumeroPielesPelambre = () => {
 
 var GuardaDescarne = () => {
     var accion = 'Decarnes/ControladorGuardaDescarne';
+    var pelambres = document.getElementById("PelambreId");
+    var pelambre = pelambres.options[pelambres.selectedIndex].value;
+    var personales = document.getElementById("");
+    var personal = personales.options[personales.selectedIndex].value;
+
     var 
 }
