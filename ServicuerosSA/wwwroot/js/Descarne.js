@@ -61,16 +61,13 @@
         });
     }
     NumeroPielesPelambre(id) {
-        
         var accion = this.accion;
         $.ajax({
             type: "POST",
             url: accion,
             data: { id },
             success: (respuesta) => {
-                document.getElementById('descarne').value = respuesta.totalPieles;
-                $('#descarne').val(respuesta[0].totalPieles);
-                console.log(respuesta);
+                $('#TotalPielesInput').text(respuesta[0].totalPieles);
             }
         });
     }
