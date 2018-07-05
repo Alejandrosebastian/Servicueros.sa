@@ -44,26 +44,27 @@
                         <select id="PelambreId" name="PelambreId" required class="form-control" onchange="NumeroPielesPelambre();">
                             <option value="0">Seleccione una lo que desea descarnar</option>
                         </select>
-                        <label id="mensajeb" class="col-md-2 control-label label-danger"></label>
-
+                        <br />
+                        <span id="mensajep" class="alert alert-danger hidden">Selecciones el lote de Pelambre</span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de pieles en Pelambre</label>
-                        <label id="TotalPielesInput" name="TotalPielesInput" class="control-label"></label>
-
+                        <label id="TotalPielesInput" name="TotalPielesInput" class="control-label alert alert-success hidden"></label>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de pieles a Descarne</label>
-                        <input id="descarne" name="descarne" required class="form-control">
+                        <input id="CantidadPieles" name="descarne" required class="form-control">
+                        <br />
+                        <span id="mensajec" class="alert alert-danger hidden">Ingrese un numero de pieles a Descarnar</span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Personal Asignado</label>
                         <select id="personalId" name="personalId" required class="form-control">
                             <option value="0">Seleccione el Personal asignado a esta operación</option>
                         </select>
-                        <label id="mensajep" class="col-md-2 control-label label-danger"></label>
+                        <br />
+                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione al personal asignado</span>
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">

@@ -1,4 +1,5 @@
-﻿// Write your JavaScript code.
+﻿
+// Write your JavaScript code.
 
 $().ready(() => {
     claseJsLlamarListaProveedor();
@@ -203,11 +204,15 @@ var NumeroPielesPelambre = () => {
 }
 
 var GuardaDescarne = () => {
-    var accion = 'Decarnes/ControladorGuardaDescarne';
+    var accion = 'Descarnes/ControladorGuardaDescarne';
     var pelambres = document.getElementById("PelambreId");
     var pelambre = pelambres.options[pelambres.selectedIndex].value;
-    var personales = document.getElementById("");
+    var personales = document.getElementById("personalId");
     var personal = personales.options[personales.selectedIndex].value;
-
-    var 
+    var cantidad = document.getElementById("CantidadPieles").value;
+    var d = new Date();
+    var fecha = d.getDate();
+    var guades = new Descarne(cantidad, d, accion);
+    guades.GuardarPelambre(personal,pelambre);
 }
+

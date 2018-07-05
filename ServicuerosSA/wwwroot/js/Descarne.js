@@ -18,30 +18,38 @@
             }
         });
     }
-    GuardarPelambre(cantidad, fecha) {
-        if (this.Descarne == '0') {
-            document.getElementById('mensajed').innerHTML = "Ingrese un numero de pieles a Descarnar";
-        }
-        else
-        {
-            var cantidad = this.cantidad; 
-            var fecha = this.fecha;
-            var mensaje = '';
-            var accion = this.accion;
-            
-                $.ajax({
-                    type: "POST",
-                    url: accion,
-                    data: {
-                        cantidad, fecha
-                    },
-                    success: (respuesta) => {
-                        this.limpiarCajas();
-                    }
-                });
-         
+    GuardarPelambre(personal, pelambre) {
+        if (pelambre == '0') {
+            $("#mensajep").removeClass("hidden");
+        } else {
+            $("#mensajep").addClass("hidden");
+            if (this.cantidad == '') {
+                $("#mensajec").removeClass("hidden");
+            } else {
+                $("#mensajec").addClass("hidden");
+                if (personal == '0') {
+                    $("#mensajeper").removeClass("hidden");
+                } else {
+                    $("#mensajeper").addClass("hidden");
+                    var cantidad = this.cantidad;                   
+                    var accion = this.accion;
+                    var fecha = this.fecha;
+                    $.ajax({
+                        type: "POST",
+                        url: accion,
+                        data: {
+                            cantidad, fecha, personal, pelambre
+                        },
+                        success: (respuesta) => {
+                            console.log(respuesta);
+                            this.limpiarcajas();
+                        }
+                    });
+                }
+            }
         }
     }
+    
     listapelambre() {
         var accion = this.accion;
         var contador = 1;
@@ -68,14 +76,15 @@
             data: { id },
             success: (respuesta) => {
                 $('#TotalPielesInput').text(respuesta[0].totalPieles);
+                $("#TotalPielesInput").removeClass("hidden");
             }
         });
     }
   
     limpiarcajas() {
-        document.getElementById('cantidad').value = '';
-        document.getElementById('fecha').selectedIndex = 0;
-        $('#DescarneLista').html('');
+        document.getElementById('CantidadPieles').value = '';
+        document.getElementById('PelambreId').selectedIndex = 0;
+        document.getElementById('personalId').selectedIndex = 0;
         $('#IngresoDescarne').modal('hide');
         ListaIndex();
 

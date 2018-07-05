@@ -40,7 +40,7 @@ namespace ServicuerosSA.Models
             ListaDescarne.Add(objetodatos);
             return ListaDescarne;
         }
-        public List<IdentityError> ClaseGuardarDescarne(string cantidad, int personalId)
+        public List<IdentityError> ClaseGuardarDescarne(string cantidad, DateTime fecha, int personal, int pelambre)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             try
@@ -48,13 +48,19 @@ namespace ServicuerosSA.Models
                 var guardarDescarne = new Descarne
                 {
                     Cantidad = cantidad,
-                    Fecha= DateTime.Now,
-                    PersonalId = personalId,
+                    Fecha= fecha,
+                    PersonalId = personal,
+                    PelambreId = pelambre,
                     Activo= true
                 
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();
+                Listaerrores.Add(new IdentityError
+                {
+                    Code = "ok",
+                    Description = "ok"
+                });
             }
             catch (Exception e)
             {

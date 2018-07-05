@@ -52,6 +52,12 @@ namespace ServicuerosSA.Controllers
             return View(descarne);
         }
 
+
+        public List<IdentityError> ControladorGuardaDescarne(string cantidad ,DateTime fecha,int personal,int pelambre)
+        {
+            return claseDescarne.ClaseGuardarDescarne(cantidad, fecha, personal, pelambre);
+        }
+
         // GET: Descarnes/Create
         public IActionResult Create()
         {

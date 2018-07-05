@@ -95,8 +95,6 @@ class Pelambre {
                                 this.limpiarcajas();
                             }
                         });
-                        
-                    
                 }
             }
             
