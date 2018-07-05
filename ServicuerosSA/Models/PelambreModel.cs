@@ -455,16 +455,12 @@ namespace ServicuerosSA.Models
             lista.Add(objeto);
             return lista;
         }
+
+
         public List<Pelambre> Listapelambres()
         {
-            List<Pelambre> lista = new List<Pelambre>();
-            string datos = "";
-            var res = from p in _contexto.Pelambre
-                   where p.Activo == true 
-            
-                       
-                       
-                      
+            return _contexto.Pelambre.OrderBy(p => p.Fecha).ToList();
+        }             
       
     }
 }
