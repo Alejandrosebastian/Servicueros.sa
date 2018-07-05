@@ -12,9 +12,6 @@ namespace ServicuerosSA.Models
         [Display(Name = "Tipo de Clasificacion")]
         [Required(ErrorMessage = "Campo Obligatorio")]
         public string Detalle { get; set; }
-        [Display(Name = "Peso de la clasificacion en kilos")]
-        [Required(ErrorMessage = "Campo Obligatorio")]
-        public int peso { get; set; }
-
+       
     }
 }
