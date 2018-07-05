@@ -202,3 +202,7 @@ var NumeroPielesPelambre = () => {
     des.NumeroPielesPelambre(unpelabrecombo);
 }
 
+var GuardaDescarne = () => {
+    var accion = 'Decarnes/ControladorGuardaDescarne';
+    var 
+}
