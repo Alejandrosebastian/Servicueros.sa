@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace ServicuerosSA.Models
 {
@@ -24,5 +25,6 @@ namespace ServicuerosSA.Models
         public int PersonalId { get; set; }
         public Personal personales { get; set; }
        
+
     }
 }
