@@ -230,11 +230,11 @@ namespace ServicuerosSA.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
-                await _userManager.AddToRoleAsync(user, model.Rol);
 
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, model.Rol);
 
 
                     _logger.LogInformation("User created a new account with password.");
