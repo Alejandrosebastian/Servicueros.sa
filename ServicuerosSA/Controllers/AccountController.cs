@@ -235,7 +235,7 @@ namespace ServicuerosSA.Controllers
 
                 if (result.Succeeded)
                 {
-
+                   
 
                     _logger.LogInformation("User created a new account with password.");
 
