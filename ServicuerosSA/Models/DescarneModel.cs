@@ -28,14 +28,16 @@ namespace ServicuerosSA.Models
                            p.TotalPieles,
                            p.PelambreId
                        });
+
             foreach (var item in res)
             {
                 datos += "<tr>" +
-                    "<td>"+item.Cantidad+"</td>" +
-                    "<td>"+item.Fecha+"</td>" +
-                    "<td>"+item.TotalPieles+"</td>"+
+                    "<td>" + item.Cantidad + "</td>" +
+                    "<td>" + item.Fecha + "</td>" +
+                    "<td>" + item.TotalPieles + "</td>" +
                     "</tr>";
             }
+
             object[] objetodatos = { datos };
             ListaDescarne.Add(objetodatos);
             return ListaDescarne;
@@ -48,10 +50,10 @@ namespace ServicuerosSA.Models
                 var guardarDescarne = new Descarne
                 {
                     Cantidad = cantidad,
-                    Fecha= DateTime.Now,
+                    Fecha = DateTime.Now,
                     PersonalId = personalId,
-                    Activo= true
-                
+                    Activo = true
+
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();
@@ -64,8 +66,10 @@ namespace ServicuerosSA.Models
                     Description = e.Message
                 });
             }
+
             return Listaerrores;
         }
+        
 
     }
 }
