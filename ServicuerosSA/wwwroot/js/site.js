@@ -187,8 +187,10 @@ var impresion = () => {
     window.print();
 
 }
-var mensaje = () => {
-    $.notify("Hello World");
-
+var ListaPelambreDescarne = () => {
+    var accion = '';
+    var descarne = new Descarne('', '', accion);
+    descarne.listapelambre();
 }
+
 

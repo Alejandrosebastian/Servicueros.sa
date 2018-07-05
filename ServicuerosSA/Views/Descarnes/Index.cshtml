@@ -5,7 +5,7 @@
 
 <h2>Proceso en Descarne</h2>
 <p>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoDescarne" onclick="ListaPelambre(); listaPersonal(); Listapelambre();">Nuevo Proceso</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoDescarne" onclick="ListaPelambreDescarne()">Nuevo Proceso</a>
 </p>
 <table class="table">
     <thead>
@@ -16,12 +16,7 @@
             <th>
                 Cantidad
             </th>
-            <th>
-                Fecha
-            </th>
-            <th>
-                Activo
-            </th>
+           
 
             <th></th>
         </tr>
@@ -45,7 +40,7 @@
                 <form>
                     <div class="form-group">
                         <label class="control-label">Lotes en Pelambre</label>
-                        <select id="bomboId" name="bomboId" required class="form-control">
+                        <select id="PelambreId" name="PelambreId" required class="form-control">
                             <option value="0">Seleccione una lo que desea descarnar</option>
                         </select>
                         <label id="mensajeb" class="col-md-2 control-label label-danger"></label>
@@ -60,14 +55,8 @@
                         <input id="descarne" name="descarne" required class="form-control">
 
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">Fecha</label>
-                        <input id="descarne" name="descarne" readonly class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Activo</label>
-                        <label id="activo" name="fecha" class="control-label"></label>
-                    </div>
+                    
+                  
 
                 </form>
             </div>

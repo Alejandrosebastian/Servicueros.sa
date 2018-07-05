@@ -455,5 +455,12 @@ namespace ServicuerosSA.Models
             lista.Add(objeto);
             return lista;
         }
+
+
+        public List<Pelambre> Listapelambres()
+        {
+            return _contexto.Pelambre.OrderBy(p => p.Fecha).ToList();
+        }             
+      
     }
 }
