@@ -239,13 +239,19 @@ namespace ServicuerosSA.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
 
+
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
             }
-                // If we got this far, something failed, redisplay form
-                return View(model);
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
+
+
+            
+        
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
