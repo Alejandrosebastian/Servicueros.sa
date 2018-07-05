@@ -64,7 +64,7 @@ namespace ServicuerosSA
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            //CrearRoles(serviceProvider).Wait();
+            CrearRoles(serviceProvider).Wait();
         }
         private async Task CrearRoles(IServiceProvider serviceProvider)
         {
