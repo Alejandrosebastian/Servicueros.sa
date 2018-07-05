@@ -216,7 +216,8 @@ namespace ServicuerosSA.Controllers
             RegisterViewModel r = new RegisterViewModel();
             r.getRoles(_context);
              ViewData["ReturnUrl"] = returnUrl;
-            return View(r);
+            ViewData["r"] = r;
+            return View();
         }
 
         [HttpPost]
@@ -230,12 +231,11 @@ namespace ServicuerosSA.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
-                await _userManager.AddToRoleAsync(user, model.Rol);
-
-
                 if (result.Succeeded)
                 {
-                   
+
+                    await _userManager.AddToRoleAsync(user, model.Rol);
+
 
                     _logger.LogInformation("User created a new account with password.");
 
@@ -250,7 +250,7 @@ namespace ServicuerosSA.Controllers
                 }
                 AddErrors(result);
             }
-
+           
             // If we got this far, something failed, redisplay form
             return View(model);
         }
