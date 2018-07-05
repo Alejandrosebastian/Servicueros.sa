@@ -187,5 +187,10 @@ var impresion = () => {
     window.print();
 
 }
+var ListaPelambreDescarne = () => {
+    var accion = '';
+    var descarne = new Descarne('', '', accion);
+    descarne.listapelambre();
+}
 
 
