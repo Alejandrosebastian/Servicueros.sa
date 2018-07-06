@@ -50,18 +50,14 @@ namespace ServicuerosSA.Models
                 var guardarDescarne = new Descarne
                 {
                     Cantidad = cantidad,
-<<<<<<< HEAD
-                    Fecha = DateTime.Now,
-                    PersonalId = personalId,
-                    Activo = true
 
-=======
-                    Fecha= fecha,
+                    Fecha = DateTime.Now,
                     PersonalId = personal,
+                    Activo = true,
                     PelambreId = pelambre,
-                    Activo= true
+                    
                 
->>>>>>> 8dac966b7badb905afd75fa789bbe7cf4e5da33b
+
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();
@@ -81,6 +77,30 @@ namespace ServicuerosSA.Models
             }
 
             return Listaerrores;
+        }
+        public List<IdentityError> ModeloNumeroPielesDescarne(int codigopelambre,  int valor)
+        {
+            List<IdentityError> Lista = new List<IdentityError>();
+            IdentityError er = new IdentityError();
+            int pelambrenum = _contexto.Pelambre.Where(p => p.PelambreId == codigopelambre && p.TotalPieles == valor).Count();
+            
+                if (valor <= pelambrenum)
+                {
+                    er = new IdentityError
+                    {
+                        Code = "vale",
+                        Description = "vale"
+                    };
+                }
+                else
+                {
+                    er = new IdentityError
+                    {
+                        Code = "no",
+                        Description = "no"
+                    };
+                }
+            return Lista;     
         }
         
 

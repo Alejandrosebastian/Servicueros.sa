@@ -12,7 +12,7 @@ namespace ServicuerosSA.Models
         public int DescarneId { get; set; }
         [Display(Name = "Numero de pieles a Descarnar")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        public string Cantidad { get; set; }
+        public int Cantidad { get; set; }
         [Display(Name = "Fecha de ingreso de pieles a Descarnar")]
         [Required(ErrorMessage = "Campo Obligatorio")]
         [DataType(DataType.Date)]

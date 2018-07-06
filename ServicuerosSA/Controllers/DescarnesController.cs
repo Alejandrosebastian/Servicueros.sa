@@ -58,6 +58,10 @@ namespace ServicuerosSA.Controllers
             return claseDescarne.ClaseGuardarDescarne(cantidad, fecha, personal, pelambre);
         }
 
+        public List<IdentityError> ControladorNumeroPielesDescarne(int idPelambre, int valor)
+        {
+            return claseDescarne.ModeloNumeroPielesDescarne(idPelambre, valor);
+        }
         // GET: Descarnes/Create
         public IActionResult Create()
         {
