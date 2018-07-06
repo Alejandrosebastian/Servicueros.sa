@@ -50,18 +50,18 @@ namespace ServicuerosSA.Models
                 var guardarDescarne = new Descarne
                 {
                     Cantidad = cantidad,
-<<<<<<< HEAD
+
                     Fecha = DateTime.Now,
                     PersonalId = personalId,
-                    Activo = true
+                    Activo = true,
 
-=======
+
                     Fecha= fecha,
                     PersonalId = personal,
                     PelambreId = pelambre,
                     Activo= true
                 
->>>>>>> 8dac966b7badb905afd75fa789bbe7cf4e5da33b
+
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();
