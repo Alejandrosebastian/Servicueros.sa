@@ -1,17 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clasificacion tripa";
 }
 
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" >Nueva Clasificacion</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-              
-                <th>
+               <th>
                    NumeroPieles
                 </th>
                 <th>
@@ -71,7 +70,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="GuardaDescarne()">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="GuardaClasificacionTripa()">Guardar</button>
             </div>
         </div>
     </div>
