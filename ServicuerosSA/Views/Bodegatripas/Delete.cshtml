@@ -4,9 +4,9 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Eliminar</h2>
+<h2>Delete</h2>
 
-<h3></h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Bodegatripa</h4>
     <hr />
@@ -18,22 +18,40 @@
             @Html.DisplayFor(model => model.activo)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.NumeroPieles)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroPieles)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.peso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.peso)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Personal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Personal)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.ClasificacionTripa)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ClasificacionTripa.ClasificacionTripaId)
+            @Html.DisplayFor(model => model.ClasificacionTripa.Detalle)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Descarnes)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Descarnes.Cantidad)
+            @Html.DisplayFor(model => model.Descarnes.DescarneId)
         </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="BodegaTripaId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">regresar a lista</a>
+        <a asp-action="Index">Back to List</a>
     </form>
 </div>

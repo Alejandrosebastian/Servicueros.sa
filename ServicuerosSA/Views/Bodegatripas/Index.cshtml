@@ -1,47 +1,78 @@
-﻿@model IEnumerable<ServicuerosSA.Models.Bodegatripa>
-
-@{
+﻿@{
     ViewData["Title"] = "Index";
 }
 
-<h2>Bodega Tripa</h2>
+<h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Crear una nueva </a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+              
                 <th>
-                    @Html.DisplayNameFor(model => model.activo)
+                   NumeroPieles
+                </th>
+                <th>
+                    peso
+                </th>
+                <th>
+                    Personal
                 </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClasificacionTripa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descarnes)
+                ClasificacionTripa
             </th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.activo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClasificacionTripa.ClasificacionTripaId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descarnes.Cantidad)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BodegaTripaId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.BodegaTripaId">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.BodegaTripaId">Eliminar</a>
-            </td>
-        </tr>
-}
-    </tbody>
+    <tbody id="BodegaTripa"> </tbody>
 </table>
+<div class="modal fade" id="IngresoBodegTripa" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"
+                    id="EtiquetaModal">
+                    Ingreso a clasificacion Tripa
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="control-label">Numero de Pieles</label>
+                        <label id="NumeroPielesInput" name="NumeroPielesInput" class="control-label" ></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Peso</label>
+                        <label id="PesoInput" name="PesoInput" class="control-label " ></label>                        
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Personal</label>
+                        <select id="personalId" name="personalId" required class="form-control">
+                            <option value="0">Seleccione el Personal asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajec" class="alert alert-danger hidden">Seleccione al Personal</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">ClasificacionTripa</label>
+                        <select id="ClasificacionTripaId" name="ClasificacionTripaId" required class="form-control">
+                            <option value="0">Seleccione la Clasificacion asignada para este proceso</option>
+                        </select>
+                        <br />
+                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione la clasificacion</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="GuardaDescarne()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

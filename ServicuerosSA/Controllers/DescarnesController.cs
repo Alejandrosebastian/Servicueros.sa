@@ -53,11 +53,15 @@ namespace ServicuerosSA.Controllers
         }
 
 
-        public List<IdentityError> ControladorGuardaDescarne(string cantidad ,DateTime fecha,int personal,int pelambre)
+        public List<IdentityError> ControladorGuardaDescarne(int cantidad ,DateTime fecha,int personal,int pelambre)
         {
             return claseDescarne.ClaseGuardarDescarne(cantidad, fecha, personal, pelambre);
         }
 
+        public List<IdentityError> ControladorNumeroPielesDescarne(int idPelambre, int valor)
+        {
+            return claseDescarne.ModeloNumeroPielesDescarne(idPelambre, valor);
+        }
         // GET: Descarnes/Create
         public IActionResult Create()
         {
