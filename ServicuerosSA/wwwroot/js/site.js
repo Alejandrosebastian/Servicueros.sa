@@ -215,3 +215,15 @@ var GuardaDescarne = () => {
     guades.GuardarPelambre(personal,pelambre);
 }
 
+var controlnumeropieles = () => {
+    var pelambre = document.getElementById("TotalPielesInput").value;
+    var cantidad = document.getElementById("CantidadPieles").value;
+    if (pelambre == cantidad) {
+        $("#mensajep").addClass("hidden");
+    } else {
+        $("#mensajec").removeClass("hidden");
+        $('#graba').prop('disabled', true);
+    }
+
+}
+

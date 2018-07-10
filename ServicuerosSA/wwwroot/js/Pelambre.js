@@ -37,7 +37,29 @@ class Pelambre {
         });
     }
 
-  
+
+    DesactivaClasificacionPelo(total, accion) {
+        var bodega = this.bodega;
+        var bodegaid;
+        var contador = 0;
+        $.each(bodega, (index, val) => {
+            bodegaid = bodega[contador];
+            $.ajax({
+                type: "POST",
+                url: accion,
+                data: {
+                     bodegaid
+                },
+                success: (respuesta) => {
+                   
+
+                }
+            });
+            contador++;
+        });
+        return bodegaid;
+    }
+
 
     GuardaPelambre(total, personal, codlote, pesototal, pieles, idb) {
 
