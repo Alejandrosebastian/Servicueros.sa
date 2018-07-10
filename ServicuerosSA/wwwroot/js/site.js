@@ -56,7 +56,7 @@ var GuardaPelambre = () => {
     var formula = formulas.options[formulas.selectedIndex].value;
     var obsrvaciones = document.getElementById('observacion').value;
     var accion = 'Pelambres/ControladorGuardarPelambre';
-    
+    var cajafecha = document.getElementById('fecha').value;
     var personales = document.getElementById('personalId');
     var personal = personales.options[personales.selectedIndex].value;
     var totalcheck = $('input:checkbox:checked').length;
@@ -67,17 +67,18 @@ var GuardaPelambre = () => {
     var pieles = 0;
     var d = new Date();
     var fecha = d.getDate();
+    var codigoUnico='';
     $("input:checkbox:checked").each(function () {
-            var ya = ($(this).val()).split("|");
-            bodegaid[contador] = ya[0];
-            codlote[contador] = ya[1];
-            peso += parseInt(ya[3]);
-            pieles += parseInt(ya[2]);
-            contador = contador + 1;
+        var ya = ($(this).val()).split("|");
+        contador++;
+        var guardaPelambre = new Pelambre(cajafecha, obsrvaciones, ya[0], bombo, formula, ya[3], accion);
+        if (contador != totalcheck) {
+            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, '');
+        } else {
+            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, 'limpia');
+        }
     });
-    var guardaPelambre = new Pelambre(fecha, obsrvaciones, bodegaid, bombo, formula,peso, accion);
-    
-    guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles, idb);
+   
 
 }
 var ListaIndex = () => {
@@ -203,6 +204,7 @@ var GuardaDescarne = () => {
     var guades = new Descarne(cantidad, d, accion);
     guades.GuardarPelambre(personal,pelambre);
 }
+<<<<<<< HEAD
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
@@ -214,4 +216,6 @@ var controlnumeropieles = () => {
     }
 
 }
+=======
+>>>>>>> 404720c59187c10d263ecd594d9dba802507a1cb
 

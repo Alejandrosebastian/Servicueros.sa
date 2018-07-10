@@ -206,7 +206,7 @@ namespace ServicuerosSA.Models
             return listaerrores;
         }
 
-        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles)
+        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles, string codigoUnico)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
             try
@@ -309,7 +309,8 @@ namespace ServicuerosSA.Models
                     Activo = true,
                     Peso = pesototal,
                     CodigoLote = codlote,
-                    Codigo = ingresocod
+                    Codigo = ingresocod,
+                    codigopelambre = codigoUnico
                 };
                     _contexto.Pelambre.Add(guardaPelambre);
                     _contexto.SaveChanges();               
@@ -455,6 +456,7 @@ namespace ServicuerosSA.Models
             lista.Add(objeto);
             return lista;
         }
+<<<<<<< HEAD
         public List<object[]> ModeloImprimirPesaje(int id)
         {
             List<object[]> lista = new List<object[]>();
@@ -482,6 +484,46 @@ namespace ServicuerosSA.Models
             object[] objeto = { dato };
             lista.Add(objeto);
             return lista;
+=======
+        public List<object[]> ModeloImprimirDetallePelambre( int id)
+        {
+            List<object[]> Enlistar = new List<object[]>();
+           var res = (from p in _contexto.Pelambre
+                     join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                     join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
+                     join bd in _contexto.Bodega on b1.BodegaId equals bd.BodegaId
+                     join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
+                     where p.PelambreId == id
+                     select new
+                     {
+                         b.Num_bombo,
+                         p.TotalPieles,
+                         c.Selecciones,
+                         p.Peso,
+                         p.Fecha,
+                         bd.NombreBodega,
+                         b1.NumeroEstanteria,
+                         p.CodigoLote
+
+                     }).ToList();
+            foreach (var item in res)
+            {
+                dato += "<tr>" +
+                "<td>" + item.Num_bombo + "</td>" +
+                "<td>" + item.TotalPieles + "</td>" +
+                "<td>" + item.Selecciones.ToUpper() + "</td>" +
+                "<td>" + item.Peso + "</td>" +
+                "<td>" + item.Fecha + "</td>" +
+                "<td>" + item.NombreBodega.ToUpper() + "</td>" +
+                "<td>" + item.NumeroEstanteria + "</td>" +
+                "<td>" + item.CodigoLote.ToUpper() + "</td>" +
+                "</tr>";
+            }
+            object[] objeto = { dato };
+            Enlistar.Add(objeto);
+            return Enlistar;
+
+>>>>>>> 404720c59187c10d263ecd594d9dba802507a1cb
         }
 
         public List<Pelambre> Listapelambres()
