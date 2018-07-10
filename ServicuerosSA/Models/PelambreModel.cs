@@ -456,7 +456,7 @@ namespace ServicuerosSA.Models
             lista.Add(objeto);
             return lista;
         }
-<<<<<<< HEAD
+
         public List<object[]> ModeloImprimirPesaje(int id)
         {
             List<object[]> lista = new List<object[]>();
@@ -469,22 +469,22 @@ namespace ServicuerosSA.Models
                            c.Detalle,
                            c.Porcentaje,
                            p.Peso
-                       }).ToList();    
+                       }).ToList();
             foreach (var item in res)
             {
-               
+
                 dato += "<tr>" +
                 "<td>" + item.Detalle.ToUpper() + "</td>" +
                 "<td>" + item.Porcentaje.ToUpper() + "</td>" +
                 "<td>" + (item.Peso * Int32.Parse(item.Porcentaje)) / 100 + "</td>" +
                 "<td> </td>" +
                 "</tr>";
-                
+
             }
             object[] objeto = { dato };
             lista.Add(objeto);
             return lista;
-=======
+        }
         public List<object[]> ModeloImprimirDetallePelambre( int id)
         {
             List<object[]> Enlistar = new List<object[]>();
@@ -522,8 +522,6 @@ namespace ServicuerosSA.Models
             object[] objeto = { dato };
             Enlistar.Add(objeto);
             return Enlistar;
-
->>>>>>> 404720c59187c10d263ecd594d9dba802507a1cb
         }
 
         public List<Pelambre> Listapelambres()
