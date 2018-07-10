@@ -57,7 +57,7 @@ var GuardaPelambre = () => {
     var formula = formulas.options[formulas.selectedIndex].value;
     var obsrvaciones = document.getElementById('observacion').value;
     var accion = 'Pelambres/ControladorGuardarPelambre';
-    
+    var cajafecha = document.getElementById('fecha').value;
     var personales = document.getElementById('personalId');
     var personal = personales.options[personales.selectedIndex].value;
     var totalcheck = $('input:checkbox:checked').length;
@@ -70,16 +70,16 @@ var GuardaPelambre = () => {
     var fecha = d.getDate();
     var codigoUnico='';
     $("input:checkbox:checked").each(function () {
-            var ya = ($(this).val()).split("|");
-            bodegaid[contador] = ya[0];
-        codlote[contador] = ya[1];
-        codigoUnico += ya[1];
-            peso += ya[3];
-            pieles += ya[2];
-            contador = contador + 1;
+        var ya = ($(this).val()).split("|");
+        contador++;
+        var guardaPelambre = new Pelambre(cajafecha, obsrvaciones, ya[0], bombo, formula, ya[3], accion);
+        if (contador != totalcheck) {
+            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, '');
+        } else {
+            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, 'limpia');
+        }
     });
-    var guardaPelambre = new Pelambre(fecha, obsrvaciones, bodegaid, bombo, formula,peso, accion);
-    guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles, codigoUnico);
+   
 
 }
 
