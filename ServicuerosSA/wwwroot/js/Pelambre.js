@@ -61,7 +61,7 @@ class Pelambre {
     }
 
 
-    GuardaPelambre(total, personal, codlote, pesototal, pieles, idb) {
+    GuardaPelambre(total, personal, codlote, pesototal, pieles, codigoUnico) {
 
         if (this.formula == '0') {
             document.getElementById('mensajef').innerHTML = "Seleccione una formula";
@@ -86,14 +86,20 @@ class Pelambre {
                     var peso = this.peso;
                     var accion = this.accion;
                     var bodegaid;
+                    var pesoid;
+                    var loteid;
+                    var pielId;
                     var contador = 0;
                     $.each(bodega, (index, val) => {
                         bodegaid = bodega[contador];
+                        loteid = codlote[contador];
+                        pesoid = pesototal[contador];
+                        pielId = pieles[contador];
                         $.ajax({
                             type: "POST",
                             url: accion,
                             data: {
-                                fecha, obsrvaciones, idb, bombo, formula, personal, codlote, pesototal, pieles
+                                fecha, obsrvaciones, bodegaid, bombo, formula, personal, loteid, pesoid, pielId, codigoUnico
                             },
                             success: (respuesta) => {
                                 this.limpiarcajas();

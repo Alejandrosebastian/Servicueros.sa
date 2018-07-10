@@ -39,7 +39,7 @@ namespace ServicuerosSA.Models
         [Display(Name = "Observacion del proceso")]
         public String Observaciones { get; set; }
         public bool activo { get; set; }
-
+        [Display(Name ="Tipo de Piel")]
         public int TipoPielId { get; set; }
         public TipoPiel TipoPiel { get; set; }
 

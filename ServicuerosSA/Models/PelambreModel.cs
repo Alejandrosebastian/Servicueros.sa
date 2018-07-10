@@ -206,7 +206,7 @@ namespace ServicuerosSA.Models
             return listaerrores;
         }
 
-        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles)
+        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles, string codigoUnico)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
             try
@@ -309,7 +309,8 @@ namespace ServicuerosSA.Models
                     Activo = true,
                     Peso = pesototal,
                     CodigoLote = codlote,
-                    Codigo = ingresocod
+                    Codigo = ingresocod,
+                    codigopelambre = codigoUnico
                 };
                     _contexto.Pelambre.Add(guardaPelambre);
                     _contexto.SaveChanges();               

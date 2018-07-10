@@ -68,17 +68,18 @@ var GuardaPelambre = () => {
     var pieles = 0;
     var d = new Date();
     var fecha = d.getDate();
+    var codigoUnico='';
     $("input:checkbox:checked").each(function () {
             var ya = ($(this).val()).split("|");
             bodegaid[contador] = ya[0];
-            codlote[contador] = ya[1];
-            peso += parseInt(ya[3]);
-            pieles += parseInt(ya[2]);
+        codlote[contador] = ya[1];
+        codigoUnico += ya[1];
+            peso += ya[3];
+            pieles += ya[2];
             contador = contador + 1;
     });
     var guardaPelambre = new Pelambre(fecha, obsrvaciones, bodegaid, bombo, formula,peso, accion);
-    
-    guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles, idb);
+    guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles, codigoUnico);
 
 }
 
@@ -213,17 +214,5 @@ var GuardaDescarne = () => {
     var fecha = d.getDate();
     var guades = new Descarne(cantidad, d, accion);
     guades.GuardarPelambre(personal,pelambre);
-}
-
-var controlnumeropieles = () => {
-    var pelambre = document.getElementById("TotalPielesInput").value;
-    var cantidad = document.getElementById("CantidadPieles").value;
-    if (pelambre == cantidad) {
-        $("#mensajep").addClass("hidden");
-    } else {
-        $("#mensajec").removeClass("hidden");
-        $('#graba').prop('disabled', true);
-    }
-
 }
 
