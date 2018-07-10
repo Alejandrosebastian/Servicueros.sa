@@ -14,15 +14,13 @@ namespace ServicuerosSA.Models
         [Display(Name ="Porcentaje de Componente")]
         [Required (ErrorMessage ="Campo requerido")]
         public string Porcentaje{ get; set; }
-
-
-     
-
-
+        
         [Display(Name = " Tiempo ")]
         [Required(ErrorMessage = "Campo Requerido")]   
         public int Tiempo  { get; set; }
-
+        [Display(Name = "Quimico")]
+        [Required(ErrorMessage = "Campo requerido")]
+        public Boolean Quimico { get; set; }
         public int FormulaId { get; set; }
         public Formula formula { get; set; }
         public int MedidaId { get; set; }

@@ -59,7 +59,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ComponenteId,Detalle,Porcentaje,Tiempo,FormulaId,MedidaId")] Componente componente)
+        public async Task<IActionResult> Create([Bind("ComponenteId,Detalle,Porcentaje,Quimico,Tiempo,FormulaId,MedidaId")] Componente componente)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ComponenteId,Detalle,Porcentaje,Tiempo,FormulaId,MedidaId")] Componente componente)
+        public async Task<IActionResult> Edit(int id, [Bind("ComponenteId,Detalle,Porcentaje,Quimico,Tiempo,FormulaId,MedidaId")] Componente componente)
         {
             if (id != componente.ComponenteId)
             {
