@@ -1,65 +1,35 @@
-﻿
+﻿@model IEnumerable<ServicuerosSA.Models.ClasificacionTripa>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Clasificacion Tripa </h2>
+<h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Crear un nuevo</a>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="listaBodegaTripa()">Nueva Clasificacion Tripa</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Detalle
-            </th>
-            <th>
-                Numero Pieles
-            </th>
-            <th>
-                Activo
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Detalle)
+                </th>
             <th></th>
         </tr>
     </thead>
-    <tbody id="clasiTripa"> </tbody>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalle)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClasificacionTripaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ClasificacionTripaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClasificacionTripaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
 </table>
-<div class="modal fade" id="IngresoClasificacionTripa" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title"
-                    id="EtiquetaModal">
-                    Ingreso de Clasificacion en Tripa
-                </h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label class="control-label">Detalle</label>
-                        <label id="TotalPielesInput" name="Detalle" class="control-label alert alert-success hidden"></label>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Numero de pieles a Clasificar</label>
-                        <label id="TotalPielesInput" name="NumeroPieles" class="control-label alert alert-success hidden"></label>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Activo</label>
-                    </div>
-                  
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="GuardaDescarne()">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-

@@ -51,6 +51,7 @@ namespace ServicuerosSA.Controllers
 
             return View(descarne);
         }
+
         public List<IdentityError> ControladorGuardaDescarne(int cantidad ,DateTime fecha,int personal,int pelambre)
         {
             return claseDescarne.ClaseGuardarDescarne(cantidad, fecha, personal, pelambre);

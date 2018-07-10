@@ -57,7 +57,7 @@ var GuardaPelambre = () => {
     var formula = formulas.options[formulas.selectedIndex].value;
     var obsrvaciones = document.getElementById('observacion').value;
     var accion = 'Pelambres/ControladorGuardarPelambre';
-    var peso='';
+    
     var personales = document.getElementById('personalId');
     var personal = personales.options[personales.selectedIndex].value;
     var totalcheck = $('input:checkbox:checked').length;

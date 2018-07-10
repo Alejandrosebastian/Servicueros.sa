@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Detalles</h2>
+<h2>Details</h2>
 
 <div>
-    <h4>Bodega tripa</h4>
+    <h4>Bodegatripa</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,20 +17,38 @@
             @Html.DisplayFor(model => model.activo)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.NumeroPieles)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroPieles)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.peso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.peso)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Personal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Personal)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.ClasificacionTripa)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ClasificacionTripa.ClasificacionTripaId)
+            @Html.DisplayFor(model => model.ClasificacionTripa.Detalle)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Descarnes)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Descarnes.Cantidad)
+            @Html.DisplayFor(model => model.Descarnes.DescarneId)
         </dd>
     </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.BodegaTripaId">Edit</a> |
-    <a asp-action="Index">Regresar a lista</a>
+    <a asp-action="Index">Back to List</a>
 </div>

@@ -49,8 +49,8 @@ namespace ServicuerosSA.Controllers
         // GET: Bodegatripas/Create
         public IActionResult Create()
         {
-            ViewData["ClasificacionTripaId"] = new SelectList(_context.Set<ClasificacionTripa>(), "ClasificacionTripaId", "ClasificacionTripaId");
-            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "Cantidad");
+            ViewData["ClasificacionTripaId"] = new SelectList(_context.ClasificacionTripa, "ClasificacionTripaId", "Detalle");
+            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "DescarneId");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BodegaTripaId,activo,DescarneId,ClasificacionTripaId")] Bodegatripa bodegatripa)
+        public async Task<IActionResult> Create([Bind("BodegaTripaId,activo,NumeroPieles,peso,DescarneId,ClasificacionTripaId,Personal")] Bodegatripa bodegatripa)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace ServicuerosSA.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClasificacionTripaId"] = new SelectList(_context.Set<ClasificacionTripa>(), "ClasificacionTripaId", "ClasificacionTripaId", bodegatripa.ClasificacionTripaId);
-            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "Cantidad", bodegatripa.DescarneId);
+            ViewData["ClasificacionTripaId"] = new SelectList(_context.ClasificacionTripa, "ClasificacionTripaId", "Detalle", bodegatripa.ClasificacionTripaId);
+            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "DescarneId", bodegatripa.DescarneId);
             return View(bodegatripa);
         }
 
@@ -85,8 +85,8 @@ namespace ServicuerosSA.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClasificacionTripaId"] = new SelectList(_context.Set<ClasificacionTripa>(), "ClasificacionTripaId", "ClasificacionTripaId", bodegatripa.ClasificacionTripaId);
-            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "Cantidad", bodegatripa.DescarneId);
+            ViewData["ClasificacionTripaId"] = new SelectList(_context.ClasificacionTripa, "ClasificacionTripaId", "Detalle", bodegatripa.ClasificacionTripaId);
+            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "DescarneId", bodegatripa.DescarneId);
             return View(bodegatripa);
         }
 
@@ -95,7 +95,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BodegaTripaId,activo,DescarneId,ClasificacionTripaId")] Bodegatripa bodegatripa)
+        public async Task<IActionResult> Edit(int id, [Bind("BodegaTripaId,activo,NumeroPieles,peso,DescarneId,ClasificacionTripaId,Personal")] Bodegatripa bodegatripa)
         {
             if (id != bodegatripa.BodegaTripaId)
             {
@@ -122,8 +122,8 @@ namespace ServicuerosSA.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClasificacionTripaId"] = new SelectList(_context.Set<ClasificacionTripa>(), "ClasificacionTripaId", "ClasificacionTripaId", bodegatripa.ClasificacionTripaId);
-            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "Cantidad", bodegatripa.DescarneId);
+            ViewData["ClasificacionTripaId"] = new SelectList(_context.ClasificacionTripa, "ClasificacionTripaId", "Detalle", bodegatripa.ClasificacionTripaId);
+            ViewData["DescarneId"] = new SelectList(_context.Descarne, "DescarneId", "DescarneId", bodegatripa.DescarneId);
             return View(bodegatripa);
         }
 
