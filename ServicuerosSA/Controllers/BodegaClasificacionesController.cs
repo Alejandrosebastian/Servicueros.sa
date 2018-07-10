@@ -22,8 +22,8 @@ namespace ServicuerosSA.Controllers
         // GET: BodegaClasificaciones
         public async Task<IActionResult> Index()
         {
-           
-            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Where(B1 => B1.activo == true ).Where(b => b.activo ==true);
+            
+            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Where(B1 => B1.activo == true).Where(b => b.activo ==true);
             
             return View(await applicationDbContext.ToListAsync());
         }
@@ -54,7 +54,7 @@ namespace ServicuerosSA.Controllers
         {
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega");
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones");
-            ViewData["LoteId"] = new SelectList(_context.Lote, "LoteId", "Codigolote");
+            ViewData["LoteId"] = new SelectList(_context.Lote.Where(l => l.estado == true), "LoteId", "Codigolote");
             ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura");
 
             return View();
