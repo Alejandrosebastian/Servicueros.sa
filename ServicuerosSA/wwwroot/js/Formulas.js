@@ -1,4 +1,6 @@
-﻿
+﻿import index from "../../../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/popper.js";
+
+
 class Formulas {
     constructor(fecha_creacion, nombre, tipo_proceso, tipo_piel,  accion) {
         this.fecha_creacion = fecha_creacion;
@@ -65,6 +67,18 @@ class Formulas {
                 $.each(respuesta, (index, val) => {
                     
                     $('#TablaDetalleForula').html(val[0]);
+                });
+            }
+        );
+    }
+    CuerpoPesaje(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaProductoQuimico').html(val[0]);
                 });
             }
         );
