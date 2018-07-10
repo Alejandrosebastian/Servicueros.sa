@@ -84,9 +84,7 @@ class Pelambre {
                     var bombo = this.bombo;
                     var formula = this.formula;
                     var peso = this.peso;
-                    
                     var accion = this.accion;
-
                     var bodegaid;
                     var contador = 0;
                     $.each(bodega, (index, val) => {

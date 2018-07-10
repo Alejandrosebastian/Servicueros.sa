@@ -214,6 +214,7 @@ namespace ServicuerosSA.Controllers
         {
             RegisterViewModel r = new RegisterViewModel();
             r.getRoles(_context);
+            
             ViewData["ReturnUrl"] = returnUrl;
             return View(r);
         }
@@ -245,6 +246,7 @@ namespace ServicuerosSA.Controllers
                 AddErrors(result);
             }
             // If we got this far, something failed, redisplay form
+
             return View(model);
         }
 

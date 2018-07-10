@@ -56,7 +56,7 @@ namespace ServicuerosSA.Controllers
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones");
             ViewData["LoteId"] = new SelectList(_context.Lote.Where(l => l.estado == true), "LoteId", "Codigolote");
             ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura");
-
+            ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle");
             return View();
         }
 
@@ -65,24 +65,22 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Bodega1Id,BodegaId,LoteId,ClasificacionId,MedidaId,Fechaingreso,NumeroEstanteria,NumeroPieles,Peso,Observaciones,activo")] Bodega1 bodega1)
+        public async Task<IActionResult> Create([Bind("Bodega1Id,BodegaId,LoteId,ClasificacionId,MedidaId,Fechaingreso,NumeroEstanteria,NumeroPieles,Peso,Observaciones,activo,TipoPielId")] Bodega1 bodega1)
         {
-
-
-
 
             if (ModelState.IsValid)
             {
                 _context.Add(bodega1);
                 await _context.SaveChangesAsync();
 
-                
-
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega", bodega1.BodegaId);
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones", bodega1.ClasificacionId);
             ViewData["LoteId"] = new SelectList(_context.Lote, "LoteId", "Codigolote", bodega1.LoteId);
+            ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle");
+            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura");
+
             return View(bodega1);
         }
 
