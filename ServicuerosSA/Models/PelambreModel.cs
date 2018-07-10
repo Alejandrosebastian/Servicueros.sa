@@ -206,7 +206,7 @@ namespace ServicuerosSA.Models
             return listaerrores;
         }
 
-        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles, string codigoUnico)
+        public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula,  int personal, string codlote, int pesototal, int pieles, DateTime codigoUnico)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
             try

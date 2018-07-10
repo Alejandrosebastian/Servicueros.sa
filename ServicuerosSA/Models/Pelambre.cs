@@ -11,7 +11,6 @@ namespace ServicuerosSA.Models
         public int PelambreId { get; set; }
         [Display(Name = "Fecha de ingreso al Pelambre ")]
         [Required(ErrorMessage = "Campo Obligatorio")]
-        
         public DateTime Fecha { get; set; }
         [Display(Name ="Observaciones de Pelambre")]
         public string Observaciones { get; set; }
@@ -22,7 +21,6 @@ namespace ServicuerosSA.Models
         public Bombo Bombo { get; set; }
         public int FormulaId { get; set; }
         public Formula Formula { get; set; }
-       
         public int PersonalId { get; set; }
         public Personal personal { get; set; }
         public bool Activo { get; set; }

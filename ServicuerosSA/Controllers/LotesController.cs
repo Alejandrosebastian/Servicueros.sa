@@ -37,18 +37,16 @@ namespace ServicuerosSA.Controllers
         {
             return clasemodelListaLote.ModeloNumeroPielesLote(coolo, numeropieles);
         }
-
         public List<IdentityError> ControladorCodigoLote(string codigolote)
         {
             return clasemodelListaLote.ClaseModeloCodigoLote(codigolote);
         }
-
-       
-
         // GET: Lotes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Lote.Include(l => l.Personal).Include(l => l.TipoPieles);
+            var applicationDbContext = (from l in _context.Lote
+                                       where l.estado == true
+                                       select l).Include(l => l.Personal).Include(l => l.TipoPieles);
             return View(await applicationDbContext.ToListAsync());
         }
 
