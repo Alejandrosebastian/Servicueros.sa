@@ -7,9 +7,7 @@
 <h2>Proceso en Pelambre</h2>
 <p>
     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoPelambre" onclick="ListaFormulas(); ListaBombos(); ListaPelambre(); listaTipoPiel(); listaClasificaciones(); listaPersonal()">Nuevo Proceso</a>
-    
-
-</p>
+    </p>
 <table class="table">
     <thead>
         <tr>
@@ -118,7 +116,6 @@
 </div>
 
 
-
 <div class="modal fade" id="DetallePelambre" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -190,10 +187,8 @@
 
             <div class="modal-body" id="impresion">
 
-
                 <div class="modal-body" id="areaImprimir">
-
-
+                    
                     <div class="form-group">
 
                         <table class="table table-bordered">
@@ -271,8 +266,6 @@
 
                     </div>
                     <div class="form-group">
-
-
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -300,68 +293,89 @@
 
                         </table>
                     </div>
+                    @* Hoja de pesaje *@
+                    <div class="form-group">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td style="font-size:x-small" colspan="4">PESAJE DE PRODUCTO QUIMICO</td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style13" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:x-small" colspan="4">PELAMBRE FRESCO S/PD BORRON DL</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:xx-small">FECHA:</td>
+                                <td style="font-size:xx-small">&nbsp;<label id="fecha" name="fecha" class="control-label"></label></td>
+                                <td style="font-size:xx-small">FECHA:</td>
+                                <td style="font-size:xx-small">PROCESADOR POR:</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:xx-small">LOTE:</td>
+                                <td style="font-size:xx-small">&nbsp;<label id="lote" name="lote" class="control-label"></label></td>
+                                <td style="font-size:xx-small">PAGINA:</td>
+                                <td style="font-size:xx-small">2</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:xx-small">BOMBO:</td>
+                                <td style="font-size:xx-small">&nbsp;<label id="bombo" name="bombo" class="control-label"></label></td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:xx-small">PESO:</td>
+                                <td style="font-size:xx-small">&nbsp;<label id="peso" name="peso" class="control-label"></label></td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:xx-small">PIELES:</td>
+                                <td style="font-size:xx-small">&nbsp;<label id="pieles" name="pieles" class="control-label"></label></td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:xx-small">PROMEDIO:</td>
+                                <td style="font-size:xx-small">&nbsp;<label id="promedio" name="promedio" class="control-label"></label></td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                                <td style="font-size:xx-small">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td style="font-size:x-small" colspan="2">PRODUCTO</td>
+                                    <td style="font-size:x-small">%</td>
+                                    <td style="font-size:x-small">CANTIDAD</td>
+                                </tr>
+                            </thead>
+                            <tbody id="TablaProductoQuimico"></tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td style="font-size:xx-small" colspan="6" align="center"> Autorizado por: <br />Verónica Vinueza <br /> Tecnico TFL  </td>
+                                    <td style="font-size:xx-small" colspan="6" align="center"> Procesado por: <br /></td>
+                                    <td style="font-size:xx-small" colspan="6" align="center"> Entregado por: <br /> </td>
+                                </tr>
+
+                            </thead>
+
+                        </table>
+                    </div>
                 </div>
-                @* Hoja de pesaje *@
-                <div class="form-group">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td style="font-size:x-small" colspan="4">PESAJE DE PRODUCTO QUIMICO</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style13" colspan="4"></td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:x-small" colspan="4">PELAMBRE FRESCO S/PD BORRON DL</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:xx-small">FECHA:</td>
-                            <td style="font-size:xx-small">&nbsp;<label id="fecha" name="fecha" class="control-label"></label></td>
-                            <td style="font-size:xx-small">FECHA:</td>
-                            <td style="font-size:xx-small">PROCESADOR POR:</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:xx-small">LOTE:</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">PAGINA:</td>
-                            <td style="font-size:xx-small">2</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:xx-small">BOMBO:</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:xx-small">PESO:</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:xx-small">PIELES:</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:xx-small">PROMEDIO:</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                            <td style="font-size:xx-small">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:x-small" colspan="2">PRODUCTO</td>
-                            <td style="font-size:x-small">%</td>
-                            <td style="font-size:x-small">CANTIDAD</td>
-                        </tr>
-                    </table>
-                </div>
+               </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>

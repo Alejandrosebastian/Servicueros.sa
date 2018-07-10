@@ -49,7 +49,6 @@ var ListaDescarne = () => {
     var listaDescarne = new Descarne('', '', accion);
     listaDescarne.ListaDescarne();
 }
-
 var GuardaPelambre = () => {
     var bombos = document.getElementById('bomboId');
     var bombo = bombos.options[bombos.selectedIndex].value;
@@ -81,8 +80,6 @@ var GuardaPelambre = () => {
     guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles, idb);
 
 }
-
-
 var ListaIndex = () => {
     var accion = '../Pelambres/ControladorListaIndex';
     var index = new Pelambre('', '', '', '', '', '', accion);
@@ -98,7 +95,6 @@ var listaClasificaciones = () => {
     var tipoClasificacion = new ClaseClasificaciones('', accion);
     tipoClasificacion.ClaseListaClasificaciones();
 }
-
 var CodigoLotes = () => {
     var accion = '../Lotes/ControladorCodigoLote';
     var codigolote = document.getElementById('Codigolote').value;
@@ -111,15 +107,14 @@ var CedulaProveedor = () => {
     var ced = new ClaseJSProveedor(ruc, '', '', '', '', '', '', '', '', accion);
     ced.claseJsCedulaProveedor();
 }
-
-    var boodegas = () => {
+var boodegas = () => {
         var accion = '../Bodegas/ControladorBodega';
         var bodegas = document.getElementById('BodegaId');
         var bodega = bodegas.options[bodegas.selectedIndex].value;
         var bo = new Bodegas(bodega, '', '', '', '', accion);
         bo.bodega();
     }
-    var tipopiel = () => {
+var tipopiel = () => {
         var accion = 'Pelambres/ControladorListaPelambrexTipoPiel';
         var tipopieles = document.getElementById('tipoPiel');
         var tipopiel = tipopieles.options[tipopieles.selectedIndex].value;
@@ -128,16 +123,12 @@ var CedulaProveedor = () => {
         var listaXTipoPiel = new Pelambre('', '', '', '', '', '', accion);
         listaXTipoPiel.ListaIndeXTipoPiel(tipopiel, clasificacion);
     }
-
 var cedula = () => {
     var accion = '../Personales/ControladorCedulaPersonal';
     var cedula = document.getElementById('Cedula').value;
     var ced = new ClaseJSPersonal(cedula, '', '', '', '', '', '', '', accion);
     ced.clasJscedula();
 }
-
-
-
 var lote = () => {
     var accion = '../Lotes/ContraladorUnLote';
     var cod = document.getElementById('LoteId');
@@ -145,7 +136,6 @@ var lote = () => {
     var code = new ClaseJSLotes(Lote, '', '', '', '', '', accion);
     code.obtenerUnLote();
 }
-
 var numeropileslote = () => {
     var accion = '../Lotes/ControladorComparaNumeroPieles';
     var cod = document.getElementById('LoteId');
@@ -155,21 +145,17 @@ var numeropileslote = () => {
     nupilo.NumeroPielesLote();
 
 }
-
-
 var listaPersonal = () => {
     var accion = '../Personales/ControladorListaPersonalPerlambre';
     var per = new ClaseJSPersonal('', '', '', '', '', '', '', '', accion);
     per.ListaPersonal();
 
 }
-
 var DetallePelambre = (id) => {
     var accion = 'Pelambre/ControladorDetallePelambre';
     var pelambre = new Pelambre('', '', '', '', '', '', accion);
     pelambre.ListaDetalle(id);
 }
-
 var ImprimirPelambre = (id) => {
     var accion = 'Pelambres/ControladorImprimirEmcabezadoFormula';
     var impresionformula = new Formulas('', '', '', '', accion);
@@ -187,12 +173,16 @@ var impresion = () => {
     window.print();
 
 }
+var ImprimirPesaje = (id) => {
+    var accion = 'Pelambres/ControladorImprimirPesaje';
+    var impresionPesaje = new Formulas('', '', '', '', accion);
+    impresionPesaje.CuerpoPesaje(id);
+}
 var ListaPelambreDescarne = () => {
     var accion = 'Descarnes/ControladorListaPelambre';
     var descarne = new Descarne('', '', accion);
     descarne.listapelambre();
 }
-
 var NumeroPielesPelambre = () => {
     var accion = 'Descarnes/ControladorUnPelambreDescarne';
     var combopelambres = document.getElementById('PelambreId');
@@ -201,7 +191,6 @@ var NumeroPielesPelambre = () => {
     var des = new Descarne('', '', accion);
     des.NumeroPielesPelambre(unpelabrecombo);
 }
-
 var GuardaDescarne = () => {
     var accion = 'Descarnes/ControladorGuardaDescarne';
     var pelambres = document.getElementById("PelambreId");
@@ -214,7 +203,6 @@ var GuardaDescarne = () => {
     var guades = new Descarne(cantidad, d, accion);
     guades.GuardarPelambre(personal,pelambre);
 }
-
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;

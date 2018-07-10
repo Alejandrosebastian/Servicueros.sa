@@ -455,7 +455,34 @@ namespace ServicuerosSA.Models
             lista.Add(objeto);
             return lista;
         }
-
+        public List<object[]> ModeloImprimirPesaje(int id)
+        {
+            List<object[]> lista = new List<object[]>();
+            var res = (from p in _contexto.Pelambre
+                       join f in _contexto.Formula on p.FormulaId equals f.FormulaId
+                       join c in _contexto.Componente on f.FormulaId equals c.FormulaId
+                       where p.PelambreId == id
+                       select new
+                       {
+                           c.Detalle,
+                           c.Porcentaje,
+                           p.Peso
+                       }).ToList();    
+            foreach (var item in res)
+            {
+               
+                dato += "<tr>" +
+                "<td>" + item.Detalle.ToUpper() + "</td>" +
+                "<td>" + item.Porcentaje.ToUpper() + "</td>" +
+                "<td>" + (item.Peso * Int32.Parse(item.Porcentaje)) / 100 + "</td>" +
+                "<td> </td>" +
+                "</tr>";
+                
+            }
+            object[] objeto = { dato };
+            lista.Add(objeto);
+            return lista;
+        }
 
         public List<Pelambre> Listapelambres()
         {
