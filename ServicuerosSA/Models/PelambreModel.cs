@@ -458,7 +458,7 @@ namespace ServicuerosSA.Models
         public List<object[]> ModeloImprimirDetallePelambre( int id)
         {
             List<object[]> Enlistar = new List<object[]>();
-           var res = from p in _contexto.Pelambre
+           var res = (from p in _contexto.Pelambre
                      join b in _contexto.Bombo on p.BomboId equals b.BomboId
                      join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
                      join bd in _contexto.Bodega on b1.BodegaId equals bd.BodegaId
@@ -472,9 +472,26 @@ namespace ServicuerosSA.Models
                          p.Peso,
                          p.Fecha,
                          bd.NombreBodega,
-                         b1.NumeroEstanteria
+                         b1.NumeroEstanteria,
+                         p.CodigoLote
 
-                     }).Tolist();
+                     }).ToList();
+            foreach (var item in res)
+            {
+                dato += "<tr>" +
+                "<td>" + item.Num_bombo + "</td>" +
+                "<td>" + item.TotalPieles + "</td>" +
+                "<td>" + item.Selecciones.ToUpper() + "</td>" +
+                "<td>" + item.Peso + "</td>" +
+                "<td>" + item.Fecha + "</td>" +
+                "<td>" + item.NombreBodega.ToUpper() + "</td>" +
+                "<td>" + item.NumeroEstanteria + "</td>" +
+                "<td>" + item.CodigoLote.ToUpper() + "</td>" +
+                "</tr>";
+            }
+            object[] objeto = { dato };
+            Enlistar.Add(objeto);
+            return Enlistar;
 
         }
 
