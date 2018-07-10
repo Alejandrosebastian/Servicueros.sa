@@ -53,6 +53,7 @@ namespace ServicuerosSA.Models
             lotes = (from l in _contexto.Lote
                         join p in _contexto.Personal on l.PersonalId equals p.PersonalId
                         join tp in _contexto.TipoPiel on l.TipoPielId equals tp.TipoPielId
+                     where l.estado == true
                         select new MostrarListaLoteModel
                         {
                             LoteId = l.LoteId,

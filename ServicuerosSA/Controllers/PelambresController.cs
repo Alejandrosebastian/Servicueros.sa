@@ -76,7 +76,7 @@ namespace ServicuerosSA.Controllers
             return clasePelambre.ActualizaClasificacionPelo(bodegaid);
         }
 
-        public List<IdentityError> ControladorGuardarPelambre(DateTime fecha, string obsrvaciones,int bodega,int bombo,int formula,int personal,string codlote,int pesototal,int pieles,string codigoUnico)
+        public List<IdentityError> ControladorGuardarPelambre(DateTime fecha, string obsrvaciones,int bodega,int bombo,int formula,int personal,string codlote,int pesototal,int pieles,DateTime codigoUnico)
         {
             return clasePelambre.ClaseGuardaPelambre(fecha, obsrvaciones, bodega, bombo, formula,  personal, codlote, pesototal, pieles, codigoUnico);
         }
