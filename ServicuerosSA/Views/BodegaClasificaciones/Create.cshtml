@@ -35,6 +35,11 @@
                 <select asp-for="ClasificacionId" class="form-control" asp-items="ViewBag.ClasificacionId"></select>
             </div>
             <div class="form-group">
+                <label asp-for="TipoPielId" class="control-label"></label>
+                <select asp-for="TipoPielId" class="form-control" asp-items="ViewBag.TipoPielId"></select>
+                <span asp-validation-for="TipoPielId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Fechaingreso" class="control-label"></label>
                 <input asp-for="Fechaingreso" class="form-control" />
                 <span asp-validation-for="Fechaingreso" class="text-danger"></span>
@@ -46,39 +51,39 @@
             </div>
             <div class="form-group">
                 <label asp-for="NumeroPieles" class="control-label"></label>
-                
-                    <input asp-for="NumeroPieles" class="form-control" onfocusout="numeropileslote();" />
-                    <span asp-validation-for="NumeroPieles" class="text-danger"></span>
-                    <span id="numpieles" name="numpieles" class="text-danger" style="visibility:hidden">El número de pieles no debe ser mayor a Lote</span>
-                    
-               
+
+                <input asp-for="NumeroPieles" class="form-control" onfocusout="numeropileslote();" />
+                <span asp-validation-for="NumeroPieles" class="text-danger"></span>
+                <span id="numpieles" name="numpieles" class="text-danger" style="visibility:hidden">El número de pieles no debe ser mayor a Lote</span>
+
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Peso" class="control-label"></label>
+                <input asp-for="Peso" class="form-control" />
+                <span asp-validation-for="Peso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="MedidaId" class="control-label">Medida de Peso</label>
+                <select asp-for="MedidaId" class="form-control" asp-items="ViewBag.MedidaId"></select>
+                <span asp-validation-for="MedidaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="visibility:hidden">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="activo" checked /> @Html.DisplayNameFor(model => model.activo)
+                    </label>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Peso" class="control-label"></label>
-                    <input asp-for="Peso" class="form-control" />
-                    <span asp-validation-for="Peso" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label for="MedidaId" class="control-label">Medida de Peso</label>
-                    <select asp-for="MedidaId" class="form-control" asp-items="ViewBag.MedidaId"></select>
-                    <span asp-validation-for="MedidaId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Observaciones" class="control-label"></label>
-                    <input asp-for="Observaciones" class="form-control" />
-                    <span asp-validation-for="Observaciones" class="text-danger"></span>
-                </div>
-                <div class="form-group" style="visibility:hidden">
-                    <div class="checkbox">
-                        <label>
-                            <input asp-for="activo" checked /> @Html.DisplayNameFor(model => model.activo)
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input id="graba" name="graba" type="submit" value="Crear" class="btn btn-default" />
-                </div>
-</form>
+            </div>
+            <div class="form-group">
+                <input id="graba" name="graba" type="submit" value="Crear" class="btn btn-default" />
+            </div>
+        </form>
     </div>
 </div>
 

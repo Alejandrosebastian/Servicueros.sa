@@ -77,8 +77,7 @@ var GuardaPelambre = () => {
             contador = contador + 1;
     });
     var guardaPelambre = new Pelambre(fecha, obsrvaciones, bodegaid, bombo, formula,peso, accion);
-    var idb = guardaPelambre.DesactivaClasificacionPelo(totalcheck, "Pelambres/ControladorActualizaClasificacionPelo");
-
+    
     guardaPelambre.GuardaPelambre(totalcheck, personal, codlote, peso, pieles, idb);
 
 }

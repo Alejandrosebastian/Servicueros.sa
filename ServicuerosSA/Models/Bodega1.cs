@@ -40,5 +40,8 @@ namespace ServicuerosSA.Models
         public String Observaciones { get; set; }
         public bool activo { get; set; }
 
+        public int TipoPielId { get; set; }
+        public TipoPiel TipoPiel { get; set; }
+
     }
 }

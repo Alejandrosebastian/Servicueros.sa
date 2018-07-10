@@ -91,6 +91,7 @@ namespace ServicuerosSA.Controllers
         {
             if (ModelState.IsValid)
             {
+                lote.estado = true;
                 _context.Add(lote);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
