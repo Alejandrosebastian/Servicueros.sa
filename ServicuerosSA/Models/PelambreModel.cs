@@ -455,7 +455,28 @@ namespace ServicuerosSA.Models
             lista.Add(objeto);
             return lista;
         }
+        public List<object[]> ModeloImprimirDetallePelambre( int id)
+        {
+            List<object[]> Enlistar = new List<object[]>();
+           var res = from p in _contexto.Pelambre
+                     join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                     join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
+                     join bd in _contexto.Bodega on b1.BodegaId equals bd.BodegaId
+                     join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
+                     where p.PelambreId == id
+                     select new
+                     {
+                         b.Num_bombo,
+                         p.TotalPieles,
+                         c.Selecciones,
+                         p.Peso,
+                         p.Fecha,
+                         bd.NombreBodega,
+                         b1.NumeroEstanteria
 
+                     }).Tolist();
+
+        }
 
         public List<Pelambre> Listapelambres()
         {
