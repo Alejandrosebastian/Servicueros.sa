@@ -38,7 +38,6 @@ class Pelambre {
     }
 
     DesactivaClasificacionPelo(total, accion) {
-        
         var bodega = this.bodega;
         var bodegaid;
         var contador = 0;

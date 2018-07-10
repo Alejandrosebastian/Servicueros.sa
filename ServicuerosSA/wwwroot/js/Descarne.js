@@ -80,7 +80,9 @@
             }
         });
     }
+
   
+
     limpiarcajas() {
         document.getElementById('CantidadPieles').value = '';
         document.getElementById('PelambreId').selectedIndex = 0;
