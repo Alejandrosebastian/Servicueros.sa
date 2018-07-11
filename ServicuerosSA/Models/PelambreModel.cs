@@ -486,49 +486,58 @@ namespace ServicuerosSA.Models
             lista.Add(objeto);
             return lista;
         }
-            public List<object[]> ModeloImprimirDetallePelambre(int id)
-            {
-                List<object[]> Enlistar = new List<object[]>();
-                var res = (from p in _contexto.Pelambre
-                           join b in _contexto.Bombo on p.BomboId equals b.BomboId
-                           join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
-                           join bd in _contexto.Bodega on b1.BodegaId equals bd.BodegaId
-                           join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
-                           where p.PelambreId == id
-                           select new
-                           {
-                               b.Num_bombo,
-                               p.TotalPieles,
-                               c.Selecciones,
-                               p.Peso,
-                               p.Fecha,
-                               bd.NombreBodega,
-                               b1.NumeroEstanteria,
-                               p.CodigoLote
 
-                           }).ToList();
-                foreach (var item in res)
-                {
-                    dato += "<tr>" +
-                    "<td>" + item.Num_bombo + "</td>" +
-                    "<td>" + item.TotalPieles + "</td>" +
-                    "<td>" + item.Selecciones.ToUpper() + "</td>" +
-                    "<td>" + item.Peso + "</td>" +
-                    "<td>" + item.Fecha + "</td>" +
-                    "<td>" + item.NombreBodega.ToUpper() + "</td>" +
-                    "<td>" + item.NumeroEstanteria + "</td>" +
-                    "<td>" + item.CodigoLote.ToUpper() + "</td>" +
-                    "</tr>";
-                }
-                object[] objeto = { dato };
-                Enlistar.Add(objeto);
-                return Enlistar;
-            }
+            
 
-            public List<Pelambre> Listapelambres()
+        public List<object[]> ModeloImprimirDetallePelambre(int id)
+        {
+            List<object[]> Enlistar = new List<object[]>();
+            var res = (from p in _contexto.Pelambre
+                       join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                       join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
+                       join bd in _contexto.Bodega on b1.BodegaId equals bd.BodegaId
+                       join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
+                       where p.PelambreId == id
+                       select new
+                       {
+                           b.Num_bombo,
+                           p.TotalPieles,
+                           c.Selecciones,
+                           p.Peso,
+                           p.Fecha,
+                           bd.NombreBodega,
+                           b1.NumeroEstanteria,
+                           p.CodigoLote
+
+                       }).ToList();
+
+
+            foreach (var item in res)
             {
-                return _contexto.Pelambre.OrderBy(p => p.Fecha).ToList();
+                dato += "<tr>" +
+                "<td>" + item.Num_bombo + "</td>" +
+                "<td>" + item.TotalPieles + "</td>" +
+                "<td>" + item.Selecciones.ToUpper() + "</td>" +
+                "<td>" + item.Peso + "</td>" +
+                "<td>" + item.Fecha + "</td>" +
+                "<td>" + item.NombreBodega.ToUpper() + "</td>" +
+                "<td>" + item.NumeroEstanteria + "</td>" +
+                "<td>" + item.CodigoLote.ToUpper() + "</td>" +
+                "</tr>";
             }
+            object[] objeto = { dato };
+            Enlistar.Add(objeto);
+            return Enlistar;
+        }
+
+
+           
+
+           
+        public List<Pelambre> Listapelambres()
+        {
+            return _contexto.Pelambre.OrderBy(p => p.Fecha).ToList();
+        }
 
     }
 
