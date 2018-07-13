@@ -155,57 +155,7 @@ namespace ServicuerosSA.Models
             return ListaPelambre;
         }
 
-        public List<IdentityError> ActualizaClasificacionPelo(int bogeda)
-        {
-            List<IdentityError> listaerrores = new List<IdentityError>();
-            try
-            {
-                var bodega1 = (from b1 in _contexto.Bodega1
-                               where b1.Bodega1Id == bogeda
-                               select new Bodega1
-                               {
-                                   activo = false,
-                                   ClasificacionId = b1.ClasificacionId,
-                                   Fechaingreso = b1.Fechaingreso,
-                                   LoteId = b1.LoteId,
-                                   NumeroEstanteria = b1.NumeroEstanteria,
-                                   BodegaId = b1.BodegaId,
-                                   Bodega1Id = b1.Bodega1Id,
-                                   NumeroPieles = b1.NumeroPieles,
-                                   Observaciones = b1.Observaciones,
-                                   Peso = b1.Peso,
-                                   MedidaId = b1.MedidaId
-
-                               }).FirstOrDefault();
-                try
-                {
-                    _contexto.Bodega1.Update(bodega1);
-                    _contexto.SaveChanges();
-                }
-                catch (Exception e)
-                {
-
-                    throw e;
-                }
-
-                listaerrores.Add(new IdentityError
-                {
-                    Code = "Save",
-                    Description = "Save"
-                });
-            }
-            catch (Exception e)
-            {
-                listaerrores.Add(new IdentityError
-                {
-                    Code = e.Message,
-                    Description = e.Message
-                });
-
-            }
-            return listaerrores;
-        }
-
+        
         public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula, int personal, string codlote, int pesototal, int pieles, string codigoUnico)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
@@ -320,6 +270,35 @@ namespace ServicuerosSA.Models
                     Code = "Save",
                     Description = "Save"
                 });
+                var bodega1 = (from b1 in _contexto.Bodega1
+                               where b1.Bodega1Id == bogeda
+                               select new Bodega1
+                               {
+                                   activo = false,
+                                   ClasificacionId = b1.ClasificacionId,
+                                   Fechaingreso = b1.Fechaingreso,
+                                   LoteId = b1.LoteId,
+                                   NumeroEstanteria = b1.NumeroEstanteria,
+                                   BodegaId = b1.BodegaId,
+                                   Bodega1Id = b1.Bodega1Id,
+                                   NumeroPieles = b1.NumeroPieles,
+                                   Observaciones = b1.Observaciones,
+                                   Peso = b1.Peso,
+                                   TipoPielId = b1.TipoPielId,
+                                   MedidaId = b1.MedidaId
+
+                               }).FirstOrDefault();
+                try
+                {
+                    _contexto.Bodega1.Update(bodega1);
+                    _contexto.SaveChanges();
+                }
+                catch (Exception e)
+                {
+
+                    throw e;
+                }
+
             }
             catch (Exception e)
             {
@@ -333,7 +312,7 @@ namespace ServicuerosSA.Models
         }
 
         public List<object[]> ClaseIndexPelambre(int numeroPagina)
-        {
+        { 
             List<object[]> ListaPelambre = new List<object[]>();
             string dato = "";
             var res = (from p in _contexto.Pelambre
@@ -343,6 +322,7 @@ namespace ServicuerosSA.Models
                        join l in _contexto.Lote on b1.LoteId equals l.LoteId
                        join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
                        join tp in _contexto.TipoPiel on l.TipoPielId equals tp.TipoPielId
+                       where p.Activo == true
                        select new {
                            p.PelambreId,
                            l.Codigolote,
@@ -353,35 +333,101 @@ namespace ServicuerosSA.Models
                            f.Nombre,
                            p.codigopelambre
                        }).ToList();
+
+            string compara = "";
             foreach (var item in res)
-            {
+            {  
                 dato += "<tr><td>" + item.Codigolote + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
                     "<td>" + item.Selecciones + "</td>" +
                     "<td>" + item.Fecha.ToString("dd-MM-yyyy hh:mm") + "</td>" +
                     "<td>" + item.Num_bombo + "</td>" +
-                    "<td>" + item.Nombre + "</td>" +
-                    "<td>" +
-                    "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(" + item.codigopelambre + "); componentesFormula(" + item.codigopelambre + ");'>Imprimir Detalle con Formula</a> " +
-                    "<a class='btn btn-success' data-toggle='modal' data-target='#DetallePelambre' onclick='DetallePelambre" + item.codigopelambre + "'>Detalles</a>" +
+                    "<td>" + item.Nombre + "</td>";
+                string ya = item.codigopelambre;
+                if (compara != item.codigopelambre)
+                {
+                 dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(&#039;" + item.codigopelambre + "&#039;); componentesFormula(&#039;" + item.codigopelambre + "&#039;);'>Imprimir Detalle con Formula</a> " +
+                    "<a class='btn btn-success' onclick='EliminarPelambre(&#039;" + ya + "&#039;)'>Eliminar</a>" +
                         "</td>" +
                         "</tr>";
+                }
+                compara = item.codigopelambre;
+                    
             }
             object[] objeto = { dato };
             ListaPelambre.Add(objeto);
             return ListaPelambre;
         }
 
-        public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(int id)
+        public List<IdentityError> ClaseEliminarPelambre(string codigoUnico)
         {
+            List<IdentityError> listaerrores = new List<IdentityError>();
+            try
+            {
+                var pel = from p in _contexto.Pelambre
+                          where p.codigopelambre == codigoUnico
+                          select  new Pelambre {PelambreId = p.PelambreId, Bodega1Id = p.Bodega1Id } ;
+                
+                foreach (var item in pel.ToList())
+                {
+                    var bodega1 = (from b1 in _contexto.Bodega1
+                                   where b1.Bodega1Id == item.Bodega1Id
+                                   select new Bodega1
+                                   {
+                                       activo = true,
+                                       ClasificacionId = b1.ClasificacionId,
+                                       Fechaingreso = b1.Fechaingreso,
+                                       LoteId = b1.LoteId,
+                                       NumeroEstanteria = b1.NumeroEstanteria,
+                                       BodegaId = b1.BodegaId,
+                                       Bodega1Id = b1.Bodega1Id,
+                                       NumeroPieles = b1.NumeroPieles,
+                                       Observaciones = b1.Observaciones,
+                                       Peso = b1.Peso,
+                                       MedidaId = b1.MedidaId,
+                                       TipoPielId = b1.TipoPielId
 
+                                   }).FirstOrDefault();
+
+                    _contexto.Bodega1.Update(bodega1);
+                    _contexto.SaveChanges();
+
+                 
+                    _contexto.Pelambre.Remove(item);
+                    _contexto.SaveChanges();
+
+                }            
+
+                listaerrores.Add(new IdentityError
+                {
+                    Code = "Save",
+                    Description = "Save"
+                });
+
+
+            }
+            catch (Exception e)
+            {
+                listaerrores.Add(new IdentityError
+                {
+                    Code = e.Message,
+                    Description = e.Message
+                });
+            }
+            return listaerrores;
+        }
+        public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(string id)
+        {
+            var consultaid = (from p in _contexto.Pelambre
+                              where p.codigopelambre == id
+                              select p).FirstOrDefault();
 
             var res = (from p in _contexto.Pelambre
                        join pe in _contexto.Personal on p.PersonalId equals pe.PersonalId
                        join b in _contexto.Bombo on p.BomboId equals b.BomboId
                        join fo in _contexto.Formula on p.FormulaId equals fo.FormulaId
                        join tp in _contexto.TipoPiel on fo.TipoPielId equals tp.TipoPielId
-                       where p.PelambreId == id
+                       where p.PelambreId == consultaid.PelambreId
                        select new ModeloEncabezadoFormula
                        {
                            Bombo = b.Num_bombo.ToString(),
@@ -403,14 +449,17 @@ namespace ServicuerosSA.Models
 
 
         }
-        public List<object[]> ModeloImprimirComponentes(int id)
+        public List<object[]> ModeloImprimirComponentes(string id)
         {
             List<object[]> lista = new List<object[]>();
+            var consultaid = (from p in _contexto.Pelambre
+                             where p.codigopelambre == id
+                             select p).FirstOrDefault();
             var res = (from p in _contexto.Pelambre
                        join f in _contexto.Formula on p.FormulaId equals f.FormulaId
                        join c in _contexto.Componente on f.FormulaId equals c.FormulaId
                        join m in _contexto.Medida on c.MedidaId equals m.MedidaId
-                       where p.PelambreId == id
+                       where p.PelambreId == consultaid.PelambreId
                        select new
                        {
                            c.Detalle,
@@ -419,6 +468,9 @@ namespace ServicuerosSA.Models
                            c.Tiempo,
                            m.Abreviatura
                        }).ToList();
+            int pesototal = (from p in _contexto.Pelambre
+                             where p.codigopelambre == id
+                             select p).Sum( p => p.Peso);
             foreach (var item in res)
             {
                 if (item.Detalle.ToUpper() == "BORRON DL")
@@ -429,8 +481,8 @@ namespace ServicuerosSA.Models
                 dato += "<tr>" +
                 "<td>" + item.Detalle.ToUpper() + "</td>" +
                 "<td>" + item.Porcentaje.ToUpper() + "</td>" +
-                "<td>" + (item.Peso * Int32.Parse(item.Porcentaje)) / 100 + "</td>" +
-                "<td>" + item.Tiempo + " " + item.Abreviatura.ToUpper() + "</td>" +
+                "<td>" + (pesototal * Double.Parse(item.Porcentaje)) / 100 + "</td>" +
+                "<td>" + item.Tiempo.ToString() + " " + item.Abreviatura.ToUpper() + "</td>" +
                 "<td> </td>" +
                 "</tr>";
                 if (item.Detalle.ToUpper() == "AGUA")
@@ -458,26 +510,32 @@ namespace ServicuerosSA.Models
             return lista;
         }
 
-        public List<object[]> ModeloImprimirPesaje(int id)
+        public List<object[]> ModeloImprimirPesaje(string id)
         {
             List<object[]> lista = new List<object[]>();
+            var consultaid = (from p in _contexto.Pelambre
+                              where p.codigopelambre == id
+                              select p).FirstOrDefault();
             var res = (from p in _contexto.Pelambre
                        join f in _contexto.Formula on p.FormulaId equals f.FormulaId
                        join c in _contexto.Componente on f.FormulaId equals c.FormulaId
-                       where p.PelambreId == id
+                       where p.PelambreId == consultaid.PelambreId
                        select new
                        {
                            c.Detalle,
                            c.Porcentaje,
                            p.Peso
                        }).ToList();
+            int pesototal = (from p in _contexto.Pelambre
+                             where p.codigopelambre == id
+                             select p).Sum(p => p.Peso);
             foreach (var item in res)
             {
 
                 dato += "<tr>" +
                 "<td>" + item.Detalle.ToUpper() + "</td>" +
                 "<td>" + item.Porcentaje.ToUpper() + "</td>" +
-                "<td>" + (item.Peso * Int32.Parse(item.Porcentaje)) / 100 + "</td>" +
+                "<td>" + (pesototal * Double.Parse(item.Porcentaje)) / 100 + "</td>" +
                 "<td> </td>" +
                 "</tr>";
 
@@ -487,17 +545,18 @@ namespace ServicuerosSA.Models
             return lista;
         }
 
-            
-
-        public List<object[]> ModeloImprimirDetallePelambre(int id)
+        public List<object[]> ModeloImprimirDetallePelambre(string id)
         {
             List<object[]> Enlistar = new List<object[]>();
+            var consultaid = (from p in _contexto.Pelambre
+                              where p.codigopelambre == id
+                              select p).FirstOrDefault();
             var res = (from p in _contexto.Pelambre
                        join b in _contexto.Bombo on p.BomboId equals b.BomboId
                        join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
                        join bd in _contexto.Bodega on b1.BodegaId equals bd.BodegaId
                        join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
-                       where p.PelambreId == id
+                       where p.PelambreId == consultaid.PelambreId
                        select new
                        {
                            b.Num_bombo,
@@ -528,12 +587,8 @@ namespace ServicuerosSA.Models
             object[] objeto = { dato };
             Enlistar.Add(objeto);
             return Enlistar;
-        }
+        }        
 
-
-           
-
-           
         public List<Pelambre> Listapelambres()
         {
             return _contexto.Pelambre.OrderBy(p => p.Fecha).ToList();

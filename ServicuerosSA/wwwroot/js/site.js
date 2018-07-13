@@ -69,7 +69,7 @@ var GuardaPelambre = () => {
     var month = dt.getMonth() + 1;
     var day = dt.getDate();
     var year = dt.getFullYear();
-    var fecha = day + '/' + month + '/' + year + '/' + dt.getHours() + '/' + dt.getMinutes() + '/' + dt.getSeconds();
+    var fecha = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
     var codigoUnico='';
     $("input:checkbox:checked").each(function () {
         var ya = ($(this).val()).split("|");
@@ -155,10 +155,14 @@ var listaPersonal = () => {
     per.ListaPersonal();
 
 }
-var DetallePelambre = (id) => {
-    var accion = 'Pelambre/ControladorDetallePelambre';
-    var pelambre = new Pelambre('', '', '', '', '', '', accion);
-    pelambre.ListaDetalle(id);
+var EliminarPelambre = (id) => {
+    var r = confirm("Esta seguro que desea borrar el registro");
+    if (r == true) {
+        var accion = 'Pelambres/ControladorEliminarPelambre';
+        var pelambre = new Pelambre('', '', '', '', '', '', accion);
+        pelambre.EliminaPelambre(id);
+    }
+   
 }
 var ImprimirPelambre = (id) => {
     var accion = 'Pelambres/ControladorImprimirEmcabezadoFormula';

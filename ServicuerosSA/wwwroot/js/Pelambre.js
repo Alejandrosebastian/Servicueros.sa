@@ -118,11 +118,12 @@ class Pelambre {
         });
     }
 
-    ListaDetalle(id) {
+    EliminaPelambre(cadigounico) {
         var accion = this.accion;
-        $.post(accion, { id },
+        $.post(accion, { cadigounico },
             (respuesta) => {
-
+                ListaIndex(1);
+                alert("El registro se ha borrado con exito!!!");
             }
         );
     }

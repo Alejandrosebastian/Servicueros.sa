@@ -27,14 +27,14 @@ namespace ServicuerosSA.Controllers
             return View();
         }
 
-        public List<ModeloEncabezadoFormula> ControladorImprimirEmcabezadoFormula(int id) {
+        public List<ModeloEncabezadoFormula> ControladorImprimirEmcabezadoFormula(string id) {
             return clasePelambre.ModeloImprimirEncabezadoFormula(id);
         }
-        public List<object[]> ControladorComponentesFormula(int id) {
+        public List<object[]> ControladorComponentesFormula(string id) {
             return clasePelambre.ModeloImprimirComponentes(id);
         }
         
-        public List<object[]> ControladorImprimirPesaje(int id)
+        public List<object[]> ControladorImprimirPesaje(string id)
         {
             return clasePelambre.ModeloImprimirPesaje(id);
         }
@@ -71,16 +71,18 @@ namespace ServicuerosSA.Controllers
             return View(pelambre);
         }
 
-        public List<IdentityError> ControladorActualizaClasificacionPelo(int bodegaid)
-        {
-            return clasePelambre.ActualizaClasificacionPelo(bodegaid);
-        }
+       
 
         public List<IdentityError> ControladorGuardarPelambre(DateTime fecha, string obsrvaciones,int bodega,int bombo,int formula,int personal,string codlote,int pesototal,int pieles,string codigoUnico)
         {
             return clasePelambre.ClaseGuardaPelambre(fecha, obsrvaciones, bodega, bombo, formula,  personal, codlote, pesototal, pieles, codigoUnico);
         }
 
+        public List<IdentityError> ControladorEliminarPelambre(string cadigounico)
+        {
+            return clasePelambre.ClaseEliminarPelambre(cadigounico);
+
+        }
 
         // GET: Pelambres/Create
 

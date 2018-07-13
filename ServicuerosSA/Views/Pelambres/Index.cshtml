@@ -120,7 +120,7 @@
 </div>
 
 
-<div class="modal fade" id="DetallePelambre" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+<div class="modal fade" id="ModificarPelambre" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -128,16 +128,43 @@
                         data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="EtiquetaModal">
-                    Detalle de Proceso Pelambre
+                <h4 class="modal-title"
+                    id="EtiquetaModal">
+                    Ingreso de Proceso Pelambre
                 </h4>
             </div>
             <div class="modal-body">
-                
-                  
+                <form>
                     <div class="form-group">
-                       
-                    <table class="table">
+                        <label class="control-label">Bombo</label>
+                        <select id="bomboId" name="bomboId" required class="form-control">
+                            <option value="0">Seleccione un Bombo</option>
+                        </select>
+                        <label id="mensajeb" class="col-md-2 control-label label-danger"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fórmula</label>
+                        <select id="formulaId" name="formulaId" required class="form-control">
+                            <option value="0">Seleccione una Formula</option>
+                        </select>
+                        <label id="mensajef" class="col-md-2 control-label label-danger"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Personal Asignado</label>
+                        <select id="personalId" name="personalId" required class="form-control">
+                            <option value="0">Seleccione el Personal asignado a esta operación</option>
+                        </select>
+                        <label id="mensajep" class="col-md-2 control-label label-danger"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fecha de Proceso</label>
+                        <input id="fecha" name="fecha" class="form-control" type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Observaciones</label>
+                        <textarea id="observacion" name="observacion" class="form-control"></textarea>
+                    </div>
+                    <table class="table" id="tablaPlambre">
                         <thead>
                             <tr>
                                 <th>
@@ -147,14 +174,10 @@
                                     Codigo Lote
                                 </th>
                                 <th>
-                                    <select id="tipoPiel" name="tipoPiel" onchange="tipopiel()" class="form-control">
-                                        <option value="0">Buscar por Tipo de Piel</option>
-                                    </select>
+                                    Tipo de Piel
                                 </th>
                                 <th>
-                                    <select id="clasificaciones" name="clasificaciones" onchange="tipopiel();" class="form-control">
-                                        <option value="0"> Buscar por Clasificacion Pelo</option>
-                                    </select>
+                                    Clasificacion Pelo
                                 </th>
                                 <th>
                                     Numero de Pieles
@@ -166,11 +189,12 @@
                         </thead>
                         <tbody id="LotesLista"></tbody>
                     </table>
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                
+                <button type="button" class="btn btn-primary" onclick="GuardaPelambre()">Guardar</button>
+
             </div>
         </div>
     </div>
