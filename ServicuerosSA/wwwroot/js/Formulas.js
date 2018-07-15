@@ -32,7 +32,7 @@ class Formulas {
             url: accion,
             data: { id },
             success: (respuesta) => {
-                console.log(respuesta);
+                
                 $('#codigo').text(respuesta[0].codigo);
                 $('#version').text(respuesta[0].version);
                 $('#fecha_act').text(respuesta[0].fechaCreacionFormula);

@@ -12,7 +12,6 @@ var Impresion = (id) => {
     document.body.innerHTML = contenido;
     window.print();
     document.body.innerHTML = contenidooriginal;
-
 }
 var claseJsLlamarListaLotes = (id) => {
     var accion = '../Lotes/ContraladorListaLotes';
@@ -224,3 +223,8 @@ var controlnumeropieles = () => {
 
 }
 
+var pesa = (id) => {
+    var accion = 'Pelambres/COntroladorImprimirPesaje';
+    var pesaje = new Pelambre('', '', '', '', '', '', accion);
+    pesaje.Pesaje(id);
+}

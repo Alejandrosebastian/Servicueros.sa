@@ -346,7 +346,7 @@ namespace ServicuerosSA.Models
                 string ya = item.codigopelambre;
                 if (compara != item.codigopelambre)
                 {
-                 dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(&#039;" + item.codigopelambre + "&#039;); componentesFormula(&#039;" + item.codigopelambre + "&#039;);'>Imprimir Detalle con Formula</a> " +
+                 dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(&#039;" + item.codigopelambre + "&#039;); componentesFormula(&#039;" + item.codigopelambre + "&#039;);pesa(&#039;" + item.codigopelambre + "&#039;);'>Imprimir Detalle con Formula</a> " +
                     "<a class='btn btn-success' onclick='EliminarPelambre(&#039;" + ya + "&#039;)'>Eliminar</a>" +
                         "</td>" +
                         "</tr>";
@@ -516,15 +516,22 @@ namespace ServicuerosSA.Models
             var consultaid = (from p in _contexto.Pelambre
                               where p.codigopelambre == id
                               select p).FirstOrDefault();
+
             var res = (from p in _contexto.Pelambre
-                       join f in _contexto.Formula on p.FormulaId equals f.FormulaId
-                       join c in _contexto.Componente on f.FormulaId equals c.FormulaId
-                       where p.PelambreId == consultaid.PelambreId
+                       join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                       join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id   
+                       join bo in _contexto.Bodega on b1.BodegaId equals bo.BodegaId
+                       where p.PelambreId == consultaid.PelambreId 
                        select new
                        {
-                           c.Detalle,
-                           c.Porcentaje,
-                           p.Peso
+                          
+                           p.CodigoLote,
+                           b.Num_bombo,
+                          bo.NombreBodega,
+                           p.Peso,
+                     
+                          p.Fecha,
+                          p.TotalPieles
                        }).ToList();
             int pesototal = (from p in _contexto.Pelambre
                              where p.codigopelambre == id
@@ -533,9 +540,14 @@ namespace ServicuerosSA.Models
             {
 
                 dato += "<tr>" +
-                "<td>" + item.Detalle.ToUpper() + "</td>" +
-                "<td>" + item.Porcentaje.ToUpper() + "</td>" +
-                "<td>" + (pesototal * Double.Parse(item.Porcentaje)) / 100 + "</td>" +
+                "<td>" + item.CodigoLote.ToUpper() + "</td>" +
+                 "<td>" + item.Num_bombo + "</td>" +
+                "<td>" + item.TotalPieles + "</td>" +
+                 
+                    "<td>" + item.Peso + "</td>" +
+
+                    "<td>" + item.Fecha + "</td>" +
+                "<td>" + item.NombreBodega.ToUpper() + "Estanteria:  </td>" +
                 "<td> </td>" +
                 "</tr>";
 

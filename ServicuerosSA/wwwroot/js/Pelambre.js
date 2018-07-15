@@ -128,6 +128,20 @@ class Pelambre {
         );
     }
 
+    Pesaje(id) {
+        var accion = this.accion;
+        $.ajax({
+            type: 'POST',
+            url: accion,
+            data: { id },
+            success: (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaPesaje').html(val[0]);
+                });
+            }
+        });
+    }
+   
     limpiarcajas() {
         document.getElementById('observacion').value = '';
         document.getElementById('bomboId').selectedIndex = 0;
