@@ -69,9 +69,7 @@ namespace ServicuerosSA.Controllers
             }
 
             return View(pelambre);
-        }
-
-       
+        }   
 
         public List<IdentityError> ControladorGuardarPelambre(DateTime fecha, string obsrvaciones,int bodega,int bombo,int formula,int personal,string codlote,int pesototal,int pieles,string codigoUnico)
         {
@@ -83,6 +81,8 @@ namespace ServicuerosSA.Controllers
             return clasePelambre.ClaseEliminarPelambre(cadigounico);
 
         }
+
+      
 
         // GET: Pelambres/Create
 
