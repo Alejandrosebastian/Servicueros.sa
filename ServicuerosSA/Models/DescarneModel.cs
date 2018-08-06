@@ -20,13 +20,16 @@ namespace ServicuerosSA.Models
             string datos = "";
             var res = (from p in _contexto.Pelambre
                        join des in _contexto.Descarne on p.PelambreId equals des.PelambreId
+                       
                          where p.Activo == true
                        select new
                        {
                            des.Cantidad,
                            des.Fecha,
                            p.TotalPieles,
-                           p.PelambreId
+                           p.PelambreId,
+                           p.CodigoLote,
+                           p.Codigo
                        });
 
             foreach (var item in res)
@@ -35,6 +38,7 @@ namespace ServicuerosSA.Models
                     "<td>" + item.Cantidad + "</td>" +
                     "<td>" + item.Fecha + "</td>" +
                     "<td>" + item.TotalPieles + "</td>" +
+                    "<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
                     "</tr>";
             }
 

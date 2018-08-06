@@ -5,6 +5,7 @@ $().ready(() => {
     claseJsLlamarListaProveedor();
     claseJsLlamarListaLotes(1);
     ListaIndex();
+    claseJsLlamarListaDescarne();
 })
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
@@ -28,6 +29,7 @@ var claseJsLlamarListaDescarne = () => {
     var Listadescarne = new ClaseJsDescarne('', '', accion);
     Listadescarne.ClaseJsDescarne();
 }
+
 var ListaFormulas = () => {
     var accion = 'Formulas/ControladorListaFormulas';
     var listaformulas = new Formulas('', '', '', '', accion);

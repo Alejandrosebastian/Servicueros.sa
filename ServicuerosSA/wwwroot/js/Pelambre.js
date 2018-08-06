@@ -5,7 +5,7 @@ class Pelambre {
         this.observacion = observacion;
         this.bodega = bodega;
         this.bombo = bombo;
-            this.formula = formula;
+        this.formula = formula;
         this.accion = accion;
     }
     ListaPelabre() {
