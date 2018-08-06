@@ -20,7 +20,7 @@ namespace ServicuerosSA.Models
             string datos = "";
             var res = (from p in _contexto.Pelambre
                        join des in _contexto.Descarne on p.PelambreId equals des.PelambreId
-                       where p.Activo == true
+                         where p.Activo == true
                        select new
                        {
                            des.Cantidad,
