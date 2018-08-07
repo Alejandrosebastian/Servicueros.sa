@@ -1,6 +1,6 @@
 ﻿class Descarne {
 
-    constructor(cantidad, fecha, accion) {
+    constructor(cantidad, fecha, codigo,codigoLote, accion) {
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.accion = accion;
