@@ -25,9 +25,8 @@ namespace ServicuerosSA.Models
                        select new
                        {
                            des.Cantidad,
-                           des.Fecha,
                            p.TotalPieles,
-                           p.PelambreId,
+                           
                            p.CodigoLote,
                            p.Codigo
                        });
@@ -36,8 +35,8 @@ namespace ServicuerosSA.Models
             {
                 datos += "<tr>" +
                     "<td>" + item.Cantidad + "</td>" +
-                    "<td>" + item.Fecha + "</td>" +
-                    "<td>" + item.TotalPieles + "</td>" +
+                   "<td>" + item.TotalPieles + "</td>" +
+                        
                     "<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
                     "</tr>";
             }

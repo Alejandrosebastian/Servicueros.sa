@@ -5,7 +5,8 @@ $().ready(() => {
     claseJsLlamarListaProveedor();
     claseJsLlamarListaLotes(1);
     ListaIndex();
-    claseJsLlamarListaDescarne();
+   // claseJsLlamarListaDescarne();
+    ListaDescarne();
 })
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
@@ -24,12 +25,6 @@ var claseJsLlamarListaProveedor = () => {
     var listaproveedor = new ClaseJSProveedor('', '', '', '', '', '', '', '', '', accion);
     listaproveedor.claseJsListaProveedor();
 }
-var claseJsLlamarListaDescarne = () => {
-    var accion = '../Descarnes/ControladorListaDescarne';
-    var Listadescarne = new ClaseJsDescarne('', '', accion);
-    Listadescarne.ClaseJsDescarne();
-}
-
 var ListaFormulas = () => {
     var accion = 'Formulas/ControladorListaFormulas';
     var listaformulas = new Formulas('', '', '', '', accion);
