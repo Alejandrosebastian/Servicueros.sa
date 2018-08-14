@@ -1,7 +1,9 @@
 ﻿class BodegaTripa {
-    constructor(numeropieles, peso, accion) {
+    constructor(numeropieles, peso,personal,activo, accion) {
         this.numeropieles = numeropieles;
         this.peso = peso;
+        this.personal = personal;
+        this.activo = activo;
         this.accion = accion;
     }
     bodegatripa() {
