@@ -18,4 +18,25 @@
             }
         });
     }
+    GuardaBodegaTripa(personal, numeropieles, descarne, clasificaciontripa, activo, peso) {
+        var personal = this.personal;
+        var numeropieles = this.numeropieles;
+        var descarne = this.descarne;
+        var clasificaciontripa = this.clasificaciontripa;
+        var activo = this.activo;
+        var peso = this.peso;
+        var accion = this.accion;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {
+                personal, numeropieles, descarne, clasificaciontripa, activo, peso
+            },
+            success: (respuesta) => {
+                if (total == 'limpia') {
+                    this.limpiarcajas();
+                }
+            }
+        });
+    }
 }
