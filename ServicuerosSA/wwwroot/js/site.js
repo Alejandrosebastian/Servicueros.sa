@@ -207,7 +207,6 @@ var GuardaDescarne = () => {
     var guades = new Descarne(cantidad, d, accion);
     guades.GuardarPelambre(personal,pelambre);
 }
-
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
@@ -219,7 +218,6 @@ var controlnumeropieles = () => {
     }
 
 }
-
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
     var pesaje = new Pelambre('', '', '', '', '', '', accion);
