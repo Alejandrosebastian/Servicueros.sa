@@ -7,6 +7,7 @@ $().ready(() => {
     ListaIndex();
    // claseJsLlamarListaDescarne();
     ListaDescarne();
+    Listatipotripa();
 })
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
@@ -44,6 +45,11 @@ var ListaDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
     var listaDescarne = new Descarne('', '', accion);
     listaDescarne.ListaDescarne();
+}
+var Listatipotripa = () => {
+    var accion = 'ClasificacionTripas/ControladorListatipotripa';
+    var listatrip = new BodegaTripa('','','','',accion);
+    listatrip.listatipotripa();
 }
 var GuardaPelambre = () => {
     var bombos = document.getElementById('bomboId');

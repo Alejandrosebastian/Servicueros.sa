@@ -485,10 +485,10 @@ namespace ServicuerosSA.Models
                 "<td>" + item.Tiempo.ToString() + " " + item.Abreviatura.ToUpper() + "</td>" +
                 "<td> </td>" +
                 "</tr>";
-                if (item.Detalle.ToUpper() == "AGUA")
-                {
-                    dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
-                };
+                //if (item.Detalle.ToUpper() == "AGUA")
+                //{
+                   // dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
+                //};
 
                 if (item.Detalle.ToUpper() == "SAL LIMPIA")
                 {
@@ -499,11 +499,11 @@ namespace ServicuerosSA.Models
                     dato += "<tr><td>TEMP = LAVADO  </td><td></td><td></td><td>10 MIN</td><td></td></tr>";
                     dato += "<tr><td>ESCURRIR BAÑO</td><td></td><td></td><td></td><td></td></tr>";
                 };
-                if (item.Detalle.ToUpper() == "ESCURRIR BAÑO")
-                {
-                    dato += "<tr><td>AGUA A 28 ºC</td><td></td><td></td><td></td><td></td></tr>";
+                //if (item.Detalle.ToUpper() == "ESCURRIR BAÑO")
+                //{
+                  //  dato += "<tr><td>AGUA A 28 ºC</td><td></td><td></td><td></td><td></td></tr>";
 
-                };
+                //};
             }
             object[] objeto = { dato };
             lista.Add(objeto);

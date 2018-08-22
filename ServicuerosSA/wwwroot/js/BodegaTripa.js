@@ -18,4 +18,22 @@
             }
         });
     }
+    listatipotripa() {
+        var accion = this.accion;
+        var contador = 1;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            success: (respuesta) => {
+                if (0 < respuesta.lenght) {
+                    for (var i = 0; i < respuesta.length; i++) {
+                        document.getElementById('ClasificacionTripaId').option[contador] = new Option(respuesta[i].detalle, respuesta[i].clasificacionTripaId)
+                        contador++
+                    }
+                }
+                });
+            }
+        });
+    }
 }

@@ -5,7 +5,7 @@
 <h2>Lista en tripas</h2>
 
 <p>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="ListaClasificacionTripa(); listaPersonal()">Nueva Clasificacion</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick=" Listatipotripa(); listaPersonal()">Nueva Clasificacion</a>
 </p>
 <table class="table">
     <thead>
@@ -43,22 +43,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label class="control-label">Numero de Pieles</label>
-                        <br />
-                        <input id="NumeroPielesInput" name="NumeroPielesInput" class="control-label">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Peso</label>
-                        <br />
-                        <input id="PesoInput" name="PesoInput" class="control-label " >                      
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Personal</label>
-                        <select id="personalId" name="personalId" required class="form-control">
-                            <option value="0">Seleccione el Personal asignado a esta operación</option>
+                        <label class="control-label">Codigo Lote</label>
+                        <select id="loteid" name="loteid" required class="form-control">
+                            <option value="0">Seleccione el Lote que desee</option>
                         </select>
                         <br />
-                        <span id="mensajec" class="alert alert-danger hidden">Seleccione al Personal</span>
+                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione el Codigo de lote:</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Numero de pieles en el lote</label>
+                        <label id="TotalPielesInput" name="TotalPielesInput" class="control-label alert alert-success hidden"></label>
                     </div>
                     <div class="form-group">
                         <label class="control-label">ClasificacionTripa</label>
@@ -68,21 +62,44 @@
                         <br />
                         <span id="mensajeper" class="alert alert-danger hidden">Seleccione la clasificacion</span>
                     </div>
-                    <table class="table" id="tablaTripa">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Codigo lote
-                                    </th>
-                                <th>
-                                    Numero de pieles
-                                </th>
-                                <th>
-                                    
-                                </th>
-                              </tr>
-                            </thead>
-                    </table>
+                    <div class="form-group">
+                        <label class="control-label">Numero de Pieles</label>
+                        <br />
+                        <input id="NumeroPielesInput" name="NumeroPielesInput" class="control-label">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Peso</label>
+                        <br />
+                        <input id="PesoInput" name="PesoInput" class="control-label ">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Personal</label>
+                        <select id="personalId" name="personalId" required class="form-control">
+                            <option value="0">Seleccione el Personal asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajec" class="alert alert-danger hidden">Seleccione al Personal</span>
+                    </div>
+
+                    @*<table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Codigo lote
+                    </th>
+                    <th>
+                        Numero de pieles
+                    </th>
+                    <th>
+                        Peso
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="Descarneslista"></tbody>
+        </table>*@
                 </form>
             </div>
             <div class="modal-footer">
