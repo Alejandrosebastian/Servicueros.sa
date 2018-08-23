@@ -38,13 +38,16 @@ namespace ServicuerosSA.Models
                    "<td>" + item.TotalPieles + "</td>" +
                         
                     "<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
+                      "<td><a class='btn btn-success' onclick='EliminarDescarne'>Eliminar</a></td>" +
                     "</tr>";
+
             }
 
             object[] objetodatos = { datos };
             ListaDescarne.Add(objetodatos);
             return ListaDescarne;
         }
+    
         public List<IdentityError> ClaseGuardarDescarne(int cantidad, DateTime fecha, int personal, int pelambre)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
@@ -103,7 +106,54 @@ namespace ServicuerosSA.Models
                 }
             return Lista;     
         }
-        
+        public List<IdentityError> ClaseEliminarDescarne(string codigoUnico)
+        {
+            List<IdentityError> listaerrores = new List<IdentityError>();
+            try
+            {
+                var des = from d in _contexto.Descarne
+                          where d.codigodescarne == codigoUnico
+                          select new Descarne { DescarneId = d.DescarneId, PelambreId = d.PelambreId };
+                foreach (var item in des.ToList())
+                {
+                    var pelambre = (from p in _contexto.Pelambre
+                                    where p.PelambreId == item.PelambreId
+                                    select new Pelambre
+                                    {
+                                        Activo= true,
+                                        Fecha= p.Fecha,
+                                        Observaciones=p.Observaciones,
+                                        Bodega1Id=p.Bodega1Id,
+                                        BomboId=p.BomboId,
+                                        FormulaId=p.FormulaId,
+                                        PersonalId=p.PersonalId,
+                                        Codigo=p.Codigo,
+                                        TotalPieles=p.TotalPieles,
+                                        Peso=p.Peso,
+                                        CodigoLote=p.CodigoLote,
+                                        codigopelambre=p.codigopelambre
+                                    }).FirstOrDefault();
+                    _contexto.Pelambre.Update(pelambre);
+                    _contexto.SaveChanges();
 
+                    _contexto.Descarne.Remove(item);
+                    _contexto.SaveChanges();
+                }
+                listaerrores.Add(new IdentityError
+                {
+                    Code="Save",
+                    Description="Save"
+                });
+            }
+            catch (Exception e)
+            {
+                listaerrores.Add(new IdentityError
+                {
+                    Code = e.Message,
+                    Description = e.Message
+                });
+            }
+            return listaerrores;
+        }
     }
 }

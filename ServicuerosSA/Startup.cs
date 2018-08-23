@@ -29,7 +29,15 @@ namespace ServicuerosSA
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(opciones => {
+                opciones.Password.RequireDigit = false;
+                opciones.Password.RequiredLength = 3;
+                opciones.Password.RequiredUniqueChars = 3;
+                opciones.Password.RequireLowercase = false;
+                opciones.Password.RequireNonAlphanumeric = false;
+                opciones.Password.RequireUppercase = false; 
+
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
