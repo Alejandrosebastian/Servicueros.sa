@@ -13,18 +13,17 @@ namespace ServicuerosSA.Controllers
     public class BodegatripasController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private ClasificacionTripaModel listatipotripa;
+        private ClasificacionTripaModel listatipotripas;
 
         public BodegatripasController(ApplicationDbContext context)
         {
             _context = context;
-            listatipotripa = new ClasificacionTripaModel(context);
+            listatipotripas = new ClasificacionTripaModel(context);
         }
-        public  List<ClasificacionTripa> ControladorListatipotripa()
+            public  List<ClasificacionTripa> Controladorlistatipotripa()
         {
-            return listatipotripa.ClaseModeloListaClasificacionTripa();
+            return listatipotripas.ClaseModeloListaClasificacionTripa();
         }
-            
         // GET: Bodegatripas
         public async Task<IActionResult> Index()
         {

@@ -7,7 +7,7 @@ $().ready(() => {
     ListaIndex();
    // claseJsLlamarListaDescarne();
     ListaDescarne();
-    Listatipotripa();
+   // Listatipotripa();
 })
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
@@ -47,9 +47,9 @@ var ListaDescarne = () => {
     listaDescarne.ListaDescarne();
 }
 var Listatipotripa = () => {
-    var accion = 'ClasificacionTripas/ControladorListatipotripa';
-    var listatrip = new BodegaTripa('','','','',accion);
-    listatrip.listatipotripa();
+    var accion = '..Bodegatripas/Controladorlistatipotripa';
+    var listatrip = new BodegaTripa('', '', '', '', accion);
+    listatrip.ClaseListaClasificacionTripa();
 }
 var GuardaPelambre = () => {
     var bombos = document.getElementById('bomboId');

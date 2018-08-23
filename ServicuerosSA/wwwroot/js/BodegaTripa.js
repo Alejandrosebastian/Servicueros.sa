@@ -18,7 +18,7 @@
             }
         });
     }
-    listatipotripa() {
+    ClaseListaClasificacionTripa() {
         var accion = this.accion;
         var contador = 1;
         $.ajax({
@@ -26,13 +26,10 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-                if (0 < respuesta.lenght) {
-                    for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('ClasificacionTripaId').option[contador] = new Option(respuesta[i].detalle, respuesta[i].clasificacionTripaId)
-                        contador++
-                    }
+                for (var i = 0; i < respuesta.length; i++) {
+                    document.getElementById('ClasificacionTripaId').options[contador] = new Option(respuesta[i].detalle, respuesta[i].clasificacionTripaId);
+                    contador++;
                 }
-                });
             }
         });
     }

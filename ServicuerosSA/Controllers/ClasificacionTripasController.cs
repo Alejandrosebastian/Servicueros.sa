@@ -14,7 +14,7 @@ namespace ServicuerosSA.Controllers
     {
         private readonly ApplicationDbContext _context;
         private ClasificacionTripaModel clasetripa;
-
+       
         public ClasificacionTripasController(ApplicationDbContext context)
         {
             _context = context;
@@ -26,6 +26,9 @@ namespace ServicuerosSA.Controllers
         {
             return View(await _context.ClasificacionTripa.ToListAsync());
         }
+       
+      
+
         public List<object[]> Controladorlistadescarne()
         {
             return clasetripa.ModeloFiltrarClasificacionTripa();

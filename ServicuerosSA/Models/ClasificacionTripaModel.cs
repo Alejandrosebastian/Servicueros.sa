@@ -16,6 +16,7 @@ namespace ServicuerosSA.Models
         {
             return _contexto.ClasificacionTripa.OrderBy(c => c.Detalle).ToList();
         }
+     
        public List<object[]>ModeloFiltrarClasificacionTripa()
        {
            List<object[]> lista = new List<object[]>();
