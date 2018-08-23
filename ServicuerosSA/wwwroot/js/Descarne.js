@@ -1,9 +1,14 @@
 ﻿class Descarne {
 
-    constructor(cantidad, fecha, accion) {
+    constructor(cantidad, fecha, PelambreId, PersonalId, codigodescarne, CodigoLote, accion) {
         this.fecha = fecha;
         this.cantidad = cantidad;
+        this.PelambreId = Pelambre;
+        this.PersonalId = PersonalId;
+        this.codigodescarne = codigodescarne;
+        this.CodigoLote = CodigoLote;
         this.accion = accion;
+
     }
     ListaDescarne() {
         var accion = this.accion;
@@ -32,13 +37,15 @@
                 } else {
                     $("#mensajeper").addClass("hidden");
                     var cantidad = this.cantidad;                   
-                    var accion = this.accion;
                     var fecha = this.fecha;
+                    var codigodescarne = this.codigodescarne;
+                    var CodigoLote = this.CodigoLote;
+                    var accion = this.accion;
                     $.ajax({
                         type: "POST",
                         url: accion,
                         data: {
-                            cantidad, fecha, personal, pelambre
+                            cantidad, fecha, personal, pelambre, codigodescarne, CodigoLote
                         },
                         success: (respuesta) => {
                             console.log(respuesta);
