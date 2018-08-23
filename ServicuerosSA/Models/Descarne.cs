@@ -19,6 +19,7 @@ namespace ServicuerosSA.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha { get; set; }
         public bool Activo { get; set; }
+        public string codigodescarne { get; set; }
         //RELACIONES
         public int PelambreId { get; set; }
         public Pelambre Pelambres { get; set; }

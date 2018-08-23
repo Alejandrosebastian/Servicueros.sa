@@ -61,6 +61,10 @@ namespace ServicuerosSA.Controllers
         {
             return claseDescarne.ModeloNumeroPielesDescarne(idPelambre, valor);
         }
+        public List<IdentityError> ControladorEliminarDescarne(string codigoUnico)
+        {
+            return claseDescarne.ClaseEliminarDescarne(codigoUnico);
+        }
         // GET: Descarnes/Create
         public IActionResult Create()
         {
