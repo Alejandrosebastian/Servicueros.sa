@@ -160,6 +160,14 @@ var EliminarPelambre = (id) => {
     }
    
 }
+var EliminarDescarne = (id) => {
+    var r = confirm("Esta seguro que desea borrar el registro");
+    if (r == true) {
+        var accion = 'Descarnes/ControladorEliminarDescarne';
+        var descarne = new Descarne('', '', accion);
+        descarne.EliminarDescarne(id);
+    }
+}
 var ImprimirPelambre = (id) => {
     var accion = 'Pelambres/ControladorImprimirEmcabezadoFormula';
     var impresionformula = new Formulas('', '', '', '', accion);

@@ -79,10 +79,16 @@
                 $("#TotalPielesInput").removeClass("hidden");
             }
         });
+    }  
+    EliminarDescarne(codigoUnico) {
+        var accion = this.accion;
+        $.post(accion, { codigoUnico },
+            (respuesta) => {
+                ListaIndex(1);
+                alert("El registro se ha borrado exitosamente!!")
+            }
+        );
     }
-
-  
-
     limpiarcajas() {
         document.getElementById('CantidadPieles').value = '';
         document.getElementById('PelambreId').selectedIndex = 0;
