@@ -9,6 +9,8 @@ namespace ServicuerosSA.Models
     public class Pelambre
     {
         public int PelambreId { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha de ingreso al Pelambre ")]
         [Required(ErrorMessage = "Campo Obligatorio")]
         public DateTime Fecha { get; set; }

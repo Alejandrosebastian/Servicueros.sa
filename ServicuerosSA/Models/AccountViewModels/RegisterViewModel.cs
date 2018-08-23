@@ -16,7 +16,7 @@ namespace ServicuerosSA.Models.AccountViewModels
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
@@ -35,21 +35,7 @@ namespace ServicuerosSA.Models.AccountViewModels
         public RegisterViewModel()
         {
             Roles = new List<SelectListItem>();
-            //Roles.Add(new SelectListItem()
-            //{
-            //    Value = "1",
-            //    Text = "Admin"
-            //});
-            //Roles.Add(new SelectListItem()
-            //{
-            //    Value = "2",
-            //    Text = "Secretaria"
-            //});
-            //Roles.Add(new SelectListItem()
-            //{
-            //    Value = "3",
-            //    Text = "Obrero"
-            //});
+           
         }
 
         public void getRoles(ApplicationDbContext _context)

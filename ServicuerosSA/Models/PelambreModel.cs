@@ -154,17 +154,20 @@ namespace ServicuerosSA.Models
             ListaPelambre.Add(objetodatos);
             return ListaPelambre;
         }
-
-        
+                
         public List<IdentityError> ClaseGuardaPelambre(DateTime fecha, string obsrvaciones, int bogeda, int bombo, int formula, int personal, string codlote, int pesototal, int pieles, string codigoUnico)
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
             try
             {
+
+                                            
                 string ingresocod = "";
+
                 int codigoDes = (from p in _contexto.Pelambre
-                                 where p.Activo == true && p.CodigoLote == codlote && p.Fecha < DateTime.Now
+                                 where p.Activo == true && p.CodigoLote == codlote && p.Fecha <= fecha
                                  select p).Count();
+
                 switch (codigoDes)
                 {
                     case 0:
@@ -251,7 +254,7 @@ namespace ServicuerosSA.Models
                 {
                     Bodega1Id = bogeda,
                     BomboId = bombo,
-                    Fecha = DateTime.Now,
+                    Fecha = fecha,
                     Observaciones = obsrvaciones,
                     FormulaId = formula,
                     TotalPieles = pieles,
@@ -354,6 +357,7 @@ namespace ServicuerosSA.Models
                 compara = item.codigopelambre;
                     
             }
+
             object[] objeto = { dato };
             ListaPelambre.Add(objeto);
             return ListaPelambre;
@@ -524,7 +528,6 @@ namespace ServicuerosSA.Models
                        where p.PelambreId == consultaid.PelambreId 
                        select new
                        {
-                          
                            p.CodigoLote,
                            b.Num_bombo,
                           bo.NombreBodega,
