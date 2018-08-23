@@ -1,5 +1,7 @@
 ﻿class BodegaTripa {
-    constructor(numeropieles, peso,personal,activo, accion) {
+    constructor(tipotripa,descarne,numeropieles, peso,personal,activo, accion) {
+        this.tipotripa = tipotripa;
+        this.descarne = descarne;
         this.numeropieles = numeropieles;
         this.peso = peso;
         this.personal = personal;
@@ -18,6 +20,7 @@
             }
         });
     }
+
     ClaseListaClasificacionTripa() {
         var accion = this.accion;
         var contador = 1;
@@ -26,8 +29,29 @@
             url: accion,
             data: {},
             success: (respuesta) => {
+                console.log(respuesta);
+                if (0 < respuesta.length) {
+
                 for (var i = 0; i < respuesta.length; i++) {
-                    document.getElementById('ClasificacionTripaId').options[contador] = new Option(respuesta[i].detalle, respuesta[i].clasificacionTripaId);
+                    document.getElementById('ClasificaciontripaId').options[contador] = new Option(respuesta[i].detalle, respuesta[i].clasificacionTripaId);
+                    contador++;
+                    }
+                }
+
+               
+            }
+        });
+    }
+    ClaseListadescarnes() {
+        var accion = this.accion;
+        var contador = 1;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            success: (respuesta) => {
+                for (var i = 0; i < respuesta.length; i++) {
+                    document.getElementById('DescarneId').options[contador] = new Option(respuesta[i].descarneId, respuesta[i].descarneId);
                     contador++;
                 }
             }

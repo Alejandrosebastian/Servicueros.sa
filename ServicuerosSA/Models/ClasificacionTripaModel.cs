@@ -8,6 +8,7 @@ namespace ServicuerosSA.Models
     public class ClasificacionTripaModel
     {
         ApplicationDbContext _contexto;
+        private ClasificacionTripaModel listatipotripas;
         public ClasificacionTripaModel(ApplicationDbContext contexto)
         {
             _contexto = contexto;
@@ -15,6 +16,10 @@ namespace ServicuerosSA.Models
         public List<ClasificacionTripa> ClaseModeloListaClasificacionTripa()
         {
             return _contexto.ClasificacionTripa.OrderBy(c => c.Detalle).ToList();
+        }
+       public List<Descarne> Claselistadescarnes()
+        {
+            return _contexto.Descarne.OrderBy(d => d.DescarneId).ToList();
         }
      
        public List<object[]>ModeloFiltrarClasificacionTripa()

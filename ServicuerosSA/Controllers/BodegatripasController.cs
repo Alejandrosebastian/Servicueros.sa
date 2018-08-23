@@ -14,6 +14,7 @@ namespace ServicuerosSA.Controllers
     {
         private readonly ApplicationDbContext _context;
         private ClasificacionTripaModel listatipotripas;
+   
 
         public BodegatripasController(ApplicationDbContext context)
         {
@@ -23,6 +24,10 @@ namespace ServicuerosSA.Controllers
             public  List<ClasificacionTripa> Controladorlistatipotripa()
         {
             return listatipotripas.ClaseModeloListaClasificacionTripa();
+        }
+        public List<Descarne> Controladorlistadescarnes()
+        {
+            return listatipotripas.Claselistadescarnes();
         }
         // GET: Bodegatripas
         public async Task<IActionResult> Index()

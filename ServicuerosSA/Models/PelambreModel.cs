@@ -490,15 +490,15 @@ namespace ServicuerosSA.Models
                    // dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
                 //};
 
-                if (item.Detalle.ToUpper() == "SAL LIMPIA")
-                {
-                    dato += "<tr><td>CONTROL</td><td></td><td></td><td></td><td></td></tr>";
-                    dato += "<tr><td>PH = 9,0-9,5</td><td></td><td></td><td></td><td></td></tr>";
-                    dato += "<tr><td>PH = ºB = 0-1,0</td><td></td><td></td><td></td><td></td></tr>";
-                    dato += "<tr><td>ºB = TEMP 25ºC - 28ºC</td><td></td><td></td><td></td><td></td></tr>";
-                    dato += "<tr><td>TEMP = LAVADO  </td><td></td><td></td><td>10 MIN</td><td></td></tr>";
-                    dato += "<tr><td>ESCURRIR BAÑO</td><td></td><td></td><td></td><td></td></tr>";
-                };
+               // if (item.Detalle.ToUpper() == "SAL LIMPIA")
+                //{
+                    //dato += "<tr><td>CONTROL</td><td></td><td></td><td></td><td></td></tr>";
+                    //dato += "<tr><td>PH = 9,0-9,5</td><td></td><td></td><td></td><td></td></tr>";
+                    //dato += "<tr><td>PH = ºB = 0-1,0</td><td></td><td></td><td></td><td></td></tr>";
+                    //dato += "<tr><td>ºB = TEMP 25ºC - 28ºC</td><td></td><td></td><td></td><td></td></tr>";
+                    //dato += "<tr><td>TEMP = LAVADO  </td><td></td><td></td><td>10 MIN</td><td></td></tr>";
+                    //dato += "<tr><td>ESCURRIR BAÑO</td><td></td><td></td><td></td><td></td></tr>";
+               // };
                 //if (item.Detalle.ToUpper() == "ESCURRIR BAÑO")
                 //{
                   //  dato += "<tr><td>AGUA A 28 ºC</td><td></td><td></td><td></td><td></td></tr>";
