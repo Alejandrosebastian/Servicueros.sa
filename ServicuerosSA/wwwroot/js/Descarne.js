@@ -84,7 +84,7 @@
         var accion = this.accion;
         $.post(accion, { codigoUnico },
             (respuesta) => {
-                ListaIndex(1);
+                ListaDescarne(1);
                 alert("El registro se ha borrado exitosamente!!")
             }
         );
@@ -94,7 +94,7 @@
         document.getElementById('PelambreId').selectedIndex = 0;
         document.getElementById('personalId').selectedIndex = 0;
         $('#IngresoDescarne').modal('hide');
-        ListaIndex();
+        ListaDescarne();
 
     }
    

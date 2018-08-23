@@ -18,27 +18,23 @@ namespace ServicuerosSA.Models
         {
             List<object[]> ListaDescarne = new List<object[]>();
             string datos = "";
-            var res = (from p in _contexto.Pelambre
-                       join des in _contexto.Descarne on p.PelambreId equals des.PelambreId
-                       
-                         where p.Activo == true
+            var res = (from des in _contexto.Descarne 
+                         where des.Activo == true
                        select new
                        {
                            des.Cantidad,
-                           p.TotalPieles,
                            
-                           p.CodigoLote,
-                           p.Codigo
+                           des.codigodescarne
                        });
 
             foreach (var item in res)
             {
                 datos += "<tr>" +
                     "<td>" + item.Cantidad + "</td>" +
-                   "<td>" + item.TotalPieles + "</td>" +
+                   
                         
-                    "<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
-                      "<td><a class='btn btn-success' onclick='EliminarDescarne'>Eliminar</a></td>" +
+                    //"<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
+                      "<td><a class='btn btn-success' onclick='EliminarDescarne(" + item.codigodescarne + ")'>Eliminar</a></td>" +
                     "</tr>";
 
             }
