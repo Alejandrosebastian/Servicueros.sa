@@ -66,7 +66,6 @@
             data: {},
             success: (respuesta) => {
                 if (0 < respuesta.length) {
-                    
                     for (var i = 0; i < respuesta.length; i++) {
                         document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote +  respuesta[i].codigo, respuesta[i].pelambreId );
                         contador++;

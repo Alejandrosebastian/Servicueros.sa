@@ -5,9 +5,15 @@ $().ready(() => {
     claseJsLlamarListaProveedor();
     claseJsLlamarListaLotes(1);
     ListaIndex();
+
    // claseJsLlamarListaDescarne();
    // ListaDescarne();
    //Listatipotripa();
+
+   
+    ListaDescarne();
+   Listatipotripa();
+
 })
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
@@ -41,9 +47,10 @@ var ListaPelambre = () => {
     var listaPelambre = new Pelambre('', '', '', '', '','', accion);
     listaPelambre.ListaPelabre();
 }
+
 var ListaDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
-    var listaDescarne = new Descarne('', '', accion);
+    var listaDescarne = new Descarne('','','', '','','', accion);
     listaDescarne.ListaDescarne();
 }
 var Listatipotripa = () => {
