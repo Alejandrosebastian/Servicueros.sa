@@ -71,7 +71,7 @@
     NumeroPielesPelambre(id) {
         var accion = this.accion;
         $.ajax({
-            type: "POST",
+            type: "POST", 
             url: accion,
             data: { id },
             success: (respuesta) => {

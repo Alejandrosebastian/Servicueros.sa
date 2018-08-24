@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using ServicuerosSA.Data;
+
 namespace ServicuerosSA.Models
 {
     public class ClasificacionTripaModel
@@ -19,9 +21,31 @@ namespace ServicuerosSA.Models
         }
        public List<Descarne> Claselistadescarnes()
         {
-            return _contexto.Descarne.OrderBy(d => d.DescarneId).ToList();
+            return _contexto.Descarne.OrderBy(d => d.codigodescarne).ToList();
         }
-     
+       public List<IdentityError> Modelonumeropieles(int numdes, int numet)
+        {
+            List<IdentityError> lista = new List<IdentityError>();
+            IdentityError er = new IdentityError();
+            int trip = _contexto.Descarne.Where(d => d.DescarneId == numdes && d.Cantidad == numet).Count();
+            if(numet <= trip)
+            {
+                er = new IdentityError
+                {
+                    Code = "vale",
+                    Description = "vale"
+                };
+            }
+            else
+            {
+                er = new IdentityError
+                {
+                    Code = "no",
+                    Description = "no"
+                };
+            }
+            return lista;
+        }
        public List<object[]>ModeloFiltrarClasificacionTripa()
        {
            List<object[]> lista = new List<object[]>();

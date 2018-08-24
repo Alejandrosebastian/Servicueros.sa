@@ -51,30 +51,52 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-                for (var i = 0; i < respuesta.length; i++) {
-                    document.getElementById('DescarneId').options[contador] = new Option(respuesta[i].descarneId, respuesta[i].descarneId);
-                    contador++;
+                console.log(respuesta);
+                if (0 < respuesta.length) {
 
-    GuardaBodegaTripa(personal, numeropieles, descarne, clasificaciontripa, activo, peso) {
-        var personal = this.personal;
-        var numeropieles = this.numeropieles;
-        var descarne = this.descarne;
-        var clasificaciontripa = this.clasificaciontripa;
-        var activo = this.activo;
-        var peso = this.peso;
+                    for (var i = 0; i < respuesta.length; i++) {
+                        document.getElementById('Descarneid').options[contador] = new Option(respuesta[i].codigodescarne, respuesta[i].descarneid);
+                        contador++;
+                    }
+                }
+
+
+            }
+        });
+    }
+    Numeropielstripas(id) {
         var accion = this.accion;
         $.ajax({
             type: "POST",
             url: accion,
-            data: {
-                personal, numeropieles, descarne, clasificaciontripa, activo, peso
-            },
+            data: { id },
             success: (respuesta) => {
-                if (total == 'limpia') {
-                    this.limpiarcajas();
-
-                }
+                $('#TotalPieles').text(respuesta[0].cantidad);
+                $("#TotalPieles").removeClass("hiden");
             }
         });
     }
+
+    //GuardaBodegaTripa(personal, numeropieles, descarne, clasificaciontripa, activo, peso) {
+    //    var personal = this.personal;
+    //    var numeropieles = this.numeropieles;
+    //    var descarne = this.descarne;
+    //    var clasificaciontripa = this.clasificaciontripa;
+    //    var activo = this.activo;
+    //    var peso = this.peso;
+    //    var accion = this.accion;
+    //    $.ajax({
+    //        type: "POST",
+    //        url: accion,
+    //        data: {
+    //            personal, numeropieles, descarne, clasificaciontripa, activo, peso
+    //        },
+    //        success: (respuesta) => {
+    //            if (total == 'limpia') {
+    //                this.limpiarcajas();
+
+    //            }
+    //        }
+    //    });
+    //}
 }

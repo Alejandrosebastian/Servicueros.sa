@@ -210,9 +210,15 @@ var NumeroPielesPelambre = () => {
     var accion = 'Descarnes/ControladorUnPelambreDescarne';
     var combopelambres = document.getElementById('PelambreId');
     var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].value;
-
     var des = new Descarne('', '', accion);
     des.NumeroPielesPelambre(unpelabrecombo);
+}
+var numeropielestripa = () => {
+    var accion = 'Bodegatripas/Controladornumeropiel';
+    var trips = document.getElementById('Descarnesid');
+    var untrips = trips.options[trips.selectedIndex].value;
+    var tripa = new BodegaTripa('', '', '', '', '', '', accion);
+    tripa.Numeropielstripas();
 }
 var GuardaDescarne = () => {
     var accion = 'Descarnes/ControladorGuardaDescarne';

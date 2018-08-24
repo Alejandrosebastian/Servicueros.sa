@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ServicuerosSA.Data;
@@ -28,6 +29,10 @@ namespace ServicuerosSA.Controllers
         public List<Descarne> Controladorlistadescarnes()
         {
             return listatipotripas.Claselistadescarnes();
+        }
+        public List<IdentityError> Controladornumeropiel(int iddescarne, int cantidad)
+        {
+            return listatipotripas.Modelonumeropieles(iddescarne, cantidad);
         }
         // GET: Bodegatripas
         public async Task<IActionResult> Index()
