@@ -71,8 +71,8 @@
             url: accion,
             data: { id },
             success: (respuesta) => {
-                $('#TotalPieles').text(respuesta[0].cantidad);
-                $("#TotalPieles").removeClass("hiden");
+                $('#PielesInput').text(respuesta[0].numeropieles);
+                $("#PielesInput").removeClass("hiden");
             }
         });
     }
