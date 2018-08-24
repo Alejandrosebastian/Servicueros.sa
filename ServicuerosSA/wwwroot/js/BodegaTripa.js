@@ -55,7 +55,7 @@
                 if (0 < respuesta.length) {
 
                     for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('Descarneid').options[contador] = new Option(respuesta[i].codigodescarne, respuesta[i].descarneid);
+                        document.getElementById('Descarneid').options[contador] = new Option(respuesta[i].codigoLote, respuesta[i].descarneid);
                         contador++;
                     }
                 }
@@ -71,8 +71,8 @@
             url: accion,
             data: { id },
             success: (respuesta) => {
-                $('#PielesInput').text(respuesta[0].numeropieles);
-                $("#PielesInput").removeClass("hiden");
+                $('#PielesInput').text(respuesta[0].Cantidad);
+                $("#PielesInput").removeClass("hidden");
             }
         });
     }

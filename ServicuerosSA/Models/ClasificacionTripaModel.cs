@@ -21,7 +21,7 @@ namespace ServicuerosSA.Models
         }
        public List<Descarne> Claselistadescarnes()
         {
-            return _contexto.Descarne.OrderBy(d => d.codigodescarne).ToList();
+            return _contexto.Descarne.OrderBy(d => d.CodigoLote).ToList();
         }
        public List<IdentityError> Modelonumeropieles(int numdes, int numet)
         {

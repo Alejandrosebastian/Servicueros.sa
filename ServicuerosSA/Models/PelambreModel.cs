@@ -606,7 +606,7 @@ namespace ServicuerosSA.Models
 
         public List<Pelambre> Listapelambres()
         {
-            return _contexto.Pelambre.OrderBy(p => p.Fecha).ToList();
+            return _contexto.Pelambre.OrderBy(p => p.Fecha ).ToList();
         }
 
     }

@@ -34,6 +34,10 @@ namespace ServicuerosSA.Controllers
         {
             return listatipotripas.Modelonumeropieles(iddescarne, cantidad);
         }
+        public List<Descarne> Controladorundescarnetripa(int id)
+        {
+            return _context.Descarne.Where(d => d.DescarneId == id).ToList();
+        }
         // GET: Bodegatripas
         public async Task<IActionResult> Index()
         {

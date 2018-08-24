@@ -6,7 +6,7 @@ $().ready(() => {
     claseJsLlamarListaLotes(1);
     ListaIndex();
    // claseJsLlamarListaDescarne();
-    ListaDescarne();
+   // ListaDescarne();
    //Listatipotripa();
 })
 var Impresion = (id) => {
@@ -214,11 +214,11 @@ var NumeroPielesPelambre = () => {
     des.NumeroPielesPelambre(unpelabrecombo);
 }
 var numeropielestripa = () => {
-    var accion = 'Bodegatripas/Controladornumeropiel';
-    var trips = document.getElementById('Descarnesid');
-    var untrips = trips.options[trips.selectedIndex].value;
+    var accion = 'Bodegatripas/Controladorundescarnetripa';
+    var ya = document.getElementById('DescarnesId');
+    var untrips = ya.options[ya.selectedIndex].value;
     var tripa = new BodegaTripa('', '', '', '', '', '', accion);
-    tripa.Numeropielstripas();
+    tripa.Numeropielstripas(untrips);
 }
 var GuardaDescarne = () => {
     var accion = 'Descarnes/ControladorGuardaDescarne';
