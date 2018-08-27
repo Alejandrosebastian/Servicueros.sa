@@ -35,13 +35,14 @@
             data: {},
             success: (respuesta) => {
                 $.each(respuesta, (index, val) => {
-                    $('#ListaDescarne').html(val[0]);
+                    $('#DescarneLista').html(val[0]);
                 });
             }
 
         });
     
     }
+
     GuardarPelambre(personal, pelambre) {
         if (pelambre == '0') {
             $("#mensajep").removeClass("hidden");
@@ -109,7 +110,7 @@
         var accion = this.accion;
         $.post(accion, { codigoUnico },
             (respuesta) => {
-                ListaDescarne(1);
+                ListaIndexDescarne(1);
                 alert("El registro se ha borrado exitosamente!!")
             }
         );
@@ -119,7 +120,7 @@
         document.getElementById('PelambreId').selectedIndex = 0;
         document.getElementById('personalId').selectedIndex = 0;
         $('#IngresoDescarne').modal('hide');
-        ListaDescarne();
+        ListaIndexDescarne;
 
     }
    

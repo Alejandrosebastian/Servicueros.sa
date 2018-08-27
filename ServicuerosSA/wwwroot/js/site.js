@@ -6,15 +6,15 @@ $().ready(() => {
     claseJsLlamarListaLotes(1);
     ListaIndex();
 
-   // claseJsLlamarListaDescarne();
-   // ListaDescarne();
-   //Listatipotripa();
+    // claseJsLlamarListaDescarne();
+    // ListaDescarne();
+    //Listatipotripa();
 
-   
-    ListaDescarne();
-   Listatipotripa();
+    ListaIndexDescarne();
+    Listatipotripa();
 
-})
+});
+
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
     var contenidooriginal = document.body.innerHTML;
@@ -217,7 +217,7 @@ var NumeroPielesPelambre = () => {
     var accion = 'Descarnes/ControladorUnPelambreDescarne';
     var combopelambres = document.getElementById('PelambreId');
     var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].value;
-    var des = new Descarne('', '', accion);
+    var des = new Descarne('', '', '', '', '', '', accion);
     des.NumeroPielesPelambre(unpelabrecombo);
 }
 var numeropielestripa = () => {

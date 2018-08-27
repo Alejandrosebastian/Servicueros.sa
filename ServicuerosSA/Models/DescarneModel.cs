@@ -35,9 +35,7 @@ namespace ServicuerosSA.Models
             foreach (var item in res)
             {
                 datos += "<tr>" +
-                    "<td>" + item.Cantidad + "</td>" +
-                   
-                        
+                    "<td>" + item.Cantidad + "</td>" +                       
                     //"<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
                       "<td><a class='btn btn-success' onclick='EliminarDescarne(" + item.codigodescarne + ")'>Eliminar</a></td>" +
                     "</tr>";
