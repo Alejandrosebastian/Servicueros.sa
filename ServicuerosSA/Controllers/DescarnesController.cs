@@ -22,7 +22,10 @@ namespace ServicuerosSA.Controllers
             claseDescarne = new DescarneModel(context);
             clasePelambre = new PelambreModel(context);
         }
-
+        public List<Pelambre> Controladorlistapelambre()
+        {
+            return clasePelambre.Listapelambres();
+        }
         // GET: Descarnes
         public async Task<IActionResult> Index()
         {
@@ -110,10 +113,7 @@ namespace ServicuerosSA.Controllers
         {
             return _context.Pelambre.Where(p => p.PelambreId == id).ToList();
         }
-        public List<Pelambre> ControladorListaPelambre()
-        {
-            return clasePelambre.Listapelambres();
-        }
+       
 
         // POST: Descarnes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

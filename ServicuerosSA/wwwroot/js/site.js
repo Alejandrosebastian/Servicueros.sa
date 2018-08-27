@@ -209,8 +209,8 @@ var ImprimirPesaje = (id) => {
     impresionPesaje.CuerpoPesaje(id);
 }
 var ListaPelambreDescarne = () => {
-    var accion = 'Descarnes/ControladorListaPelambre';
-    var descarne = new Descarne('', '', accion);
+    var accion = 'Descarnes/Controladorlistapelambre';
+    var descarne = new Descarne('','','','','','',accion);
     descarne.listapelambre();
 }
 var NumeroPielesPelambre = () => {

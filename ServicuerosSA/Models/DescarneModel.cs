@@ -9,9 +9,14 @@ namespace ServicuerosSA.Models
     public class DescarneModel
     {
         private ApplicationDbContext _contexto;
+        private Pelambre claselistapelambre;
         public DescarneModel(ApplicationDbContext contexto)
         {
             _contexto = contexto;
+        }
+        public List<Pelambre> Modelolistapelambres()
+        {
+            return _contexto.Pelambre.OrderBy(p => p.CodigoLote).ToList();
         }
         //Completar la consulta con el total de pieles d descarne falta
         public List<object[]> ClaseListaDescarne()
