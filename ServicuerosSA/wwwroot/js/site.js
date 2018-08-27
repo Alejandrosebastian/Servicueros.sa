@@ -47,12 +47,12 @@ var ListaPelambre = () => {
     var listaPelambre = new Pelambre('', '', '', '', '','', accion);
     listaPelambre.ListaPelabre();
 }
-
-var ListaDescarne = () => {
+var ListaIndexDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
-    var listaDescarne = new Descarne('','','', '','','', accion);
-    listaDescarne.ListaDescarne();
+    var listaDescarne = new Descarne('', '', '', '', '', '', accion);
+    listaDescarne.ListaIndex();
 }
+
 var Listatipotripa = () => {
     var accion = 'Bodegatripas/Controladorlistatipotripa';
     var listatrip = new BodegaTripa('','','', '', '', '', accion);
