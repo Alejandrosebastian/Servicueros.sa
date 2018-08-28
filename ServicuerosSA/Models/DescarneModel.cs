@@ -35,9 +35,7 @@ namespace ServicuerosSA.Models
             foreach (var item in res)
             {
                 datos += "<tr>" +
-                    "<td>" + item.Cantidad + "</td>" +
-                   
-                        
+                    "<td>" + item.Cantidad + "</td>" +                       
                     //"<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
                       "<td><a class='btn btn-success' onclick='EliminarDescarne(" + item.codigodescarne + ")'>Eliminar</a></td>" +
                     "</tr>";
@@ -49,19 +47,19 @@ namespace ServicuerosSA.Models
             return ListaDescarne;
         }
     
-        public List<IdentityError> ClaseGuardarDescarne(int cantidad, DateTime fecha, int personal, int pelambre)
+        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal )
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             try
             {
                 var guardarDescarne = new Descarne
                 {
+                    PelambreId = pelambre,
                     Cantidad = cantidad,
-
                     PersonalId = personal,
-                    Activo = true,
-                    PelambreId = pelambre,               
-
+                    Activo= true,
+                    Fecha=fecha
+                   
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();

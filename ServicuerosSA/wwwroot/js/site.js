@@ -15,7 +15,16 @@ $().ready(() => {
     Listatipotripa();
     
 
-})
+    // claseJsLlamarListaDescarne();
+    // ListaDescarne();
+    //Listatipotripa();
+
+    ListaIndexDescarne();
+    Listatipotripa();
+
+});
+
+
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
     var contenidooriginal = document.body.innerHTML;
@@ -48,12 +57,17 @@ var ListaPelambre = () => {
     var listaPelambre = new Pelambre('', '', '', '', '','', accion);
     listaPelambre.ListaPelabre();
 }
-
-var ListaDescarne = () => {
+var ListaIndexDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
+
     var listaDescarne = new Descarne('','','','','','',accion);
     listaDescarne.ListaDescarne();
+
+    var listaDescarne = new Descarne('', '', '', '', accion);
+    listaDescarne.ListaIndex();
+
 }
+
 var Listatipotripa = () => {
     var accion = 'Bodegatripas/Controladorlistatipotripa';
     var listatrip = new BodegaTripa('','','', '', '', '', accion);
@@ -228,7 +242,7 @@ var NumeroPielesPelambre = () => {
     var accion = 'Descarnes/ControladorUnPelambreDescarne';
     var combopelambres = document.getElementById('PelambreId');
     var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].value;
-    var des = new Descarne('', '', accion);
+    var des = new Descarne('', '', '', '', '', '', accion);
     des.NumeroPielesPelambre(unpelabrecombo);
 }
 var numeropielestripa = () => {
@@ -245,11 +259,14 @@ var GuardaDescarne = () => {
     var personales = document.getElementById("personalId");
     var personal = personales.options[personales.selectedIndex].value;
     var cantidad = document.getElementById("CantidadPieles").value;
+   
+    
     var d = new Date();
     var fecha = d.getDate();
     var guades = new Descarne(cantidad, d, accion);
     guades.GuardarPelambre(personal,pelambre);
 }
+
 var Guardarbodetripas = () => {
     var accion = 'BodegaTripas/Controladorguardabodetripas';
     var clasifi = document.getElementById("ClasificaciontripaId");
@@ -285,6 +302,22 @@ var controlnumeropieltripa=()=>
         $('#graba').prop('disabled', true);
     }
 }
+
+
+//var controlnumeropieles = () => {
+//    var pelambre = document.getElementById("TotalPielesInput").value;
+//    var cantidad = document.getElementById("CantidadPieles").value;
+//    if (pelambre >= cantidad) {
+//        $("#mensajec").removeClass("hidden");
+//        $('#guarda').prop('disabled', true);
+//    } else {
+        
+//        $("#mensajep").addClass("hidden");
+//        $('#guarda').prop('enabled', true);
+//    }
+
+//}
+
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
     var pesaje = new Pelambre('', '', '', '', '', '', accion);
