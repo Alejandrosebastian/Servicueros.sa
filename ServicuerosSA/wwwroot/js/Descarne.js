@@ -25,8 +25,7 @@
     //        }
     //    });
     //}
-<<<<<<< HEAD
-=======
+
     ListaIndex() {
         var accion = this.accion;
         $.ajax({
@@ -43,7 +42,7 @@
     
     }
 
->>>>>>> d7c3cc3dd929e76afea331870271b5a52d24ca92
+
     GuardarPelambre(personal, pelambre) {
         if (pelambre == '0') {
             $("#mensajep").removeClass("hidden");
