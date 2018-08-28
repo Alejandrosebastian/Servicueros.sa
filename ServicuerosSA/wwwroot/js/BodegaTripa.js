@@ -59,7 +59,7 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-                console.log(respuesta);
+                //console.log(respuesta);
                 if (0 < respuesta.length) {
 
                 for (var i = 0; i < respuesta.length; i++) {
@@ -80,7 +80,7 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-                console.log(respuesta);
+               // console.log(respuesta);
                 if (0 < respuesta.length) {
 
                     for (var i = 0; i < respuesta.length; i++) {
@@ -100,7 +100,7 @@
             url: accion,
             data: { id },
             success: (respuesta) => {
-                console.log(respuesta);
+                //console.log(respuesta);
                 $('#PielesInput').text(respuesta[0].cantidad);
                 $('#PielesInput').removeClass("hidden");
             }
@@ -111,7 +111,7 @@
         $.post(accion,
             {},
             (res) => {
-                console.log(res);
+                //console.log(res);
                 $.each(res, (contador, valor) => {
                     $('#BodegaTripa').html(valor[0]);
                 });

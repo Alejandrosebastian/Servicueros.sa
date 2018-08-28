@@ -59,15 +59,8 @@ var ListaPelambre = () => {
 }
 var ListaIndexDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
-
-
-    var listaDescarne = new Descarne('','','','','','',accion);
-    listaDescarne.ListaDescarne();
-
-    
-
-
-
+      var listaDescarne = new Descarne('','','','',accion);
+    listaDescarne.ListaIndex();
 }
 
 var Listatipotripa = () => {

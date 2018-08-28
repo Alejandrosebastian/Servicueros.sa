@@ -91,20 +91,20 @@
             }
         });
     }
-    //NumeroPielesPelambre(id) {
-    //    var accion = this.accion;
-    //    $.ajax({
-    //        type: "POST", 
-    //        url: accion,
-    //        data: { id },
-    //        success: (respuesta) => {
-    //            console.log(respuesta);
-    //            document.getElementById('TotalPielesInput').value = respuesta[0].totalPieles;
-    //            $('#TotalPielesInput').value = respuesta[0].totalPieles;
-    //            $("#TotalPielesInput").removeClass("hidden");
-    //        }
-    //    });
-    //}  
+    NumeroPielesPelambre(id) {
+        var accion = this.accion;
+        $.ajax({
+            type: "POST", 
+            url: accion,
+            data: { id },
+            success: (respuesta) => {
+                console.log(respuesta);
+                document.getElementById('TotalPielesInput').value = respuesta[0].totalPieles;
+                $('#TotalPielesInput').value = respuesta[0].totalPieles;
+                $("#TotalPielesInput").removeClass("hidden");
+            }
+        });
+    }  
     EliminarDescarne(codigoUnico) {
         var accion = this.accion;
         $.post(accion, { codigoUnico },
@@ -119,7 +119,7 @@
         document.getElementById('PelambreId').selectedIndex = 0;
         document.getElementById('personalId').selectedIndex = 0;
         $('#IngresoDescarne').modal('hide');
-        ListaIndex;
+        ListaIndexDescarne;
 
     }
 }
