@@ -5,7 +5,7 @@
 
 <h2>Proceso en Descarne</h2>
 <p>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoDescarne" onclick="ListaPelambreDescarne(); listaPersonal(); ListaDescarne(); ListaIndex(); ">Nuevo Proceso</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoDescarne" onclick="ListaPelambreDescarne(); listaPersonal(); ListaIndex(); ">Nuevo Proceso</a>
 </p>
 <table class="table">
     <thead>
@@ -49,7 +49,8 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de pieles en Pelambre</label>
-                        <label id="TotalPielesInput" name="TotalPielesInput" class="control-label alert alert-success hidden"></label>
+                        @*<label id="TotalPielesInput" name="TotalPielesInput" class="control-label alert alert-success hidden"></label>*@
+                        <input id="TotalPielesInput" name="TotalPielesInput" type="text" class="control-label alert alert-success hidden" />
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de pieles a Descarne</label>
@@ -69,7 +70,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="GuardaDescarne()">Guardar</button>
+                <button type="button" class="btn btn-primary" id="guarda" name="guarda" onclick="GuardaDescarne()">Guardar</button>
             </div>
         </div>
     </div>

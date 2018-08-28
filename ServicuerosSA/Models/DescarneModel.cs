@@ -47,19 +47,19 @@ namespace ServicuerosSA.Models
             return ListaDescarne;
         }
     
-        public List<IdentityError> ClaseGuardarDescarne(int cantidad, DateTime fecha, int personal, int pelambre)
+        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal )
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             try
             {
                 var guardarDescarne = new Descarne
                 {
+                    PelambreId = pelambre,
                     Cantidad = cantidad,
-
                     PersonalId = personal,
-                    Activo = true,
-                    PelambreId = pelambre,               
-
+                    Activo= true,
+                    Fecha=fecha
+                   
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();

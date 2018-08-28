@@ -1,13 +1,11 @@
 ﻿class Descarne {
 
-    constructor(cantidad, fecha, PelambreId, PersonalId, codigodescarne, CodigoLote, accion) {
+    constructor(cantidad, fecha, PelambreId, PersonalId, accion) {
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.PelambreId = Pelambre;
         this.PersonalId = PersonalId;
-        this.codigodescarne = codigodescarne;
-        this.CodigoLote = CodigoLote;
-        this.accion = accion;
+         this.accion = accion;
 
     }
     //ListaDescarne() {
@@ -58,14 +56,12 @@
                     $("#mensajeper").addClass("hidden");
                     var cantidad = this.cantidad;                   
                     var fecha = this.fecha;
-                    var codigodescarne = this.codigodescarne;
-                    var CodigoLote = this.CodigoLote;
                     var accion = this.accion;
                     $.ajax({
                         type: "POST",
                         url: accion,
                         data: {
-                            cantidad, fecha, personal, pelambre, codigodescarne, CodigoLote
+                            pelambre, cantidad, fecha, personal
                         },
                         success: (respuesta) => {
                             console.log(respuesta);
@@ -101,7 +97,9 @@
             url: accion,
             data: { id },
             success: (respuesta) => {
-                $('#TotalPielesInput').text(respuesta[0].totalPieles);
+                console.log(respuesta);
+                document.getElementById('TotalPielesInput').value = respuesta[0].totalPieles;
+                //$('#TotalPielesInput').value = respuesta[0].totalPieles;
                 $("#TotalPielesInput").removeClass("hidden");
             }
         });
@@ -111,7 +109,7 @@
         $.post(accion, { codigoUnico },
             (respuesta) => {
                 ListaIndexDescarne(1);
-                alert("El registro se ha borrado exitosamente!!")
+                alert("El registro se ha borrado exitosamente!!");
             }
         );
     }
@@ -120,7 +118,7 @@
         document.getElementById('PelambreId').selectedIndex = 0;
         document.getElementById('personalId').selectedIndex = 0;
         $('#IngresoDescarne').modal('hide');
-        ListaIndex;
+        ListaIndexDescarne;
 
     }
 }

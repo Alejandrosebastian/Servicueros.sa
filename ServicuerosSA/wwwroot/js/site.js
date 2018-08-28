@@ -49,7 +49,7 @@ var ListaPelambre = () => {
 }
 var ListaIndexDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
-    var listaDescarne = new Descarne('', '', '', '', '', '', accion);
+    var listaDescarne = new Descarne('', '', '', '', accion);
     listaDescarne.ListaIndex();
 }
 
@@ -234,22 +234,27 @@ var GuardaDescarne = () => {
     var personales = document.getElementById("personalId");
     var personal = personales.options[personales.selectedIndex].value;
     var cantidad = document.getElementById("CantidadPieles").value;
+   
+    
     var d = new Date();
     var fecha = d.getDate();
     var guades = new Descarne(cantidad, d, accion);
     guades.GuardarPelambre(personal,pelambre);
 }
-var controlnumeropieles = () => {
-    var pelambre = document.getElementById("TotalPielesInput").value;
-    var cantidad = document.getElementById("CantidadPieles").value;
-    if (pelambre == cantidad) {
-        $("#mensajep").addClass("hidden");
-    } else {
-        $("#mensajec").removeClass("hidden");
-        $('#graba').prop('disabled', true);
-    }
 
-}
+//var controlnumeropieles = () => {
+//    var pelambre = document.getElementById("TotalPielesInput").value;
+//    var cantidad = document.getElementById("CantidadPieles").value;
+//    if (pelambre >= cantidad) {
+//        $("#mensajec").removeClass("hidden");
+//        $('#guarda').prop('disabled', true);
+//    } else {
+        
+//        $("#mensajep").addClass("hidden");
+//        $('#guarda').prop('enabled', true);
+//    }
+
+//}
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
     var pesaje = new Pelambre('', '', '', '', '', '', accion);
