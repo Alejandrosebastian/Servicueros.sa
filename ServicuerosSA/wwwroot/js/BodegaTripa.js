@@ -8,6 +8,35 @@
         this.activo = activo;
         this.accion = accion;
     }
+    GuardaClasificacionTripa(tipotripa,descarne,personal) {
+        if (this.tipotripa == '0') {
+            document.getElementById('mensajede').innerHTML = 'Selecciona un tipo de clasificacion';
+        } else {
+            document.getElementById('mensajede').innerHTML = '';
+            if (this.descarne == '0') {
+                document.getElementById('mensajetri').innerHTML = 'seleccione que desea clasificar';
+            } else {
+                document.getElementById('mensajetri').innerHTML = '';
+                if (this.personal == '0') {
+                    document.getElementById('mensajeper').innerHTML = 'Seleccione a la persona indicada en este proceso';
+                } else {
+                    var numeropieles = this.numeropieles;
+                    var peso = this.peso;
+                    var accion = this.accion;
+                    $.ajax({
+                        type: "POST",
+                        url: accion,
+                        data: {
+                            tipotripa,descarne,numeropieles,peso,personal
+                        },
+                        success: (respuesta) => {
+                            this.limpiarcajas();
+                        }
+                    });
+                }
+            }
+        }
+    }
     bodegatripa() {
         var bodegatripaId = this.numeropieles;
         var accion = this.accion;
@@ -55,7 +84,7 @@
                 if (0 < respuesta.length) {
 
                     for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('Descarneid').options[contador] = new Option(respuesta[i].codigoLote, respuesta[i].descarneid);
+                        document.getElementById('Descarneid').options[contador] = new Option(respuesta[i].codigoLote, respuesta[i].descarneId);
                         contador++;
                     }
                 }
@@ -71,32 +100,39 @@
             url: accion,
             data: { id },
             success: (respuesta) => {
-                $('#PielesInput').text(respuesta[0].Cantidad);
-                $("#PielesInput").removeClass("hidden");
+                console.log(respuesta);
+                $('#PielesInput').text(respuesta[0].cantidad);
+                $('#PielesInput').removeClass("hidden");
             }
         });
     }
+    Listaclasificaciontripaindex() {
+        var accion = this.accion;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: { },
+            success: (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#BodegaTripa').html(val[0]);
+                });
+            }
 
-    //GuardaBodegaTripa(personal, numeropieles, descarne, clasificaciontripa, activo, peso) {
-    //    var personal = this.personal;
-    //    var numeropieles = this.numeropieles;
-    //    var descarne = this.descarne;
-    //    var clasificaciontripa = this.clasificaciontripa;
-    //    var activo = this.activo;
-    //    var peso = this.peso;
-    //    var accion = this.accion;
-    //    $.ajax({
-    //        type: "POST",
-    //        url: accion,
-    //        data: {
-    //            personal, numeropieles, descarne, clasificaciontripa, activo, peso
-    //        },
-    //        success: (respuesta) => {
-    //            if (total == 'limpia') {
-    //                this.limpiarcajas();
+        });
+      
+    }
+    limpiarcajas() {
+        document.getElementById('Descarneid').selectIndex = 0;
+        document.getElementById('PielesInput').value = '';
+        document.getElementById('ClasificaciontripaId').selectIndex = 0;
+        document.getElementById('NumeroPielesInput').value = '';
+        document.getElementById('personalId').selectedIndex = 0;
+        $('#IngresoClasificacionTripa').html = '';
+        $('#IngresoClasificacionTripa').modal('hide');
+       
+        listatripasindex();
 
-    //            }
-    //        }
-    //    });
-    //}
+    }
+    
+   
 }

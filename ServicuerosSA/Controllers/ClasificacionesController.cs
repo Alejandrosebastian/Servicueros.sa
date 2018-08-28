@@ -24,7 +24,7 @@ namespace ServicuerosSA.Controllers
             return claseModelosListaClasificaciones.ClaseModeloListaClasificaciones();
         }
 
-        // GET: Clasificaciones
+        // GET: Clasificaciones 
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clasificacion.ToListAsync());

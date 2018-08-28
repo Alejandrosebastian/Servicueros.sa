@@ -10,7 +10,7 @@ namespace ServicuerosSA.Models
     public class ClasificacionTripaModel
     {
         ApplicationDbContext _contexto;
-        private ClasificacionTripaModel listatipotripas;
+       //private ClasificacionTripaModel listatipotripas;
         public ClasificacionTripaModel(ApplicationDbContext contexto)
         {
             _contexto = contexto;
@@ -50,29 +50,84 @@ namespace ServicuerosSA.Models
        {
            List<object[]> lista = new List<object[]>();
            string datos = "";
-            var res = (from de in _contexto.Descarne
-                       join pe in _contexto.Pelambre on de.PelambreId equals pe.PelambreId
-                       where pe.PelambreId == 9
+
+           var res = (from bt in _contexto.Bodegatripa
+                       join de in _contexto.Descarne on bt.DescarneId equals de.DescarneId
+                       join cl in _contexto.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
+                       where bt.activo == true 
                        select new
                        {
-                           pe.CodigoLote,
-                           pe.Codigo,
-                           de.Cantidad,
-                           pe.Peso
-
+                           de.CodigoLote,
+                           bt.NumeroPieles,
+                           cl.Detalle,
+                           bt.peso
                        }).ToList();
             foreach(var item in res)
             {
                 datos ="<tr>"+
-                    "<td>" + item.CodigoLote + ""+ item.Codigo + "</td>" +
-                    "<td>" + item.Cantidad + "</td>" +
-                    "<td>" + item.Peso + "</td>" +
-                   
+                    "<td>" + item.CodigoLote + "</td>" +
+                    "<td>" + item.NumeroPieles + "</td>" +
+                    "<td>" + item.Detalle + "</td>" +
+                    "<td>" + item.peso + "</td>" +
                     "</tr>";
             }
             object[] objetodatos = { datos };
             lista.Add(objetodatos);
             return lista;
        }
+        public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne, int numeropieles, int peso, int personal)
+        {
+            List<IdentityError> listatripa = new List<IdentityError>();
+            try
+            {
+                var guardatripas = new Bodegatripa
+                {
+                    ClasificacionTripaId = tipotripa,
+                    DescarneId = descarne,
+                    NumeroPieles = numeropieles,
+                    peso = peso,
+                    PersonalId = personal,
+                    activo = true
+
+                };
+                
+                _contexto.Bodegatripa.Add(guardatripas);
+                _contexto.SaveChanges();
+
+
+                var descarnes = (from des in _contexto.Descarne
+                               where des.DescarneId == descarne
+                               select new Descarne
+                               {
+                                   
+                                   PelambreId = des.PelambreId,
+                                   PersonalId = des.PersonalId,
+                                   Activo = false,
+                                   Cantidad = des.Cantidad,
+                                   codigodescarne = des.codigodescarne,
+                                   CodigoLote = des.CodigoLote
+                               }).FirstOrDefault();
+
+                _contexto.Descarne.Update(descarnes);
+                _contexto.SaveChanges();
+
+
+                listatripa.Add(new IdentityError
+                {
+                    Code = "ok",
+                    Description = "ok"
+                });
+            }
+            catch(Exception e)
+            {
+                listatripa.Add(new IdentityError
+                {
+                    Code = "no",
+                    Description = "no"
+                });
+            }
+            return listatripa;
+        }
     }
+   
 }

@@ -18,7 +18,7 @@ namespace ServicuerosSA.Models
         public Descarne Descarnes { get; set; }
         public int ClasificacionTripaId { get; set; }
         public ClasificacionTripa ClasificacionTripa { get; set; }
-        public int Personal { get; set; }
+        public int PersonalId { get; set; }
         public Personal personal { get; set; }
         
     }

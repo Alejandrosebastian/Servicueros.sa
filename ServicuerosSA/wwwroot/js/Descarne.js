@@ -10,23 +10,23 @@
         this.accion = accion;
 
     }
-    ListaDescarne() {
-        var accion = this.accion;
-        var contador = 1;
-        $.ajax({
-            type: "POST",
-            url: accion,
-            data: {},
-            success: (respuesta) => {
-                if (0 < respuesta.length) {
-                    for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].nombre, respuesta[i].formulaId);
-                        contador++;
-                    }
-                }
-            }
-        });
-    }
+    //ListaDescarne() {
+    //    var accion = this.accion;
+    //    var contador = 1;
+    //    $.ajax({
+    //        type: "POST",
+    //        url: accion,
+    //        data: {},
+    //        success: (respuesta) => {
+    //            if (0 < respuesta.length) {
+    //                for (var i = 0; i < respuesta.length; i++) {
+    //                    document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].nombre, respuesta[i].formulaId);
+    //                    contador++;
+    //                }
+    //            }
+    //        }
+    //    });
+    //}
     GuardarPelambre(personal, pelambre) {
         if (pelambre == '0') {
             $("#mensajep").removeClass("hidden");

@@ -9,7 +9,7 @@ namespace ServicuerosSA.Models
     public class DescarneModel
     {
         private ApplicationDbContext _contexto;
-        private Pelambre claselistapelambre;
+       
         public DescarneModel(ApplicationDbContext contexto)
         {
             _contexto = contexto;

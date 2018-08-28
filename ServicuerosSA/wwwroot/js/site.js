@@ -5,14 +5,15 @@ $().ready(() => {
     claseJsLlamarListaProveedor();
     claseJsLlamarListaLotes(1);
     ListaIndex();
-
+    listatripasindex();
    // claseJsLlamarListaDescarne();
    // ListaDescarne();
    //Listatipotripa();
 
    
-    ListaDescarne();
-   Listatipotripa();
+   // ListaDescarne();
+    Listatipotripa();
+    
 
 })
 var Impresion = (id) => {
@@ -50,7 +51,7 @@ var ListaPelambre = () => {
 
 var ListaDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
-    var listaDescarne = new Descarne('','','', '','','', accion);
+    var listaDescarne = new Descarne('','','','','','',accion);
     listaDescarne.ListaDescarne();
 }
 var Listatipotripa = () => {
@@ -103,6 +104,16 @@ var ListaIndex = () => {
     var index = new Pelambre('', '', '', '', '', '', accion);
     index.ListaIndex();
 }
+
+
+var listatripasindex = () => {
+    var accion = '../BodegaTripas/Controllistaindesxtripa';
+    var inde = new BodegaTripa('','','','','','',accion);
+    inde.Listaclasificaciontripaindex();
+}
+
+
+
 var listaTipoPiel = () => {
     var accion = 'TipoPiels/ControladorTipoPielLista';
     var tipopiellista = new ClaseTipoPiel('', accion);
@@ -222,7 +233,7 @@ var NumeroPielesPelambre = () => {
 }
 var numeropielestripa = () => {
     var accion = 'Bodegatripas/Controladorundescarnetripa';
-    var ya = document.getElementById('DescarnesId');
+    var ya = document.getElementById('Descarneid');
     var untrips = ya.options[ya.selectedIndex].value;
     var tripa = new BodegaTripa('', '', '', '', '', '', accion);
     tripa.Numeropielstripas(untrips);
@@ -239,6 +250,21 @@ var GuardaDescarne = () => {
     var guades = new Descarne(cantidad, d, accion);
     guades.GuardarPelambre(personal,pelambre);
 }
+var Guardarbodetripas = () => {
+    var accion = 'BodegaTripas/Controladorguardabodetripas';
+    var clasifi = document.getElementById("ClasificaciontripaId");
+    var clasifica = clasifi.options[clasifi.selectedIndex].value;
+    var descarne = document.getElementById("Descarneid");
+    var descarnes = descarne.options[descarne.selectedIndex].value;
+    var numpieles = document.getElementById('NumeroPielesInput').value;
+    var peso = document.getElementById('PesoInput').value;
+    var personal = document.getElementById('personalId');
+    var personales = personal.options[personal.selectedIndex].value;
+    var guarda = new BodegaTripa(clasifica, descarnes, numpieles, peso, personales, '', accion);
+    guarda.GuardaClasificacionTripa(clasifica, descarnes, personales);
+
+
+}
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
@@ -249,6 +275,15 @@ var controlnumeropieles = () => {
         $('#graba').prop('disabled', true);
     }
 
+}
+var controlnumeropieltripa=()=> 
+{
+    var descarne = document.getElementById("PielesInput").value;
+    var tripa = document.getElementById("NumeroPielesInput").value;
+    if (descarne == cantidad) {
+        $("#mensajeper").addClass("hidden");
+        $('#graba').prop('disabled', true);
+    }
 }
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';

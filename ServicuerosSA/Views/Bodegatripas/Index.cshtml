@@ -5,7 +5,7 @@
 <h2>Lista en tripas</h2>
 
 <p>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="  listaPersonal(); Listatipotripa(); listadescarne(); ">Nueva Clasificacion</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="  listaPersonal(); Listatipotripa(); listadescarne();  ">Nueva Clasificacion</a>
 </p>
 <table class="table">
     <thead>
@@ -48,7 +48,7 @@
                             <option value="0">Seleccione el Lote que desee</option>
                         </select>
                         <br />
-                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione el Codigo de lote:</span>
+                        <span id="mensajede" class="alert alert-danger hidden">Seleccione el Codigo de lote:</span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de pieles en el lote</label>
@@ -60,17 +60,17 @@
                             <option value="0">Seleccione la Clasificacion asignada para este proceso</option>
                         </select>
                         <br />
-                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione la clasificacion</span>
+                        <span id="mensajetri" class="alert alert-danger hidden">Seleccione la clasificacion</span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de Pieles</label>
-                        <br />
-                        <input id="NumeroPielesInput" name="NumeroPielesInput" class="control-label">
+                        
+                        <input id="NumeroPielesInput" type="number" name="NumeroPielesInput" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">Peso</label>
-                        <br />
-                        <input id="PesoInput" name="PesoInput" class="control-label ">
+                        
+                        <input id="PesoInput" type="number" name="PesoInput" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">Personal</label>
@@ -78,7 +78,7 @@
                             <option value="0">Seleccione el Personal asignado a esta operación</option>
                         </select>
                         <br />
-                        <span id="mensajec" class="alert alert-danger hidden">Seleccione al Personal</span>
+                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione al Personal</span>
                     </div>
 
                     @*<table class="table">
@@ -100,11 +100,12 @@
             </thead>
             <tbody id="Descarneslista"></tbody>
         </table>*@
+                    @*<tbody id="Tripaslista" ></tbody>*@
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="GuardaClasificacionTripa()">Guardar</button>
+                <button type="button" class="btn btn-primary"id="graba" name="graba" onclick="Guardarbodetripas()">Guardar</button>
             </div>
         </div>
     </div>

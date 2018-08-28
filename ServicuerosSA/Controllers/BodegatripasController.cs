@@ -38,6 +38,14 @@ namespace ServicuerosSA.Controllers
         {
             return _context.Descarne.Where(d => d.DescarneId == id).ToList();
         }
+        public List<object[]> Controllistaindesxtripa()
+        {
+            return listatipotripas.ModeloFiltrarClasificacionTripa();
+        }
+        public List<IdentityError> Controladorguardabodetripas(int tipotripa, int descarne, int numeropieles, int peso, int personal)
+        {
+            return listatipotripas.Claseguardabodetripa(tipotripa, descarne, numeropieles, peso, personal);
+        }
         // GET: Bodegatripas
         public async Task<IActionResult> Index()
         {
