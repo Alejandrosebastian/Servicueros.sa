@@ -42,7 +42,6 @@
     
     }
 
-
     GuardarPelambre(personal, pelambre) {
         if (pelambre == '0') {
             $("#mensajep").removeClass("hidden");
@@ -74,7 +73,7 @@
             }
         }
     }
-    
+    //combo
     listapelambre() {
         var accion = this.accion;
         var contador = 1;
@@ -120,7 +119,7 @@
         document.getElementById('PelambreId').selectedIndex = 0;
         document.getElementById('personalId').selectedIndex = 0;
         $('#IngresoDescarne').modal('hide');
-        ListaIndexDescarne;
+        ListaIndex;
 
     }
 }

@@ -55,9 +55,9 @@ namespace ServicuerosSA.Models
                 var guardarDescarne = new Descarne
                 {
                     PelambreId = pelambre,
+                    Activo = true,
                     Cantidad = cantidad,
                     PersonalId = personal,
-                    Activo= true,
                     Fecha=fecha
                    
                 };
