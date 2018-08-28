@@ -120,8 +120,7 @@
         document.getElementById('PelambreId').selectedIndex = 0;
         document.getElementById('personalId').selectedIndex = 0;
         $('#IngresoDescarne').modal('hide');
-        ListaIndexDescarne;
+        ListaIndex;
 
     }
-   
 }
