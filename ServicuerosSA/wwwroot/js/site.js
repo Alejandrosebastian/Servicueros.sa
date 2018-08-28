@@ -256,7 +256,7 @@ var GuardaDescarne = () => {
     var cantidad = document.getElementById("CantidadPieles").value;
     var d = new Date();
     var fecha = d.getDate();
-    var guades = new Descarne(cantidad, d, accion);
+    var guades = new Descarne(cantidad,d,pelambre,personal,accion);
     guades.GuardarPelambre(personal,pelambre);
 }
 

@@ -35,6 +35,7 @@
             success: (respuesta) => {
                 $.each(respuesta, (index, val) => {
                     $('#DescarneLista').html(val[0]);
+
                 });
             }
 

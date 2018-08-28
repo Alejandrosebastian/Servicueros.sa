@@ -95,7 +95,7 @@ namespace ServicuerosSA.Models
                 _contexto.Bodegatripa.Add(guardatripas);
                 _contexto.SaveChanges();
 
-
+                ///desactivo atras
                 var descarnes = (from des in _contexto.Descarne
                                where des.DescarneId == descarne
                                select new Descarne
