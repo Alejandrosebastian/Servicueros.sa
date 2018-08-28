@@ -108,17 +108,14 @@
     }
     Listaclasificaciontripaindex() {
         var accion = this.accion;
-        $.ajax({
-            type: "POST",
-            url: accion,
-            data: { },
-            success: (respuesta) => {
-                $.each(respuesta, (index, val) => {
-                    $('#BodegaTripa').html(val[0]);
+        $.post(accion,
+            {},
+            (res) => {
+                console.log(res);
+                $.each(res, (contador, valor) => {
+                    $('#BodegaTripa').html(valor[0]);
                 });
-            }
-
-        });
+            });
       
     }
     limpiarcajas() {

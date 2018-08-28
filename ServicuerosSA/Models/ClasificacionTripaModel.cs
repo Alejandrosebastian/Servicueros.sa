@@ -21,7 +21,8 @@ namespace ServicuerosSA.Models
         }
        public List<Descarne> Claselistadescarnes()
         {
-            return _contexto.Descarne.OrderBy(d => d.CodigoLote).ToList();
+            
+            return _contexto.Descarne.Where(d => d.Activo == true).ToList();
         }
        public List<IdentityError> Modelonumeropieles(int numdes, int numet)
         {
@@ -64,7 +65,7 @@ namespace ServicuerosSA.Models
                        }).ToList();
             foreach(var item in res)
             {
-                datos ="<tr>"+
+                datos +="<tr>"+
                     "<td>" + item.CodigoLote + "</td>" +
                     "<td>" + item.NumeroPieles + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
@@ -73,7 +74,7 @@ namespace ServicuerosSA.Models
             }
             object[] objetodatos = { datos };
             lista.Add(objetodatos);
-            return lista;
+            return lista; 
        }
         public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne, int numeropieles, int peso, int personal)
         {
@@ -100,7 +101,7 @@ namespace ServicuerosSA.Models
                                select new Descarne
                                {
                                    
-                                   PelambreId = des.PelambreId,
+                                   PelambreId = descarne,
                                    PersonalId = des.PersonalId,
                                    Activo = false,
                                    Cantidad = des.Cantidad,

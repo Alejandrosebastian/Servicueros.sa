@@ -63,8 +63,7 @@ var ListaIndexDescarne = () => {
     var listaDescarne = new Descarne('','','','','','',accion);
     listaDescarne.ListaDescarne();
 
-    var listaDescarne = new Descarne('', '', '', '', accion);
-    listaDescarne.ListaIndex();
+    
 
 }
 
@@ -293,11 +292,13 @@ var controlnumeropieles = () => {
     }
 
 }
-var controlnumeropieltripa=()=> 
-{
+var controlnumeropieltripa = () => {
     var descarne = document.getElementById("PielesInput").value;
     var tripa = document.getElementById("NumeroPielesInput").value;
-    if (descarne == cantidad) {
+    if (descarne >= tripa) {
+        $("#mensajeper").addClass("hidden");
+        $('#graba').prop('disabled', true);
+    } else {
         $("#mensajeper").addClass("hidden");
         $('#graba').prop('disabled', true);
     }

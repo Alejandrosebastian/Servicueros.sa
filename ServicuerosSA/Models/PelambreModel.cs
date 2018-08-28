@@ -477,10 +477,10 @@ namespace ServicuerosSA.Models
                              select p).Sum( p => p.Peso);
             foreach (var item in res)
             {
-                if (item.Detalle.ToUpper() == "BORRON DL")
-                {
-                    dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
-                };
+                //if (item.Detalle.ToUpper() == "BORRON DL")
+                //{
+                //    dato += "<tr><td>ESCURRIR BIEN</td><td></td><td></td><td></td><td></td></tr>";
+                //};
 
                 dato += "<tr>" +
                 "<td>" + item.Detalle.ToUpper() + "</td>" +

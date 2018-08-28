@@ -24,7 +24,7 @@ namespace ServicuerosSA.Controllers
         }
         public List<Pelambre> Controladorlistapelambre()
         {
-            return clasePelambre.Listapelambres();
+            return claseDescarne.Modelolistapelambres();
         }
         // GET: Descarnes
         public async Task<IActionResult> Index()
@@ -57,7 +57,7 @@ namespace ServicuerosSA.Controllers
 
         public List<IdentityError> ControladorGuardaDescarne(int cantidad ,DateTime fecha, int personal, int pelambre)
         {
-            return claseDescarne.ClaseGuardarDescarne(cantidad, fecha, personal, pelambre);
+            return claseDescarne.ClaseGuardarDescarne(pelambre, cantidad, fecha, personal);
         }
         public List<IdentityError> ControladorNumeroPielesDescarne(int idPelambre, int valor)
         {
