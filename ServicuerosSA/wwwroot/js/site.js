@@ -59,13 +59,8 @@ var ListaPelambre = () => {
 }
 var ListaIndexDescarne = () => {
     var accion = 'Descarnes/ControladorListaDescarne';
-
-    var listaDescarne = new Descarne('','','','','','',accion);
-    listaDescarne.ListaDescarne();
-
     var listaDescarne = new Descarne('', '', '', '', accion);
     listaDescarne.ListaIndex();
-
 }
 
 var Listatipotripa = () => {
@@ -235,14 +230,14 @@ var ImprimirPesaje = (id) => {
 }
 var ListaPelambreDescarne = () => {
     var accion = 'Descarnes/Controladorlistapelambre';
-    var descarne = new Descarne('','','','','','',accion);
+    var descarne = new Descarne('','','','',accion);
     descarne.listapelambre();
 }
 var NumeroPielesPelambre = () => {
     var accion = 'Descarnes/ControladorUnPelambreDescarne';
     var combopelambres = document.getElementById('PelambreId');
     var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].value;
-    var des = new Descarne('', '', '', '', '', '', accion);
+    var des = new Descarne('', '', '', '', accion);
     des.NumeroPielesPelambre(unpelabrecombo);
 }
 var numeropielestripa = () => {
@@ -259,8 +254,6 @@ var GuardaDescarne = () => {
     var personales = document.getElementById("personalId");
     var personal = personales.options[personales.selectedIndex].value;
     var cantidad = document.getElementById("CantidadPieles").value;
-   
-    
     var d = new Date();
     var fecha = d.getDate();
     var guades = new Descarne(cantidad, d, accion);
