@@ -13,10 +13,27 @@ namespace ServicuerosSA.Controllers
     public class CurtidosController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        private ClasificacionTripaModel tipotripa;
+        private BomboModel bombos;
+        private PersonalModel personas;
         public CurtidosController(ApplicationDbContext context)
         {
             _context = context;
+            tipotripa = new ClasificacionTripaModel(context);
+            bombos = new BomboModel(context);
+            personas = new PersonalModel(context);
+        }
+        public List<ClasificacionTripa> Controcurtilistatripa()
+        {
+            return tipotripa.ClaseModeloListaClasificacionTripa();
+        }
+        public List<Bombo> Controcurtibombo()
+        {
+            return bombos.ClaseListaBombo();
+        }
+        public List<Personal> Contrucurtiperso()
+        {
+            return personas.ListaPersonal();
         }
 
         // GET: Curtidos

@@ -9,10 +9,17 @@ namespace ServicuerosSA.Models
     public class CurtidoModels
     {
         private ApplicationDbContext _contexto;
+        private ClasificacionTripa tipotripa;
         public CurtidoModels(ApplicationDbContext contexto)
         {
             _contexto = contexto;
+            tipotripa = new ClasificacionTripa();
         }
+        public List<ClasificacionTripa> Combomodelotripa()
+        {
+            return _contexto.ClasificacionTripa.OrderBy(cl => cl.Detalle).ToList();
+        }
+        
 
     }
 }

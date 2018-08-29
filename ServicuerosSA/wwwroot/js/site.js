@@ -68,6 +68,8 @@ var Listatipotripa = () => {
     var listatrip = new BodegaTripa('','','', '', '', '', accion);
     listatrip.ClaseListaClasificacionTripa();
 }
+
+
 var listadescarne = () => {
     var accion = 'Bodegatripas/Controladorlistadescarnes';
     var lisdescarnes = new BodegaTripa('', '', '', '', '', '', accion);

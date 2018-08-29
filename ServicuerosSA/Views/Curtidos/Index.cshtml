@@ -6,7 +6,7 @@
 <h2>Proceso de Curtido</h2>
 
 <p>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoCurtido" onclick="">Nuevo Curtido</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoCurtido" onclick="Listatipotripa(); listaPersonal();ListaBombos(); ListaFormulas();">Nuevo Curtido</a>
 </p>
 <table class="table">
     <thead>
@@ -58,6 +58,30 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
+                        <label class="control-label">Clasificacion Tripa</label>
+                        <select id="ClasificaciontripaId" name="ClasificaciontripaId" required class="form-control">
+                            <option value="0">Seleccione la clasificacion asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajeclasi" class="alert alert-danger hidden">Seleccione la aclasificacion asignado</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Bombo</label>
+                        <select id="bomboId" name="bomboId" required class="form-control">
+                            <option value="0">Seleccione el Bombo asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajebo" class="alert alert-danger hidden">Seleccione el Bombo asignado</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Formula</label>
+                        <select id="formulaId" name="formulaId" required class="form-control">
+                            <option value="0">Seleccione la formula asignada a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione la formula asignada</span>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label">Fecha</label>
                         <input id="fecha" name="fecha" class="form-control" type="date" />
                     </div>
@@ -73,30 +97,9 @@
                         <br />
                         <span id="mensajenu" class="alert alert-danger hidden">Ingrese un número de pieles a Curtir</span>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">Bombo</label>
-                        <select id="bombolId" name="bomboId" required class="form-control">
-                            <option value="0">Seleccione el Bombo asignado a esta operación</option>
-                        </select>
-                        <br />
-                        <span id="mensajebo" class="alert alert-danger hidden">Seleccione el Bombo asignado</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Clasificacion Tripa</label>
-                        <select id="clasiTripaId" name="clasoTripaId" required class="form-control">
-                            <option value="0">Seleccione la clasificacion asignado a esta operación</option>
-                        </select>
-                        <br />
-                        <span id="mensajeclasi" class="alert alert-danger hidden">Seleccione la aclasificacion asignado</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Formula</label>
-                        <select id="formulaId" name="formulaId" required class="form-control">
-                            <option value="0">Seleccione la formula asignada a esta operación</option>
-                        </select>
-                        <br />
-                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione la formula asignada</span>
-                    </div>
+
+
+
                     <div class="form-group">
                         <label class="control-label">Personal Asignado</label>
                         <select id="personalId" name="personalId" required class="form-control">
