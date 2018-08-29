@@ -14,6 +14,8 @@
     <Compile Remove="Migrations\20180628154359_descarneRelacion.Designer.cs" />
     <Compile Remove="Migrations\20180703211851_roles-usuarios.cs" />
     <Compile Remove="Migrations\20180703211851_roles-usuarios.Designer.cs" />
+    <Compile Remove="Migrations\20180829002354_curti.cs" />
+    <Compile Remove="Migrations\20180829002354_curti.Designer.cs" />
   </ItemGroup>
 
 

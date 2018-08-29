@@ -72,5 +72,8 @@ namespace ServicuerosSA.Data
 
 
         public DbSet<ServicuerosSA.Models.ClasificacionTripa> ClasificacionTripa { get; set; }
+
+
+        public DbSet<ServicuerosSA.Models.Curtido> Curtido { get; set; }
     }
 }

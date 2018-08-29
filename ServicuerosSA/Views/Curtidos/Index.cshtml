@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Proceso de Curtido</h2>
+
+<p>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoCurtido" onclick="">Nuevo Curtido</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+                <th>
+                   Fecha
+                </th>
+                <th>
+                   Peso
+                </th>
+                <th>
+                   Observaciones
+                </th>
+                <th>
+                   Numero de Pieles
+                </th>
+                 <th>
+                   Bombo
+                  </th>
+            <th>
+               ClasificacionTripa
+            </th>
+            <th>
+               Formula
+            </th>
+            <th>
+               Personal
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="CurtidoLista">  </tbody>
+</table>
+
+<div class="modal fade" id="IngresoCurtido" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"
+                    id="EtiquetaModal">
+                    Ingreso al Proceso de Curtido
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="control-label">Fecha</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Peso</label>
+                        <input id="Peso" name="Peso" required class="form-control" />
+                        <br />
+                        <span id="mensajep" class="alert alert-danger hidden">Ingrese el peso de las Pieles a Curtir</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Observaciones</label>
+                        <input id="Observaciones" name="Observaciones" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Numero de Pieles</label>
+                        <input id="numeroPieles" name="numeroPieles" required class="form-control" />
+                        <br />
+                        <span id="mensajenu" class="alert alert-danger hidden">Ingrese un número de pieles a Curtir</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Bombo</label>
+                        <select id="bombolId" name="bomboId" required class="form-control">
+                            <option value="0">Seleccione el Bombo asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajebo" class="alert alert-danger hidden">Seleccione el Bombo asignado</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Clasificacion Tripa</label>
+                        <select id="clasiTripaId" name="clasoTripaId" required class="form-control">
+                            <option value="0">Seleccione la clasificacion asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajeclasi" class="alert alert-danger hidden">Seleccione la aclasificacion asignado</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Formula</label>
+                        <select id="formulaId" name="formulaId" required class="form-control">
+                            <option value="0">Seleccione la formula asignada a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione la formula asignada</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Personal Asignado</label>
+                        <select id="personalId" name="personalId" required class="form-control">
+                            <option value="0">Seleccione el Personal asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione al personal asignado</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="guarda" name="guarda" onclick=" ">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
