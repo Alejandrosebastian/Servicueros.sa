@@ -55,7 +55,7 @@
                             @if (User.IsInRole("Admin") || User.IsInRole("Secre"))
                             {
                                 <li><a asp-area="" asp-controller="Lotes" asp-action="Index">1.- Ingreso de Lotes</a></li>
-                            
+
                                 <li class="divider"></li>
                                 <li><a asp-area="" asp-controller="BodegaClasificaciones" asp-action="Index">2.- Clasificación Pelo</a></li>
                                 <li class="divider"></li>
@@ -65,6 +65,8 @@
                             <li><a asp-area="" asp-controller="Descarnes" asp-action="Index">4.- Descarne</a></li>
                             <li class="divider"></li>
                             <li><a asp-area="" asp-controller="BodegaTripas" asp-action="Index">5.-Clasificacion de tripa </a></li>
+                            <li class="divider"></li>
+                            <li><a asp-area="" asp-controller="Curtidos" asp-action="Index">6.-Curtido</a></li>
                             <li class="divider"></li>
                         </ul>
                     </li>
@@ -89,6 +91,7 @@
                                 <li class="divider"></li>
                                 <li><a asp-area="" asp-controller="Tipobodegas" asp-action="Index">Tipo de Bodegas</a></li>
                                 <li class="divider"></li>
+                                
                             </ul>
                         </li>
                     }
