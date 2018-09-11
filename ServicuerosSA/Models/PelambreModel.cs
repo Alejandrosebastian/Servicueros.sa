@@ -450,9 +450,8 @@ namespace ServicuerosSA.Models
                            TipoPiel = tp.Detalle
                        }).ToList();
             return res;
-
-
         }
+
         public List<object[]> ModeloImprimirComponentes(string id)
         {
             List<object[]> lista = new List<object[]>();

@@ -69,10 +69,17 @@ namespace ServicuerosSA.Controllers
         }
         // GET: Descarnes/Create
        
+
         public List<Pelambre> ControladorUnPelambreDescarne(string id)
         {
             return _context.Pelambre.Where(p => p.PelambreId == id).ToList();
         }
+        //public List<Pelambre> ControladorUnPelambreDescarne(string id)
+        //{
+        //    List<Pelambre> pelambres = from p in _context.Pelambre
+        //                               where p.CodigoLote + p.Codigo = id
+
+        //}
        
 
        

@@ -50,7 +50,7 @@ namespace ServicuerosSA.Models
         }
     
 
-         public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal, string codigolote)
+        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal, string codigolote)
 
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();

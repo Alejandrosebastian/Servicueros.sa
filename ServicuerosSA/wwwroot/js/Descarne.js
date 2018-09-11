@@ -1,8 +1,6 @@
 ﻿class Descarne {
 
-
-    constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
-
+constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.pelambre = PelambreId;
@@ -53,13 +51,11 @@
                 if (this.cantidad == '') {
                     $("#mensajec").removeClass("hidden");
                 } else {
-
                     $("#mensajec").addClass("hidden");
                     if (personal == '0') {
                         $("#mensajeper").removeClass("hidden");
                     } else {
                         $("#mensajeper").addClass("hidden");
-                       
                     if (this.codigolote == '') {
                         $("#mensajep").removeClass("hidden");
                     } else {
@@ -72,8 +68,8 @@
                             type: "POST",
                             url: accion,
                             data: {
-
                             pelambre, cantidad, fecha, personal, codigolote
+
                             },
                             success: (respuesta) => {
                                 if (respuesta[0].code == "ok") {
@@ -85,8 +81,8 @@
                                 }
                                 
                             }
+                        });
 
-                       });
                     }
                 }
        }
