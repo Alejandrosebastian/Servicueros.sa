@@ -71,9 +71,10 @@ var Listatipotripa = () => {
 
 
 var listadescarne = () => {
-    var accion = 'Bodegatripas/Controladorlistadescarnes';
-    var lisdescarnes = new Descarne('', '', '', '', '', accion);
-    lisdescarnes.ListaIndex();
+
+    var accion = '../Bodegatripas/Controladorlistadescarnes';
+    var lisdescarnes = new BodegaTripa('', '', '', '', '', '', accion);
+    lisdescarnes.bodegatripa();
 }
 var GuardaPelambre = () => {
     var bombos = document.getElementById('bomboId');

@@ -1,6 +1,7 @@
 ﻿class Descarne {
 
-constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
+    constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
+
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.pelambre = PelambreId;
@@ -51,11 +52,13 @@ constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
                 if (this.cantidad == '') {
                     $("#mensajec").removeClass("hidden");
                 } else {
+
                     $("#mensajec").addClass("hidden");
                     if (personal == '0') {
                         $("#mensajeper").removeClass("hidden");
                     } else {
                         $("#mensajeper").addClass("hidden");
+
                     if (this.codigolote == '') {
                         $("#mensajep").removeClass("hidden");
                     } else {
@@ -68,7 +71,8 @@ constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
                             type: "POST",
                             url: accion,
                             data: {
-                            pelambre, cantidad, fecha, personal, codigolote
+
+                                pelambre, cantidad, fecha, personal, codigolote
 
                             },
                             success: (respuesta) => {
@@ -81,8 +85,9 @@ constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
                                 }
                                 
                             }
-                        });
 
+
+                        });
                     }
                 }
        }
@@ -98,7 +103,9 @@ constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
             success: (respuesta) => {
                 if (0 < respuesta.length) {
                     for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote + respuesta[i].codigo, respuesta[i].pelambreId );
+
+                        document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote + respuesta[i].codigo, respuesta[i].codigopelambre );
+
                         contador++;
                     }
                 }   
@@ -113,8 +120,8 @@ constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
             data: { id },
             success: (respuesta) => {
                 console.log(respuesta);
-                document.getElementById('TotalPielesInput').value = respuesta[0].totalPieles;
-                $('#TotalPielesInput').value = respuesta[0].totalPieles;
+                document.getElementById('TotalPielesInput').value = respuesta[0];
+                $('#TotalPielesInput').value = respuesta[0];
                 $("#TotalPielesInput").removeClass("hidden");
             }
         });
