@@ -1,11 +1,11 @@
 ﻿class Descarne {
 
-    constructor(cantidad, fecha, PelambreId, PersonalId, accion) {
+    constructor(cantidad, fecha, PelambreId, PersonalId,accion) {
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.PelambreId = Pelambre;
         this.PersonalId = PersonalId;
-         this.accion = accion;
+        this.accion = accion;
 
     }
     //ListaDescarne() {
@@ -44,35 +44,37 @@
     }
 
     GuardarPelambre(personal, pelambre) {
-        if (pelambre == '0') {
-            $("#mensajep").removeClass("hidden");
-        } else {
-            $("#mensajep").addClass("hidden");
-            if (this.cantidad == '') {
-                $("#mensajec").removeClass("hidden");
+       if (pelambre == '0') {
+                $("#mensajep").removeClass("hidden");
             } else {
-                $("#mensajec").addClass("hidden");
-                if (personal == '0') {
-                    $("#mensajeper").removeClass("hidden");
+                $("#mensajep").addClass("hidden");
+                if (this.cantidad == '') {
+                    $("#mensajec").removeClass("hidden");
                 } else {
-                    $("#mensajeper").addClass("hidden");
-                    var cantidad = this.cantidad;                   
-                    var fecha = this.fecha;
-                    var accion = this.accion;
-                    $.ajax({
-                        type: "POST",
-                        url: accion,
-                        data: {
-                            pelambre, cantidad, fecha, personal
-                        },
-                        success: (respuesta) => {
-                            console.log(respuesta);
-                            this.limpiarcajas();
-                        }
-                    });
+                    $("#mensajec").addClass("hidden");
+                    if (personal == '0') {
+                        $("#mensajeper").removeClass("hidden");
+                    } else {
+                        $("#mensajeper").addClass("hidden");
+                        var codigolote = this.codigoLote;
+                        var cantidad = this.cantidad;
+                        var fecha = this.fecha;
+                        var accion = this.accion;
+
+                        $.ajax({
+                            type: "POST",
+                            url: accion,
+                            data: {
+                                pelambre, cantidad, fecha, personal
+                            },
+                            success: (respuesta) => {
+                                console.log(respuesta);
+                                this.limpiarcajas();
+                            }
+                        });
+                    }
                 }
-            }
-        }
+       }
     }
     //combo
     listapelambre() {

@@ -530,10 +530,9 @@ namespace ServicuerosSA.Models
                        {
                            p.CodigoLote,
                            b.Num_bombo,
-                          bo.NombreBodega,
+                           bo.NombreBodega,
                            p.Peso,
-                     
-                          p.Fecha,
+                           p.Fecha,
                           p.TotalPieles
                        }).ToList();
             int pesototal = (from p in _contexto.Pelambre

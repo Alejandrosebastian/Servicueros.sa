@@ -26,7 +26,8 @@ namespace ServicuerosSA.Models
             var res = (from des in _contexto.Descarne 
                          where des.Activo == true
                        select new
-                       {
+                       {   des.CodigoLote,
+                       des.Pelambres,
                            des.Cantidad,
                            
                            des.codigodescarne
@@ -37,7 +38,7 @@ namespace ServicuerosSA.Models
                 datos += "<tr>" +
                     "<td>" + item.Cantidad + "</td>" +                       
                     //"<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
-                      "<td><a class='btn btn-success' onclick='EliminarDescarne(" + item.codigodescarne + ")'>Eliminar</a></td>" +
+                     // "<td><a class='btn btn-success' onclick='EliminarDescarne(" + item.codigodescarne + ")'>Eliminar</a></td>" +
                     "</tr>";
 
             }
@@ -47,7 +48,7 @@ namespace ServicuerosSA.Models
             return ListaDescarne;
         }
     
-        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal )
+        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             try
