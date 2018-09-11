@@ -16,7 +16,8 @@ namespace ServicuerosSA.Models
         }
         public List<Pelambre> Modelolistapelambres()
         {
-            return _contexto.Pelambre.OrderBy(p => p.CodigoLote).ToList();
+            
+            return _contexto.Pelambre.Where(p => p.Activo == true).GroupBy(p => p.CodigoLote + p.Codigo).Select(p => p.First()).ToList();
         }
         //Completar la consulta con el total de pieles d descarne falta
         public List<object[]> ClaseListaDescarne()
@@ -47,7 +48,7 @@ namespace ServicuerosSA.Models
             return ListaDescarne;
         }
     
-        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal )
+        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal, string codigolote)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             try
@@ -58,12 +59,30 @@ namespace ServicuerosSA.Models
                     Activo = true,
                     Cantidad = cantidad,
                     PersonalId = personal,
-                    Fecha=fecha
+                    Fecha=fecha,
+                   ///codigodescarne = codigodescarne,
+                   CodigoLote = codigolote
+                    
                    
                 };
                 _contexto.Descarne.Add(guardarDescarne);
                 _contexto.SaveChanges();
 
+                Pelambre pel = (from p in _contexto.Pelambre
+                               where p.PelambreId == pelambre
+                               select new Pelambre
+                               {
+                                   PelambreId = pelambre,
+                                   FormulaId = p.FormulaId,
+                                   PersonalId = p.PersonalId,
+                                   Bodega1Id = p.Bodega1Id,
+                                   BomboId = p.BomboId,
+                                   Activo = false
+                                   
+                               }).FirstOrDefault();
+
+                _contexto.Pelambre.Update(pel);
+                _contexto.SaveChanges();
                 Listaerrores.Add(new IdentityError
                 {
                     Code = "ok",

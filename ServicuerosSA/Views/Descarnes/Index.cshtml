@@ -18,7 +18,9 @@
             </th>
            
 
-            <th></th>
+            <th>
+                codigolote
+            </th>
         </tr>
     </thead>
     <tbody id="DescarneLista"> </tbody>
@@ -41,7 +43,7 @@
                 <form>
                     <div class="form-group">
                         <label class="control-label">Lotes en Pelambre</label>
-                        <select id="PelambreId" name="PelambreId" required class="form-control" onchange="NumeroPielesPelambre();">
+                        <select id="PelambreId" name="PelambreId" required class="form-control" onchange="NumeroPielesPelambre(); ">
                             <option value="0">Seleccione una lo que desea descarnar</option>
                         </select>
                         <br />
@@ -52,6 +54,14 @@
                         @*<label id="TotalPielesInput" name="TotalPielesInput" class="control-label alert alert-success hidden"></label>*@
                         <input id="TotalPielesInput" name="TotalPielesInput" type="text" class="control-label alert alert-success hidden" />
                     </div>
+                    <div class="form-group">
+                        <input id="codigoloteInput" name="codigoloteInput" type="text" class="control-label  hidden" />
+                    </div>
+                   
+                    @*<div class="form-group">
+                        @*<label class="control-label">Codigo descarne</label>
+                        <input id="codigodescarneInput" name="codigodescarneInput" type="text" class="control-label  hidden" />
+                    </div>*@
                     <div class="form-group">
                         <label class="control-label">Numero de pieles a Descarne</label>
                         <input id="CantidadPieles" name="descarne" required class="form-control" onfocusout="controlnumeropieles()">
