@@ -73,7 +73,7 @@ var Listatipotripa = () => {
 var listadescarne = () => {
     var accion = '../Bodegatripas/Controladorlistadescarnes';
     var lisdescarnes = new BodegaTripa('', '', '', '', '', '', accion);
-    lisdescarnes.bodegatripa();
+    lisdescarnes.ClaseListadescarnes();
 }
 var GuardaPelambre = () => {
     var bombos = document.getElementById('bomboId');
@@ -283,7 +283,7 @@ var Guardarbodetripas = () => {
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
-    if (pelambre == cantidad) {
+    if (pelambre <= cantidad) {
         $("#mensajep").addClass("hidden");
     } else {
         $("#mensajec").removeClass("hidden");
@@ -296,7 +296,7 @@ var controlnumeropieltripa = () => {
     var tripa = document.getElementById("NumeroPielesInput").value;
     if (descarne >= tripa) {
         $("#mensajeper").addClass("hidden");
-        $('#graba').prop('disabled', true);
+       
     } else {
         $("#mensajeper").addClass("hidden");
         $('#graba').prop('disabled', true);
