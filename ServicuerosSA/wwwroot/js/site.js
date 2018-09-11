@@ -71,6 +71,7 @@ var Listatipotripa = () => {
 
 
 var listadescarne = () => {
+
     var accion = '../Bodegatripas/Controladorlistadescarnes';
     var lisdescarnes = new BodegaTripa('', '', '', '', '', '', accion);
     lisdescarnes.ClaseListadescarnes();
@@ -225,6 +226,7 @@ var impresion = () => {
     window.print();
 
 }
+//pesaje
 var ImprimirPesaje = (id) => {
     var accion = 'Pelambres/ControladorImprimirPesaje';
     var impresionPesaje = new Formulas('', '', '', '', accion);

@@ -1,6 +1,7 @@
 ﻿class Descarne {
 
     constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
+
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.pelambre = PelambreId;
@@ -44,18 +45,20 @@
     }
 
     GuardarPelambre(personal, pelambre) {
-        if (pelambre == '0') {
-            $("#mensajep").removeClass("hidden");
-        } else {
-            $("#mensajep").addClass("hidden");
-            if (this.cantidad == '') {
-                $("#mensajec").removeClass("hidden");
+       if (pelambre == '0') {
+                $("#mensajep").removeClass("hidden");
             } else {
-                $("#mensajec").addClass("hidden");
-                if (personal == '0') {
-                    $("#mensajeper").removeClass("hidden");
+                $("#mensajep").addClass("hidden");
+                if (this.cantidad == '') {
+                    $("#mensajec").removeClass("hidden");
                 } else {
-                    $("#mensajeper").addClass("hidden");
+
+                    $("#mensajec").addClass("hidden");
+                    if (personal == '0') {
+                        $("#mensajeper").removeClass("hidden");
+                    } else {
+                        $("#mensajeper").addClass("hidden");
+
                     if (this.codigolote == '') {
                         $("#mensajep").removeClass("hidden");
                     } else {
@@ -68,7 +71,9 @@
                             type: "POST",
                             url: accion,
                             data: {
+
                                 pelambre, cantidad, fecha, personal, codigolote
+
                             },
                             success: (respuesta) => {
                                 if (respuesta[0].code == "ok") {
@@ -81,11 +86,11 @@
                                 
                             }
 
+
                         });
                     }
                 }
-            }
-        }
+       }
     }
     //combo
     listapelambre() {
@@ -98,7 +103,9 @@
             success: (respuesta) => {
                 if (0 < respuesta.length) {
                     for (var i = 0; i < respuesta.length; i++) {
+
                         document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote + respuesta[i].codigo, respuesta[i].codigopelambre );
+
                         contador++;
                     }
                 }   
