@@ -68,15 +68,13 @@ namespace ServicuerosSA.Controllers
             return claseDescarne.ClaseEliminarDescarne(codigoUnico);
         }
         // GET: Descarnes/Create
-       
-        //public List<Pelambre> ControladorUnPelambreDescarne(string id)
-        //{
-        //    List<Pelambre> pelambres = from p in _context.Pelambre
-        //                               where p.CodigoLote + p.Codigo = id
 
-        //}
-       
+        public int ControladorUnPelambreDescarne(string id)
+        {
+            return _context.Pelambre.Where(p => p.codigopelambre == id).Sum(p => p.TotalPieles);
+        }
 
-       
+
+
     }
 }
