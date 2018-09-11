@@ -55,9 +55,9 @@ namespace ServicuerosSA.Controllers
             return View(descarne);
         }
 
-        public List<IdentityError> ControladorGuardaDescarne(int cantidad , DateTime fecha, int personal, int pelambre)
+        public List<IdentityError> ControladorGuardaDescarne(int cantidad , DateTime fecha, int personal, int pelambre, string codigolote)
         {
-            return claseDescarne.ClaseGuardarDescarne(pelambre, cantidad, fecha, personal);
+            return claseDescarne.ClaseGuardarDescarne(pelambre, cantidad, fecha, personal,codigolote);
         }
         public List<IdentityError> ControladorNumeroPielesDescarne(int idPelambre, int valor)
         {
@@ -69,7 +69,7 @@ namespace ServicuerosSA.Controllers
         }
         // GET: Descarnes/Create
        
-        public List<Pelambre> ControladorUnPelambreDescarne(int id)
+        public List<Pelambre> ControladorUnPelambreDescarne(string id)
         {
             return _context.Pelambre.Where(p => p.PelambreId == id).ToList();
         }
