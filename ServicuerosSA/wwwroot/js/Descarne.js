@@ -45,19 +45,19 @@
     }
 
     GuardarPelambre(personal, pelambre) {
-       if (pelambre == '0') {
-                $("#mensajep").removeClass("hidden");
+        if (pelambre == '0') {
+            $("#mensajep").removeClass("hidden");
+        } else {
+            $("#mensajep").addClass("hidden");
+            if (this.cantidad == '') {
+                $("#mensajec").removeClass("hidden");
             } else {
-                $("#mensajep").addClass("hidden");
-                if (this.cantidad == '') {
-                    $("#mensajec").removeClass("hidden");
-                } else {
 
-                    $("#mensajec").addClass("hidden");
-                    if (personal == '0') {
-                        $("#mensajeper").removeClass("hidden");
-                    } else {
-                        $("#mensajeper").addClass("hidden");
+                $("#mensajec").addClass("hidden");
+                if (personal == '0') {
+                    $("#mensajeper").removeClass("hidden");
+                } else {
+                    $("#mensajeper").addClass("hidden");
 
                     if (this.codigolote == '') {
                         $("#mensajep").removeClass("hidden");
@@ -66,7 +66,7 @@
                         var fecha = this.fecha;
                         var codigolote = this.codigolote;
                         var accion = this.accion;
-                        
+
                         $.ajax({
                             type: "POST",
                             url: accion,
@@ -83,81 +83,84 @@
                                     this.limpiarcajas();
                                     swal("Pelambre", "Ocurrio un error al guardar", "error");
                                 }
-                                
+
                             }
 
 
                         });
                     }
                 }
-       }
+            }
+        }
     }
-    //combo
-    listapelambre() {
-        var accion = this.accion;
-        var contador = 1;
-        $.ajax({
-            type: "POST",
-            url: accion,
-            data: {},
-            success: (respuesta) => {
-                if (0 < respuesta.length) {
-                    for (var i = 0; i < respuesta.length; i++) {
+        //combo
+        listapelambre() {
+            var accion = this.accion;
+            var contador = 1;
+            $.ajax({
+                type: "POST",
+                url: accion,
+                data: {},
+                success: (respuesta) => {
+                    if (0 < respuesta.length) {
+                        for (var i = 0; i < respuesta.length; i++) {
 
-                        document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote + respuesta[i].codigo, respuesta[i].codigopelambre );
+                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote + respuesta[i].codigo, respuesta[i].codigopelambre);
 
-                        contador++;
+                            contador++;
+                        }
                     }
-                }   
-            }
-        });
-    }
-    NumeroPielesPelambre(id) {
-        var accion = this.accion;
-        $.ajax({
-            type: "POST", 
-            url: accion,
-            data: { id },
-            success: (respuesta) => {
-                console.log(respuesta);
-                document.getElementById('TotalPielesInput').value = respuesta[0];
-                $('#TotalPielesInput').value = respuesta[0];
-                $("#TotalPielesInput").removeClass("hidden");
-            }
-        });
-    }  
-    codilote(id) {
-        var accion = this.accion;
-        $.ajax({
-            type: "POST",
-            url: accion,
-            data: {id},
-            success: (respuesta) => {
-                console.log(respuesta);
-                document.getElementById('codiloteInput').value = respuesta[0].codigoLote;
-                $('#codigoloteInput').value = respuesta[0].codigoLote;
-                $('#codigoloteInput').removeClass('hidden');
-            }
-        });
-    }
+                }
+            });
+        }
+        NumeroPielesPelambre(id) {
+            var accion = this.accion;
+            $.ajax({
+                type: "POST",
+                url: accion,
+                data: { id },
+                success: (respuesta) => {
+                    console.log(respuesta);
+                    document.getElementById('TotalPielesInput').value = respuesta[0];
+                    $('#TotalPielesInput').value = respuesta[0];
+                    $("#TotalPielesInput").removeClass("hidden");
+                }
+            });
+        }
+        codilote(id) {
+            var accion = this.accion;
+            $.ajax({
+                type: "POST",
+                url: accion,
+                data: { id },
+                success: (respuesta) => {
+                    console.log(respuesta);
+                    document.getElementById('codiloteInput').value = respuesta[0].codigoLote;
+                    $('#codigoloteInput').value = respuesta[0].codigoLote;
+                    $('#codigoloteInput').removeClass('hidden');
+                }
+            });
+        }
 
 
-    EliminarDescarne(codigoUnico) {
-        var accion = this.accion;
-        $.post(accion, { codigoUnico },
-            (respuesta) => {
-                ListaIndexDescarne(1);
-                alert("El registro se ha borrado exitosamente!!");
-            }
-        );
-    }
-    limpiarcajas() {
-        document.getElementById('CantidadPieles').value = '';
-        document.getElementById('PelambreId').selectedIndex = 0;
-        document.getElementById('personalId').selectedIndex = 0;
-        document.getElementById('codigoloteInput').value='';
-        $('#IngresoDescarne').modal('hide');
-        ListaIndexDescarne;
+    EliminarDescarne(codigoUnico)
+    {
+            var accion = this.accion;
+            $.post(accion, { codigoUnico },
+                (respuesta) =>
+                {
+                    ListaIndexDescarne(1);
+                    alert("El registro se ha borrado exitosamente!!");
+                });
+        }
+    limpiarcajas()
+    {
+            document.getElementById('CantidadPieles').value = '';
+            document.getElementById('PelambreId').selectedIndex = 0;
+            document.getElementById('personalId').selectedIndex = 0;
+            document.getElementById('codigoloteInput').value = '';
+            $('#IngresoDescarne').modal('hide');
+            ListaIndexDescarne;
 
     }
 }
