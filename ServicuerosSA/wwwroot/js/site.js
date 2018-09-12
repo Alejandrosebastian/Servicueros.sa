@@ -218,6 +218,11 @@ var ImprimirQuimico = (id) => {
     var impresionquimico = new Formulas('', '', '', '', accion);
     impresionquimico.CabeceraQuimico(id);
 }
+var componentesQuimico = (id) => {
+    var accion = 'Pelambres/ControladorComponenteQuimico';
+    var quimico = new Formulas('', '', '', '', accion);
+    quimico.CuerpoQuimico(id);
+}
 var impresion = () => {
     var contenido = document.getElementById('areaImprimir').innerHTML;
     var contenidooriginal = document.body.innerHTML;

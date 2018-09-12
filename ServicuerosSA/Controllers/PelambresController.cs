@@ -37,7 +37,10 @@ namespace ServicuerosSA.Controllers
         public List<object[]> ControladorComponentesFormula(string id) {
             return clasePelambre.ModeloImprimirComponentes(id);
         }
-        
+        public List<object[]> ControladorComponenteQuimico(string id)
+        {
+            return clasePelambre.ModeloImprimirQuimicos(id);
+        }
         public List<object[]> ControladorImprimirPesaje(string id)
         {
             return clasePelambre.ModeloImprimirPesaje(id);

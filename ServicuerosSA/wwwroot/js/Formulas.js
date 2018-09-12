@@ -94,6 +94,19 @@ class Formulas {
             }
         });
     }
+
+    CuerpoQuimico(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaDetalleQuimico').html(val[0]);
+                });
+            }
+         );
+    }
     CuerpoPesaje(id) {
         var accion = this.accion;
         $.post(
