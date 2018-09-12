@@ -533,6 +533,8 @@ namespace ServicuerosSA.Models
                            p.Peso,
                            p.Fecha,
                           p.TotalPieles
+                         
+                          
                        }).ToList();
             int pesototal = (from p in _contexto.Pelambre
                              where p.codigopelambre == id
