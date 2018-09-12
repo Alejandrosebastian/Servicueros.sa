@@ -30,7 +30,10 @@ namespace ServicuerosSA.Controllers
         public List<ModeloEncabezadoFormula> ControladorImprimirEmcabezadoFormula(string id) {
             return clasePelambre.ModeloImprimirEncabezadoFormula(id);
         }
-        
+        public List<ModeloEncabezadoQuimico> ControladorImprimirEncabezadoQuimico(string id)
+        {
+            return clasePelambre.ModeloImprimirEncabezadoQuimico(id);
+        }
         public List<object[]> ControladorComponentesFormula(string id) {
             return clasePelambre.ModeloImprimirComponentes(id);
         }
@@ -82,9 +85,6 @@ namespace ServicuerosSA.Controllers
             return clasePelambre.ClaseEliminarPelambre(cadigounico);
 
         }
-
-      
-
         // GET: Pelambres/Create
 
         // GET: Pelambres/Edit/5

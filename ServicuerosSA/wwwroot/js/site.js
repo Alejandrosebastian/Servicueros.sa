@@ -62,14 +62,11 @@ var ListaIndexDescarne = () => {
     var listaDescarne = new Descarne('', '', '', '','',accion);
     listaDescarne.ListaIndex();
 }
-
 var Listatipotripa = () => {
     var accion = 'Bodegatripas/Controladorlistatipotripa';
     var listatrip = new BodegaTripa('','','', '', '', '', accion);
     listatrip.ClaseListaClasificacionTripa();
 }
-
-
 var listadescarne = () => {
 
     var accion = '../Bodegatripas/Controladorlistadescarnes';
@@ -116,16 +113,11 @@ var ListaIndex = () => {
     var index = new Pelambre('', '', '', '', '', '', accion);
     index.ListaIndex();
 }
-
-
 var listatripasindex = () => {
     var accion = '../BodegaTripas/Controllistaindesxtripa';
     var inde = new BodegaTripa('','','','','','',accion);
     inde.Listaclasificaciontripaindex();
 }
-
-
-
 var listaTipoPiel = () => {
     var accion = 'TipoPiels/ControladorTipoPielLista';
     var tipopiellista = new ClaseTipoPiel('', accion);
@@ -214,10 +206,17 @@ var ImprimirPelambre = (id) => {
     var impresionformula = new Formulas('', '', '', '', accion);
     impresionformula.CabeceraFormula(id);
 }
+
 var componentesFormula = (id) => {
     var accion = 'Pelambres/ControladorComponentesFormula';
     var componente = new Formulas('', '', '', '', accion);
     componente.CuerpoFormula(id);
+}
+// QUIMICO
+var ImprimirQuimico = (id) => {
+    var accion = 'Pelambres/ControladorImprimirEncabezadoQuimico';
+    var impresionquimico = new Formulas('', '', '', '', accion);
+    impresionquimico.CabeceraQuimico(id);
 }
 var impresion = () => {
     var contenido = document.getElementById('areaImprimir').innerHTML;
@@ -266,7 +265,6 @@ var GuardaDescarne = () => {
     var guades = new Descarne(cantidad,d,pelambre,personal,codigolote,accion);
     guades.GuardarPelambre(personal,pelambre);
 }
-
 var Guardarbodetripas = () => {
     var accion = 'BodegaTripas/Controladorguardabodetripas';
     var clasifi = document.getElementById("ClasificaciontripaId");

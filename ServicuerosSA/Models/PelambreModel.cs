@@ -451,6 +451,29 @@ namespace ServicuerosSA.Models
                        }).ToList();
             return res;
         }
+        public List<ModeloEncabezadoQuimico> ModeloImprimirEncabezadoQuimico(string id)
+        {
+            var consultaid = (from p in _contexto.Pelambre
+                              where p.codigopelambre == id
+                              select p).FirstOrDefault();
+
+            var respuesta = (from p in _contexto.Pelambre
+                             join pe in _contexto.Personal on p.PersonalId equals pe.PersonalId
+                             join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                             where p.PelambreId == consultaid.PelambreId
+                             select new ModeloEncabezadoQuimico
+                             {
+                               Fecha= DateTime.Now.ToString(),
+                               Procesado= pe.Nombres+" "+pe.Apellidos,
+                               Lote=p.CodigoLote,
+                               Bombo= b.Num_bombo.ToString(),
+                               Peso= p.Peso.ToString(),
+                               Pieles= p.TotalPieles.ToString(),
+                               Promedio= (p.Peso / p.TotalPieles).ToString()
+     
+                             }).ToList();
+            return respuesta;
+        }
 
         public List<object[]> ModeloImprimirComponentes(string id)
         {
@@ -533,9 +556,7 @@ namespace ServicuerosSA.Models
                            p.Peso,
                            p.Fecha,
                           p.TotalPieles
-                         
-                          
-                       }).ToList();
+                          }).ToList();
             int pesototal = (from p in _contexto.Pelambre
                              where p.codigopelambre == id
                              select p).Sum(p => p.Peso);
