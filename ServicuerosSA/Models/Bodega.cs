@@ -24,7 +24,7 @@ namespace ServicuerosSA.Models
 
         [Display(Name = "Numero de estanteria")]
         [Required(ErrorMessage = "Campo requerido")]
-        public int NumeroEstantes { get; set; }
+        public string NumeroEstantes { get; set; }
 
         //Relaciones
         public int TipoBodegaId { get; set; }
