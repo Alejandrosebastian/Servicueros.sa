@@ -67,11 +67,10 @@ namespace ServicuerosSA.Controllers
         {
             return claseDescarne.ClaseEliminarDescarne(codigoUnico);
         }
-        // GET: Descarnes/Create
+        // GET: Descarnes/Creat     
 
-       
 
-       public int ControladorUnPelambreDescarne(string id)
+        public int ControladorUnPelambreDescarne(string id)
 
         {
             return _context.Pelambre.Where(p => p.codigopelambre == id).Sum(p => p.TotalPieles);
@@ -84,7 +83,5 @@ namespace ServicuerosSA.Controllers
 
         //}
        
-
-
     }
 }

@@ -280,10 +280,11 @@ var Guardarbodetripas = () => {
 
 
 }
+////////////////////////////pelqmbre
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
-    if (pelambre <= cantidad) {
+    if (pelambre == cantidad) {
         $("#mensajep").addClass("hidden");
     } else {
         $("#mensajec").removeClass("hidden");
@@ -294,29 +295,29 @@ var controlnumeropieles = () => {
 var controlnumeropieltripa = () => {
     var descarne = document.getElementById("PielesInput").value;
     var tripa = document.getElementById("NumeroPielesInput").value;
-    if (descarne >= tripa) {
+    if (descarne <= tripa) {
         $("#mensajeper").addClass("hidden");
        
     } else {
-        $("#mensajeper").addClass("hidden");
+        $("#mensajeper").removeClass("hidden");
         $('#graba').prop('disabled', true);
     }
 }
+///////////////////clsificacaion tripa
 
-
-//var controlnumeropieles = () => {
-//    var pelambre = document.getElementById("TotalPielesInput").value;
-//    var cantidad = document.getElementById("CantidadPieles").value;
-//    if (pelambre >= cantidad) {
-//        $("#mensajec").removeClass("hidden");
-//        $('#guarda').prop('disabled', true);
-//    } else {
+var controlnumeropieles = () => {
+    var pelambre = document.getElementById("TotalPielesInput").value;
+    var cantidad = document.getElementById("CantidadPieles").value;
+    if (pelambre >= cantidad) {
+        $("#mensajec").removeClass("hidden");
+        $('#guarda').prop('disabled', true);
+    } else {
         
-//        $("#mensajep").addClass("hidden");
-//        $('#guarda').prop('enabled', true);
-//    }
+        $("#mensajep").addClass("hidden");
+        $('#guarda').prop('enabled', true);
+    }
 
-//}
+}
 
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
