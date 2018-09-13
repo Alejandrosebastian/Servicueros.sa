@@ -73,7 +73,7 @@ namespace ServicuerosSA.Controllers
 
         public int ControladorUnPelambreDescarne(string id)
         {
-            return _context.Pelambre.Where(p => p.CodigoLote == id && p.Activo == true).Sum(p => p.TotalPieles);
+            return _context.Pelambre.Where(p => p.Codigo == id && p.Activo == true).Sum(p => p.TotalPieles);
         }
 
     }

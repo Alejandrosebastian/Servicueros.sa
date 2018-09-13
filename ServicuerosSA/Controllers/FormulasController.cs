@@ -24,7 +24,7 @@ namespace ServicuerosSA.Controllers
         // GET: Formulas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Formula.Include(f => f.tipoPiel).Include(l => l.TipoProceso);
+            var applicationDbContext = _context.Formula.Include(f => f.tipoPiel);
             return View(await applicationDbContext.ToListAsync());
         }
         public List<Formula> ControladorListaFormulas()

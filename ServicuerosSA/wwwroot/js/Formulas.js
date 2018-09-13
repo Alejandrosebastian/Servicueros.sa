@@ -95,18 +95,7 @@ class Formulas {
         });
     }
 
-    CuerpoQuimico(id) {
-        var accion = this.accion;
-        $.post(
-            accion,
-            { id },
-            (respuesta) => {
-                $.each(respuesta, (index, val) => {
-                    $('#TablaDetalleQuimico').html(val[0]);
-                });
-            }
-         );
-    }
+   
     CuerpoPesaje(id) {
         var accion = this.accion;
         $.post(
@@ -116,8 +105,17 @@ class Formulas {
                 $.each(respuesta, (index, val) => {
                     $('#TablaProductoQuimico').html(val[0]);
                 });
-            }
-        );
+            });
     }
-  
+    CuerpoQuimico(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaDetalleQuimico').html(val[0]);
+                });
+            });
+    }
 }

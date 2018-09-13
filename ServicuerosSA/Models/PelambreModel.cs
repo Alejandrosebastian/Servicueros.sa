@@ -159,15 +159,11 @@ namespace ServicuerosSA.Models
         {
             List<IdentityError> listaerrores = new List<IdentityError>();
             try
-            {
-
-                                            
+            {      
                 string ingresocod = "";
-
                 int codigoDes = (from p in _contexto.Pelambre
-                                 where p.Activo == true && p.CodigoLote == codlote && p.Fecha <= fecha
+                                 where p.Activo == true && p.CodigoLote == codlote && p.Fecha < fecha
                                  select p).Count();
-
                 switch (codigoDes)
                 {
                     case 0:
@@ -262,7 +258,7 @@ namespace ServicuerosSA.Models
                     Activo = true,
                     Peso = pesototal,
                     CodigoLote = codlote,
-                    Codigo = ingresocod,
+                    Codigo = codlote + ingresocod,
                     codigopelambre = codigoUnico
                 };
                 _contexto.Pelambre.Add(guardaPelambre);
