@@ -22,6 +22,7 @@ $().ready(() => {
     ListaIndexDescarne();
     Listatipotripa();
     tablaFormulas();
+    TablaPelo();
 });
 
 
