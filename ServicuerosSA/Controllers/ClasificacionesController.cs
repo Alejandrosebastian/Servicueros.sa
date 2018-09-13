@@ -27,7 +27,7 @@ namespace ServicuerosSA.Controllers
         // GET: Clasificaciones 
         public async Task<IActionResult> Index()
         {
-            var applicationDBContext = _context.Clasificacion.Include(c => c.Selecciones);
+            
             return View(await _context.Clasificacion.ToListAsync());
         }
 
