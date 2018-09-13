@@ -345,7 +345,7 @@ namespace ServicuerosSA.Models
                 string ya = item.codigopelambre;
                 if (compara != item.codigopelambre)
                 {
-                 dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(&#039;" + item.codigopelambre + "&#039;); componentesFormula(&#039;" + item.codigopelambre + "&#039;);pesa(&#039;" + item.codigopelambre + "&#039;);'>Imprimir Detalle con Formula</a> " +
+                 dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionPelambre' onclick='ImprimirPelambre(&#039;" + item.codigopelambre + "&#039;); componentesFormula(&#039;" + item.codigopelambre + "&#039;);pesa(&#039;" + item.codigopelambre + "&#039;);componentesQuimico(&#039;" + item.codigopelambre + "&#039;);'>Imprimir Detalle con Formula</a> " +
                     "<a class='btn btn-success' onclick='EliminarPelambre(&#039;" + ya + "&#039;)'>Eliminar</a>" +
                         "</td>" +
                         "</tr>";
