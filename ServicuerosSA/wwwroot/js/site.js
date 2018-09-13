@@ -224,6 +224,7 @@ var componentesQuimico = (id) => {
     var quimico = new Formulas('', '', '', '', accion);
     quimico.CuerpoQuimico(id);
 }
+
 var impresion = () => {
     var contenido = document.getElementById('areaImprimir').innerHTML;
     var contenidooriginal = document.body.innerHTML;
