@@ -333,3 +333,6 @@ var pesa = (id) => {
 var tablaFormulas = () => {
     $('#TablaFormulas').DataTable();
 }
+var TablaPelo = () => {
+    $('#TablaPelo').DataTable();
+}
