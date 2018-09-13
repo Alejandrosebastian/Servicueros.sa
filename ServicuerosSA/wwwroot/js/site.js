@@ -336,5 +336,24 @@ var tablaFormulas = () => {
     $('#TablaFormulas').DataTable();
 }
 var TablaPelo = () => {
-    $('#TablaPelo').DataTable();
+  //  $('#TablaPelo').DataTable();
+    var table = $('#TablaPelo').DataTable({
+
+        buttons: [
+            'print'
+        ],
+
+        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
+        "oLanguage": {
+            "oPaginate": {
+                "sPrevious": "Anterior",
+                "sNext": "Siguiente"
+            },
+            "sSearch": "Buscar:",
+           "sLengthMenu": "Ver registros",
+            "sInfo": "Paginas",
+            "sZeroRecords": "No se encontraron resultados"
+        }
+
+    });
 }
