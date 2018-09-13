@@ -29,6 +29,7 @@ namespace ServicuerosSA.Controllers
         // GET: Descarnes
         public async Task<IActionResult> Index()
         {
+
             return View();
         }
         public List<object[]>ControladorListaDescarne()
@@ -71,17 +72,9 @@ namespace ServicuerosSA.Controllers
 
 
         public int ControladorUnPelambreDescarne(string id)
-
         {
-            return _context.Pelambre.Where(p => p.codigopelambre == id).Sum(p => p.TotalPieles);
+            return _context.Pelambre.Where(p => p.CodigoLote == id && p.Activo == true).Sum(p => p.TotalPieles);
         }
 
-        //public List<Pelambre> ControladorUnPelambreDescarne(string id)
-        //{
-        //    List<Pelambre> pelambres = from p in _context.Pelambre
-        //                               where p.CodigoLote + p.Codigo = id
-
-        //}
-       
     }
 }

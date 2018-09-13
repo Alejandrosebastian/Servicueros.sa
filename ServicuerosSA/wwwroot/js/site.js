@@ -21,7 +21,7 @@ $().ready(() => {
 
     ListaIndexDescarne();
     Listatipotripa();
-
+    tablaFormulas();
 });
 
 
@@ -328,4 +328,8 @@ var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
     var pesaje = new Pelambre('', '', '', '', '', '', accion);
     pesaje.Pesaje(id);
+}
+
+var tablaFormulas = () => {
+    $('#TablaFormulas').DataTable();
 }

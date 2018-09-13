@@ -104,9 +104,7 @@
                 success: (respuesta) => {
                     if (0 < respuesta.length) {
                         for (var i = 0; i < respuesta.length; i++) {
-
-                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote + respuesta[i].codigo, respuesta[i].codigopelambre);
-
+                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigoLote + respuesta[i].codigo, respuesta[i].codigoLote);
                             contador++;
                         }
                     }
@@ -120,9 +118,10 @@
                 url: accion,
                 data: { id },
                 success: (respuesta) => {
-                    console.log(respuesta);
-                    document.getElementById('TotalPielesInput').value = respuesta[0];
-                    $('#TotalPielesInput').value = respuesta[0];
+                   
+                    document.getElementById('TotalPielesInput').value = respuesta;
+                    $('#TotalPielesInput').value = respuesta;
+                    
                     $("#TotalPielesInput").removeClass("hidden");
                 }
             });
