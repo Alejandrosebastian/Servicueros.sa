@@ -22,9 +22,7 @@ namespace ServicuerosSA.Controllers
         // GET: BodegaClasificaciones
         public async Task<IActionResult> Index()
         {
-            
-            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Where(B1 => B1.activo == true).Where(b => b.activo ==true);
-            
+            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Include(b => b.Medida).Include(b => b.TipoPiel);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -40,6 +38,8 @@ namespace ServicuerosSA.Controllers
                 .Include(b => b.Bodegas)
                 .Include(b => b.Clasificaciones)
                 .Include(b => b.Lotes)
+                .Include(b => b.Medida)
+                .Include(b => b.TipoPiel)
                 .SingleOrDefaultAsync(m => m.Bodega1Id == id);
             if (bodega1 == null)
             {
@@ -54,7 +54,7 @@ namespace ServicuerosSA.Controllers
         {
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega");
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones");
-            ViewData["LoteId"] = new SelectList(_context.Lote.Where(l => l.estado == true), "LoteId", "Codigolote");
+            ViewData["LoteId"] = new SelectList(_context.Lote, "LoteId", "Codigolote");
             ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura");
             ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle");
             return View();
@@ -67,20 +67,17 @@ namespace ServicuerosSA.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Bodega1Id,BodegaId,LoteId,ClasificacionId,MedidaId,Fechaingreso,NumeroEstanteria,NumeroPieles,Peso,Observaciones,activo,TipoPielId")] Bodega1 bodega1)
         {
-
             if (ModelState.IsValid)
             {
                 _context.Add(bodega1);
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega", bodega1.BodegaId);
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones", bodega1.ClasificacionId);
             ViewData["LoteId"] = new SelectList(_context.Lote, "LoteId", "Codigolote", bodega1.LoteId);
-            ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle");
-            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura");
-
+            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura", bodega1.MedidaId);
+            ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle", bodega1.TipoPielId);
             return View(bodega1);
         }
 
@@ -100,6 +97,8 @@ namespace ServicuerosSA.Controllers
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega", bodega1.BodegaId);
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones", bodega1.ClasificacionId);
             ViewData["LoteId"] = new SelectList(_context.Lote, "LoteId", "Codigolote", bodega1.LoteId);
+            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura", bodega1.MedidaId);
+            ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle", bodega1.TipoPielId);
             return View(bodega1);
         }
 
@@ -108,7 +107,7 @@ namespace ServicuerosSA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Bodega1Id,BodegaId,LoteId,ClasificacionId,Fechaingreso,NumeroEstanteria,NumeroPieles,Peso,Observaciones,activo")] Bodega1 bodega1)
+        public async Task<IActionResult> Edit(int id, [Bind("Bodega1Id,BodegaId,LoteId,ClasificacionId,MedidaId,Fechaingreso,NumeroEstanteria,NumeroPieles,Peso,Observaciones,activo,TipoPielId")] Bodega1 bodega1)
         {
             if (id != bodega1.Bodega1Id)
             {
@@ -138,6 +137,8 @@ namespace ServicuerosSA.Controllers
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega", bodega1.BodegaId);
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones", bodega1.ClasificacionId);
             ViewData["LoteId"] = new SelectList(_context.Lote, "LoteId", "Codigolote", bodega1.LoteId);
+            ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura", bodega1.MedidaId);
+            ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle", bodega1.TipoPielId);
             return View(bodega1);
         }
 
@@ -153,6 +154,8 @@ namespace ServicuerosSA.Controllers
                 .Include(b => b.Bodegas)
                 .Include(b => b.Clasificaciones)
                 .Include(b => b.Lotes)
+                .Include(b => b.Medida)
+                .Include(b => b.TipoPiel)
                 .SingleOrDefaultAsync(m => m.Bodega1Id == id);
             if (bodega1 == null)
             {
