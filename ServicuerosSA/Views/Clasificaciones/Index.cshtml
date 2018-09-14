@@ -7,7 +7,7 @@
 <h2>Tipos de Clasificaciones</h2>
 
 <p>
-    <a asp-action="Create">Ingreso nuevo nombre de clasificacion</a>
+    <a class="btn btn-success" asp-action="Create">Ingreso de una nueva clasificacion</a>
 </p>
 <table class="table" >
     <thead>
@@ -26,8 +26,8 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ClasificacionId" class="btn btn-info">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.ClasificacionId" class="btn btn-info">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClasificacionId" class="btn btn-info">Eliminar</a>
+                <a asp-action="Details" asp-route-id="@item.ClasificacionId" class="btn btn-primary">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClasificacionId" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
 }

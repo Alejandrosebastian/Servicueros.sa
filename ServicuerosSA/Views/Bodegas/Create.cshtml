@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Ingreso de Bodega</h2>
+<h2>Crear una nueva bodega</h2>
 
 <h4></h4>
 <hr />
@@ -37,14 +37,14 @@
                 <select asp-for="TipoBodegaId" class ="form-control" asp-items="ViewBag.TipoBodegaId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Regresar a lista de bodegas</a>
+    <a class="btn btn-success" asp-action="Index">Regresar a lista de bodegas</a>
 </div>
 
 @section Scripts {
