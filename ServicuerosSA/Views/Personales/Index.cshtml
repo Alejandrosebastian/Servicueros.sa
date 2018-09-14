@@ -7,7 +7,7 @@
 <h2>Personal</h2>
 
 <p>
-    <a asp-action="Create">Ingreso de Nuevo Personal</a>
+    <a class="btn btn-success" asp-action="Create">Ingreso de nuevo personal</a>
 </p>
 <table class="table">
     <thead>
@@ -67,9 +67,9 @@
                 @Html.DisplayFor(modelItem => item.Sexo.Detalle)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PersonalId" class="btn btn-default">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.PersonalId" class="btn btn-default">DetalleSs</a> |
-                <a asp-action="Delete" asp-route-id="@item.PersonalId" class="btn btn-default">Eliminar</a>
+                <a asp-action="Edit" asp-route-id="@item.PersonalId" class="btn btn-info">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.PersonalId" class="btn btn-primary">DetalleSs</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonalId" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
 }

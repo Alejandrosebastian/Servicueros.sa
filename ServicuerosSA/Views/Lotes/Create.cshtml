@@ -44,14 +44,15 @@
                 <span asp-validation-for="Observaciones" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" id="graba" name="graba" value="Crear" class="btn btn-default" style="" />
+                <input type="submit" id="graba" name="graba" value="Crear" class="btn btn-primary" style="" />
+                <a class="btn btn-success" asp-action="Index">Regresar a la lista de lotes</a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Regresar a la lista de lotes</a>
+ 
 </div>
 
 @section Scripts {
