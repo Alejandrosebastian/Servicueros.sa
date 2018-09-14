@@ -7,7 +7,7 @@
 <h2>Tipos de Pieles</h2>
 
 <p>
-    <a asp-action="Create">Ingresar nuevo tipo piel</a>
+    <a class="btn btn-success" asp-action="Create">Ingresar nuevo tipo piel</a>
 </p>
 <table class="table">
     <thead>
@@ -25,8 +25,8 @@
                 @Html.DisplayFor(modelItem => item.Detalle)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TipoPielId" class="btn btn-success">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.TipoPielId" class="btn btn-info">Detalles</a> |
+                <a asp-action="Edit" asp-route-id="@item.TipoPielId" class="btn btn-info">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.TipoPielId" class="btn btn-primary">Detalles</a> |
                 <a asp-action="Delete" asp-route-id="@item.TipoPielId" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>

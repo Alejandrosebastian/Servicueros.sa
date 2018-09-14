@@ -7,7 +7,7 @@
 <h2>Medidas</h2>
 
 <p>
-    <a asp-action="Create">Ingresar nuevo tipo de media</a>
+    <a class="btn btn-success" asp-action="Create">Ingresar nuevo tipo de media</a>
 </p>
 <table class="table">
     <thead>
@@ -31,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.Abreviatura)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MedidaId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.MedidaId">Detailles</a> |
-                <a asp-action="Delete" asp-route-id="@item.MedidaId">Eliminar</a>
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.MedidaId">Editar</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.MedidaId">Detalles</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MedidaId">Eliminar</a>
                 
             </td>
         </tr>
