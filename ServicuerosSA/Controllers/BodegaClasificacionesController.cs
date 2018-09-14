@@ -22,7 +22,8 @@ namespace ServicuerosSA.Controllers
         // GET: BodegaClasificaciones
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Include(b => b.Medida).Include(b => b.TipoPiel);
+            var applicationDbContext = _context.Bodega1.Include(b => b.Bodegas).Include(b => b.Clasificaciones).Include(b => b.Lotes).Where(B1 => B1.activo == true).Where(b => b.activo == true);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
