@@ -57,6 +57,10 @@ namespace ServicuerosSA.Controllers
         {
             return clasePelambre.ClaseListaPelambrexTipoPiel(tipopielId, clasificacionId);
         }
+        public List<object[]> ControladorReportePelambre(string id)
+        {
+            return clasePelambre.ModeloImprimirPelambre(id);
+        }
         // GET: Pelambres/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -207,7 +207,6 @@ var ImprimirPelambre = (id) => {
     var impresionformula = new Formulas('', '', '', '', accion);
     impresionformula.CabeceraFormula(id);
 }
-
 var componentesFormula = (id) => {
     var accion = 'Pelambres/ControladorComponentesFormula';
     var componente = new Formulas('', '', '', '', accion);
@@ -224,9 +223,17 @@ var componentesQuimico = (id) => {
     var quimico = new Formulas('', '', '', '', accion);
     quimico.CuerpoQuimico(id);
 }
-
+///areaimprimir
 var impresion = () => {
     var contenido = document.getElementById('areaImprimir').innerHTML;
+    var contenidooriginal = document.body.innerHTML;
+    document.body.innerHTML = contenido;
+    window.print();
+
+}
+///areaimprimirreporpelambre
+var impresionrepopelambre = () => {
+    var contenido = document.getElementById('areaImprime').innerHTML;
     var contenidooriginal = document.body.innerHTML;
     document.body.innerHTML = contenido;
     window.print();
@@ -238,6 +245,19 @@ var ImprimirPesaje = (id) => {
     var impresionPesaje = new Formulas('', '', '', '', accion);
     impresionPesaje.CuerpoPesaje(id);
 }
+//reporte lote
+var ImprimirLote = (id) => {
+    var accion = 'Lotes/ControladorImprimirLote';
+    var impresionLote = new Formulas('', '', '', '', accion);
+    impresionLote.CuerpoLote(id);
+}
+//reporte pelambre
+var ImprimeReportePelambre = (id) => {
+    var accion = 'Pelambres/ControladorReportePelambre';
+    var impresionreportePelambre = new Formulas('', '', '', '', accion);
+    impresionreportePelambre.CuerpoPelambre(id);
+}
+///////
 var ListaPelambreDescarne = () => {
     var accion = 'Descarnes/Controladorlistapelambre';
     var descarne = new Descarne('','','','','',accion);
@@ -311,7 +331,6 @@ var controlnumeropieltripa = () => {
     }
 }
 ///////////////////clsificacaion tripa
-
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
@@ -325,13 +344,11 @@ var controlnumeropieles = () => {
     }
 
 }
-
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
     var pesaje = new Pelambre('', '', '', '', '', '', accion);
     pesaje.Pesaje(id);
 }
-
 var tablaFormulas = () => {
     $('#TablaFormulas').DataTable();
 }

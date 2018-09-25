@@ -2,6 +2,8 @@
 
 <p>
     <a class="btn btn-success" asp-action="Create">Ingresar nuevo lote</a>
+    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#Impresionlote" onclick="ImprimirLote();">Reporte de Lotes</a>
+
 </p>
 
 <table class="table">
@@ -31,7 +33,62 @@
     </thead>
     <tbody id="resultado"></tbody>
 </table>
+
 <div id="paginado">
 
+
+</div>
+
+    @*IMPRESION REPORTE*@
+<div class="modal fade" id="Impresionlote" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="EtiquetaModal">
+                    Reporte de Lotes
+                </h4>
+            </div>
+
+            <div class="modal-body" id="impresion">
+
+                <div class="modal-body" id="areaImprimir">
+                    @* Hoja de lote *@
+                    <div class="form-group">
+                        <table class="table table-bordered SaltoDePagina">
+
+                            <thead>
+                                <tr>
+                                    <th> Lote </th>
+
+                                    <th> Fecha Ingreso  </th>
+
+                                    <th> Numero de Pieles </th>
+
+                                    <th> Responsable </th>
+
+                                    <th> Tipo de Pieles </th>
+
+                                    <th> Observaciones </th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody id="TablaLote"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
+            </div>
+        </div>
+    </div>
 </div>
 

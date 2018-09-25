@@ -41,6 +41,10 @@ namespace ServicuerosSA.Controllers
         {
             return clasemodelListaLote.ClaseModeloCodigoLote(codigolote);
         }
+        public List<object[]> ControladorImprimirLote(string id)
+        {
+            return clasemodelListaLote.ModeloImprimirLote(id);
+        }
         // GET: Lotes
         public async Task<IActionResult> Index()
         {
