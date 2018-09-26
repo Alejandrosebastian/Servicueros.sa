@@ -20,12 +20,19 @@ $().ready(() => {
     //Listatipotripa();
 
     ListaIndexDescarne();
-    Listatipotripa();
+    //Listatipotripa();
     tablaFormulas();
     TablaPelo();
-    bodegastri();
+    
 });
 
+////////////////////cerrar modales
+var cerrarmodalLotes = () => {
+    $('#Impresionlote').modal('hide');
+}
+
+
+/////////////
 
 var Impresion = (id) => {
     var contenido = document.getElementById(id).innerHTML;
@@ -33,6 +40,7 @@ var Impresion = (id) => {
     document.body.innerHTML = contenido;
     window.print();
     document.body.innerHTML = contenidooriginal;
+
 }
 var claseJsLlamarListaLotes = (id) => {
     var accion = '../Lotes/ContraladorListaLotes';
@@ -151,10 +159,8 @@ var boodegas = () => {
 }
 /////clasificacion tripas bedegas
 var bodegastri = () => {
-    var accion = '../Clasificacion/controladorlistabode';
-    var bode = document.getElementById('BodegaId');
-    var bodega = bode.options[bode.selectedIndex].value;
-    var bod = new BodegaTripa('', '', '', '', '', accion);
+    var accion = '../ClasificacionTripas/controladorlistabode';
+    var bod = new BodegaTripa('', '', '', '', '','', accion);
     bod.Claselistabodegas();
 
 }
@@ -239,6 +245,7 @@ var impresion = () => {
     var contenidooriginal = document.body.innerHTML;
     document.body.innerHTML = contenido;
     window.print();
+    $('#Impresionlote').modal('hide');
 
 }
 ///areaimprimirreporpelambre
@@ -247,6 +254,7 @@ var impresionrepopelambre = () => {
     var contenidooriginal = document.body.innerHTML;
     document.body.innerHTML = contenido;
     window.print();
+   
 
 }
 //pesaje

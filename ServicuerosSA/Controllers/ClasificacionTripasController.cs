@@ -28,7 +28,7 @@ namespace ServicuerosSA.Controllers
         {
             return View(await _context.ClasificacionTripa.ToListAsync());
         }
-       public List<object[]> controladorlistabode()
+       public List<Bodega> controladorlistabode()
         {
             return listabode.Claselistabode();
         }

@@ -19,6 +19,10 @@ namespace ServicuerosSA.Models
         {
             return _contexto.ClasificacionTripa.OrderBy(c => c.Detalle).ToList();
         }
+        public List<Bodega> Claselistabode()
+        {
+            return _contexto.Bodega.OrderBy(b => b.NombreBodega).ToList();
+        }
        public List<Descarne> Claselistadescarnes()
         {
          return _contexto.Descarne.Where(d => d.Activo == true).ToList();
@@ -47,19 +51,19 @@ namespace ServicuerosSA.Models
             }
             return lista;
         }
-        public List<object[]> Claselistabode()
-        {
-            List<object[]> lista = new List<object[]>();
-            string datos = "";
-            var res = (from b in _contexto.Bodega
-                       select new
-                       {
-                           b.NombreBodega
-                       }).ToList();
-            object[] objetodatos = { datos };
-            lista.Add(objetodatos);
-            return lista;
-        }
+        //public List<object[]> Claselistabode()
+        //{
+        //    List<object[]> lista = new List<object[]>();
+        //    string datos = "";
+        //    var res = (from b in _contexto.Bodega
+        //               select new
+        //               {
+        //                   b.NombreBodega
+        //               }).ToList();
+        //    object[] objetodatos = { datos };
+        //    lista.Add(objetodatos);
+        //    return lista;
+        //}
        public List<object[]>ModeloFiltrarClasificacionTripa()
        {
            List<object[]> lista = new List<object[]>();

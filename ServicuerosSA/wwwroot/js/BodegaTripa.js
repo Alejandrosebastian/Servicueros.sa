@@ -63,7 +63,7 @@
                 if (0 < respuesta.length) {
 
                 for (var i = 0; i < respuesta.length; i++) {
-                    document.getElementById('ClasificaciontripaId').options[contador] = new Option(respuesta[i].detalle, respuesta[i].clasificacionTripaId);
+                    document.getElementById('ClasificaciontripaId').options[contador] = new Option(respuesta[i].detalle.toUpperCase(), respuesta[i].clasificacionTripaId);
                     contador++;
                     }
                 }
@@ -75,20 +75,21 @@
     Claselistabodegas() {
         var accion = this.accion;
         var conta = 1;
-        $.ajax({
-            type: "POST",
-            url: accion,
-            data: {},
-            succes: (respuesta) => {
+
+        $.post(accion,
+            {},
+            (respuesta) => {
+                console.log(respuesta);
                 if (0 < respuesta.length) {
                     for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('BodegaId').options[conta] = new Option(respuesta[i].nombreBodega, respuesta[i].bodegaId);
+                        document.getElementById('BodegaId').options[conta] = new Option(respuesta[i].nombreBodega.toUpperCase(), respuesta[i].bodegaId);
                         conta++;
                     }
 
                 }
-            }
-        });
+            });
+
+      
     }
     ClaseListadescarnes() {
         var accion = this.accion;
