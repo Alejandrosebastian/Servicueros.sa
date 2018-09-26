@@ -23,6 +23,7 @@ $().ready(() => {
     Listatipotripa();
     tablaFormulas();
     TablaPelo();
+    bodegastri();
 });
 
 
@@ -60,8 +61,8 @@ var ListaPelambre = () => {
 }
 var ListaIndexDescarne = () => {
     var accion = '../Descarnes/ControladorListaDescarne';
-    var listaDescarne = new Descarne('', '', '', '','',accion);
-    listaDescarne.ListaIndex();
+    var listaDescarne = new Descarne('', '', '', '','','',accion);
+    listaDescarne.ListaIndexdescarne();
 }
 var Listatipotripa = () => {
     var accion = 'Bodegatripas/Controladorlistatipotripa';
@@ -147,7 +148,16 @@ var boodegas = () => {
         var bodega = bodegas.options[bodegas.selectedIndex].value;
         var bo = new Bodegas(bodega, '', '', '', '', accion);
         bo.bodega();
-    }
+}
+/////clasificacion tripas bedegas
+var bodegastri = () => {
+    var accion = '../Clasificacion/controladorlistabode';
+    var bode = document.getElementById('BodegaId');
+    var bodega = bode.options[bode.selectedIndex].value;
+    var bod = new BodegaTripa('', '', '', '', '', accion);
+    bod.Claselistabodegas();
+
+}
 var tipopiel = () => {
         var accion = 'Pelambres/ControladorListaPelambrexTipoPiel';
         var tipopieles = document.getElementById('tipoPiel');
@@ -240,15 +250,15 @@ var ImprimirPesaje = (id) => {
 }
 var ListaPelambreDescarne = () => {
     var accion = 'Descarnes/Controladorlistapelambre';
-    var descarne = new Descarne('','','','','',accion);
+    var descarne = new Descarne('','','','','','',accion);
     descarne.listapelambre();
 }
 var NumeroPielesPelambre = () => {
     var accion = 'Descarnes/ControladorUnPelambreDescarne';
     var combopelambres = document.getElementById('PelambreId');
-    var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].value;
+    var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].text;
     
-    var des = new Descarne('', '', '', '','', accion);
+    var des = new Descarne('', '', '', '', '', '', accion);
     des.NumeroPielesPelambre(unpelabrecombo);
 }
 var numeropielestripa = () => {
@@ -265,11 +275,16 @@ var GuardaDescarne = () => {
     var personales = document.getElementById("personalId");
     var personal = personales.options[personales.selectedIndex].value;
     var codigolote = pelambres.options[pelambres.selectedIndex].text;
-  //  alert(codigolote);
+    //alert(codigolote);
     var cantidad = document.getElementById("CantidadPieles").value;
     var d = new Date();
     var fecha = d.getDate();
-    var guades = new Descarne(cantidad,d,pelambre,personal,codigolote,accion);
+    var dt = new Date();
+    var month = dt.getMonth() + 1;
+    var day = dt.getDate();
+    var year = dt.getFullYear();
+    var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
+    var guades = new Descarne(pelambre,cantidad,fecha,personal,codigolote,fech,accion);
     guades.GuardarPelambre(personal,pelambre);
 }
 var Guardarbodetripas = () => {

@@ -21,9 +21,9 @@ namespace ServicuerosSA.Models
         }
        public List<Descarne> Claselistadescarnes()
         {
-            
-            return _contexto.Descarne.Where(d => d.Activo == true).ToList();
+         return _contexto.Descarne.Where(d => d.Activo == true).ToList();
         }
+       
        public List<IdentityError> Modelonumeropieles(int numdes, int numet)
         {
             List<IdentityError> lista = new List<IdentityError>();
@@ -45,6 +45,19 @@ namespace ServicuerosSA.Models
                     Description = "no"
                 };
             }
+            return lista;
+        }
+        public List<object[]> Claselistabode()
+        {
+            List<object[]> lista = new List<object[]>();
+            string datos = "";
+            var res = (from b in _contexto.Bodega
+                       select new
+                       {
+                           b.NombreBodega
+                       }).ToList();
+            object[] objetodatos = { datos };
+            lista.Add(objetodatos);
             return lista;
         }
        public List<object[]>ModeloFiltrarClasificacionTripa()

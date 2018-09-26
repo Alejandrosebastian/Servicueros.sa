@@ -5,7 +5,7 @@
 <h2>Lista en tripas</h2>
 
 <p>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="  listaPersonal(); Listatipotripa(); listadescarne();  ">Nueva Clasificacion</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="  listaPersonal(); Listatipotripa(); listadescarne(); bodegastri();  ">Nueva Clasificacion</a>
 </p>
 <table class="table">
     <thead>
@@ -44,11 +44,19 @@
                 <form>
                     <div class="form-group">
                         <label class="control-label">Codigo Lote</label>
-                        <select id="Descarneid" name="Descarneid" required class="form-control" @*onchange="numeropielestripa();*@">
+                        <select id="Descarneid" name="Descarneid" required class="form-control" onchange="numeropielestripa();">
                             <option value="0">Seleccione el Lote que desee</option>
                         </select>
                         <br />
                         <span id="mensajede" class="alert alert-danger hidden">Seleccione el Codigo de lote:</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Seleccione la bodega de almacenamineto</label>
+                        <select id="BodegaId" name="BodegaId" required class="form-control" >
+                            <option value="0">Seleccione la bodega de almacenamineto</option>
+                        </select>
+                        <br />
+                        <span id="mensajede" class="alert alert-danger hidden">Seleccione la bodega de almacenamineto:</span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de pieles en el lote</label>
@@ -64,12 +72,12 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Numero de Pieles</label>
-                        
-                        <input id="NumeroPielesInput" type="number" name="NumeroPielesInput" class="form-control" onfocus="controlnumeropieltripa()">
+
+                        <input id="NumeroPielesInput" type="number" name="NumeroPielesInput" class="form-control" @*onfocus="controlnumeropieltripa()" *@>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Peso</label>
-                        
+
                         <input id="PesoInput" type="number" name="PesoInput" class="form-control">
                     </div>
                     <div class="form-group">

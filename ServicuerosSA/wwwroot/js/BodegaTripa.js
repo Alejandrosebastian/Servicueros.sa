@@ -72,6 +72,24 @@
             }
         });
     }
+    Claselistabodegas() {
+        var accion = this.accion;
+        var conta = 1;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            succes: (respuesta) => {
+                if (0 < respuesta.length) {
+                    for (var i = 0; i < respuesta.length; i++) {
+                        document.getElementById('BodegaId').options[conta] = new Option(respuesta[i].nombreBodega, respuesta[i].bodegaId);
+                        conta++;
+                    }
+
+                }
+            }
+        });
+    }
     ClaseListadescarnes() {
         var accion = this.accion;
         var contador = 1;

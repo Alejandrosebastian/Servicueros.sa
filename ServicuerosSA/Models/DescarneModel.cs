@@ -27,19 +27,21 @@ namespace ServicuerosSA.Models
             var res = (from des in _contexto.Descarne 
                          where des.Activo == true
                        select new
-                       {   des.CodigoLote,
-                       des.Pelambres,
+                       {
+                           des.CodigoLote,
+                           des.Pelambres,
                            des.Cantidad,
-                           
                            des.codigodescarne
                        });
 
             foreach (var item in res)
             {
                 datos += "<tr>" +
-                    "<td>" + item.Cantidad + "</td>" +                       
+                    "<td>" + item.CodigoLote + "</td>" +
+                    "<td>" + item.Cantidad + "</td>" +
+                    //"<td>" + item.Pelambres + "</td>" +
                     //"<td>" + item.CodigoLote +" "+ item.Codigo + "</td>" +
-                     // "<td><a class='btn btn-success' onclick='EliminarDescarne(" + item.codigodescarne + ")'>Eliminar</a></td>" +
+                    // "<td><a class='btn btn-success' onclick='EliminarDescarne(" + item.codigodescarne + ")'>Eliminar</a></td>" +
                     "</tr>";
 
             }
@@ -50,56 +52,66 @@ namespace ServicuerosSA.Models
         }
     
 
-        public List<IdentityError> ClaseGuardarDescarne(int pelambre, int cantidad, DateTime fecha, int personal, string codigolote)
+        public List<IdentityError> ClaseGuardarDescarne(string pelambre, int cantidad, DateTime fecha, int personal, string codigolote, string codiunidescarne)
 
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
-            try
-            {
-                var guardarDescarne = new Descarne
-                {
-                    PelambreId = pelambre,
-                    Activo = true,
-                    Cantidad = cantidad,
-                    PersonalId = personal,
-                    Fecha=fecha,
-                   ///codigodescarne = codigodescarne,
-                   CodigoLote = codigolote
-                    
-                   
-                };
-                _contexto.Descarne.Add(guardarDescarne);
-                _contexto.SaveChanges();
+            var pelambreLista = _contexto.Pelambre.Where(p => p.codigopelambre == pelambre).ToList();
 
-                Pelambre pel = (from p in _contexto.Pelambre
-                               where p.PelambreId == pelambre
-                               select new Pelambre
-                               {
-                                   PelambreId = pelambre,
-                                   FormulaId = p.FormulaId,
-                                   PersonalId = p.PersonalId,
-                                   Bodega1Id = p.Bodega1Id,
-                                   BomboId = p.BomboId,
-                                   Activo = false
-                                   
-                               }).FirstOrDefault();
-
-                _contexto.Pelambre.Update(pel);
-                _contexto.SaveChanges();
-                Listaerrores.Add(new IdentityError
-                {
-                    Code = "ok",
-                    Description = "ok"
-                });
-            }
-            catch (Exception e)
+            foreach (var item in pelambreLista)
             {
-                Listaerrores.Add(new IdentityError
+                try
                 {
-                    Code = e.Message,
-                    Description = e.Message
-                });
+                    var guardarDescarne = new Descarne
+                    {
+                        PelambreId = item.PelambreId,
+                        Activo = true,
+                        Cantidad = cantidad,
+                        PersonalId = personal,
+                        Fecha = DateTime.Now,
+                        CodigoLote = codigolote,
+                        codiunidescarne = codiunidescarne
+
+
+
+                    };
+                    _contexto.Descarne.Add(guardarDescarne);
+                    _contexto.SaveChanges();
+
+                    Pelambre pel = (from p in _contexto.Pelambre
+                                    where p.PelambreId == item.PelambreId
+                                    select new Pelambre
+                                    {
+                                        PelambreId = item.PelambreId,
+                                        FormulaId = p.FormulaId,
+                                        PersonalId = p.PersonalId,
+                                        Bodega1Id = p.Bodega1Id,
+                                        BomboId = p.BomboId,
+                                        Activo = false
+
+                                    }).FirstOrDefault();
+
+                    _contexto.Pelambre.Update(pel);
+                    _contexto.SaveChanges();
+                    Listaerrores.Add(new IdentityError
+                    {
+                        Code = "ok",
+                        Description = "ok"
+                    });
+                }
+                catch (Exception e)
+                {
+                    Listaerrores.Add(new IdentityError
+                    {
+                        Code = e.Message,
+                        Description = e.Message
+                    });
+                }
+
             }
+
+
+           
 
             return Listaerrores;
         }

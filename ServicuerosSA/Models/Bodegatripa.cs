@@ -20,6 +20,9 @@ namespace ServicuerosSA.Models
         public ClasificacionTripa ClasificacionTripa { get; set; }
         public int PersonalId { get; set; }
         public Personal personal { get; set; }
-        
+
+        public int BodegaId { get; set; }
+        public Bodega bodega { get; set; }
+
     }
 }

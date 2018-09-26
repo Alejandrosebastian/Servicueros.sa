@@ -1,13 +1,13 @@
 ﻿class Descarne {
 
-    constructor(cantidad, fecha, PelambreId, PersonalId, codigolote,accion) {
-
-        this.fecha = fecha;
-        this.cantidad = cantidad;
+    constructor(PelambreId, cantidad,fecha,   PersonalId, codigolote,codiunidescarne,accion) {
         this.pelambre = PelambreId;
+        this.cantidad = cantidad;
+        this.fecha = fecha;
         this.PersonalId = PersonalId;
         //this.codigodescarne = codigodescarne;
         this.codigolote = codigolote;
+        this.codiunidescarne = codiunidescarne;
          this.accion = accion;
 
     }
@@ -29,7 +29,7 @@
     //    });
     //}
 
-    ListaIndex() {
+    ListaIndexdescarne() {
         var accion = this.accion;
         $.ajax({
             type: "POST",
@@ -52,7 +52,6 @@
             if (this.cantidad == '') {
                 $("#mensajec").removeClass("hidden");
             } else {
-
                 $("#mensajec").addClass("hidden");
                 if (personal == '0') {
                     $("#mensajeper").removeClass("hidden");
@@ -65,15 +64,14 @@
                         var cantidad = this.cantidad;
                         var fecha = this.fecha;
                         var codigolote = this.codigolote;
+                        var codiunidescarne = this.codiunidescarne;
                         var accion = this.accion;
-
+                        
                         $.ajax({
                             type: "POST",
                             url: accion,
                             data: {
-
-                                pelambre, cantidad, fecha, personal, codigolote
-
+                                pelambre, cantidad, fecha, personal,  codigolote, codiunidescarne
                             },
                             success: (respuesta) => {
                                 if (respuesta[0].code == "ok") {
@@ -83,16 +81,14 @@
                                     this.limpiarcajas();
                                     swal("Pelambre", "Ocurrio un error al guardar", "error");
                                 }
-
                             }
-
-
                         });
                     }
                 }
             }
         }
     }
+    
         //combo
         listapelambre() {
             var accion = this.accion;
@@ -104,7 +100,7 @@
                 success: (respuesta) => {
                     if (0 < respuesta.length) {
                         for (var i = 0; i < respuesta.length; i++) {
-                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigo, respuesta[i].codigo);
+                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigo, respuesta[i].codigopelambre);
                             contador++;
                         }
                     }
@@ -121,7 +117,6 @@
                    
                     document.getElementById('TotalPielesInput').value = respuesta;
                     $('#TotalPielesInput').value = respuesta;
-                    
                     $("#TotalPielesInput").removeClass("hidden");
                 }
             });
@@ -151,7 +146,7 @@
                     ListaIndexDescarne(1);
                     alert("El registro se ha borrado exitosamente!!");
                 });
-        }
+     }
     limpiarcajas()
     {
             document.getElementById('CantidadPieles').value = '';

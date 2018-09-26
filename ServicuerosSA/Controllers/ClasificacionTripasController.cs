@@ -14,11 +14,13 @@ namespace ServicuerosSA.Controllers
     {
         private readonly ApplicationDbContext _context;
         private ClasificacionTripaModel clasetripa;
+        private ClasificacionTripaModel listabode;
        
         public ClasificacionTripasController(ApplicationDbContext context)
         {
             _context = context;
             clasetripa = new ClasificacionTripaModel(_context);
+            listabode = new ClasificacionTripaModel(_context);
         }
 
         // GET: ClasificacionTripas
@@ -26,13 +28,17 @@ namespace ServicuerosSA.Controllers
         {
             return View(await _context.ClasificacionTripa.ToListAsync());
         }
-       
+       public List<object[]> controladorlistabode()
+        {
+            return listabode.Claselistabode();
+        }
       
 
         public List<object[]> Controladorlistadescarne()
         {
             return clasetripa.ModeloFiltrarClasificacionTripa();
         }
+     
         // GET: ClasificacionTripas/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -21,6 +21,7 @@ namespace ServicuerosSA.Models
         public bool Activo { get; set; }
         public string codigodescarne { get; set; }
         public string CodigoLote { get; set; }
+        public string codiunidescarne { get; set; }
 
         //RELACIONES
         public int PelambreId { get; set; }
