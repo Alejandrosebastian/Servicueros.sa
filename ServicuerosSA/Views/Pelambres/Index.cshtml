@@ -12,7 +12,9 @@
 <h2>Proceso en Pelambre</h2>
 <p>
     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoPelambre" onclick="ListaFormulas(); ListaBombos(); ListaPelambre(); listaTipoPiel(); listaClasificaciones(); listaPersonal()">Nuevo Proceso</a>
-    </p>
+    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ImpresionReportePelambre" onclick="ImprimeReportePelambre(); ">Reporte de Pelambres</a>
+
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -78,7 +80,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Fecha de Proceso</label>
-                        <input id="fecha" name="fecha" class="form-control" type="date"/>
+                        <input id="fecha" name="fecha" class="form-control" type="date" />
                     </div>
                     <div class="form-group">
                         <label class="control-label">Observaciones</label>
@@ -103,7 +105,7 @@
                                         <option value="0"> Buscar por Clasificacion Pelo</option>
                                     </select>
                                 </th>
-                                <th> 
+                                <th>
                                     Numero de Pieles
                                 </th>
                                 <th>
@@ -116,9 +118,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> 
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="GuardaPelambre()">Guardar</button>
-                
+
             </div>
         </div>
     </div>
@@ -285,7 +287,7 @@
                         </table>
                     </div>
                     <div class="form-group">
-                        <table class="table table-bordered" >
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Producto</th>
@@ -309,44 +311,91 @@
 
                         </table>
                     </div>
-                </div>
+                    @* Hoja de pesaje *@
+                    <div class="form-group">
+                        <table class="table table-bordered SaltoDePagina">
 
+                            <thead>
+                                <tr>
+                                    <th> Lote </th>
 
+                                    <th> Bombo  </th>
 
-                @* Hoja de pesaje *@
-                <div class="form-group">
-                    <table class="table table-bordered SaltoDePagina">
+                                    <th> Cantidad </th>
 
-                        <thead>
-                            <tr>
-                                <th> Lote </th>
+                                    <th> Peso(Kg) </th>
 
-                                <th> Bombo  </th>
+                                    <th> Fecha </th>
 
-                                <th> Cantidad </th>
+                                    <th> Bodega Nº </th>
 
-                                <th> Peso(Kg) </th>
+                                    <th> Seleccion </th>
+                                </tr>
 
-                                <th> Fecha </th>
-
-                                <th> Bodega Nº </th>
-
-                                <th> Seleccion </th>
-                            </tr>
-
-                        </thead>
-                        <tbody id="TablaPesaje"></tbody>
+                            </thead>
+                            <tbody id="TablaPesaje"></tbody>
                         </table>
-                  </div>
-                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
+                    </div>
                 </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
             </div>
         </div>
     </div>
- 
+</div>
 
-    
+@*IMPRESION REPORTE*@
+<div class="modal fade" id="ImpresionReportePelambre" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="EtiquetaModal">
+                    Reporte de Pelambres
+                </h4>
+            </div>
+
+            <div class="modal-body" id="impresionrepopelambre">
+
+                <div class="modal-body" id="areaImprime">
+                    @* Hoja de Pelambre *@
+                    <div class="form-group">
+                        <table class="table table-bordered SaltoDePagina">
+
+                            <thead>
+                                <tr>
+                                    <th> Codigo de Lote </th>
+
+                                    <th> Tipo de piel </th>
+
+                                    <th> Clasificación </th>
+
+                                    <th> Fecha y Hora </th>
+
+                                    <th> Bombo </th>
+
+                                    <th> Fórmula </th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody id="TablaPelambre"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Impresion('areaImprime');">Imprimir</button>
+            </div>
+        </div>
+    </div>
+</div>

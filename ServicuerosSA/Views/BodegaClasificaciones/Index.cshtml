@@ -8,28 +8,29 @@
 
 <p>
     <a class="btn btn-success" asp-action="Create">Crear una nueva clasificacion</a>
+    <a class="btn btn-info">Reportes de la Clasificacion en Pelo</a>
 </p>
-<table class="table"id="TablaPelo">
+<table class="table" id="TablaPelo">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fechaingreso)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NumeroEstanteria)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NumeroPieles)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Peso)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Observaciones)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.activo)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fechaingreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroEstanteria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroPieles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Peso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activo)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Bodegas)
             </th>
@@ -49,49 +50,102 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fechaingreso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroEstanteria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroPieles)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Peso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.activo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bodegas.NombreBodega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Clasificaciones.Selecciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lotes.Codigolote)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Medida.Abreviatura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoPiel.Detalle)
-            </td>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fechaingreso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroEstanteria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroPieles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Peso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observaciones)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.activo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bodegas.NombreBodega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clasificaciones.Selecciones)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lotes.Codigolote)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medida.Abreviatura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoPiel.Detalle)
+                </td>
+                <td>
 
-                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Bodega1Id">Editar</a> |
-                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Bodega1Id">Detalles</a> |
-                @*<a asp-action="Delete" asp-route-id="@item.Bodega1Id">Delete</a>*@
+                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Bodega1Id">Editar</a> |
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Bodega1Id">Detalles</a> |
+                    @*<a asp-action="Delete" asp-route-id="@item.Bodega1Id">Delete</a>*@
 
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@*IMPRESION REPORTE*@
+<div class="modal fade" id="ImpresionClasificacionPelo" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="EtiquetaModal">
+                    Reporte de la Clasificación en Pelo
+                </h4>
+            </div>
+
+            <div class="modal-body" id="impresion">
+
+                <div class="modal-body" id="areaImprimir">
+                    @* Hoja de clasificacion pelo *@
+                    <div class="form-group">
+                        <table class="table table-bordered SaltoDePagina">
+
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                    <th> # Estanteria </th>
+                                    <th> # Pieles </th>
+                                    <th> Peso </th>
+                                    <th> Observaciones </th>
+                                    <th> Bodega </th>
+                                    <th> Clasificación </th>
+                                    <th> Lote </th>
+                                    <th> Medida </th>
+                                    <th> Tipo de piel </th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody id="TablaClasiPelo"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
+            </div>
+        </div>
+    </div>
+</div>
+

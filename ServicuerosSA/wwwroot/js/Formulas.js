@@ -1,6 +1,6 @@
 ﻿
 class Formulas {
-    constructor(fecha_creacion, nombre, tipo_proceso, tipo_piel,  accion) {
+    constructor(fecha_creacion, nombre, tipo_proceso, tipo_piel, accion) {
         this.fecha_creacion = fecha_creacion;
         this.nombre = nombre;
         this.tipo_proceso = tipo_proceso;
@@ -32,7 +32,7 @@ class Formulas {
             url: accion,
             data: { id },
             success: (respuesta) => {
-                
+
                 $('#codigo').text(respuesta[0].codigo);
                 $('#codigoquimico').text(respuesta[0].codigo);
                 $('#version').text(respuesta[0].version);
@@ -61,9 +61,8 @@ class Formulas {
                 $('#entregado').text(respuesta[0].nombreEntregado);
             }
         });
-        
+
     }
-  
     CuerpoFormula(id) {
         var accion = this.accion;
         $.post(
@@ -71,7 +70,7 @@ class Formulas {
             { id },
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
-                    
+
                     $('#TablaDetalleForula').html(val[0]);
                 });
             }
@@ -94,8 +93,6 @@ class Formulas {
             }
         });
     }
-
-   
     CuerpoPesaje(id) {
         var accion = this.accion;
         $.post(
@@ -115,6 +112,28 @@ class Formulas {
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
                     $('#TablaDetalleQuimico').html(val[0]);
+                });
+            });
+    }
+    CuerpoLote(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaLote').html(val[0]);
+                });
+            });
+    }
+    CuerpoPelambre(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaPelambre').html(val[0]);
                 });
             });
     }

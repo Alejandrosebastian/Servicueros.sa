@@ -9,6 +9,7 @@ namespace ServicuerosSA.Models
     public class PelambreModel
     {
         string dato = "";
+        string datoimprime = "";
 
         private ApplicationDbContext _contexto;
         public PelambreModel(ApplicationDbContext contexto)
@@ -32,7 +33,8 @@ namespace ServicuerosSA.Models
                            cl.Selecciones,
                            b1.NumeroPieles,
                            tp.Detalle,
-                           b1.Peso, m.Abreviatura
+                           b1.Peso,
+                           m.Abreviatura
                        });
             foreach (var item in res)
             {
@@ -543,7 +545,7 @@ namespace ServicuerosSA.Models
             var res = (from p in _contexto.Pelambre
                        join f in _contexto.Formula on p.FormulaId equals f.FormulaId
                        join c in _contexto.Componente on f.FormulaId equals c.FormulaId
-                       where p.PelambreId == consultaid.PelambreId
+                       where p.PelambreId == consultaid.PelambreId && c.Quimico== true
                        select new
                        {
                            c.Detalle,
@@ -655,6 +657,43 @@ namespace ServicuerosSA.Models
             Enlistar.Add(objeto);
             return Enlistar;
         }        
+        //imprimir reporte de pelambres
+        public List<object[]> ModeloImprimirPelambre(string id)
+        {
+            List<object[]> listareporte = new List<object[]>();
+            var res = (from p in _contexto.Pelambre
+                       join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
+                       join f in _contexto.Formula on p.FormulaId equals f.FormulaId
+                       join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                       join l in _contexto.Lote on b1.LoteId equals l.LoteId
+                       join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
+                       join tp in _contexto.TipoPiel on l.TipoPielId equals tp.TipoPielId
+                       
+                       select new
+                       {
+                           
+                           l.Codigolote,
+                           tp.Detalle,
+                           c.Selecciones,
+                           p.Fecha,
+                           b.Num_bombo,
+                           f.Nombre
+                       }).ToList();
+            foreach (var item in res)
+            {
+                datoimprime += "<tr><td>" + item.Codigolote + "</td>" +
+                                   "<td>" + item.Detalle + "</td>" +
+                                   "<td>" + item.Selecciones + "</td>" +
+                                   "<td>" + item.Fecha.ToString("dd-MM-yyyy hh:mm") + "</td>" +
+                                   "<td>" + item.Num_bombo + "</td>" +
+                                   "<td>" + item.Nombre + "</td>"+
+                                   "</tr>";
+            }
+
+            object[] objeto = { datoimprime };
+            listareporte.Add(objeto);
+            return listareporte;
+        }
 
         public List<Pelambre> Listapelambres()
         {

@@ -8,6 +8,7 @@ namespace ServicuerosSA.Models
 {
     public class LoteModel
     {
+        string dato = "";
         ApplicationDbContext _contexto;
         public LoteModel(ApplicationDbContext context)
         {
@@ -202,6 +203,39 @@ namespace ServicuerosSA.Models
             return Lista;
         }
 
+        //IMPRIMIR LOTE
+        public List<object[]> ModeloImprimirLote(string id)
+        {
+            List<object[]> lista = new List<object[]>();
+            var lotes = (from l in _contexto.Lote
+                     join p in _contexto.Personal on l.PersonalId equals p.PersonalId
+                     join tp in _contexto.TipoPiel on l.TipoPielId equals tp.TipoPielId
+                     where l.estado == true
+                     select new 
+                     {                         
+                       l.Codigolote,
+                       l.Fechaingreso,
+                       l.Numerodepieles,
+                       nombres = p.Nombres + " " + p.Apellidos,
+                       tp.Detalle,
+                       l.Observaciones
+                     }).OrderByDescending(f => f.Fechaingreso).ToList();
+            foreach (var item in lotes)
+            {
+                dato += "<tr>" +
+                    "<td>" + item.Codigolote + "</td>" +
+                    "<td>" + item.Fechaingreso + "</td>" +
+                    "<td>" + item.Numerodepieles + "</td>" +
+                    "<td>" + item.nombres + "</td>" +
+                    "<td>" + item.Detalle + "</td>" +
+                    "<td>" + item.Observaciones + "</td>" +
+                    
+                    "</tr>";
+            }
+            object[] objeto = { dato };
+            lista.Add(objeto);
+            return lista;
+        }
        
     }
 }
