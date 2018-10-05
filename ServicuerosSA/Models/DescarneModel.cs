@@ -8,6 +8,7 @@ namespace ServicuerosSA.Models
 {
     public class DescarneModel
     {
+        string dato = "";
         private ApplicationDbContext _contexto;
        
         public DescarneModel(ApplicationDbContext contexto)
@@ -188,5 +189,29 @@ namespace ServicuerosSA.Models
             }
             return listaerrores;
         }
+        public List<object[]> ModeloImprimirDescarne(string id)
+        {
+            List<object[]> lista = new List<object[]>();
+            var res = (from des in _contexto.Descarne
+                       where des.Activo == true
+                       select new
+                       {
+                           des.CodigoLote,
+                           des.Cantidad
+                       });
+           
+            foreach (var item in res)
+            {
+                dato += "<tr>" +
+                    "<td>" + item.CodigoLote + "</td>" +
+                    "<td>" + item.Cantidad + "</td>" +
+                    "</tr>";
+            }
+            object[] objeto = { dato };
+            lista.Add(objeto);
+            return lista;
+        }
+
+
     }
 }
