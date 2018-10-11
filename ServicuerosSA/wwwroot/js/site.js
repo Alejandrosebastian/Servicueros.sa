@@ -74,13 +74,13 @@ var ListaIndexDescarne = () => {
 }
 var Listatipotripa = () => {
     var accion = 'Bodegatripas/Controladorlistatipotripa';
-    var listatrip = new BodegaTripa('','','', '', '', '', accion);
+    var listatrip = new BodegaTripa('','','', '', '', '','', accion);
     listatrip.ClaseListaClasificacionTripa();
 }
 var listadescarne = () => {
 
     var accion = '../Bodegatripas/Controladorlistadescarnes';
-    var lisdescarnes = new BodegaTripa('', '', '', '', '', '', accion);
+    var lisdescarnes = new BodegaTripa('', '', '', '', '', '','', accion);
     lisdescarnes.ClaseListadescarnes();
 }
 var GuardaPelambre = () => {
@@ -160,7 +160,7 @@ var boodegas = () => {
 /////clasificacion tripas bedegas
 var bodegastri = () => {
     var accion = '../ClasificacionTripas/controladorlistabode';
-    var bod = new BodegaTripa('', '', '', '', '','', accion);
+    var bod = new BodegaTripa('', '', '', '', '','','', accion);
     bod.Claselistabodegas();
 
 }
@@ -321,12 +321,14 @@ var Guardarbodetripas = () => {
     var clasifica = clasifi.options[clasifi.selectedIndex].value;
     var descarne = document.getElementById("Descarneid");
     var descarnes = descarne.options[descarne.selectedIndex].value;
+    var bode = document.getElementById("BodegaId");
+    var bodega = bode.options[bode.selectedIndex].value;
     var numpieles = document.getElementById('NumeroPielesInput').value;
     var peso = document.getElementById('PesoInput').value;
     var personal = document.getElementById('personalId');
     var personales = personal.options[personal.selectedIndex].value;
-    var guarda = new BodegaTripa(clasifica, descarnes, numpieles, peso, personales, '', accion);
-    guarda.GuardaClasificacionTripa(clasifica, descarnes, personales);
+    var guarda = new BodegaTripa(clasifica, descarnes, bodega, numpieles, peso, personales, '', accion);
+    guarda.GuardaClasificacionTripa(clasifica, descarnes, bodega, personales);
 
 
 }

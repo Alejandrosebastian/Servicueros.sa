@@ -1,14 +1,15 @@
 ﻿class BodegaTripa {
-    constructor(tipotripa,descarne,numeropieles, peso,personal,activo, accion) {
+    constructor(tipotripa,descarne,bodega,numeropieles, peso,personal,activo, accion) {
         this.tipotripa = tipotripa;
         this.descarne = descarne;
+        this.bodega = bodega;
         this.numeropieles = numeropieles;
         this.peso = peso;
         this.personal = personal;
         this.activo = activo;
         this.accion = accion;
     }
-    GuardaClasificacionTripa(tipotripa,descarne,personal) {
+    GuardaClasificacionTripa(tipotripa,descarne,bodega,personal) {
         if (this.tipotripa == '0') {
             document.getElementById('mensajede').innerHTML = 'Selecciona un tipo de clasificacion';
         } else {
@@ -17,22 +18,27 @@
                 document.getElementById('mensajetri').innerHTML = 'seleccione que desea clasificar';
             } else {
                 document.getElementById('mensajetri').innerHTML = '';
-                if (this.personal == '0') {
-                    document.getElementById('mensajeper').innerHTML = 'Seleccione a la persona indicada en este proceso';
+                if (this.bodega == '0') {
+                    document.getElementById('mensajebo').innerHTML = 'Seleccione una bodega de almacenamineto';
                 } else {
-                    var numeropieles = this.numeropieles;
-                    var peso = this.peso;
-                    var accion = this.accion;
-                    $.ajax({
-                        type: "POST",
-                        url: accion,
-                        data: {
-                            tipotripa,descarne,numeropieles,peso,personal
-                        },
-                        success: (respuesta) => {
-                            this.limpiarcajas();
-                        }
-                    });
+                    document.getElementById('mensajebo').innerHTML = '';
+                    if (this.personal == '0') {
+                        document.getElementById('mensajeper').innerHTML = 'Seleccione a la persona indicada en este proceso';
+                    } else {
+                        var numeropieles = this.numeropieles;
+                        var peso = this.peso;
+                        var accion = this.accion;
+                        $.ajax({
+                            type: "POST",
+                            url: accion,
+                            data: {
+                                tipotripa, descarne,bodega, numeropieles, peso, personal
+                            },
+                            success: (respuesta) => {
+                                this.limpiarcajas();
+                            }
+                        });
+                    }
                 }
             }
         }
