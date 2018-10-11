@@ -115,6 +115,7 @@ class Formulas {
                 });
             });
     }
+    //REPORTES
     CuerpoLote(id) {
         var accion = this.accion;
         $.post(
@@ -134,6 +135,28 @@ class Formulas {
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
                     $('#TablaPelambre').html(val[0]);
+                });
+            });
+    }
+    CuerpoDescarne(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaDescarne').html(val[0]);
+                });
+            });
+    }
+    CuerpoClasiTripa(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaClasiTripa').html(val[0]);
                 });
             });
     }
