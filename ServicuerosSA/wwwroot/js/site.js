@@ -313,7 +313,7 @@ var numeropielestripa = () => {
     var accion = 'Bodegatripas/Controladorundescarnetripa';
     var ya = document.getElementById('Descarneid');
     var untrips = ya.options[ya.selectedIndex].value;
-    var tripa = new BodegaTripa('', '', '', '', '', '', accion);
+    var tripa = new BodegaTripa('', '', '', '', '', '','', accion);
     tripa.Numeropielstripas(untrips);
 }
 var GuardaDescarne = () => {
