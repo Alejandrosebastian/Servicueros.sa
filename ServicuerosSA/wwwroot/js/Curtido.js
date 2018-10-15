@@ -12,5 +12,16 @@
 
     }
 
+    LLenaTablaModalCurtido() {
+        var accion = this.accion;
+        $.post(accion,
+            {},
+            (respuesta) => {
+                console.log(respuesta);
+                $.each(respuesta, (index, val) => {
+                    $('#ListaCurtido').html(val[0]);
+                });
+            });
+    }
 
 }

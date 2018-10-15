@@ -5,8 +5,14 @@ $().ready(() => {
     claseJsLlamarListaProveedor();
     claseJsLlamarListaLotes(1);
     ListaIndex();
+
+
     listatripasindex();
-   // claseJsLlamarListaDescarne();
+
+
+
+
+    // claseJsLlamarListaDescarne();
    // ListaDescarne();
    //Listatipotripa();
 
@@ -125,7 +131,7 @@ var ListaIndex = () => {
 }
 var listatripasindex = () => {
     var accion = '../BodegaTripas/Controllistaindesxtripa';
-    var inde = new BodegaTripa('','','','','','',accion);
+    var inde = new BodegaTripa('','','','','','','',accion);
     inde.Listaclasificaciontripaindex();
 }
 var listaTipoPiel = () => {
@@ -186,6 +192,7 @@ var lote = () => {
     var code = new ClaseJSLotes(Lote, '', '', '', '', '', accion);
     code.obtenerUnLote();
 }
+///control numero pieles lote
 var numeropileslote = () => {
     var accion = '../Lotes/ControladorComparaNumeroPieles';
     var cod = document.getElementById('LoteId');
@@ -411,4 +418,12 @@ var TablaPelo = () => {
         }
 
     });
+}
+/////////////////////Curtido
+
+var llenaTablaCurtidoModal = () => {
+
+    var accion = 'Curtidos/ControladorListaChecks';
+    var curtido = new Curtidojs('', '', '', '', '', '', '', '', accion);
+    curtido.LLenaTablaModalCurtido();
 }
