@@ -23,6 +23,39 @@ namespace ServicuerosSA.Controllers
             bombos = new BomboModel(context);
             personas = new PersonalModel(context);
         }
+
+        public List<object[]> ControladorListaChecks()
+        {
+            List<object[]> lista = new List<object[]>();
+            var datos = (from bt in _context.Bodegatripa
+                         join d in _context.Descarne on bt.DescarneId equals d.DescarneId
+                         join cl in _context.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
+                         join p in _context.Personal on bt.PersonalId equals p.PersonalId
+                         join b in _context.Bodega on bt.BodegaId equals b.BodegaId
+                         where cl.ClasificacionTripaId !=  8 || cl.ClasificacionTripaId != 9
+                         select new
+                         {
+                             bt.BodegaId,
+                             cl.Detalle,
+                             bt.peso,
+                             d.Cantidad
+                         }).ToList();
+            string html = "";
+            foreach (var item in datos)
+            {
+                html += "<tr>"+
+                    "<td><input type='checkbox' class='form-control' value=" + item.BodegaId + "/>" +
+                     "<td>" + item.Detalle + "</td>" +
+                    "<td>" + item.peso + "</td>" +
+                    "<td>" + item.Cantidad + "</td>" +
+                    "</tr>";
+
+            }
+            object[] llena = { html };
+            lista.Add(llena);
+            return lista;
+
+        }
         public List<ClasificacionTripa> Controcurtilistatripa()
         {
             return tipotripa.ClaseModeloListaClasificacionTripa();
