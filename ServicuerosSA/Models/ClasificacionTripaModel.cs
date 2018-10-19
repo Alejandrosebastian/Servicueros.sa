@@ -147,34 +147,6 @@ namespace ServicuerosSA.Models
             }
             return listatripa;
         }
-        public List<object[]> ModeloImprimirClasiTripa(string id)
-        {
-            List<object[]> lista = new List<object[]>();
-            string desc = "";
-            var res = (from bt in _contexto.Bodegatripa
-                       join de in _contexto.Descarne on bt.DescarneId equals de.DescarneId
-                       join cl in _contexto.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
-                       where bt.activo == true
-                       select new
-                       {
-                           de.CodigoLote,
-                           bt.NumeroPieles,
-                           cl.Detalle,
-                           bt.peso
-                       }).ToList();
-            foreach (var item in res)
-            {
-                desc += "<tr>" +
-                    "<td>" + item.CodigoLote + "</td>" +
-                    "<td>" + item.NumeroPieles + "</td>" +
-                    "<td>" + item.Detalle + "</td>" +
-                    "<td>" + item.peso + "</td>" +
-                    "</tr>";
-            }
-            object[] objetodatos = { desc };
-            lista.Add(objetodatos);
-            return lista;
-        }
     }
    
 }

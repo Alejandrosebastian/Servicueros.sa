@@ -6,23 +6,22 @@
 
 <p>
     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="listaPersonal(); Listatipotripa(); listadescarne(); bodegastri();">Nueva Clasificacion</a>
-    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ImpresionClasiTripa" onclick=" ImprimirClasiTripa();">Reporte de Clasificación en Tripa</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Codigo lote
-            </th>
-            <th>
-                NumeroPieles
-            </th>
-            <th>
-                ClasificacionTripa
-            </th>
-            <th>
-                Peso
-            </th>
+               <th>
+                   Codigo lote
+                </th>
+               <th>
+                   NumeroPieles
+               </th>
+                <th>
+                    ClasificacionTripa
+                </th>
+                <th>
+                    peso
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -53,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Seleccione la bodega de almacenamineto</label>
-                        <select id="BodegaId" name="BodegaId" required class="form-control">
+                        <select id="BodegaId" name="BodegaId" required class="form-control" >
                             <option value="0">Seleccione la bodega de almacenamineto</option>
                         </select>
                         <br />
@@ -91,84 +90,30 @@
                     </div>
 
                     @*<table class="table">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Codigo lote
-                                    </th>
-                                    <th>
-                                        Numero de pieles
-                                    </th>
-                                    <th>
-                                        Peso
-                                    </th>
-                                    <th>
+            <thead>
+                <tr>
+                    <th>
+                        Codigo lote
+                    </th>
+                    <th>
+                        Numero de pieles
+                    </th>
+                    <th>
+                        Peso
+                    </th>
+                    <th>
 
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="Descarneslista"></tbody>
-                        </table>*@
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="Descarneslista"></tbody>
+        </table>*@
                     @*<tbody id="Tripaslista" ></tbody>*@
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="graba" name="graba" onclick="Guardarbodetripas()">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-@*IMPRESION REPORTE*@
-<div class="modal fade" id="ImpresionClasiTripa" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="EtiquetaModal">
-                    Reporte de Lotes
-                </h4>
-            </div>
-
-            <div class="modal-body" id="impresion">
-
-                <div class="modal-body" id="areaImprimir">
-                    @* Hoja de lote *@
-                    <div class="form-group">
-                        <table class="table table-bordered SaltoDePagina">
-
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Codigo lote
-                                    </th>
-                                    <th>
-                                        NumeroPieles
-                                    </th>
-                                    <th>
-                                        ClasificacionTripa
-                                    </th>
-                                    <th>
-                                        Peso
-                                    </th>
-
-                                </tr>
-
-                            </thead>
-                            <tbody id="TablaClasiTripa"></tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
+                <button type="button" class="btn btn-primary"id="graba" name="graba" onclick="Guardarbodetripas()">Guardar</button>
             </div>
         </div>
     </div>
