@@ -38,6 +38,10 @@ namespace ServicuerosSA.Controllers
         {
             return clasetripa.ModeloFiltrarClasificacionTripa();
         }
+        public List<object[]>ControladorImprimirDescarne(string id)
+        {
+            return clasetripa.ModeloImprimirClasiTripa(id);
+        }
      
         // GET: ClasificacionTripas/Details/5
         public async Task<IActionResult> Details(int? id)

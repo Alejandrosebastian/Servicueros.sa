@@ -275,6 +275,19 @@ var ImprimeReportePelambre = (id) => {
     var impresionreportePelambre = new Formulas('', '', '', '', accion);
     impresionreportePelambre.CuerpoPelambre(id);
 }
+//reporte Descarne
+var ImprimirDescarne = (id) => {
+    var accion = 'Descarnes/ControladorImprimirDescarne';
+    var imprimirDescarne = new Formulas('', '', '', '', accion);
+    imprimirDescarne.CuerpoDescarne(id);
+
+}
+//reporte Clasificacion Tripa
+var ImprimirClasiTripa = (id) => {
+    var accion = 'ClasificacionTripas/ControladorImprimirDescarne';
+    var imprimirClasiTripa = new Formulas('', '', '', '', accion);
+    imprimirClasiTripa.CuerpoClasiTripa(id);
+}
 ///////
 var ListaPelambreDescarne = () => {
     var accion = 'Descarnes/Controladorlistapelambre';

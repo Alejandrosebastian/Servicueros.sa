@@ -26,6 +26,10 @@ namespace ServicuerosSA.Controllers
         {
             return claseDescarne.Modelolistapelambres();
         }
+        public List<object[]> ControladorImprimirDescarne(string id)
+        {
+            return claseDescarne.ModeloImprimirDescarne(id);
+        }
         // GET: Descarnes
         public async Task<IActionResult> Index()
         {
