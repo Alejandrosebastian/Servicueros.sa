@@ -93,7 +93,7 @@ namespace ServicuerosSA.Models
             lista.Add(objetodatos);
             return lista; 
        }
-        public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne, int bodega, int numeropieles,  int peso, int personal)
+        public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne, int bodega, int numeropieles,  int peso, int medida, int personal)
         {
             List<IdentityError> listatripa = new List<IdentityError>();
             try
@@ -105,9 +105,9 @@ namespace ServicuerosSA.Models
                     BodegaId = bodega,
                     NumeroPieles = numeropieles,
                     peso = peso,
+                    MedidaId = medida,
                     PersonalId = personal,
                     activo = true
-
                 };
                 
                 _contexto.Bodegatripa.Add(guardatripas);

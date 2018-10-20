@@ -13,10 +13,12 @@ namespace ServicuerosSA.Controllers
     public class MedidasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        
 
         public MedidasController(ApplicationDbContext context)
         {
             _context = context;
+
         }
 
         // GET: Medidas
@@ -41,6 +43,10 @@ namespace ServicuerosSA.Controllers
             }
 
             return View(medida);
+        }
+        public List<Medida> listasmedidas()
+        {
+            return _context.Medida.ToList();
         }
 
         // GET: Medidas/Create

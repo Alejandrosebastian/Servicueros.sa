@@ -32,7 +32,7 @@ namespace ServicuerosSA.Controllers
                          join cl in _context.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
                          join p in _context.Personal on bt.PersonalId equals p.PersonalId
                          join b in _context.Bodega on bt.BodegaId equals b.BodegaId
-                         where cl.ClasificacionTripaId !=  8 || cl.ClasificacionTripaId != 9
+                         where bt.ClasificacionTripaId != 8 && bt.ClasificacionTripaId != 9
                          select new
                          {
                              bt.BodegaId,
@@ -72,7 +72,7 @@ namespace ServicuerosSA.Controllers
         // GET: Curtidos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Curtido.Include(c => c.Bombo).Include(c => c.ClasificacionTripa).Include(c => c.Formula).Include(c => c.Personal);
+            var applicationDbContext = _context.Curtido.Include(c => c.Bombo).Include(c => c.Formula).Include(c => c.Personal);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -86,7 +86,7 @@ namespace ServicuerosSA.Controllers
 
             var curtido = await _context.Curtido
                 .Include(c => c.Bombo)
-                .Include(c => c.ClasificacionTripa)
+                
                 .Include(c => c.Formula)
                 .Include(c => c.Personal)
                 .SingleOrDefaultAsync(m => m.CurtidoId == id);
@@ -122,7 +122,7 @@ namespace ServicuerosSA.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BomboId"] = new SelectList(_context.Bombo, "BomboId", "BomboId", curtido.BomboId);
-            ViewData["ClasificacionTripaId"] = new SelectList(_context.ClasificacionTripa, "ClasificacionTripaId", "Detalle", curtido.ClasificacionTripaId);
+            
             ViewData["FormulaId"] = new SelectList(_context.Formula, "FormulaId", "Nombre", curtido.FormulaId);
             ViewData["PersonalId"] = new SelectList(_context.Personal, "PersonalId", "Apellidos", curtido.PersonalId);
             return View(curtido);
@@ -142,7 +142,7 @@ namespace ServicuerosSA.Controllers
                 return NotFound();
             }
             ViewData["BomboId"] = new SelectList(_context.Bombo, "BomboId", "BomboId", curtido.BomboId);
-            ViewData["ClasificacionTripaId"] = new SelectList(_context.ClasificacionTripa, "ClasificacionTripaId", "Detalle", curtido.ClasificacionTripaId);
+            
             ViewData["FormulaId"] = new SelectList(_context.Formula, "FormulaId", "Nombre", curtido.FormulaId);
             ViewData["PersonalId"] = new SelectList(_context.Personal, "PersonalId", "Apellidos", curtido.PersonalId);
             return View(curtido);
@@ -181,7 +181,7 @@ namespace ServicuerosSA.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BomboId"] = new SelectList(_context.Bombo, "BomboId", "BomboId", curtido.BomboId);
-            ViewData["ClasificacionTripaId"] = new SelectList(_context.ClasificacionTripa, "ClasificacionTripaId", "Detalle", curtido.ClasificacionTripaId);
+            
             ViewData["FormulaId"] = new SelectList(_context.Formula, "FormulaId", "Nombre", curtido.FormulaId);
             ViewData["PersonalId"] = new SelectList(_context.Personal, "PersonalId", "Apellidos", curtido.PersonalId);
             return View(curtido);
@@ -197,7 +197,7 @@ namespace ServicuerosSA.Controllers
 
             var curtido = await _context.Curtido
                 .Include(c => c.Bombo)
-                .Include(c => c.ClasificacionTripa)
+                
                 .Include(c => c.Formula)
                 .Include(c => c.Personal)
                 .SingleOrDefaultAsync(m => m.CurtidoId == id);

@@ -1,15 +1,16 @@
 ﻿class BodegaTripa {
-    constructor(tipotripa,descarne,bodega,numeropieles, peso,personal,activo, accion) {
+    constructor(tipotripa,descarne,bodega,numeropieles, peso, medida, personal,activo, accion) {
         this.tipotripa = tipotripa;
         this.descarne = descarne;
         this.bodega = bodega;
         this.numeropieles = numeropieles;
         this.peso = peso;
+        this.medida = medida;
         this.personal = personal;
         this.activo = activo;
         this.accion = accion;
     }
-    GuardaClasificacionTripa(tipotripa,descarne,bodega,personal) {
+    GuardaClasificacionTripa(tipotripa,descarne,bodega, medida,personal) {
         if (this.tipotripa == '0') {
             document.getElementById('mensajede').innerHTML = 'Selecciona un tipo de clasificacion';
         } else {
@@ -22,22 +23,27 @@
                     document.getElementById('mensajebo').innerHTML = 'Seleccione una bodega de almacenamineto';
                 } else {
                     document.getElementById('mensajebo').innerHTML = '';
-                    if (this.personal == '0') {
-                        document.getElementById('mensajeper').innerHTML = 'Seleccione a la persona indicada en este proceso';
+                    if (this.medida == '0') {
+                        document.getElementById('mensajeme').innerHTML = 'Seleccione una medida';
                     } else {
-                        var numeropieles = this.numeropieles;
-                        var peso = this.peso;
-                        var accion = this.accion;
-                        $.ajax({
-                            type: "POST",
-                            url: accion,
-                            data: {
-                                tipotripa, descarne,bodega, numeropieles, peso, personal
-                            },
-                            success: (respuesta) => {
-                                this.limpiarcajas();
-                            }
-                        });
+                        document.getElementById('mensajeme').innerHTML = '';
+                        if (this.personal == '0') {
+                            document.getElementById('mensajeper').innerHTML = 'Seleccione a la persona indicada en este proceso';
+                        } else {
+                            var numeropieles = this.numeropieles;
+                            var peso = this.peso;
+                            var accion = this.accion;
+                            $.ajax({
+                                type: "POST",
+                                url: accion,
+                                data: {
+                                    tipotripa, descarne, bodega, numeropieles, peso, medida, personal
+                                },
+                                success: (respuesta) => {
+                                    this.limpiarcajas();
+                                }
+                            });
+                        }
                     }
                 }
             }
@@ -65,7 +71,7 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-                //console.log(respuesta);
+                console.log(respuesta);
                 if (0 < respuesta.length) {
 
                 for (var i = 0; i < respuesta.length; i++) {
@@ -155,6 +161,7 @@
         listatripasindex();
 
     }
+    
     
    
 }

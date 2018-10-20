@@ -16,10 +16,13 @@ namespace ServicuerosSA.Models
         //Relaciones
         public int DescarneId { get; set; }
         public Descarne Descarnes { get; set; }
-        public int ClasificacionTripaId { get; set; }
-        public ClasificacionTripa ClasificacionTripa { get; set; }
+       public int ClasificacionTripaId { get; set; }
+       public ClasificacionTripa ClasificacionTripa { get; set; }
+        
         public int PersonalId { get; set; }
         public Personal personal { get; set; }
+        public int MedidaId { get; set; }
+        public Medida Medida { get; set; }
 
         public int BodegaId { get; set; }
         public Bodega bodega { get; set; }

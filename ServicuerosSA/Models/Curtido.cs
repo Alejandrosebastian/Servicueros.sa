@@ -17,8 +17,12 @@ namespace ServicuerosSA.Models
         public Formula Formula { get; set; }
         public int PersonalId { get; set; }
         public Personal Personal { get; set; }
-        public int ClasificacionTripaId  { get; set; }
-        public ClasificacionTripa ClasificacionTripa { get; set; }
+        //public int ClasificacionTripaId  { get; set; }
+        //public ClasificacionTripa ClasificacionTripa { get; set; }
+        public int BodegaTripaId { get; set; }
+        public Bodega BodegaTripa { get; set; }
+        public int MedidaId { get; set; }
+        public Medida Medida { get; set; }
         public int BomboId { get; set; }
         public Bombo Bombo { get; set; }
     }

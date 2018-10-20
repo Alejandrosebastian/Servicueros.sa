@@ -80,13 +80,13 @@ var ListaIndexDescarne = () => {
 }
 var Listatipotripa = () => {
     var accion = 'Bodegatripas/Controladorlistatipotripa';
-    var listatrip = new BodegaTripa('','','', '', '', '','', accion);
+    var listatrip = new BodegaTripa('','','', '', '', '','','', accion);
     listatrip.ClaseListaClasificacionTripa();
 }
 var listadescarne = () => {
 
     var accion = '../Bodegatripas/Controladorlistadescarnes';
-    var lisdescarnes = new BodegaTripa('', '', '', '', '', '','', accion);
+    var lisdescarnes = new BodegaTripa('', '', '', '', '', '','','', accion);
     lisdescarnes.ClaseListadescarnes();
 }
 var GuardaPelambre = () => {
@@ -131,7 +131,7 @@ var ListaIndex = () => {
 }
 var listatripasindex = () => {
     var accion = '../BodegaTripas/Controllistaindesxtripa';
-    var inde = new BodegaTripa('','','','','','','',accion);
+    var inde = new BodegaTripa('','','','','','','','',accion);
     inde.Listaclasificaciontripaindex();
 }
 var listaTipoPiel = () => {
@@ -166,7 +166,7 @@ var boodegas = () => {
 /////clasificacion tripas bedegas
 var bodegastri = () => {
     var accion = '../ClasificacionTripas/controladorlistabode';
-    var bod = new BodegaTripa('', '', '', '', '','','', accion);
+    var bod = new BodegaTripa('', '', '', '', '','','','', accion);
     bod.Claselistabodegas();
 
 }
@@ -313,7 +313,7 @@ var numeropielestripa = () => {
     var accion = 'Bodegatripas/Controladorundescarnetripa';
     var ya = document.getElementById('Descarneid');
     var untrips = ya.options[ya.selectedIndex].value;
-    var tripa = new BodegaTripa('', '', '', '', '', '','', accion);
+    var tripa = new BodegaTripa('', '', '', '', '', '','','', accion);
     tripa.Numeropielstripas(untrips);
 }
 var GuardaDescarne = () => {
@@ -344,11 +344,13 @@ var Guardarbodetripas = () => {
     var bode = document.getElementById("BodegaId");
     var bodega = bode.options[bode.selectedIndex].value;
     var numpieles = document.getElementById('NumeroPielesInput').value;
+    var medi = document.getElementById('MedidaId');
+    var medidas = medi.options[medi.selectedIndex].value;
     var peso = document.getElementById('PesoInput').value;
     var personal = document.getElementById('personalId');
     var personales = personal.options[personal.selectedIndex].value;
-    var guarda = new BodegaTripa(clasifica, descarnes, bodega, numpieles, peso, personales, '', accion);
-    guarda.GuardaClasificacionTripa(clasifica, descarnes, bodega, personales);
+    var guarda = new BodegaTripa(clasifica, descarnes, bodega, numpieles, peso, medidas, personales, '', accion);
+    guarda.GuardaClasificacionTripa(clasifica, descarnes, bodega, medidas, personales);
 
 
 }
@@ -426,4 +428,10 @@ var llenaTablaCurtidoModal = () => {
     var accion = 'Curtidos/ControladorListaChecks';
     var curtido = new Curtidojs('', '', '', '', '', '', '', '', accion);
     curtido.LLenaTablaModalCurtido();
+}
+////// medida
+var medidas = () => {
+    var accion = '../Medidas/listasmedidas';
+    var medi = new Clasemedidas('', '', accion);
+    medi.listamedidas()
 }
