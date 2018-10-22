@@ -4,54 +4,36 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Crear</h2>
-
-<h4>Bodegatripa</h4>
+<h2>Reporte de Clasificacion Tripa</h2>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="activo" /> @Html.DisplayNameFor(model => model.activo)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumeroPieles" class="control-label"></label>
-                <input asp-for="NumeroPieles" class="form-control" />
-                <span asp-validation-for="NumeroPieles" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="peso" class="control-label"></label>
-                <input asp-for="peso" class="form-control" />
-                <span asp-validation-for="peso" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DescarneId" class="control-label">Descarne</label>
-                <select asp-for="DescarneId" class ="form-control" asp-items="ViewBag.DescarneId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClasificacionTripaId" class="control-label">Clasificacion Tripa</label>
-                <select asp-for="ClasificacionTripaId" class ="form-control" asp-items="ViewBag.ClasificacionTripaId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="PersonalId" class="control-label">Personal</label>
-                <input asp-for="PersonalId" class="form-control" />
-                <span asp-validation-for="PersonalId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
+<div class="form-group">
+    <table class="table table-bordered SaltoDePagina">
 
-<div>
-    <a asp-action="Index">Regresar a  Lista</a>
+        <thead>
+            <tr>
+                <th>
+                    Codigo lote
+                </th>
+                <th>
+                    NumeroPieles
+                </th>
+                <th>
+                    ClasificacionTripa
+                </th>
+                <th>
+                    Peso
+                </th>
+
+            </tr>
+
+        </thead>
+        <tbody id="TablaClasiTripa"></tbody>
+    </table>
 </div>
+@*<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
+</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -51,8 +51,6 @@ namespace ServicuerosSA.Models
             ListaDescarne.Add(objetodatos);
             return ListaDescarne;
         }
-    
-
         public List<IdentityError> ClaseGuardarDescarne(string pelambre, int cantidad, DateTime fecha, int personal, string codigolote, string codiunidescarne)
 
         {
@@ -197,14 +195,16 @@ namespace ServicuerosSA.Models
                        select new
                        {
                            des.CodigoLote,
-                           des.Cantidad
-                       });
+                           des.Cantidad,
+                           fecha = DateTime.Now.ToString()
+                       }).Distinct().OrderByDescending(f=> f.fecha);
            
             foreach (var item in res)
             {
                 dato += "<tr>" +
                     "<td>" + item.CodigoLote + "</td>" +
                     "<td>" + item.Cantidad + "</td>" +
+                    "<td>"+ item.fecha + "</td>"+
                     "</tr>";
             }
             object[] objeto = { dato };
