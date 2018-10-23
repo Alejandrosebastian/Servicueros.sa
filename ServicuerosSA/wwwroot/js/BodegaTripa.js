@@ -40,7 +40,7 @@
                                     tipotripa, descarne, bodega, numeropieles, peso, medida, personal
                                 },
                                 success: (respuesta) => {
-                                    if (respuesta[0].code == 'OK') {
+                                    if (respuesta[0].code == 'Ok') {
                                 swal('Clasificacion Tripa', "Se guardo con exito", 'success');
                                     } else {
                                 swal('Clasificacion Tripa', respuesta[0].description, 'error');

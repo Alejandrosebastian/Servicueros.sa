@@ -74,7 +74,7 @@
                                 pelambre, cantidad, fecha, personal,  codigolote, codiunidescarne
                             },
                             success: (respuesta) => {
-                                if (respuesta[0].code == "OK") {
+                                if (respuesta[0].code == "Ok") {
                                     this.limpiarcajas();
                                     swal("Pelambre", "Se guardo exitosamente", "success");
 
