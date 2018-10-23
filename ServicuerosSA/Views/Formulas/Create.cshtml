@@ -13,6 +13,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label class="control-label">Seleccione el Tipo de Formula para aplicar</label>
+               
+                <select class="form-control" id="dato" onchange="seleccionFormula()">
+                    <option value="0">Pelambre</option>
+                    <option value="1">Curtido</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
@@ -32,9 +41,9 @@
                 <input asp-for="TipoProceso" class="form-control" />
                 <span asp-validation-for="TipoProceso" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="tipoPiel">
                 <label asp-for="TipoPielId" class="control-label"></label>
-                <select asp-for="TipoPielId" class ="form-control" asp-items="ViewBag.TipoPielId"></select>
+                <select asp-for="TipoPielId" class="form-control" asp-items="ViewBag.TipoPielId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-primary" />

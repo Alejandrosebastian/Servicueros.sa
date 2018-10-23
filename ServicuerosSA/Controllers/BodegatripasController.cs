@@ -42,7 +42,7 @@ namespace ServicuerosSA.Controllers
         {
             return listatipotripas.ModeloFiltrarClasificacionTripa();
         }
-        public List<IdentityError> Controladorguardabodetripas(int tipotripa, int descarne, int bodega, int numeropieles, int peso, int medida, int personal)
+        public List<IdentityError> Controladorguardabodetripas(int tipotripa, int descarne, int bodega, decimal numeropieles, int peso, int medida, int personal)
         {
             return listatipotripas.Claseguardabodetripa(tipotripa, descarne, bodega, numeropieles, peso, medida, personal);
         }

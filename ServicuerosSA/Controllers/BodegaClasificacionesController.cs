@@ -55,7 +55,7 @@ namespace ServicuerosSA.Controllers
         {
             ViewData["BodegaId"] = new SelectList(_context.Bodega, "BodegaId", "NombreBodega");
             ViewData["ClasificacionId"] = new SelectList(_context.Clasificacion, "ClasificacionId", "Selecciones");
-            ViewData["LoteId"] = new SelectList(_context.Lote, "LoteId", "Codigolote");
+            ViewData["LoteId"] = new SelectList(_context.Lote.Where(l => l.estado == true), "LoteId", "Codigolote");
             ViewData["MedidaId"] = new SelectList(_context.Medida, "MedidaId", "Abreviatura");
             ViewData["TipoPielId"] = new SelectList(_context.TipoPiel, "TipoPielId", "Detalle");
             return View();

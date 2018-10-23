@@ -93,7 +93,7 @@ namespace ServicuerosSA.Models
             lista.Add(objetodatos);
             return lista; 
        }
-        public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne, int bodega, int numeropieles,  int peso, int medida, int personal)
+        public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne, int bodega, decimal numeropieles,  int peso, int medida, int personal)
         {
             List<IdentityError> listatripa = new List<IdentityError>();
             try
@@ -137,12 +137,12 @@ namespace ServicuerosSA.Models
                     Description = "ok"
                 });
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
                 listatripa.Add(new IdentityError
                 {
                     Code = "no",
-                    Description = "no"
+                    Description = ex.Message.ToString()
                 });
             }
             return listatripa;

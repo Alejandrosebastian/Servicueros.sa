@@ -10,7 +10,7 @@ namespace ServicuerosSA.Models
 
         public int BodegaTripaId { get; set; }
         public bool activo { get; set; }
-        public int NumeroPieles { get; set; }
+        public decimal NumeroPieles { get; set; }
         public int peso { get; set; }
         
         //Relaciones

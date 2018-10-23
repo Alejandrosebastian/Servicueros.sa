@@ -343,7 +343,8 @@ var Guardarbodetripas = () => {
     var descarnes = descarne.options[descarne.selectedIndex].value;
     var bode = document.getElementById("BodegaId");
     var bodega = bode.options[bode.selectedIndex].value;
-    var numpieles = document.getElementById('NumeroPielesInput').value;
+    var numpielesSIN = document.getElementById('NumeroPielesInput').value;
+    var numpieles = numpielesSIN.replace('.', ',');
     var medi = document.getElementById('MedidaId');
     var medidas = medi.options[medi.selectedIndex].value;
     var peso = document.getElementById('PesoInput').value;
@@ -434,4 +435,20 @@ var medidas = () => {
     var accion = '../Medidas/listasmedidas';
     var medi = new Clasemedidas('', '', accion);
     medi.listamedidas()
+}
+
+var tabCurtido = () => {
+    $('#tablaCurtido').DataTable();
+
+}
+
+var seleccionFormula = () => {
+    var selecciones = document.getElementById('dato');
+    var sleeccion = selecciones.options[selecciones.selectedIndex].value;
+    if (sleeccion == 1) {
+        $('#tipoPiel').addClass('hidden');
+    } else {
+        $('#tipoPiel').removeClass('hidden');
+
+    }
 }

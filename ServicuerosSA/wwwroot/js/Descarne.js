@@ -74,12 +74,14 @@
                                 pelambre, cantidad, fecha, personal,  codigolote, codiunidescarne
                             },
                             success: (respuesta) => {
-                                if (respuesta[0].code == "ok") {
+                                if (respuesta[0].code == "OK") {
                                     this.limpiarcajas();
                                     swal("Pelambre", "Se guardo exitosamente", "success");
+
                                 } else {
                                     this.limpiarcajas();
-                                    swal("Pelambre", "Ocurrio un error al guardar", "error");
+                                    swal("Pelambre", "Ocurrio un error", "error");
+
                                 }
                             }
                         });
