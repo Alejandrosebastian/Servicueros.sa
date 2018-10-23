@@ -124,7 +124,9 @@ namespace ServicuerosSA.Models
                                    Activo = false,
                                    Cantidad = des.Cantidad,
                                    codigodescarne = des.codigodescarne,
-                                   CodigoLote = des.CodigoLote
+                                   CodigoLote = des.CodigoLote,
+                                   DescarneId = des.DescarneId
+                                    
                                }).FirstOrDefault();
 
                 _contexto.Descarne.Update(descarnes);
@@ -133,8 +135,8 @@ namespace ServicuerosSA.Models
 
                 listatripa.Add(new IdentityError
                 {
-                    Code = "ok",
-                    Description = "ok"
+                    Code = "Ok",
+                    Description = "Ok"
                 });
             }
             catch(Exception ex)

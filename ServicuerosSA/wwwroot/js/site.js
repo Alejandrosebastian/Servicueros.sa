@@ -290,7 +290,7 @@ var ImprimirDescarne = (id) => {
 }
 //reporte Clasificacion Tripa
 var ImprimirClasiTripa = (id) => {
-    var accion = 'ClasificacionTripas/ControladorImprimirDescarne';
+    var accion = '../ClasificacionTripas/ControladorImprimirDescarne';
     var imprimirClasiTripa = new Formulas('', '', '', '', accion);
     imprimirClasiTripa.CuerpoClasiTripa(id);
 }
