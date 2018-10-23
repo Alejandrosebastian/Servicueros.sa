@@ -111,7 +111,7 @@ namespace ServicuerosSA.Models
 
 
            
-
+      
             return Listaerrores;
         }
         public List<IdentityError> ModeloNumeroPielesDescarne(int codigopelambre,  int valor)
@@ -196,7 +196,7 @@ namespace ServicuerosSA.Models
                        {
                            des.CodigoLote,
                            des.Cantidad,
-                           fecha = DateTime.Now.ToString()
+                           fecha = des.Fecha
                        }).Distinct().OrderByDescending(f=> f.fecha);
            
             foreach (var item in res)
