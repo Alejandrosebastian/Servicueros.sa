@@ -5,9 +5,8 @@ $().ready(() => {
     claseJsLlamarListaProveedor();
     claseJsLlamarListaLotes(1);
     ListaIndex();
-
-
     listatripasindex();
+    ImprimirClasiTripa();
 
 
 
