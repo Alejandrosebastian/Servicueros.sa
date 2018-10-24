@@ -161,6 +161,8 @@
         document.getElementById('ClasificaciontripaId').selectIndex = 0;
         document.getElementById('NumeroPielesInput').value = '';
         document.getElementById('personalId').selectedIndex = 0;
+        document.getElementById('PesoPesoInput').value = '';
+
         $('#IngresoClasificacionTripa').html = '';
         $('#IngresoClasificacionTripa').modal('hide');
        
