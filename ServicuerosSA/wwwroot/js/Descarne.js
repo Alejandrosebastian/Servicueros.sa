@@ -130,7 +130,7 @@
                 url: accion,
                 data: { id },
                 success: (respuesta) => {
-                    console.log(respuesta);
+                   
                     document.getElementById('codiloteInput').value = respuesta[0].codigoLote;
                     $('#codigoloteInput').value = respuesta[0].codigoLote;
                     $('#codigoloteInput').removeClass('hidden');

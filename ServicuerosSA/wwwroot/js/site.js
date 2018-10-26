@@ -366,6 +366,8 @@ var controlnumeropieles = () => {
     }
 
 }
+///////////////////clsificacaion tripa
+
 var controlnumeropieltripa = () => {
     var descarne = document.getElementById("PielesInput").value;
     var tripa = document.getElementById("NumeroPielesInput").value;
@@ -377,7 +379,7 @@ var controlnumeropieltripa = () => {
         $('#graba').prop('disabled', true);
     }
 }
-///////////////////clsificacaion tripa
+////////// control pieles descarne
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
@@ -424,10 +426,12 @@ var TablaPelo = () => {
 /////////////////////Curtido
 
 var llenaTablaCurtidoModal = () => {
-
+    var ids = document.getElementById('ClasificaciontripaId');
+    var id = ids.options[ids.selectedIndex].value;
     var accion = 'Curtidos/ControladorListaChecks';
     var curtido = new Curtidojs('', '', '', '', '', '', '', '', accion);
-    curtido.LLenaTablaModalCurtido();
+
+    curtido.LLenaTablaModalCurtido(id);
 }
 ////// medida
 var medidas = () => {
@@ -436,10 +440,7 @@ var medidas = () => {
     medi.listamedidas()
 }
 
-var tabCurtido = () => {
-    $('#tablaCurtido').DataTable();
 
-}
 
 var seleccionFormula = () => {
     var selecciones = document.getElementById('dato');
@@ -450,4 +451,38 @@ var seleccionFormula = () => {
         $('#tipoPiel').removeClass('hidden');
 
     }
+}
+
+//////guardar curtido
+
+var guardarCurtido = () => {
+
+    $('#cuerpoFactura tr').each(function () {
+        var celdas = $(this).find('td');
+        var idProducto = ($(celdas[0]).html());
+        var cantidad = ($(celdas[1]).html());
+        $.post(accion,
+            {  },
+            (respuesta) => {
+                if (respuesta[0].code == "ok") {
+                   
+                    swal("Facturacion", "Se guardo con exito", "success");
+
+
+                } else if (respuesta[0].code == "factura") {
+                    swal("Error al Guardar", respuesta[0].description, "error");
+                   
+                } else {
+                    swal("Error al Guardar", "Ocurrio un error al guardar", "error");
+                   
+                }
+            });
+        vueltas++;
+    });
+}
+
+var listatripas = () => {
+    var accion = 'Curtidos/listatripas';
+    var curti = new Curtidojs('', '', '', '', '', '', '', '', accion);
+    curti.ClaseListaClasificacionTripacurtido();
 }

@@ -6,7 +6,7 @@
 <h2>Proceso de Curtido</h2>
 
 <p>
-    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoCurtido" onclick="llenaTablaCurtidoModal(); Listatipotripa(); listaPersonal(); ListaBombos(); ListaFormulas(); tabCurtido();">Nuevo Curtido</a>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoCurtido" onclick="llenaTablaCurtidoModal(); Listatipotripa(); listaPersonal(); ListaBombos(); ListaFormulas();listatripas();">Nuevo Curtido</a>
 </p>
 <table class="table">
     <thead>
@@ -36,7 +36,9 @@
             <th>
                Personal
             </th>
-            <th></th>
+            <th>
+                Bombo
+            </th>
         </tr>
     </thead>
     <tbody id="CurtidoLista">  </tbody>
@@ -112,13 +114,17 @@
                                 <th>
                                     Selección
                                 </th>
+                               
+
+
                                 <th>
                                     Codigo Lote
                                 </th>
                                 <th>
-                                    <!--  <select id="tipoPiel" name="tipoPiel" onchange="tipopiel()" class="form-control">
-          <option value="0">Buscar por Seleccion</option>
-      </select>-->Clasificacion
+                                     <select id="ClasificaciontripaId" name="ClasificaciontripaId" onchange="llenaTablaCurtidoModal()" class="form-control">
+            <option value="0">Buscar por Seleccion</option>
+        </select>
+                                  
                                 </th>
 
                                 <th>
@@ -130,6 +136,8 @@
                                 <th>
                                     Medida
                                 </th>
+                               
+                               
                             </tr>
                         </thead>
                         <tbody id="ListaCurtido"></tbody>

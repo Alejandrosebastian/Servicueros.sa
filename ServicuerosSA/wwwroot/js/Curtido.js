@@ -12,16 +12,37 @@
 
     }
 
-    LLenaTablaModalCurtido() {
+    LLenaTablaModalCurtido(id) {
         var accion = this.accion;
         $.post(accion,
-            {},
+            { id },
             (respuesta) => {
-                console.log(respuesta);
+                
                 $.each(respuesta, (index, val) => {
                     $('#ListaCurtido').html(val[0]);
                 });
             });
+    }
+    ClaseListaClasificacionTripacurtido() {
+        var accion = this.accion;
+        var contador = 1;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            success: (respuesta) => {
+               
+                if (0 < respuesta.length) {
+
+                    for (var i = 0; i < respuesta.length; i++) {
+                        document.getElementById('ClasificaciontripaId').options[contador] = new Option(respuesta[i].detalle.toUpperCase(), respuesta[i].clasificacionTripaId);
+                        contador++;
+                    }
+                }
+
+
+            }
+        });
     }
 
 }

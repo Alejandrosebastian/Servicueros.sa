@@ -7,6 +7,7 @@
         this.peso = peso;
         this.medida = medida;
         this.personal = personal;
+        
         this.activo = activo;
         this.accion = accion;
     }
@@ -97,7 +98,7 @@
         $.post(accion,
             {},
             (respuesta) => {
-                console.log(respuesta);
+               
                 if (0 < respuesta.length) {
                     for (var i = 0; i < respuesta.length; i++) {
                         document.getElementById('BodegaId').options[conta] = new Option(respuesta[i].nombreBodega.toUpperCase(), respuesta[i].bodegaId);
@@ -117,7 +118,7 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-               // console.log(respuesta);
+              
                 if (0 < respuesta.length) {
 
                     for (var i = 0; i < respuesta.length; i++) {
@@ -137,7 +138,7 @@
             url: accion,
             data: { id },
             success: (respuesta) => {
-                //console.log(respuesta);
+                
                 $('#PielesInput').text(respuesta[0].cantidad);
                 $('#PielesInput').removeClass("hidden");
             }
@@ -148,7 +149,7 @@
         $.post(accion,
             {},
             (res) => {
-                //console.log(res);
+                
                 $.each(res, (contador, valor) => {
                     $('#BodegaTripa').html(valor[0]);
                 });

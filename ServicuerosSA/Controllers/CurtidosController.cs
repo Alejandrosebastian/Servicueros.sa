@@ -16,38 +16,87 @@ namespace ServicuerosSA.Controllers
         private ClasificacionTripaModel tipotripa;
         private BomboModel bombos;
         private PersonalModel personas;
+        private CurtidoModels curtido;
         public CurtidosController(ApplicationDbContext context)
         {
             _context = context;
             tipotripa = new ClasificacionTripaModel(context);
             bombos = new BomboModel(context);
             personas = new PersonalModel(context);
+            curtido = new CurtidoModels(context);
         }
-
-        public List<object[]> ControladorListaChecks()
+        public List<ClasificacionTripa> listatripas()
+        {
+            return curtido.Combomodelotripa();
+        }
+        public List<object[]> ControladorListaChecks(int id)
         {
             List<object[]> lista = new List<object[]>();
-            var datos = (from bt in _context.Bodegatripa
-                         join d in _context.Descarne on bt.DescarneId equals d.DescarneId
-                         join cl in _context.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
-                         join p in _context.Personal on bt.PersonalId equals p.PersonalId
-                         join b in _context.Bodega on bt.BodegaId equals b.BodegaId
-                         where bt.ClasificacionTripaId != 8 && bt.ClasificacionTripaId != 9
-                         select new
-                         {
-                             bt.BodegaId,
-                             cl.Detalle,
-                             bt.peso,
-                             d.Cantidad
-                         }).ToList();
+           List<ListaCurtidoCheck> datos = new List<ListaCurtidoCheck>();
+            if (id == 0)
+            {
+                 datos = (from bt in _context.Bodegatripa
+                             join me in _context.Medida on bt.MedidaId equals me.MedidaId
+                             join d in _context.Descarne on bt.DescarneId equals d.DescarneId
+
+                             join cl in _context.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
+                             join p in _context.Personal on bt.PersonalId equals p.PersonalId
+                             join b in _context.Bodega on bt.BodegaId equals b.BodegaId
+
+                             where bt.ClasificacionTripaId != 8 && bt.ClasificacionTripaId != 9
+                             select new ListaCurtidoCheck
+                             {
+                               BodegaId =  bt.BodegaId,
+                                Detalle = cl.Detalle,
+                                BodegaTripaId = bt.BodegaTripaId,
+                                peso =  bt.peso,
+                                NumeroPieles = bt.NumeroPieles,
+                                CodigoLote = d.CodigoLote,
+                                Abreviatura = me.Abreviatura,
+                                MedidaId =  me.MedidaId
+                             }).ToList();
+            }
+            else
+            {
+                 datos = (from bt in _context.Bodegatripa
+                             join me in _context.Medida on bt.MedidaId equals me.MedidaId
+                             join d in _context.Descarne on bt.DescarneId equals d.DescarneId
+
+                             join cl in _context.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
+                             join p in _context.Personal on bt.PersonalId equals p.PersonalId
+                             join b in _context.Bodega on bt.BodegaId equals b.BodegaId
+
+                             where bt.ClasificacionTripaId != 8 && bt.ClasificacionTripaId != 9 && bt.ClasificacionTripaId == id
+                             select new ListaCurtidoCheck
+                             {
+
+                                 BodegaId = bt.BodegaId,
+                                 Detalle = cl.Detalle,
+                                 BodegaTripaId = bt.BodegaTripaId,
+                                 peso = bt.peso,
+                                 NumeroPieles = bt.NumeroPieles,
+                                 CodigoLote = d.CodigoLote,
+                                 Abreviatura = me.Abreviatura,
+                                 MedidaId = me.MedidaId
+                             }).ToList();
+            }
+
+           
             string html = "";
             foreach (var item in datos)
             {
                 html += "<tr>"+
                     "<td><input type='checkbox' class='form-control' value=" + item.BodegaId + "/>" +
+                  
+                     "<td class='hidden'>" + item.BodegaId + "</td>" +
+                     "<td class='hidden'>" + item.BodegaTripaId + "</td>" +
+                     "<td class='hidden'>" + item.MedidaId + "</td>" +
+                     "<td>" + item.CodigoLote + "</td>" +
                      "<td>" + item.Detalle + "</td>" +
+                    "<td>" + item.NumeroPieles + "</td>" +
                     "<td>" + item.peso + "</td>" +
-                    "<td>" + item.Cantidad + "</td>" +
+                     "<td>" + item.Abreviatura + "</td>" +
+
                     "</tr>";
 
             }
@@ -75,6 +124,7 @@ namespace ServicuerosSA.Controllers
             var applicationDbContext = _context.Curtido.Include(c => c.Bombo).Include(c => c.Formula).Include(c => c.Personal);
             return View(await applicationDbContext.ToListAsync());
         }
+       
 
         // GET: Curtidos/Details/5
         public async Task<IActionResult> Details(int? id)

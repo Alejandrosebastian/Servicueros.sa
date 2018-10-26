@@ -12,6 +12,7 @@ namespace ServicuerosSA.Models
         public bool activo { get; set; }
         public decimal NumeroPieles { get; set; }
         public int peso { get; set; }
+        public DateTime fecha { get; set; }
         
         //Relaciones
         public int DescarneId { get; set; }

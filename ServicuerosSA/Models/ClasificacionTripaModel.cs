@@ -107,6 +107,7 @@ namespace ServicuerosSA.Models
                     peso = peso,
                     MedidaId = medida,
                     PersonalId = personal,
+                    fecha = DateTime.Now,
                     activo = true
                 };
                 

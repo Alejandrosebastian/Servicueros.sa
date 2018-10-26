@@ -12,7 +12,7 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-                console.log(respuesta);
+                
                 for (var i = 0; i < respuesta.length; i++) {
                     document.getElementById('MedidaId').options[contador] = new Option(respuesta[i].detalle, respuesta[i].medidaId);
                     contador++;

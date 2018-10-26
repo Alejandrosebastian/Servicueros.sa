@@ -13,7 +13,7 @@ class ClaseClasificaciones {
             url: accion,
             data: {},
             success: (respuesta) => {
-                //console.log(respuesta);
+                
                 for (var i = 0; i < respuesta.length; i++) {
                     document.getElementById('clasificaciones').options[contador] = new Option(respuesta[i].selecciones, respuesta[i].clasificacionId);
                     contador++;

@@ -35,7 +35,7 @@
             url: accion,
             data: { ruc },
             success: (respuesta) => {
-                console.log(respuesta);
+                
                 if (respuesta[0].code == 'si') {
                     $('#codigo').css('visibility', 'visible');
                     $('#graba').prop('disabled', true);

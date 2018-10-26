@@ -15,7 +15,7 @@ class Formulas {
             url: accion,
             data: {},
             success: (respuesta) => {
-                //console.log(respuesta);
+                
                 if (0 < respuesta.length) {
                     for (var i = 0; i < respuesta.length; i++) {
                         document.getElementById('formulaId').options[contador] = new Option(respuesta[i].nombre, respuesta[i].formulaId);
