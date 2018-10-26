@@ -156,7 +156,18 @@ class Formulas {
             { id },
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
-                    $('#TablaClasiTripa').html(val[0]);
+                    $('#TablaClasiTripas').html(val[0]);
+                });
+            });
+    }
+    CuerpoCarnaza(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaCarnaza').html(val[0]);
                 });
             });
     }

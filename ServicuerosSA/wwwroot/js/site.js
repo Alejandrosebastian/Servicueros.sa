@@ -6,7 +6,7 @@ $().ready(() => {
     claseJsLlamarListaLotes(1);
     ListaIndex();
     listatripasindex();
-    ImprimirClasiTripa();
+    ImprimirCarnaza();
 
 
 
@@ -293,6 +293,12 @@ var ImprimirClasiTripa = (id) => {
     var accion = '../ClasificacionTripas/ControladorImprimirDescarne';
     var imprimirClasiTripa = new Formulas('', '', '', '', accion);
     imprimirClasiTripa.CuerpoClasiTripa(id);
+}
+//reporte Carnaza
+var ImprimirCarnaza = (id) => {
+    var accion = 'ClasificacionTripas/ControladorImprimirCarnaza';
+    var imprimirCarnaza = new Formulas('', '', '', '', accion);
+    imprimirCarnaza.CuerpoCarnaza(id);
 }
 ///////
 var ListaPelambreDescarne = () => {

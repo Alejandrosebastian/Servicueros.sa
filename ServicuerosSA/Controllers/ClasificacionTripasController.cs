@@ -42,6 +42,10 @@ namespace ServicuerosSA.Controllers
         {
             return clasetripa.ModeloImprimirClasiTripa(id);
         }
+        public List<object[]> ControladorImprimirCarnaza(string id)
+        {
+            return clasetripa.ModeloImprimirCarnaza(id);
+        }
      
         // GET: ClasificacionTripas/Details/5
         public async Task<IActionResult> Details(int? id)
