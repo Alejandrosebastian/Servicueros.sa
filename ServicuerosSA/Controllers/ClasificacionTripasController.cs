@@ -42,9 +42,9 @@ namespace ServicuerosSA.Controllers
         {
             return clasetripa.ModeloImprimirClasiTripa(id);
         }
-        public List<object[]> ControladorImprimirCarnaza(string id)
+        public List<object[]> ControladorImprimirCarnaza()
         {
-            return clasetripa.ModeloImprimirCarnaza(id);
+            return clasetripa.ModeloImprimirCarnaza();
         }
      
         // GET: ClasificacionTripas/Details/5
@@ -68,7 +68,7 @@ namespace ServicuerosSA.Controllers
         // GET: ClasificacionTripas/Create
         public IActionResult Create()
         {
-            return View();
+            return View( _context.Bodegatripa.ToList());
         }
 
         // POST: ClasificacionTripas/Create

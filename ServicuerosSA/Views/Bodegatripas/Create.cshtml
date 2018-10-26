@@ -1,4 +1,4 @@
-﻿@model ServicuerosSA.Models.Bodegatripa
+﻿
 
 @{
     ViewData["Title"] = "Create";
@@ -35,11 +35,4 @@
         <tbody id="TablaCarnaza"></tbody>
     </table>
 </div>
-@*<div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-    <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
-</div>*@
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

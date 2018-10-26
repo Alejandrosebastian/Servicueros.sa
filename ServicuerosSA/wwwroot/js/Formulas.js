@@ -160,12 +160,13 @@ class Formulas {
                 });
             });
     }
-    CuerpoCarnaza(id) {
+    CuerpoCarnaza() {
         var accion = this.accion;
         $.post(
             accion,
-            { id },
+            {},
             (respuesta) => {
+                console.log(respuesta);
                 $.each(respuesta, (index, val) => {
                     $('#TablaCarnaza').html(val[0]);
                 });

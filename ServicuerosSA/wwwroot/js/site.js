@@ -295,10 +295,10 @@ var ImprimirClasiTripa = (id) => {
     imprimirClasiTripa.CuerpoClasiTripa(id);
 }
 //reporte Carnaza
-var ImprimirCarnaza = (id) => {
-    var accion = 'ClasificacionTripas/ControladorImprimirCarnaza';
+var ImprimirCarnaza = () => {
+    var accion = '../ClasificacionTripas/ControladorImprimirCarnaza';
     var imprimirCarnaza = new Formulas('', '', '', '', accion);
-    imprimirCarnaza.CuerpoCarnaza(id);
+    imprimirCarnaza.CuerpoCarnaza();
 }
 ///////
 var ListaPelambreDescarne = () => {
@@ -463,27 +463,21 @@ var seleccionFormula = () => {
 
 var guardarCurtido = () => {
 
-    $('#cuerpoFactura tr').each(function () {
+    $('#ListaCurtido tr').each(function () {
         var celdas = $(this).find('td');
-        var idProducto = ($(celdas[0]).html());
-        var cantidad = ($(celdas[1]).html());
-        $.post(accion,
-            {  },
-            (respuesta) => {
-                if (respuesta[0].code == "ok") {
-                   
-                    swal("Facturacion", "Se guardo con exito", "success");
+        alert(celdas.count());
+        var BodegaId = ($(celdas[1]).html());
+        var BodegaTripaId = ($(celdas[2]).html());
+        var MedidaId = ($(celdas[3]).html());
+        var CodigoLote = ($(celdas[4]).html());
+        var Detalle = ($(celdas[5]).html());
+        var NumeroPieles = ($(celdas[6]).html());
+        var peso = ($(celdas[7]).html());
+        var Abreviatura = ($(celdas[8]).html());
 
-
-                } else if (respuesta[0].code == "factura") {
-                    swal("Error al Guardar", respuesta[0].description, "error");
-                   
-                } else {
-                    swal("Error al Guardar", "Ocurrio un error al guardar", "error");
-                   
-                }
-            });
-        vueltas++;
+        //var clase = new Curtidojs('', '', '', '', '', '', '', '', '');
+        //clase.guarda();
+        
     });
 }
 
