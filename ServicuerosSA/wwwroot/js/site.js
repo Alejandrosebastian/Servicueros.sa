@@ -7,6 +7,7 @@ $().ready(() => {
     ListaIndex();
     listatripasindex();
     ImprimirCarnaza();
+    ImprimirClasiTripa();
 
 
 
@@ -35,8 +36,6 @@ $().ready(() => {
 var cerrarmodalLotes = () => {
     $('#Impresionlote').modal('hide');
 }
-
-
 /////////////
 
 var Impresion = (id) => {
