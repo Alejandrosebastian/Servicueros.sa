@@ -54,7 +54,7 @@ namespace ServicuerosSA.Models
                                            BodegaId = item.BodegaId,
                                            ClasificacionTripaId = item.ClasificacionTripaId,
                                            PersonalId = Personal,
-                                       //  MedidaId = MedidaId
+                                           MedidaId = item.MedidaId,
                                            activo = false
                                        }).FirstOrDefault();
                     _contexto.Bodegatripa.Update(cla);
@@ -83,4 +83,22 @@ namespace ServicuerosSA.Models
             var curt = ();
         }
     }
+//    from cu in Curtidos
+// join bo in Bombos on cu.BomboId equals bo.BomboId
+// join fo in Formulas on cu.FormulaId equals fo.FormulaId
+// join bod in Bodegatripas on cu.BodegaTripaId equals bod.BodegaTripaId
+// join clasi in ClasificacionTripas on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
+// join me in Medidas on cu.MedidaId equals me.MedidaId
+// join bode in Bodegas on cu.BodegaId equals bode.BodegaId
+
+
+// select new {
+//bo.Num_bombo,
+//fo.Nombre,
+//clasi.Detalle,
+//me.Abreviatura,
+//bode.NombreBodega
+
+
+}
 }
