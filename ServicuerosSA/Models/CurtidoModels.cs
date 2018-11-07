@@ -54,7 +54,7 @@ namespace ServicuerosSA.Models
                                            BodegaId = item.BodegaId,
                                            ClasificacionTripaId = item.ClasificacionTripaId,
                                            PersonalId = Personal,
-                                       //  MedidaId = MedidaId
+                                           MedidaId = item.MedidaId,
                                            activo = false
                                        }).FirstOrDefault();
                     _contexto.Bodegatripa.Update(cla);
