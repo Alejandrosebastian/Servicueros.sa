@@ -393,7 +393,6 @@ var controlnumeropieles = () => {
         $("#mensajec").removeClass("hidden");
         $('#guarda').prop('disabled', true);
     } else {
-        
         $("#mensajep").addClass("hidden");
         $('#guarda').prop('enabled', true);
     }
@@ -435,7 +434,7 @@ var llenaTablaCurtidoModal = () => {
     var ids = document.getElementById('ClasificaciontripaId');
     var id = ids.options[ids.selectedIndex].value;
     var accion = 'Curtidos/ControladorListaChecks';
-    var curtido = new Curtidojs('', '', '', '', '', '', '', '', accion);
+    var curtido = new Curtidojs('', '', '', '', '', '', '', '','', accion);
 
     curtido.LLenaTablaModalCurtido(id);
 }
@@ -462,10 +461,15 @@ var seleccionFormula = () => {
 //////guardar curtido
 
 var guardarCurtido = () => {
-
+    var accion = 'Curtidos/ControladorGuardaCurtido';
+    var bombos = document.getElementById('bomboId');
+    var bomboId = bombos.options[bombos.selectedIndex].value;
+    var formulas = document.getElementById('formulaId');
+    var formulaId = formulas.options[formulas.selectedIndex].value;
+    var personales = document.getElementById('personalId');
+    var personalId = personales.options[personales.selectedIndex].value;
     $('#ListaCurtido tr').each(function () {
         var celdas = $(this).find('td');
-        alert(celdas.count());
         var BodegaId = ($(celdas[1]).html());
         var BodegaTripaId = ($(celdas[2]).html());
         var MedidaId = ($(celdas[3]).html());
@@ -474,15 +478,21 @@ var guardarCurtido = () => {
         var NumeroPieles = ($(celdas[6]).html());
         var peso = ($(celdas[7]).html());
         var Abreviatura = ($(celdas[8]).html());
-
-        //var clase = new Curtidojs('', '', '', '', '', '', '', '', '');
-        //clase.guarda();
+        var d = new Date();
+        var fecha = d.getDate();
+        var dt = new Date();
+        var month = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var year = dt.getFullYear();
+        var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
+        var clase = new Curtidojs(BodegaTripaId, bomboId,NumeroPieles,formulaId,'',peso,BodegaId,fech,personalId, accion);
+        clase.Guardacurtido();
         
     });
 }
 
 var listatripas = () => {
     var accion = 'Curtidos/listatripas';
-    var curti = new Curtidojs('', '', '', '', '', '', '', '', accion);
+    var curti = new Curtidojs('', '', '', '', '', '', '', '','', accion);
     curti.ClaseListaClasificacionTripacurtido();
 }

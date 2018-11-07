@@ -78,7 +78,7 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-                console.log(respuesta);
+               // console.log(respuesta);
                 if (0 < respuesta.length) {
 
                 for (var i = 0; i < respuesta.length; i++) {

@@ -74,24 +74,24 @@
                             <option value="0">Seleccione la formula asignada a esta operación</option>
                         </select>
                         <br />
-                        <span id="mensajeper" class="alert alert-danger hidden">Seleccione la formula asignada</span>
+                        <span id="mensajefor" class="alert alert-danger hidden">Seleccione la formula asignada</span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Fecha</label>
                         <input id="fecha" name="fecha" class="form-control" type="date" />
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label class="control-label">Peso</label>
                         <input id="Peso" name="Peso" required class="form-control" />
                         <br />
                         <span id="mensajep" class="alert alert-danger hidden">Ingrese el peso de las Pieles a Curtir</span>
-                    </div>
-                    <div class="form-group">
+                    </div>*@
+                    @*<div class="form-group">
                         <label class="control-label">Numero de Pieles</label>
                         <input id="numeroPieles" name="numeroPieles" required class="form-control" />
                         <br />
                         <span id="mensajenu" class="alert alert-danger hidden">Ingrese un número de pieles a Curtir</span>
-                    </div>
+                    </div>*@
 
 
 
@@ -147,7 +147,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="guardarCurtido" name="guardarCurtido" onclick="">Guardar</button>
+                <button type="button" class="btn btn-primary" id="guardarCurtido" name="guardarCurtido" onclick="guardarCurtido()">Guarda</button>
             </div>
         </div>
     </div>

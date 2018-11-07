@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -118,6 +119,10 @@ namespace ServicuerosSA.Controllers
             return personas.ListaPersonal();
         }
 
+        public List<IdentityError> ControladorGuardaCurtido(int tipotripa, int numbombo, int numpieles, int formula, DateTime fecha, int peso, int Bodega, int Personal, string Codicurtido)
+        {
+            return curtido.ClaseGuardaCurtido(tipotripa, numbombo, numpieles, formula, fecha, peso, Bodega, Personal, Codicurtido);
+        }
         // GET: Curtidos
         public async Task<IActionResult> Index()
         {

@@ -11,9 +11,10 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181105164959_codicurtido")]
+    partial class codicurtido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -385,8 +386,6 @@ namespace ServicuerosSA.Migrations
                     b.Property<int>("CurtidoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BodegaId");
-
                     b.Property<int>("BodegaTripaId");
 
                     b.Property<int>("BomboId");
@@ -408,8 +407,6 @@ namespace ServicuerosSA.Migrations
                     b.Property<string>("codicurtido");
 
                     b.HasKey("CurtidoId");
-
-                    b.HasIndex("BodegaId");
 
                     b.HasIndex("BodegaTripaId");
 
@@ -819,11 +816,6 @@ namespace ServicuerosSA.Migrations
 
             modelBuilder.Entity("ServicuerosSA.Models.Curtido", b =>
                 {
-                    b.HasOne("ServicuerosSA.Models.Bodega", "Bodega")
-                        .WithMany()
-                        .HasForeignKey("BodegaId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("ServicuerosSA.Models.Bodega", "BodegaTripa")
                         .WithMany()
                         .HasForeignKey("BodegaTripaId")

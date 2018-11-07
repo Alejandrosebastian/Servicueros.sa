@@ -166,7 +166,7 @@ class Formulas {
             accion,
             {},
             (respuesta) => {
-                console.log(respuesta);
+               /// console.log(respuesta);
                 $.each(respuesta, (index, val) => {
                     $('#TablaCarnaza').html(val[0]);
                 });

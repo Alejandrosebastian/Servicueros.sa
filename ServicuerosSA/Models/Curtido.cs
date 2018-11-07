@@ -12,6 +12,7 @@ namespace ServicuerosSA.Models
         public int Peso { get; set; }
         public string Observaciones { get; set; }
         public int NPieles { get; set; }
+        public string codicurtido { get; set; }
         //RELACIONES
         public int FormulaId { get; set; }
         public Formula Formula { get; set; }
@@ -25,5 +26,8 @@ namespace ServicuerosSA.Models
         public Medida Medida { get; set; }
         public int BomboId { get; set; }
         public Bombo Bombo { get; set; }
+        public int BodegaId { get; set; }
+        public Bodega Bodega { get; set; }
+
     }
 }
