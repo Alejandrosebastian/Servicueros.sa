@@ -77,6 +77,10 @@ namespace ServicuerosSA.Models
             }
             return Listaerrores;
         }
-
+        public List<object[]> Modelolistacurtido()
+        {
+            List<object[]> lista = new List<object[]>();
+            var curt = ();
+        }
     }
 }
