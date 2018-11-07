@@ -7,34 +7,35 @@
 
 <p>
     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoCurtido" onclick="llenaTablaCurtidoModal(); Listatipotripa(); listaPersonal(); ListaBombos(); ListaFormulas();listatripas();">Nuevo Curtido</a>
+    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#Impresioncurtido" onclick="ImprimirCurtido();">Reporte de Curtido</a>
 </p>
 <table class="table">
     <thead>
         <tr>
 
-                <th>
-                   Fecha
-                </th>
-                <th>
-                   Peso
-                </th>
-                <th>
-                   Observaciones
-                </th>
-                <th>
-                   Numero de Pieles
-                </th>
-                 <th>
-                   Bombo
-                  </th>
             <th>
-               ClasificacionTripa
+                Fecha
             </th>
             <th>
-               Formula
+                Peso
             </th>
             <th>
-               Personal
+                Observaciones
+            </th>
+            <th>
+                Numero de Pieles
+            </th>
+            <th>
+                Bombo
+            </th>
+            <th>
+                ClasificacionTripa
+            </th>
+            <th>
+                Formula
+            </th>
+            <th>
+                Personal
             </th>
             <th>
                 Bombo
@@ -59,7 +60,7 @@
             </div>
             <div class="modal-body">
                 <form>
-                 
+
                     <div class="form-group">
                         <label class="control-label">Bombo</label>
                         <select id="bomboId" name="bomboId" required class="form-control">
@@ -114,17 +115,17 @@
                                 <th>
                                     Selección
                                 </th>
-                               
+
 
 
                                 <th>
                                     Codigo Lote
                                 </th>
                                 <th>
-                                     <select id="ClasificaciontripaId" name="ClasificaciontripaId" onchange="llenaTablaCurtidoModal()" class="form-control">
-            <option value="0">Buscar por Seleccion</option>
-        </select>
-                                  
+                                    <select id="ClasificaciontripaId" name="ClasificaciontripaId" onchange="llenaTablaCurtidoModal()" class="form-control">
+                                        <option value="0">Buscar por Seleccion</option>
+                                    </select>
+
                                 </th>
 
                                 <th>
@@ -136,8 +137,8 @@
                                 <th>
                                     Medida
                                 </th>
-                               
-                               
+
+
                             </tr>
                         </thead>
                         <tbody id="ListaCurtido"></tbody>
@@ -153,3 +154,71 @@
     </div>
 </div>
 
+@*IMPRESION REPORTE*@
+<div class="modal fade" id="Impresioncurtido" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close" onclick="cerrarmodalcurtido()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="EtiquetaModal">
+                    Reporte de Curtido
+                </h4>
+            </div>
+
+            <div class="modal-body" id="impresion">
+
+                <div class="modal-body" id="areaImprimir">
+                    @* Hoja de curtido *@
+                    <div class="form-group">
+                        <table class="table table-bordered SaltoDePagina">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Fecha
+                                   </th>
+                                    <th>
+                                        Peso
+                                    </th>
+                                    <th>
+                                        Observ
+                                    </th>
+                                    <th>
+                                        #Pieles
+                                    </th>
+                                    <th>
+                                        Bombo
+                                    </th>
+                                    <th>
+                                        C.Tripa
+                                    </th>
+                                    <th>
+                                        Formula
+                                    </th>
+                                    <th>
+                                        Personal
+                                    </th>
+                                    <th>
+                                        Bombo
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody id="Tablareportecurtido"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="cerrarmodalcurtido();">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
+            </div>
+        </div>
+    </div>
+</div>

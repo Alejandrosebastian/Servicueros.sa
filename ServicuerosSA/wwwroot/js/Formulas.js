@@ -149,14 +149,14 @@ class Formulas {
                 });
             });
     }
-    CuerpoClasiTripa(id) {
+    CuerpoClasiTripa() {
         var accion = this.accion;
         $.post(
             accion,
-            { id },
+            {},
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
-                    $('#TablaClasiTripas').html(val[0]);
+                    $('#TablaClasiTripa').html(val[0]);
                 });
             });
     }
