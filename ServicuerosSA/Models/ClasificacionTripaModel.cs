@@ -178,14 +178,14 @@ namespace ServicuerosSA.Models
             lista.Add(objetodatos);
             return lista;
         }
-        public List<object[]> ModeloImprimirClasiTripa(string id)
+        public List<object[]> ModeloImprimirClasiTripa()
         {
             List<object[]> lista = new List<object[]>();
             string desc = "";
             var res = (from bt in _contexto.Bodegatripa
                        join de in _contexto.Descarne on bt.DescarneId equals de.DescarneId
                        join cl in _contexto.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
-                       where bt.activo == true && bt.ClasificacionTripaId !=8 && bt.ClasificacionTripaId !=9
+                       where bt.activo == true && bt.ClasificacionTripaId != 8 && bt.ClasificacionTripaId != 9
                        select new
                        {
                            de.CodigoLote,

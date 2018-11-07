@@ -38,9 +38,9 @@ namespace ServicuerosSA.Controllers
         {
             return clasetripa.ModeloFiltrarClasificacionTripa();
         }
-        public List<object[]>ControladorImprimirDescarne(string id)
+        public List<object[]>ControladorImprimirDescarne()
         {
-            return clasetripa.ModeloImprimirClasiTripa(id);
+            return clasetripa.ModeloImprimirClasiTripa();
         }
         public List<object[]> ControladorImprimirCarnaza()
         {
