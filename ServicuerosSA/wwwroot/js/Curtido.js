@@ -12,6 +12,7 @@
         this.accion = accion;
 
     }
+    //LISTA
     ListaIndexCurtido() {
         var accion = this.accion;
         $.ajax({
