@@ -30,6 +30,14 @@ namespace ServicuerosSA.Controllers
         {
             return curtido.Combomodelotripa();
         }
+      public List<object[]>ControladorListacurtido()
+        {
+            return curtido.Modelolistacurtido();
+        }
+        public List<object[]>ControladorImprimircurtido()
+        {
+            return curtido.Modeloimprimircurtido();
+        }
         public List<object[]> ControladorListaChecks(int id)
         {
             List<object[]> lista = new List<object[]>();

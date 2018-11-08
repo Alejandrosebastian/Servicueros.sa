@@ -172,4 +172,27 @@ class Formulas {
                 });
             });
     }
+    CuerpoCurtido() {
+        var accion = this.accion;
+        $.post(
+            accion,
+            {},
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#Tablareportecurtido').html(val[0]);
+                });
+            });
+    }
+    CuerpoClasiPelo() {
+        var accion = this.accion;
+        $.post(
+            accion,
+            {},
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#TablaClasiPelo').html(val[0]);
+                });
+            });
+    }
+
 }

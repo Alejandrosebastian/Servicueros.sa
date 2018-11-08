@@ -23,7 +23,10 @@ namespace ServicuerosSA.Controllers
         {
             return claseModelosListaClasificaciones.ClaseModeloListaClasificaciones();
         }
-
+        public List<object[]>ControladorImprimirClasiPelo()
+        {
+            return claseModelosListaClasificaciones.ModeloImprimirClasiPelo();
+        }
         // GET: Clasificaciones 
         public async Task<IActionResult> Index()
         {
