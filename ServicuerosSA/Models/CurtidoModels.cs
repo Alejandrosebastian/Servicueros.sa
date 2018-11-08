@@ -19,7 +19,7 @@ namespace ServicuerosSA.Models
         {
             return _contexto.ClasificacionTripa.OrderBy(cl => cl.Detalle).ToList();
         }
-        public List<IdentityError> ClaseGuardaCurtido(int tipotripa, int numbombo, int numpieles, int formula, DateTime fecha, int peso, int Bodega, int Personal, string Codicurtido)
+        public List<IdentityError> ClaseGuardaCurtido(int tipotripa, int numbombo, int numpieles,int medida, int formula, DateTime fecha, int peso, int Bodega, int personal, string Codicurtido)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             var curtidolista = _contexto.Bodegatripa.Where(cu => cu.BodegaTripaId == tipotripa).ToList();
@@ -32,20 +32,16 @@ namespace ServicuerosSA.Models
                         BodegaTripaId = tipotripa,
                         BomboId = numbombo,
                         NPieles = numpieles,
+                        MedidaId = medida,
                         FormulaId = formula,
                         Fecha = DateTime.Now,
                         Peso = peso,
                         BodegaId = Bodega,
-                        PersonalId = Personal,
+                        PersonalId = personal,
                         codicurtido = Codicurtido
-
-
-
-
                     };
                     _contexto.Curtido.Add(guardaCurtido);
                     _contexto.SaveChanges();
-
                     Bodegatripa cla = (from bt in _contexto.Bodegatripa
                                        where bt.BodegaTripaId == item.BodegaTripaId
                                        select new Bodegatripa
@@ -53,7 +49,7 @@ namespace ServicuerosSA.Models
                                            DescarneId = item.DescarneId,
                                            BodegaId = item.BodegaId,
                                            ClasificacionTripaId = item.ClasificacionTripaId,
-                                           PersonalId = Personal,
+                                           PersonalId = personal,
                                            MedidaId = item.MedidaId,
                                            activo = false
                                        }).FirstOrDefault();
@@ -69,8 +65,8 @@ namespace ServicuerosSA.Models
                 {
                     Listaerrores.Add(new IdentityError
                     {
-                        Code = "ok",
-                        Description = "ok"
+                        Code = e.Message,
+                        Description = e.Message,
                     });
                 }
 
@@ -128,6 +124,8 @@ namespace ServicuerosSA.Models
                         join bode in _contexto.Bodega on cu.BodegaId equals bode.BodegaId
 
 
+
+
                         select new
                         {
                             fecha = DateTime.Now,
@@ -155,5 +153,6 @@ namespace ServicuerosSA.Models
             return lista;
         }
     }
+
 
 }

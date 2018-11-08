@@ -127,9 +127,9 @@ namespace ServicuerosSA.Controllers
             return personas.ListaPersonal();
         }
 
-        public List<IdentityError> ControladorGuardaCurtido(int tipotripa, int numbombo, int numpieles, int formula, DateTime fecha, int peso, int Bodega, int Personal, string Codicurtido)
+        public List<IdentityError> ControladorGuardaCurtido(int tipotripa, int numbombo, int numpieles,int medida, int formula, DateTime fecha, int peso, int bodega, int personal, string Codicurtido)
         {
-            return curtido.ClaseGuardaCurtido(tipotripa, numbombo, numpieles, formula, fecha, peso, Bodega, Personal, Codicurtido);
+            return curtido.ClaseGuardaCurtido(tipotripa, numbombo, numpieles,medida, formula, fecha, peso, bodega, personal, Codicurtido);
         }
         // GET: Curtidos
         public async Task<IActionResult> Index()

@@ -454,7 +454,7 @@ var llenaTablaCurtidoModal = () => {
     var ids = document.getElementById('ClasificaciontripaId');
     var id = ids.options[ids.selectedIndex].value;
     var accion = 'Curtidos/ControladorListaChecks';
-    var curtido = new Curtidojs('', '', '', '', '', '', '', '','', accion);
+    var curtido = new Curtidojs('', '', '', '', '', '', '', '','','', accion);
 
     curtido.LLenaTablaModalCurtido(id);
 }
@@ -505,7 +505,7 @@ var guardarCurtido = () => {
         var day = dt.getDate();
         var year = dt.getFullYear();
         var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
-        var clase = new Curtidojs(BodegaTripaId, bomboId,NumeroPieles,formulaId,'',peso,BodegaId,fech,personalId, accion);
+        var clase = new Curtidojs(BodegaTripaId, bomboId,NumeroPieles,MedidaId,formulaId,'',peso,BodegaId,fech,personalId, accion);
         clase.Guardacurtido();
         
     });
@@ -513,6 +513,6 @@ var guardarCurtido = () => {
 
 var listatripas = () => {
     var accion = 'Curtidos/listatripas';
-    var curti = new Curtidojs('', '', '', '', '', '', '', '','', accion);
+    var curti = new Curtidojs('', '', '', '', '', '', '', '','','',accion);
     curti.ClaseListaClasificacionTripacurtido();
 }

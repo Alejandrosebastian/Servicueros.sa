@@ -1,8 +1,9 @@
 ﻿class Curtidojs {
-    constructor(tipotripa, numbombo, numpieles, formula, fecha, peso, bodega, codicurtido, personal,accion) {
+    constructor(tipotripa, numbombo, numpieles,medida, formula, fecha, peso, bodega, personal, codicurtido,accion) {
         this.tipotripa = tipotripa;
         this.numbombo = numbombo;
         this.numpieles = numpieles;
+        this.medida = medida;
         this.formula = formula;
         this.fecha = fecha;
         this.peso = peso;
@@ -12,7 +13,7 @@
         this.accion = accion;
 
     }
-    //LISTA
+
     ListaIndexCurtido() {
         var accion = this.accion;
         $.ajax({
@@ -27,6 +28,7 @@
         });
     }
     Guardacurtido(tipotripa, numpieles, fecha, peso, bodega, codicurtido, personal) {
+
         if (this.numbombo == '0') {
             document.getElementById('mensajebo').innerHTML = "Seleccione el bombo";
         } else {
@@ -43,6 +45,7 @@
                     var fecha = this.fecha;
                     var tipotripa = this.tipotripa;
                     var numpieles = this.numpieles;
+                    var medida = this.medida;
                     var peso = this.peso;
                     var bodega = this.bodega;
                     var accion = this.accion;
@@ -50,7 +53,7 @@
                         type: "POST",
                         url: accion,
                         data: {
-                            tipotripa, numbombo, numpieles, formula, fecha, peso, bodega, codicurtido, personal
+                            tipotripa, numbombo, numpieles,medida, formula, fecha, peso, bodega, personal, Codicurtido
                         },
                         success: (respuesta) => {
                             if (respuesta[0].code == "ok") {
