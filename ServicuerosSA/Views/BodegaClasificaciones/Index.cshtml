@@ -8,7 +8,7 @@
 
 <p>
     <a class="btn btn-success" asp-action="Create">Crear una nueva clasificacion</a>
-    <a class="btn btn-info">Reportes de la Clasificacion en Pelo</a>
+    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ImpresionClasificacionPelo" onclick="ImprimirClasiPelo(); " >Reportes de la Clasificacion en Pelo</a>
 </p>
 <table class="table" id="TablaPelo">
     <thead>
@@ -121,15 +121,14 @@
                             <thead>
                                 <tr>
                                     <th> Fecha </th>
-                                    <th> # Estanteria </th>
-                                    <th> # Pieles </th>
+                                    <th> #Estante</th>
+                                    <th> #Pieles </th>
                                     <th> Peso </th>
-                                    <th> Observaciones </th>
                                     <th> Bodega </th>
-                                    <th> Clasificación </th>
+                                    <th> Clasi </th>
                                     <th> Lote </th>
-                                    <th> Medida </th>
-                                    <th> Tipo de piel </th>
+                                    <th> T.Piel </th>
+                                    <th> Obs. </th>
 
                                 </tr>
 

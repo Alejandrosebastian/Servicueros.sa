@@ -14,6 +14,21 @@
 
     }
     Guardacurtido(tipotripa, numpieles,medida, fecha, peso, bodega, Codicurtido, personal) {
+    ListaIndexCurtido() {
+        var accion = this.accion;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            success: (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#CurtidoLista').html(val[0]);
+                });
+            }
+        });
+    }
+    Guardacurtido(tipotripa, numpieles, fecha, peso, bodega, codicurtido, personal) {
+
         if (this.numbombo == '0') {
             document.getElementById('mensajebo').innerHTML = "Seleccione el bombo";
         } else {
@@ -55,7 +70,6 @@
             }
         }
     }
-
     LLenaTablaModalCurtido(id) {
         var accion = this.accion;
         $.post(accion,

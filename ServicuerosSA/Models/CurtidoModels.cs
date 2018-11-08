@@ -73,24 +73,86 @@ namespace ServicuerosSA.Models
             }
             return Listaerrores;
         }
+        public List<object[]> Modelolistacurtido()
+        {
+            List<object[]> lista = new List<object[]>();
+            string lis = "";
+            var curt = (from cu in _contexto.Curtido
+            join bo in _contexto.Bombo on cu.BomboId equals bo.BomboId
+            join fo in _contexto.Formula on cu.FormulaId equals fo.FormulaId
+            join bod in _contexto.Bodegatripa on cu.BodegaTripaId equals bod.BodegaTripaId
+            join clasi in _contexto.ClasificacionTripa on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
+            join me in _contexto.Medida on cu.MedidaId equals me.MedidaId
+            join bode in _contexto.Bodega on cu.BodegaId equals bode.BodegaId
 
+
+             select new
+             {   fecha= DateTime.Now,
+                 bode.NombreBodega,
+                 clasi.Detalle,
+                 cu.Peso,
+                 me.Abreviatura,
+                 bo.Num_bombo,
+                 fo.Nombre
+
+             });
+            foreach (var item in curt)
+            {
+                lis += "<tr>" +
+                    "<td>" + item.fecha + "</td>" +
+                    "<td>" + item.NombreBodega + "</td>" +
+                    "<td>" + item.Detalle + "</td>" +
+                    "<td>" + item.Peso + " " + item.Abreviatura + "</td>" +
+                    "<td>" + item.Num_bombo + "</td>" +
+                    "<td>" + item.Nombre + "</td>" +
+                     "</tr>";
+            }
+            object[] datos = { lis };
+            lista.Add(datos);
+            return lista;
+        }
+        public List<object[]> Modeloimprimircurtido()
+        {
+            List<object[]> lista = new List<object[]>();
+            string imprime = "";
+            var i = (from cu in _contexto.Curtido
+                        join bo in _contexto.Bombo on cu.BomboId equals bo.BomboId
+                        join fo in _contexto.Formula on cu.FormulaId equals fo.FormulaId
+                        join bod in _contexto.Bodegatripa on cu.BodegaTripaId equals bod.BodegaTripaId
+                        join clasi in _contexto.ClasificacionTripa on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
+                        join me in _contexto.Medida on cu.MedidaId equals me.MedidaId
+                        join bode in _contexto.Bodega on cu.BodegaId equals bode.BodegaId
+
+
+
+
+                        select new
+                        {
+                            fecha = DateTime.Now,
+                            bode.NombreBodega,
+                            clasi.Detalle,
+                            cu.Peso,
+                            me.Abreviatura,
+                            bo.Num_bombo,
+                            fo.Nombre
+
+                        });
+            foreach (var item in i)
+            {
+                imprime += "<tr>" +
+                    "<td>" + item.fecha + "</td>" +
+                    "<td>" + item.NombreBodega + "</td>" +
+                    "<td>" + item.Detalle + "</td>" +
+                    "<td>" + item.Peso + " " + item.Abreviatura + "</td>" +
+                    "<td>" + item.Num_bombo + "</td>" +
+                    "<td>" + item.Nombre + "</td>" +
+                     "</tr>";
+            }
+            object[] datos = { imprime };
+            lista.Add(datos);
+            return lista;
+        }
     }
-//    from cu in Curtidos
-// join bo in Bombos on cu.BomboId equals bo.BomboId
-// join fo in Formulas on cu.FormulaId equals fo.FormulaId
-// join bod in Bodegatripas on cu.BodegaTripaId equals bod.BodegaTripaId
-// join clasi in ClasificacionTripas on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
-// join me in Medidas on cu.MedidaId equals me.MedidaId
-// join bode in Bodegas on cu.BodegaId equals bode.BodegaId
 
 
-// select new {
-//bo.Num_bombo,
-//fo.Nombre,
-//clasi.Detalle,
-//me.Abreviatura,
-//bode.NombreBodega
-
-
-//}
 }

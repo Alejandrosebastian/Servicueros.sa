@@ -8,6 +8,7 @@ $().ready(() => {
     listatripasindex();
     ImprimirCarnaza();
     ImprimirClasiTripa();
+    ListaIndexCurtido();
 
 
 
@@ -89,6 +90,11 @@ var listadescarne = () => {
     var accion = '../Bodegatripas/Controladorlistadescarnes';
     var lisdescarnes = new BodegaTripa('', '', '', '', '', '','','', accion);
     lisdescarnes.ClaseListadescarnes();
+}
+var ListaIndexCurtido = () => {
+    var accion = '../Curtidos/ControladorListacurtido';
+    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '', accion);
+    listacurtido.ListaIndexCurtido();
 }
 var GuardaPelambre = () => {
     var bombos = document.getElementById('bomboId');
@@ -301,6 +307,18 @@ var ImprimirCarnaza = () => {
     var accion = '../ClasificacionTripas/ControladorImprimirCarnaza';
     var imprimirCarnaza = new Formulas('', '', '', '', accion);
     imprimirCarnaza.CuerpoCarnaza();
+}
+//reporte Curtido
+var Imprimircurtido = () => {
+    var accion = '../Curtidos/ControladorImprimircurtido';
+    var imprimirCurtido = new Formulas('', '', '', '', accion);
+    imprimirCurtido.CuerpoCurtido();
+}
+//reporte clasi Pelo
+var ImprimirClasiPelo = () => {
+    var accion = 'Clasificaciones/ControladorImprimirClasiPelo';
+    var imprimirclasipelo = new Formulas('', '', '', '', accion);
+    imprimirclasipelo.CuerpoClasiPelo();
 }
 ///////
 var ListaPelambreDescarne = () => {
