@@ -12,8 +12,12 @@
         this.Codicurtido = Codicurtido;
         this.accion = accion;
     }
+
     ListaIndexCurtido() 
      {
+
+
+    ListaIndexCurtido() {
         var accion = this.accion;
         $.ajax({
             type: "POST",
