@@ -1,5 +1,5 @@
 ﻿class Curtidojs {
-    constructor(tipotripa, numbombo, numpieles,medida, formula, fecha, peso, bodega, personal, codicurtido,accion) {
+    constructor(tipotripa, numbombo, numpieles, medida, formula, fecha, peso, bodega, personal, Codicurtido,accion) {
         this.tipotripa = tipotripa;
         this.numbombo = numbombo;
         this.numpieles = numpieles;
@@ -9,12 +9,11 @@
         this.peso = peso;
         this.bodega = bodega;
         this.personal = personal;
-        this.codicurtido = codicurtido;
+        this.Codicurtido = Codicurtido;
         this.accion = accion;
-
     }
-    Guardacurtido(tipotripa, numpieles,medida, fecha, peso, bodega, Codicurtido, personal) {
-    ListaIndexCurtido() {
+    ListaIndexCurtido() 
+     {
         var accion = this.accion;
         $.ajax({
             type: "POST",
@@ -27,8 +26,7 @@
             }
         });
     }
-    Guardacurtido(tipotripa, numpieles, fecha, peso, bodega, codicurtido, personal) {
-
+    Guardacurtido() {
         if (this.numbombo == '0') {
             document.getElementById('mensajebo').innerHTML = "Seleccione el bombo";
         } else {
@@ -49,6 +47,8 @@
                     var peso = this.peso;
                     var bodega = this.bodega;
                     var accion = this.accion;
+                    var personal = this.personal;
+                    var Codicurtido = this.Codicurtido;
                     $.ajax({
                         type: "POST",
                         url: accion,

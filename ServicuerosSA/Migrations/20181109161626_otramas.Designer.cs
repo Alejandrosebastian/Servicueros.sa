@@ -11,9 +11,10 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181109161626_otramas")]
+    partial class otramas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -397,7 +398,7 @@ namespace ServicuerosSA.Migrations
 
                     b.Property<int>("MedidaId");
 
-                    b.Property<decimal>("NPieles");
+                    b.Property<int>("NPieles");
 
                     b.Property<string>("Observaciones");
 

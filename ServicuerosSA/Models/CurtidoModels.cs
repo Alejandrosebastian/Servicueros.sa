@@ -19,12 +19,10 @@ namespace ServicuerosSA.Models
         {
             return _contexto.ClasificacionTripa.OrderBy(cl => cl.Detalle).ToList();
         }
-        public List<IdentityError> ClaseGuardaCurtido(int tipotripa, int numbombo, int numpieles,int medida, int formula, DateTime fecha, int peso, int Bodega, int personal, string Codicurtido)
+        public List<IdentityError> ClaseGuardaCurtido(int tipotripa, int numbombo, decimal numpieles,int medida, int formula, DateTime fecha, int peso, int Bodega, int personal, string Codicurtido)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
-            var curtidolista = _contexto.Bodegatripa.Where(cu => cu.BodegaTripaId == tipotripa).ToList();
-            foreach (var item in curtidolista)
-            {
+            IdentityError error = new IdentityError();
                 try
                 {
                     var guardaCurtido = new Curtido
@@ -43,34 +41,34 @@ namespace ServicuerosSA.Models
                     _contexto.Curtido.Add(guardaCurtido);
                     _contexto.SaveChanges();
                     Bodegatripa cla = (from bt in _contexto.Bodegatripa
-                                       where bt.BodegaTripaId == item.BodegaTripaId
+                                       where bt.BodegaTripaId == tipotripa
                                        select new Bodegatripa
                                        {
-                                           DescarneId = item.DescarneId,
-                                           BodegaId = item.BodegaId,
-                                           ClasificacionTripaId = item.ClasificacionTripaId,
+                                           DescarneId = bt.DescarneId,
+                                           BodegaId = bt.BodegaId,
+                                           ClasificacionTripaId = bt.ClasificacionTripaId,
                                            PersonalId = personal,
-                                           MedidaId = item.MedidaId,
-                                           activo = false
+                                           MedidaId = medida,
+                                           activo = false, BodegaTripaId = tipotripa
                                        }).FirstOrDefault();
                     _contexto.Bodegatripa.Update(cla);
                     _contexto.SaveChanges();
-                    Listaerrores.Add(new IdentityError
+                    error = new IdentityError
                     {
                         Code = "ok",
                         Description = "ok"
-                    });
+                    };
                 }
                 catch (Exception e)
                 {
-                    Listaerrores.Add(new IdentityError
+                    error = new IdentityError
                     {
                         Code = e.Message,
                         Description = e.Message,
-                    });
+                    };
                 }
 
-            }
+            Listaerrores.Add(error);
             return Listaerrores;
         }
         public List<object[]> Modelolistacurtido()

@@ -93,7 +93,7 @@ var listadescarne = () => {
 }
 var ListaIndexCurtido = () => {
     var accion = '../Curtidos/ControladorListacurtido';
-    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '', accion);
+    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '','', accion);
     listacurtido.ListaIndexCurtido();
 }
 var GuardaPelambre = () => {
@@ -409,12 +409,12 @@ var controlnumeropieltripa = () => {
 var controlnumeropieles = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
-    if (pelambre >= cantidad) {
+    if (pelambre <= cantidad) {
         $("#mensajec").removeClass("hidden");
         $('#guarda').prop('disabled', true);
     } else {
-        $("#mensajep").addClass("hidden");
-        $('#guarda').prop('enabled', true);
+        $("#mensajec").addClass("hidden");
+        $('#guarda').prop('disabled', false);
     }
 
 }
@@ -488,8 +488,17 @@ var guardarCurtido = () => {
     var formulaId = formulas.options[formulas.selectedIndex].value;
     var personales = document.getElementById('personalId');
     var personalId = personales.options[personales.selectedIndex].value;
+    var d = new Date()
+    var fecha = d.getDate();
+    var dt = new Date();
+    var month = dt.getMonth() + 1;
+    var day = dt.getDate();
+    var year = dt.getFullYear();
+    var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
+
     $('#ListaCurtido tr').each(function () {
         var celdas = $(this).find('td');
+        
         var BodegaId = ($(celdas[1]).html());
         var BodegaTripaId = ($(celdas[2]).html());
         var MedidaId = ($(celdas[3]).html());
@@ -498,16 +507,13 @@ var guardarCurtido = () => {
         var NumeroPieles = ($(celdas[6]).html());
         var peso = ($(celdas[7]).html());
         var Abreviatura = ($(celdas[8]).html());
-        var d = new Date();
-        var fecha = d.getDate();
-        var dt = new Date();
-        var month = dt.getMonth() + 1;
-        var day = dt.getDate();
-        var year = dt.getFullYear();
-        var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
-        var clase = new Curtidojs(BodegaTripaId, bomboId,NumeroPieles,MedidaId,formulaId,'',peso,BodegaId,fech,personalId, accion);
-        clase.Guardacurtido();
-        
+
+        $(this).find('td input:checkbox:checked').each(() => {
+             var clase = new Curtidojs(BodegaTripaId, bomboId, NumeroPieles, MedidaId, formulaId, '', peso, BodegaId,personalId,fech, accion);
+             clase.Guardacurtido();
+        });
+
+       
     });
 }
 

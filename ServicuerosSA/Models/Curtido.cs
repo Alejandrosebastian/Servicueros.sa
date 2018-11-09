@@ -11,7 +11,7 @@ namespace ServicuerosSA.Models
         public DateTime Fecha { get; set; }
         public int Peso { get; set; }
         public string Observaciones { get; set; }
-        public int NPieles { get; set; }
+        public decimal NPieles { get; set; }
         public string codicurtido { get; set; }
         //RELACIONES
         public int FormulaId { get; set; }
@@ -21,7 +21,7 @@ namespace ServicuerosSA.Models
         //public int ClasificacionTripaId  { get; set; }
         //public ClasificacionTripa ClasificacionTripa { get; set; }
         public int BodegaTripaId { get; set; }
-        public Bodega BodegaTripa { get; set; }
+        public Bodegatripa BodegaTripa { get; set; }
         public int MedidaId { get; set; }
         public Medida Medida { get; set; }
         public int BomboId { get; set; }
