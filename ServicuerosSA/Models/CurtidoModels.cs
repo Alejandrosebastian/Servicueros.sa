@@ -122,10 +122,6 @@ namespace ServicuerosSA.Models
                         join clasi in _contexto.ClasificacionTripa on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
                         join me in _contexto.Medida on cu.MedidaId equals me.MedidaId
                         join bode in _contexto.Bodega on cu.BodegaId equals bode.BodegaId
-
-
-
-
                         select new
                         {
                             fecha = DateTime.Now,

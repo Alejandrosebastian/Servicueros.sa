@@ -8,7 +8,7 @@ $().ready(() => {
     listatripasindex();
     ImprimirCarnaza();
     ImprimirClasiTripa();
-    ListaIndexCurtido();
+    ListaIndexcurtido();
 
 
 
@@ -91,9 +91,9 @@ var listadescarne = () => {
     var lisdescarnes = new BodegaTripa('', '', '', '', '', '','','', accion);
     lisdescarnes.ClaseListadescarnes();
 }
-var ListaIndexCurtido = () => {
+var ListaIndexcurtido = () => {
     var accion = '../Curtidos/ControladorListacurtido';
-    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '', accion);
+    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '', '', accion);
     listacurtido.ListaIndexCurtido();
 }
 var GuardaPelambre = () => {
