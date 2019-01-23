@@ -67,17 +67,22 @@ class ClaseJSLotes {
         $.post(accion,
             { coolo, numeropieles },
             (respuesta) => {
-                
+                console.log(respuesta);
                 if (respuesta[0].code == 'no') {
+                    $('#MensajeLoteNumeroPieles').addClass('hiidden');
                     $('#numpieles').css('visibility', 'visible');
-                    $('#graba').prop('disabled', true);
+                    $('#graba').addClass('hidden');
                 } else if (respuesta[0].code == 'no!') {
+                    $('#MensajeLoteNumeroPieles').addClass('hiidden');
                     alert("Se actualizó el estado de los lotes. La pagina de volvera a vargar");
                     location.reload();
+                } else if (respuesta[0].code == 'men') {
+                    alert('El numero de pieles disponibles es: ' + respuesta[0].description);
+                    $('#graba').addClass('hidden');
                 } else {
-
+                    $('#MensajeLoteNumeroPieles').addClass('hiidden');
                     $('#numpieles').css('visibility', 'hidden');
-                    $('#graba').prop('disabled', false);
+                    $('#graba').removeClass('hidden');
                 }
             }
         );

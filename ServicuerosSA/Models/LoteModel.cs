@@ -143,11 +143,13 @@ namespace ServicuerosSA.Models
             var lotenumero = (from l in _contexto.Lote
                         where l.LoteId == codilote
                         select l.Numerodepieles).FirstOrDefault();
+
+
             var total = _contexto.Bodega1.Where(b1 => b1.LoteId == codilote).Sum(b1 => b1.NumeroPieles);
 
             int totalpieles = total + valor;
 
-            if (valor <= lotenumero  )
+            if (valor <= lotenumero)
             {
                 if (totalpieles <= lotenumero)
                 {
@@ -159,33 +161,45 @@ namespace ServicuerosSA.Models
                 }
                 else
                 {
-                    var lot = (from lote in _contexto.Lote
-                               where lote.LoteId == codilote
-                               select new Lote
-                               {
-                                   LoteId = lote.LoteId,
-                                   estado = false,
-                                   Codigolote = lote.Codigolote,
-                                   Fechaingreso = lote.Fechaingreso,
-                                   Numerodepieles = lote.Numerodepieles,
-                                   Observaciones = lote.Observaciones,
-                                   PersonalId = lote.PersonalId,
-                                   TipoPielId = lote.TipoPielId
-                               }).FirstOrDefault();
-                    try
+                    if (lotenumero == total)
                     {
-                        _contexto.Lote.Update(lot);
-                        _contexto.SaveChanges();
+                        var lot = (from lote in _contexto.Lote
+                                   where lote.LoteId == codilote
+                                   select new Lote
+                                   {
+                                       LoteId = lote.LoteId,
+                                       estado = false,
+                                       Codigolote = lote.Codigolote,
+                                       Fechaingreso = lote.Fechaingreso,
+                                       Numerodepieles = lote.Numerodepieles,
+                                       Observaciones = lote.Observaciones,
+                                       PersonalId = lote.PersonalId,
+                                       TipoPielId = lote.TipoPielId
+                                   }).FirstOrDefault();
+                        try
+                        {
+                            _contexto.Lote.Update(lot);
+                            _contexto.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                        er = new IdentityError
+                        {
+                            Code = "no!",
+                            Description = "no!"
+                        };
                     }
-                    catch (Exception)
+                    else
                     {
-                        throw;
+                        er = new IdentityError
+                        {
+                            Code = "men",
+                            Description =  (totalpieles - lotenumero).ToString()
+                        };
                     }
-                    er = new IdentityError
-                    {
-                        Code = "no!",
-                        Description = "no!"
-                    };
+                   
 
                 }
             }

@@ -42,6 +42,7 @@
                 <label asp-for="NumeroPieles" class="control-label"></label>
                 <input asp-for="NumeroPieles" class="form-control" onfocusout="numeropileslote();" />
                 <span asp-validation-for="NumeroPieles" class="text-danger"></span>
+                <span class="alert-danger bg-danger hidden" id="MensajeLoteNumeroPieles" name="MensajeLoteNumeroPieles">La contidad no debe superar a la existente</span>
             </div>
             <div class="form-group">
                 <label asp-for="Peso" class="control-label"></label>
@@ -65,7 +66,7 @@
                 <select asp-for="TipoPielId" class ="form-control" asp-items="ViewBag.TipoPielId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="Crear" id="graba" class="btn btn-primary" />
                 <a class="btn btn-success" asp-action="Index">Regresar a la lista</a>
             </div>
         </form>

@@ -55,7 +55,24 @@ namespace ServicuerosSA.Models
 
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
-            var pelambreLista = _contexto.Pelambre.Where(p => p.codigopelambre == pelambre).ToList();
+            List<PelambreListaId> pelambreLista = (from ya in _contexto.Pelambre
+                                                  where  ya.codigopelambre == pelambre
+                                                  select new PelambreListaId {
+                                                      Activo = ya.Activo,
+                                                      BodegaId1 = ya.Bodega1Id,
+                                                      BomboId = ya.BomboId,
+                                                      Codigo = ya.Codigo,
+                                                      CodigoLote = ya.CodigoLote,
+                                                      codigopelambre = ya.codigopelambre,
+                                                      FormulaId = ya.FormulaId,
+                                                      Peso = ya.Peso,
+                                                      TotalPieles = ya.TotalPieles,
+                                                      PersonalId = ya.PersonalId,
+                                                      observaciones = ya.Observaciones,
+                                                      fecha = ya.Fecha,
+                                                      pelambreId = ya.PelambreId
+                                                  }).ToList();
+
 
             foreach (var item in pelambreLista)
             {
@@ -63,34 +80,36 @@ namespace ServicuerosSA.Models
                 {
                     var guardarDescarne = new Descarne
                     {
-                        PelambreId = item.PelambreId,
+                        PelambreId = item.pelambreId,
                         Activo = true,
                         Cantidad = cantidad,
                         PersonalId = personal,
                         Fecha = DateTime.Now,
                         CodigoLote = codigolote,
                         codiunidescarne = codiunidescarne
-
-
-
                     };
                     _contexto.Descarne.Add(guardarDescarne);
                     _contexto.SaveChanges();
 
-                    Pelambre pel = (from p in _contexto.Pelambre
-                                    where p.PelambreId == item.PelambreId
-                                    select new Pelambre
-                                    {
-                                        PelambreId = item.PelambreId,
-                                        FormulaId = p.FormulaId,
-                                        PersonalId = p.PersonalId,
-                                        Bodega1Id = p.Bodega1Id,
-                                        BomboId = p.BomboId,
-                                        Activo = false
 
-                                    }).FirstOrDefault();
-
-                    _contexto.Pelambre.Update(pel);
+                    Pelambre pe = (from p in _contexto.Pelambre
+                                   where p.PelambreId == item.pelambreId
+                                   select new Pelambre
+                                   {
+                                       Activo = false,
+                                       PelambreId = p.PelambreId,
+                                       FormulaId = p.FormulaId,
+                                       PersonalId = p.PersonalId,
+                                       Bodega1Id = p.Bodega1Id,
+                                       BomboId = p.BomboId,
+                                       Codigo = p.Codigo,
+                                       CodigoLote = p.CodigoLote,
+                                       Fecha = p.Fecha,
+                                       TotalPieles = p.TotalPieles,
+                                       codigopelambre = p.codigopelambre,
+                                       Peso = p.Peso
+                                   }).FirstOrDefault();
+                    _contexto.Pelambre.Update(pe);
                     _contexto.SaveChanges();
                     Listaerrores.Add(new IdentityError
                     {
@@ -106,11 +125,10 @@ namespace ServicuerosSA.Models
                         Description = e.Message
                     });
                 }
-
             }
+              
 
-
-           
+                     
       
             return Listaerrores;
         }
