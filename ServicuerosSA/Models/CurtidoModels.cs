@@ -116,30 +116,30 @@ namespace ServicuerosSA.Models
         //Encabezado Formula
         public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(string id)
         {
-            var consultaid = (from p in _contexto.Pelambre
-                              where p.codigopelambre == id
-                              select p).FirstOrDefault();
+            var consultaid = (from cu in _contexto.Curtido
+                              where cu.codicurtido == id
+                              select cu).FirstOrDefault();
 
-            var res = (from p in _contexto.Pelambre
-                       join pe in _contexto.Personal on p.PersonalId equals pe.PersonalId
-                       join b in _contexto.Bombo on p.BomboId equals b.BomboId
-                       join fo in _contexto.Formula on p.FormulaId equals fo.FormulaId
+            var res = (from cu in _contexto.Curtido
+                       join pe in _contexto.Personal on cu.PersonalId equals pe.PersonalId
+                       join b in _contexto.Bombo on cu.BomboId equals b.BomboId
+                       join fo in _contexto.Formula on cu.FormulaId equals fo.FormulaId
                        join tp in _contexto.TipoPiel on fo.TipoPielId equals tp.TipoPielId
-                       where p.PelambreId == consultaid.PelambreId
+                       where cu.CurtidoId == consultaid.CurtidoId
                        select new ModeloEncabezadoFormula
                        {
                            Bombo = b.Num_bombo.ToString(),
-                           Cantidad = p.TotalPieles.ToString(),
+                           Cantidad = cu.NPieles.ToString(),
                            FechaCreacionFormula = fo.Fecha_Creacion.ToString("dd-MM-yyyy"),
                            FechaImpresion = DateTime.Now.ToString(),
                            NombreAutoirzado = pe.Nombres + " " + pe.Apellidos,
                            FechaValida = DateTime.Now.ToString(),
                            NombreEntregado = pe.Nombres + " " + pe.Apellidos,
                            NombreProcesado = fo.TipoProceso,
-                           Codigo = p.CodigoLote + p.Codigo,
-                           Parada = p.PelambreId.ToString(),
-                           Peso = p.Peso.ToString(),
-                           Promedio = (p.Peso / p.TotalPieles).ToString(),
+                           Codigo = cu.codicurtido,
+                           Parada = cu.CurtidoId.ToString(),
+                           Peso = cu.Peso.ToString(),
+                           Promedio = (cu.Peso / cu.NPieles).ToString(),
                            Version = fo.Version,
                            TipoPiel = tp.Detalle
                        }).ToList();
@@ -162,8 +162,7 @@ namespace ServicuerosSA.Models
                            c.Detalle,
                            c.Porcentaje,
                            cu.Peso,
-                           c.Tiempo,
-                           m.Abreviatura
+                          cu.Observaciones
                        }).ToList();
             int pesototal = (from cu in _contexto.Curtido
                              where cu.codicurtido == id
@@ -174,7 +173,7 @@ namespace ServicuerosSA.Models
                 "<td>" + item.Detalle.ToUpper() + "</td>" +
                 "<td>" + item.Porcentaje.ToUpper() + "</td>" +
                 "<td>" + (pesototal * Double.Parse(item.Porcentaje)) / 100 + "</td>" +
-                "<td>" + item.Tiempo.ToString() + " " + item.Abreviatura.ToUpper() + "</td>" +
+                "<td>" + item.Observaciones + "</td>" +
                 "<td> </td>" +
                 "</tr>";
             }
@@ -220,6 +219,60 @@ namespace ServicuerosSA.Models
             object[] datos = { imprime };
             lista.Add(datos);
             return lista;
+        }
+        //ListaIndexCurtido
+        public List<object[]> ClaseIndexCurtido(int numeroPagina)
+        {
+            List<object[]> ListaCurtido = new List<object[]>();
+            string dato = "";
+            var cur = (from cu in _contexto.Curtido
+                       join bo in _contexto.Bombo on cu.BomboId equals bo.BomboId
+                       join fo in _contexto.Formula on cu.FormulaId equals fo.FormulaId
+                       join bod in _contexto.Bodegatripa on cu.BodegaTripaId equals bod.BodegaTripaId
+                       join clasi in _contexto.ClasificacionTripa on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
+                       join me in _contexto.Medida on cu.MedidaId equals me.MedidaId
+                       join bode in _contexto.Bodega on cu.BodegaId equals bode.BodegaId
+
+
+                       select new
+                       {
+                           fecha = DateTime.Now,
+                           bode.NombreBodega,
+                           clasi.Detalle,
+                           cu.Peso,
+                           me.Abreviatura,
+                           bo.Num_bombo,
+                           fo.Nombre,
+                           cu.codicurtido
+
+                       }).ToList();
+
+            string compara = "";
+            foreach (var item in cur)
+            {
+                dato += "<tr>" +
+                    "<td>" + item.fecha + "</td>" +
+                    "<td>" + item.NombreBodega + "</td>" +
+                    "<td>" + item.Detalle + "</td>" +
+                    "<td>" + item.Peso + " " + item.Abreviatura + "</td>" +
+                    "<td>" + item.Num_bombo + "</td>" +
+                    "<td>" + item.Nombre + "</td>" +
+                     "</tr>";
+                string ya = item.codicurtido;
+                if (compara != item.codicurtido)
+                {
+                    dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionCurtido' onclick='ImprimirCurtido(&#039;" + item.codicurtido + "&#039;); componentesFormula(&#039;" + item.codicurtido + "&#039;);pesa(&#039;" + item.codicurtido + "&#039;);componentesQuimico(&#039;" + item.codicurtido + "&#039;);'>Imprimir Detalle con Formula</a> " +
+                       "<a class='btn btn-success' onclick='EliminarCurtido(&#039;" + ya + "&#039;)'>Eliminar</a>" +
+                           "</td>" +
+                           "</tr>";
+                }
+                compara = item.codicurtido;
+
+            }
+
+            object[] objeto = { dato };
+            ListaCurtido.Add(objeto);
+            return ListaCurtido;
         }
     }
 

@@ -13,11 +13,21 @@
         this.accion = accion;
     }
 
-    ListaIndexCurtido() 
-     {
-
-
+   
     ListaIndexCurtido() {
+        var accion = this.accion;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            success: (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#CurtidoLista').html(val[0]);
+                });
+            }
+        });
+    }
+    ListaIndexCurt() {
         var accion = this.accion;
         $.ajax({
             type: "POST",
