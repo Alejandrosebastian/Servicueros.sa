@@ -39,7 +39,7 @@ namespace ServicuerosSA.Controllers
         }
         public List<object[]> ControladorListaIndexCurtido(int id)
         {
-            return claseCurtido.ClaseIndexCurtido(id);
+            return curtido.ClaseIndexCurtido(id);
             
         }
         public List<object[]> ControladorImprimircurtido()

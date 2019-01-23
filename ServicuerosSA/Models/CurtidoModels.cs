@@ -232,8 +232,7 @@ namespace ServicuerosSA.Models
                        join clasi in _contexto.ClasificacionTripa on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
                        join me in _contexto.Medida on cu.MedidaId equals me.MedidaId
                        join bode in _contexto.Bodega on cu.BodegaId equals bode.BodegaId
-
-
+                       
                        select new
                        {
                            fecha = DateTime.Now,
@@ -251,7 +250,7 @@ namespace ServicuerosSA.Models
             foreach (var item in cur)
             {
                 dato += "<tr>" +
-                    "<td>" + item.fecha + "</td>" +
+                    "<td style= width: auto> " + item.fecha + "</td>" +
                     "<td>" + item.NombreBodega + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
                     "<td>" + item.Peso + " " + item.Abreviatura + "</td>" +

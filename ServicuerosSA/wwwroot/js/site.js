@@ -8,7 +8,7 @@ $().ready(() => {
     listatripasindex();
     ImprimirCarnaza();
     ImprimirClasiTripa();
-    ListaIndexCurt();
+    ListaIndexcurtido();
 
 
 

@@ -27,6 +27,7 @@
             }
         });
     }
+
     ListaIndexCurt() {
         var accion = this.accion;
         $.ajax({
