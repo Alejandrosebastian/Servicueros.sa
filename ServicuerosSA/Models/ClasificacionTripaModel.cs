@@ -136,8 +136,8 @@ namespace ServicuerosSA.Models
 
                 listatripa.Add(new IdentityError
                 {
-                    Code = "Ok",
-                    Description = "Ok"
+                    Code = "ok",
+                    Description = "ok"
                 });
             }
             catch(Exception ex)

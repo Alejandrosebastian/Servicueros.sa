@@ -41,7 +41,7 @@
                                     tipotripa, descarne, bodega, numeropieles, peso, medida, personal
                                 },
                                 success: (respuesta) => {
-                                    if (respuesta[0].code == 'Ok') {
+                                    if (respuesta[0].code == 'ok') {
                                 swal('Clasificacion Tripa', "Se guardo con exito", 'success');
                                     } else {
                                 swal('Clasificacion Tripa', respuesta[0].description, 'error');
@@ -162,7 +162,7 @@
         document.getElementById('ClasificaciontripaId').selectIndex = 0;
         document.getElementById('NumeroPielesInput').value = '';
         document.getElementById('personalId').selectedIndex = 0;
-        document.getElementById('PesoPesoInput').value = '';
+        document.getElementById('PesoPesoInput').selectedIndex = 0;
 
         $('#IngresoClasificacionTripa').html = '';
         $('#IngresoClasificacionTripa').modal('hide');

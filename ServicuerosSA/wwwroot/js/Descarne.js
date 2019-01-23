@@ -74,12 +74,15 @@
                                 pelambre, cantidad, fecha, personal,  codigolote, codiunidescarne
                             },
                             success: (respuesta) => {
-                                if (respuesta[0].code == "Ok") {
+                                if (respuesta[0].code == "ok") {
                                     this.limpiarcajas();
                                     swal("Pelambre", "Se guardo exitosamente", "success");
+                                    ListaIndexDescarne();
+                                    this.limpiacajasPelambre();
 
                                 } else {
                                     this.limpiarcajas();
+                                    this.limpiacajasPelambre();
                                     swal("Pelambre", "Ocurrio un error", "error");
 
                                 }
@@ -90,7 +93,16 @@
             }
         }
     }
-    
+
+    limpiacajasPelambre() {
+        var select = document.getElementById("PelambreId");
+        var length = select.options.length;
+        for (i = 1; i < length; i++) {
+            select.options[i] = null;
+        }
+
+    }
+
         //combo
         listapelambre() {
             var accion = this.accion;
@@ -102,7 +114,7 @@
                 success: (respuesta) => {
                     if (0 < respuesta.length) {
                         for (var i = 0; i < respuesta.length; i++) {
-                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigo, respuesta[i].codigopelambre);
+                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigo. respuesta[i].codigopelambre);
                             contador++;
                         }
                     }
@@ -120,6 +132,7 @@
                     document.getElementById('TotalPielesInput').value = respuesta;
                     $('#TotalPielesInput').value = respuesta;
                     $("#TotalPielesInput").removeClass("hidden");
+                    
                 }
             });
         }
@@ -134,6 +147,7 @@
                     document.getElementById('codiloteInput').value = respuesta[0].codigoLote;
                     $('#codigoloteInput').value = respuesta[0].codigoLote;
                     $('#codigoloteInput').removeClass('hidden');
+                    
                 }
             });
         }
@@ -147,6 +161,7 @@
                 {
                     ListaIndexDescarne(1);
                     alert("El registro se ha borrado exitosamente!!");
+                    this.limpiarcajas();
                 });
      }
     limpiarcajas()
@@ -155,8 +170,11 @@
             document.getElementById('PelambreId').selectedIndex = 0;
             document.getElementById('personalId').selectedIndex = 0;
             document.getElementById('codigoloteInput').value = '';
+            document.getElementById('TotalPielesInput').value = '';
+
             $('#IngresoDescarne').modal('hide');
-            ListaIndexDescarne;
+        ListaIndexDescarne;
+        this.limpiacajasPelambre();
 
     }
 }

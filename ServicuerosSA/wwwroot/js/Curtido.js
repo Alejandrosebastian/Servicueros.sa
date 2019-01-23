@@ -13,8 +13,8 @@
         this.accion = accion;
     }
 
-    ListaIndexCurtido() 
-     {
+    
+    
 
 
     ListaIndexCurtido() {

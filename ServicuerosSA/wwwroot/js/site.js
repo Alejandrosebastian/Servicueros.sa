@@ -96,7 +96,7 @@ var ListaIndexcurtido = () => {
 
     var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '','', accion);
 
-    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '', '', accion);
+    
 
     listacurtido.ListaIndexCurtido();
 }
@@ -410,12 +410,18 @@ var controlnumeropieltripa = () => {
     }
 }
 ////////// control pieles descarne
-var controlnumeropieles = () => {
+var controlnumeropielesDes = () => {
     var pelambre = document.getElementById("TotalPielesInput").value;
     var cantidad = document.getElementById("CantidadPieles").value;
     if (pelambre <= cantidad) {
-        $("#mensajec").removeClass("hidden");
-        $('#guarda').prop('disabled', true);
+        if (pelambre == cantidad) {
+            $("#mensajec").addClass("hidden");
+            $('#guarda').prop('disabled', false);
+        } else {
+            $("#mensajec").removeClass("hidden");
+            $('#guarda').prop('disabled', true);
+        }
+       
     } else {
         $("#mensajec").addClass("hidden");
         $('#guarda').prop('disabled', false);
