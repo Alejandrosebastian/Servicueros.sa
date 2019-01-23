@@ -7,7 +7,11 @@ using ServicuerosSA.Data;
 namespace ServicuerosSA.Models
 {
     public class CurtidoModels
+        
+
     {
+        string dato = "";
+        string datoimprime = "";
         private ApplicationDbContext _contexto;
         private ClasificacionTripa tipotripas;
         public CurtidoModels(ApplicationDbContext contexto)
@@ -109,6 +113,77 @@ namespace ServicuerosSA.Models
             lista.Add(datos);
             return lista;
         }
+        //Encabezado Formula
+        public List<ModeloEncabezadoFormula> ModeloImprimirEncabezadoFormula(string id)
+        {
+            var consultaid = (from p in _contexto.Pelambre
+                              where p.codigopelambre == id
+                              select p).FirstOrDefault();
+
+            var res = (from p in _contexto.Pelambre
+                       join pe in _contexto.Personal on p.PersonalId equals pe.PersonalId
+                       join b in _contexto.Bombo on p.BomboId equals b.BomboId
+                       join fo in _contexto.Formula on p.FormulaId equals fo.FormulaId
+                       join tp in _contexto.TipoPiel on fo.TipoPielId equals tp.TipoPielId
+                       where p.PelambreId == consultaid.PelambreId
+                       select new ModeloEncabezadoFormula
+                       {
+                           Bombo = b.Num_bombo.ToString(),
+                           Cantidad = p.TotalPieles.ToString(),
+                           FechaCreacionFormula = fo.Fecha_Creacion.ToString("dd-MM-yyyy"),
+                           FechaImpresion = DateTime.Now.ToString(),
+                           NombreAutoirzado = pe.Nombres + " " + pe.Apellidos,
+                           FechaValida = DateTime.Now.ToString(),
+                           NombreEntregado = pe.Nombres + " " + pe.Apellidos,
+                           NombreProcesado = fo.TipoProceso,
+                           Codigo = p.CodigoLote + p.Codigo,
+                           Parada = p.PelambreId.ToString(),
+                           Peso = p.Peso.ToString(),
+                           Promedio = (p.Peso / p.TotalPieles).ToString(),
+                           Version = fo.Version,
+                           TipoPiel = tp.Detalle
+                       }).ToList();
+            return res;
+        }
+        //Imprimir Componentes
+        public List<object[]> ModeloImprimirComponentes(string id)
+        {
+            List<object[]> lista = new List<object[]>();
+            var consultaid = (from cu in _contexto.Curtido
+                              where cu.codicurtido == id
+                              select cu).FirstOrDefault();
+            var res = (from cu in _contexto.Curtido
+                       join f in _contexto.Formula on cu.FormulaId equals f.FormulaId
+                       join c in _contexto.Componente on f.FormulaId equals c.FormulaId
+                       join m in _contexto.Medida on c.MedidaId equals m.MedidaId
+                       where cu.CurtidoId == consultaid.CurtidoId
+                       select new
+                       {
+                           c.Detalle,
+                           c.Porcentaje,
+                           cu.Peso,
+                           c.Tiempo,
+                           m.Abreviatura
+                       }).ToList();
+            int pesototal = (from cu in _contexto.Curtido
+                             where cu.codicurtido == id
+                             select cu).Sum(cu => cu.Peso);
+            foreach (var item in res)
+            {
+                 dato += "<tr>" +
+                "<td>" + item.Detalle.ToUpper() + "</td>" +
+                "<td>" + item.Porcentaje.ToUpper() + "</td>" +
+                "<td>" + (pesototal * Double.Parse(item.Porcentaje)) / 100 + "</td>" +
+                "<td>" + item.Tiempo.ToString() + " " + item.Abreviatura.ToUpper() + "</td>" +
+                "<td> </td>" +
+                "</tr>";
+            }
+            object[] objeto = { dato };
+            lista.Add(objeto);
+            return lista;
+        }
+
+        //Reporte Curtido
         public List<object[]> Modeloimprimircurtido()
         {
             List<object[]> lista = new List<object[]>();

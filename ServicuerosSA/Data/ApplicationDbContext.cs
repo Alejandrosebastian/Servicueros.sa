@@ -75,5 +75,11 @@ namespace ServicuerosSA.Data
 
 
         public DbSet<ServicuerosSA.Models.Curtido> Curtido { get; set; }
+
+
+        public DbSet<ServicuerosSA.Models.Escurrido> Escurrido { get; set; }
+
+
+        public DbSet<ServicuerosSA.Models.ClasificacionWB> ClasificacionWB { get; set; }
     }
 }

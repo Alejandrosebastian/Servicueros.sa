@@ -1,0 +1,36 @@
+﻿@model ServicuerosSA.Models.ClasificacionWB
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClasificacionWB</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroPieles)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroPieles)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ClasificacionwbId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

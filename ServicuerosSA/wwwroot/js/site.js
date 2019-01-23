@@ -93,11 +93,7 @@ var listadescarne = () => {
 }
 var ListaIndexcurtido = () => {
     var accion = '../Curtidos/ControladorListacurtido';
-
     var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '','', accion);
-
-    
-
     listacurtido.ListaIndexCurtido();
 }
 var GuardaPelambre = () => {

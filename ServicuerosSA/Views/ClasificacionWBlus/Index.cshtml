@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionWB" onclick="ListaClasificacionWB();">Nuevo Proceso</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Lote
+            </th>
+            <th>
+                Bodega
+            </th>
+            <th>
+                Bombo
+            </th>
+            <th>
+                Fecha Curtido
+            </th>
+            <th>
+                Fecha de Clasificacion
+            </th>
+            <th>
+                Clasificacion
+            </th>
+            <th>
+                Medida
+            </th>
+            <th>
+                Numero de Pieles
+            </th>
+            <th>
+                Observaciones
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="ClasificacionWBlista"> </tbody>
+</table>
+<div class="modal fade" id="IngresoClasificacionWB" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"
+                    id="EtiquetaModal">
+                    Ingreso de Proceso Escurrido
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="control-label">Lotes en Escurrido</label>
+                        <select id="EscurridoId" name="EscurridoId" required class="form-control" onchange="NumeroPielesEscurrido(); ">
+                            <option value="0">Seleccione un lote que desea clasificar</option>
+                        </select>
+                        <br />
+                        <span id="mensajees" class="alert alert-danger hidden">Seleccione el lote a clasificar</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Seleccione la bodega de almacenamiento</label>
+                        <select id="BodegaId" name="BodegaId" required class="form-control">
+                            <option value="0">Seleccione la bodega de almacenamineto</option>
+                        </select>
+                        <br />
+                        <span id="mensajebo" class="alert alert-danger hidden">Seleccione la bodega de almacenamineto:</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Bombo</label>
+                        <select id="bomboId" name="bomboId" required class="form-control">
+                            <option value="0">Seleccione el Bombo asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajeb" class="alert alert-danger hidden">Seleccione el Bombo asignado</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fecha Curtido</label>
+                        <input id="fecha" name="fecha" class="form-control" type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fecha Clasificacion</label>
+                        <input id="fechaclasi" name="fechaclasi" class="form-control" type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Clasificacion</label>
+                        <select id="clasificacionId" name="clasificacionId" required class="form-control">
+                            <option value="0">Seleccione la clasificacion</option>
+                        </select>
+                        <br />
+                        <span id="mensajecla" class="alert alert-danger hidden">Seleccione la clasificacion</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Medida</label>
+                        <select id="medidaId" name="medidaId" required class="form-control">
+                            <option value="0">Seleccione la medida</option>
+                        </select>
+                        <br />
+                        <span id="mensajem" class="alert alert-danger hidden">Seleccione la medida</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Numero de Pieles</label>
+                        <input id="numeropieles" name="numeropieles" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Observaciones</label>
+                        <input id="observaciones" name="observaciones" class="form-control" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="guarda" name="guarda" onclick="GuardaClasificacionWB()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
