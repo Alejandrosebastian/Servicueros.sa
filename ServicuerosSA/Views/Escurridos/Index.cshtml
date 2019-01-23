@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoEscurrido" onclick="ListaEscurrido();">Nuevo Proceso</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    CodigoLote
+                </th>
+            <th>
+                Bombo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="EscurridoLista"> </tbody>
+</table>
+
+<div class="modal fade" id="IngresoEscurrido" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"
+                    id="EtiquetaModal">
+                    Ingreso de Proceso Escurrido
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="control-label">Lotes en Curtido</label>
+                        <select id="CurtidoId" name="CurtidoId" required class="form-control" onchange="NumeroPielesCurtido(); ">
+                            <option value="0">Seleccione un lote que desea escurrir</option>
+                        </select>
+                        <br />
+                        <span id="mensajep" class="alert alert-danger hidden">Selecciones el lote de Curtido</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Bombo</label>
+                        <select id="bomboId" name="bomboId" required class="form-control">
+                            <option value="0">Seleccione el Bombo asignado a esta operación</option>
+                        </select>
+                        <br />
+                        <span id="mensajebo" class="alert alert-danger hidden">Seleccione el Bombo asignado</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Cantidad</label>
+                        <input id="fecha" name="Cantidad" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fecha</label>
+                        <input id="fecha" name="fecha" class="form-control" type="date" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="guarda" name="guarda" onclick="GuardaEscurrido()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

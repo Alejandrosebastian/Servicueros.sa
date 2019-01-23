@@ -96,8 +96,7 @@ var ListaIndexcurtido = () => {
 
     var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '','', accion);
 
-    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '', '', accion);
-
+    
     listacurtido.ListaIndexCurtido();
 }
 var GuardaPelambre = () => {

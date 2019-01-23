@@ -434,7 +434,7 @@ namespace ServicuerosSA.Models
                        {
                            Bombo = b.Num_bombo.ToString(),
                            Cantidad = p.TotalPieles.ToString(),
-                           FechaCreacionFormula = fo.Fecha_Creacion.ToString(),
+                           FechaCreacionFormula = fo.Fecha_Creacion.ToString("dd-MM-yyyy"),
                            FechaImpresion = DateTime.Now.ToString(),
                            NombreAutoirzado = pe.Nombres + " " + pe.Apellidos,
                            FechaValida = DateTime.Now.ToString(),
@@ -578,8 +578,9 @@ namespace ServicuerosSA.Models
 
             var res = (from p in _contexto.Pelambre
                        join b in _contexto.Bombo on p.BomboId equals b.BomboId
-                       join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id   
+                       join b1 in _contexto.Bodega1 on p.Bodega1Id equals b1.Bodega1Id
                        join bo in _contexto.Bodega on b1.BodegaId equals bo.BodegaId
+                       join c in _contexto.Clasificacion on b1.ClasificacionId equals c.ClasificacionId
                        where p.PelambreId == consultaid.PelambreId 
                        select new
                        {
@@ -588,7 +589,8 @@ namespace ServicuerosSA.Models
                            bo.NombreBodega,
                            p.Peso,
                            p.Fecha,
-                          p.TotalPieles
+                          p.TotalPieles,
+                          c.Selecciones
                           }).ToList();
             int pesototal = (from p in _contexto.Pelambre
                              where p.codigopelambre == id
@@ -604,7 +606,8 @@ namespace ServicuerosSA.Models
                     "<td>" + item.Peso + "</td>" +
 
                     "<td>" + item.Fecha + "</td>" +
-                "<td>" + item.NombreBodega.ToUpper() + "Estanteria:  </td>" +
+                "<td>" + item.NombreBodega.ToUpper() + "Estanteria  </td>" +
+                "<td>" + item.Selecciones + "</td>" +
                 "<td> </td>" +
                 "</tr>";
 
