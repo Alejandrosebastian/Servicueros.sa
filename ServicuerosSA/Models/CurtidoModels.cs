@@ -221,7 +221,7 @@ namespace ServicuerosSA.Models
             return lista;
         }
         //ListaIndexCurtido
-        public List<object[]> ClaseIndexCurtido(int numeroPagina)
+        public List<object[]> ClaseIndexCurtido( int idCurtido)
         {
             List<object[]> ListaCurtido = new List<object[]>();
             string dato = "";
