@@ -76,23 +76,6 @@ class Formulas {
             }
         );
     }
-    CabeceraQuimico(id) {
-        var accion = this.accion;
-        $.ajax({
-            type: 'POST',
-            url: accion,
-            data: { id },
-            success: (respuesta) => {
-                $('#fecha').text(respuesta[0].fecha);
-                $('#promedio').text(respuesta[0].promedio);
-                $('#lote').text(respuesta[0].lote);
-                $('#bombo').text(respuesta[0].bombo);
-                $('#peso').text(respuesta[0].peso);
-                $('#pieles').text(respuesta[0].pieles);
-                $('#promedio').text(respuesta[0].promedio);
-            }
-        });
-    }
     CuerpoPesaje(id) {
         var accion = this.accion;
         $.post(
@@ -115,6 +98,7 @@ class Formulas {
                 });
             });
     }
+ 
     //REPORTES
     CuerpoLote(id) {
         var accion = this.accion;
@@ -166,8 +150,7 @@ class Formulas {
             accion,
             {},
             (respuesta) => {
-               /// console.log(respuesta);
-                $.each(respuesta, (index, val) => {
+                    $.each(respuesta, (index, val) => {
                     $('#TablaCarnaza').html(val[0]);
                 });
             });

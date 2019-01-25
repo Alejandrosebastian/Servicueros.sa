@@ -9,6 +9,7 @@ $().ready(() => {
     ImprimirCarnaza();
     ImprimirClasiTripa();
     ListaIndexcurtido();
+    ImprimirClasiPelo();
 
 
 
@@ -91,11 +92,13 @@ var listadescarne = () => {
     var lisdescarnes = new BodegaTripa('', '','', '', '', '', '','','', accion);
     lisdescarnes.ClaseListadescarnes();
 }
+//LISTA CURTIDO
 var ListaIndexcurtido = () => {
-    var accion = '../Curtidos/ControladorListacurtido';
-    var listacurtido = new Curtidojs('', '', '', '', '', '', '', '', '','', accion);
-    listacurtido.ListaIndexCurtido();
+    var accion = '../Curtidos/ControladorListaIndexCurtido';
+    var listacurti = new Curtidojs('', '', '', '', '', '', '', '', '', '', accion);
+    listacurti.ListaIndexCurt();
 }
+
 var GuardaPelambre = () => {
     var bombos = document.getElementById('bomboId');
     var bombo = bombos.options[bombos.selectedIndex].value;
@@ -237,6 +240,18 @@ var ImprimirPelambre = (id) => {
     var impresionformula = new Formulas('', '', '', '', accion);
     impresionformula.CabeceraFormula(id);
 }
+//IMPRESION FORMULA CURTIDO
+var imprimirCurtido = (id) => {
+    var accion = 'Curtidos/ControladorImprimirEncabezadoFormula';
+    var impresioncurtido = new Curtidojs('', '', '', '', '', '', '', '', '', '', accion);
+    impresioncurtido.CabeceraFormulaCurtido(id);
+}
+var componentesFormulaCurtido = (id) => {
+    var accion = 'Curtidos/ControladorComponentesFormula';
+    var impresioncomponetescurtido = new Curtidojs('','','','','','','','','','',accion);
+    impresioncomponetescurtido.CuerpoFormulaCurtido(id);
+}
+////////////////
 var componentesFormula = (id) => {
     var accion = 'Pelambres/ControladorComponentesFormula';
     var componente = new Formulas('', '', '', '', accion);

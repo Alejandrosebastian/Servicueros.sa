@@ -78,7 +78,7 @@ namespace ServicuerosSA.Models
                 resultado += "<tr>" +
                   
                     "<td>" + item.Codigolote + "</td>" +
-                    "<td>" + item.Fechaingreso + "</td>" +
+                    "<td>" + item.Fechaingreso.ToString("dd-MM-yyyy") + "</td>" +
                     "<td>" + item.Numerodepieles + "</td>" +
                     "<td>" + item.nombres + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
@@ -238,7 +238,7 @@ namespace ServicuerosSA.Models
             {
                 dato += "<tr>" +
                     "<td>" + item.Codigolote + "</td>" +
-                    "<td>" + item.Fechaingreso + "</td>" +
+                    "<td>" + item.Fechaingreso.ToString("dd-MM-yyyy") + "</td>" +
                     "<td>" + item.Numerodepieles + "</td>" +
                     "<td>" + item.nombres + "</td>" +
                     "<td>" + item.Detalle + "</td>" +

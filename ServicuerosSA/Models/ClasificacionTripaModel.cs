@@ -25,8 +25,9 @@ namespace ServicuerosSA.Models
         }
        public List<Descarne> Claselistadescarnes()
         {
-         return _contexto.Descarne.Where(d => d.Activo == true).ToList();
-        }
+              return _contexto.Descarne.Where(d => d.Activo == true).ToList();
+                                    
+       }
        
        public List<IdentityError> Modelonumeropieles(int numdes, int numet)
         {
@@ -80,14 +81,24 @@ namespace ServicuerosSA.Models
                            cl.Detalle,
                            bt.peso
                        }).ToList();
+            string compara = "";
             foreach(var item in res)
             {
-                datos +="<tr>"+
+                datos += "<tr>" +
                     "<td>" + item.CodigoLote + "</td>" +
                     "<td>" + item.NumeroPieles + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
-                    "<td>" + item.peso + "</td>" +
-                    "</tr>";
+                    "<td>" + item.peso + "</td>"+
+                     "</tr>";
+                //string ya = item.CodigoLote;
+                //if (compara != item.codi)
+                //{
+                //    datos += "<td>"  +
+                //       "<a class='btn btn-success' onclick='EliminarCurtido(&#039;" + ya + "&#039;)'>Eliminar</a>" +
+                //           "</td>" +
+                //           "</tr>";
+                //}
+
             }
             object[] objetodatos = { datos };
             lista.Add(objetodatos);
@@ -205,13 +216,14 @@ namespace ServicuerosSA.Models
             var res = (from bt in _contexto.Bodegatripa
                        join de in _contexto.Descarne on bt.DescarneId equals de.DescarneId
                        join cl in _contexto.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
-                       where bt.ClasificacionTripaId == 8 && bt.ClasificacionTripaId == 9
+                       where cl.Detalle == "carnaza" || cl.Detalle == "malas"
                        select new
                        {
                            de.CodigoLote,
                            bt.NumeroPieles,
                            cl.Detalle,
                            bt.peso
+
                        }).ToList();
             foreach (var item in res)
             {
@@ -222,7 +234,7 @@ namespace ServicuerosSA.Models
                     "<td>" + item.peso + "</td>" +
                     "</tr>";
             }
-            object[] objetodatos = { desc };
+            object[] objetodatos= {desc};
             lista.Add(objetodatos);
             return lista;
         }
@@ -233,7 +245,7 @@ namespace ServicuerosSA.Models
             var res = (from bt in _contexto.Bodegatripa
                        join de in _contexto.Descarne on bt.DescarneId equals de.DescarneId
                        join cl in _contexto.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
-                       where bt.activo == true && bt.ClasificacionTripaId != 8 && bt.ClasificacionTripaId != 9
+                       where bt.activo == true && cl.Detalle !="carnaza" && cl.Detalle != "malas"
                        select new
                        {
                            de.CodigoLote,

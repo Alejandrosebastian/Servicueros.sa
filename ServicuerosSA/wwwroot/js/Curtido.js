@@ -14,9 +14,6 @@
         this.accion = accion;
     }
 
-    
-    
-
 
     ListaIndexCurtido() {
         var accion = this.accion;
@@ -31,6 +28,21 @@
             }
         });
     }
+
+    ListaIndexCurt() {
+        var accion = this.accion;
+        $.ajax({
+            type: "POST",
+            url: accion,
+            data: {},
+            success: (respuesta) => {
+                $.each(respuesta, (index, val) => {
+                    $('#CurtidoLista').html(val[0]);
+                });
+            }
+        });
+    }
+
     Guardacurtido() {
         if (this.numbombo == '0') {
             document.getElementById('mensajebo').innerHTML = "Seleccione el bombo";
@@ -117,5 +129,57 @@
         //ListaIndexCurtido;
 
     }
+    //Cabecera formula Curtido
+    CabeceraFormulaCurtido(id) {
+        var accion = this.accion;
+        $.ajax({
+            type: 'POST',
+            url: accion,
+            data: { id },
+            success: (respuesta) => {
+                console.log(respuesta);
+                $('#codigo').text(respuesta[0].codigo);
+                $('#codigoquimico').text(respuesta[0].codigo);
+                $('#version').text(respuesta[0].version);
+                $('#fecha_act').text(respuesta[0].fechaCreacionFormula);
+                $('#fechaCreacion').text(respuesta[0].fechaCreacion);
+                $('#nombre').text(respuesta[0].nombre);
+                $('#tipoProceso').text(respuesta[0].tipoProces);
+                $('#tipoPiel').text(respuesta[0].tipoPiel);
+                $('#fecha_vigencia').text(respuesta[0].fechaImpresion);
+                $('#fecha_vigencia_quimico').text(respuesta[0].fechaImpresion);
+                $('#vigencia').text(respuesta[0].fechaImpresion);
+                $('#pagina').text(respuesta[0].pagina);
+                $('#fecha').text(respuesta[0].fecha);
+                $('#parada').text(respuesta[0].parada);
+                $('#bombo').text(respuesta[0].bombo);
+                $('#bomboquimico').text(respuesta[0].bombo);
+                $('#peso').text(respuesta[0].peso);
+                $('#pesoquimico').text(respuesta[0].peso);
+                $('#cantidad').text(respuesta[0].cantidad);
+                $('#pieles').text(respuesta[0].cantidad);
+                $('#promedio').text(respuesta[0].promedio);
+                $('#PromedioQuimico').text(respuesta[0].promedio);
+                $('#autorizado').text(respuesta[0].nombreAutoirzado);
+                $('#procesado').text(respuesta[0].nombreProcesado);
+                $('#procesadoquimico').text(respuesta[0].nombreAutoirzado);
+                $('#entregado').text(respuesta[0].nombreEntregado);
+            }
+        });
 
+    }
+    CuerpoFormulaCurtido(id) {
+        var accion = this.accion;
+        $.post(
+            accion,
+            { id },
+            (respuesta) => {
+                $.each(respuesta, (index, val) => {
+
+                    $('#TablaDetalleFormula').html(val[0]);
+                });
+            }
+        );
+    }
+   
 }
