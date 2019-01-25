@@ -11,9 +11,10 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190124053245_escurrudo")]
+    partial class escurrudo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -266,8 +267,6 @@ namespace ServicuerosSA.Migrations
 
                     b.Property<bool>("activo");
 
-                    b.Property<string>("codigolote");
-
                     b.Property<DateTime>("fecha");
 
                     b.Property<int>("peso");
@@ -333,8 +332,6 @@ namespace ServicuerosSA.Migrations
                 {
                     b.Property<int>("ClasificacionwbId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Activo");
 
                     b.Property<int>("BodegaId");
 
@@ -425,8 +422,6 @@ namespace ServicuerosSA.Migrations
                     b.Property<int>("CurtidoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Activo");
-
                     b.Property<int>("BodegaId");
 
                     b.Property<int>("BodegaTripaId");
@@ -448,8 +443,6 @@ namespace ServicuerosSA.Migrations
                     b.Property<int>("Peso");
 
                     b.Property<string>("codicurtido");
-
-                    b.Property<string>("codigolote");
 
                     b.HasKey("CurtidoId");
 
@@ -502,8 +495,6 @@ namespace ServicuerosSA.Migrations
                 {
                     b.Property<int>("EscurridoId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Activo");
 
                     b.Property<int>("BomboId");
 

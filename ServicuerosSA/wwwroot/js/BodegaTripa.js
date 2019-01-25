@@ -1,17 +1,17 @@
 ﻿class BodegaTripa {
-    constructor(tipotripa,descarne,bodega,numeropieles, peso, medida, personal,activo, accion) {
+    constructor(tipotripa, descarne, bodega, codigolote,numeropieles, peso, medida, personal,activo, accion) {
         this.tipotripa = tipotripa;
         this.descarne = descarne;
         this.bodega = bodega;
+        this.codigolote = codigolote;
         this.numeropieles = numeropieles;
         this.peso = peso;
         this.medida = medida;
         this.personal = personal;
-        
         this.activo = activo;
         this.accion = accion;
     }
-    GuardaClasificacionTripa(tipotripa,descarne,bodega, medida,personal) {
+    GuardaClasificacionTripa() {
         if (this.tipotripa == '0') {
             document.getElementById('mensajede').innerHTML = 'Selecciona un tipo de clasificacion';
         } else {
@@ -31,16 +31,24 @@
                         if (this.personal == '0') {
                             document.getElementById('mensajeper').innerHTML = 'Seleccione a la persona indicada en este proceso';
                         } else {
+                            var tipotripa = this.tipotripa;
+                            var descarne = this.descarne;
+                            var bodega = this.bodega;
+                            var codigolote = this.codigolote;
                             var numeropieles = this.numeropieles;
                             var peso = this.peso;
+                            var medida = this.medida;
+                            var personal = this.personal;
                             var accion = this.accion;
+                           
                             $.ajax({
                                 type: "POST",
                                 url: accion,
                                 data: {
-                                    tipotripa, descarne, bodega, numeropieles, peso, medida, personal
+                                    tipotripa, descarne, bodega, codigolote, numeropieles, peso, medida, personal
                                 },
                                 success: (respuesta) => {
+                                    console.log(respuesta);
                                     if (respuesta[0].code == 'ok') {
                                 swal('Clasificacion Tripa', "Se guardo con exito", 'success');
                                     } else {
@@ -162,7 +170,7 @@
         document.getElementById('ClasificaciontripaId').selectIndex = 0;
         document.getElementById('NumeroPielesInput').value = '';
         document.getElementById('personalId').selectedIndex = 0;
-        document.getElementById('PesoPesoInput').selectedIndex = 0;
+        document.getElementById('PesoPesoInput').selecttext = 0;
 
         $('#IngresoClasificacionTripa').html = '';
         $('#IngresoClasificacionTripa').modal('hide');

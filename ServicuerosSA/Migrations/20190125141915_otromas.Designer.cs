@@ -11,9 +11,10 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190125141915_otromas")]
+    partial class otromas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -448,8 +449,6 @@ namespace ServicuerosSA.Migrations
                     b.Property<int>("Peso");
 
                     b.Property<string>("codicurtido");
-
-                    b.Property<string>("codigolote");
 
                     b.HasKey("CurtidoId");
 

@@ -83,13 +83,13 @@ var ListaIndexDescarne = () => {
 }
 var Listatipotripa = () => {
     var accion = 'Bodegatripas/Controladorlistatipotripa';
-    var listatrip = new BodegaTripa('','','', '', '', '','','', accion);
+    var listatrip = new BodegaTripa('','','','', '', '', '','','', accion);
     listatrip.ClaseListaClasificacionTripa();
 }
 var listadescarne = () => {
 
     var accion = '../Bodegatripas/Controladorlistadescarnes';
-    var lisdescarnes = new BodegaTripa('', '', '', '', '', '','','', accion);
+    var lisdescarnes = new BodegaTripa('', '','', '', '', '', '','','', accion);
     lisdescarnes.ClaseListadescarnes();
 }
 //LISTA CURTIDO
@@ -141,7 +141,7 @@ var ListaIndex = () => {
 }
 var listatripasindex = () => {
     var accion = '../BodegaTripas/Controllistaindesxtripa';
-    var inde = new BodegaTripa('','','','','','','','',accion);
+    var inde = new BodegaTripa('','','','','','','','','',accion);
     inde.Listaclasificaciontripaindex();
 }
 var listaTipoPiel = () => {
@@ -176,7 +176,7 @@ var boodegas = () => {
 /////clasificacion tripas bedegas
 var bodegastri = () => {
     var accion = '../ClasificacionTripas/controladorlistabode';
-    var bod = new BodegaTripa('', '', '', '', '','','','', accion);
+    var bod = new BodegaTripa('', '','', '', '', '','','','', accion);
     bod.Claselistabodegas();
 
 }
@@ -353,7 +353,7 @@ var numeropielestripa = () => {
     var accion = 'Bodegatripas/Controladorundescarnetripa';
     var ya = document.getElementById('Descarneid');
     var untrips = ya.options[ya.selectedIndex].value;
-    var tripa = new BodegaTripa('', '', '', '', '', '','','', accion);
+    var tripa = new BodegaTripa('', '','', '', '', '', '','','', accion);
     tripa.Numeropielstripas(untrips);
 }
 var GuardaDescarne = () => {
@@ -372,15 +372,17 @@ var GuardaDescarne = () => {
     var day = dt.getDate();
     var year = dt.getFullYear();
     var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
-    var guades = new Descarne(pelambre,cantidad,fecha,personal,codigolote,fech,accion);
-    guades.GuardarPelambre(personal,pelambre);
+    var guades = new Descarne(pelambre,cantidad,d,personal,codigolote,fech,accion);
+    guades.GuardarPelambre();
 }
+///////// guardar clasificacion en tripa
 var Guardarbodetripas = () => {
     var accion = 'BodegaTripas/Controladorguardabodetripas';
     var clasifi = document.getElementById("ClasificaciontripaId");
     var clasifica = clasifi.options[clasifi.selectedIndex].value;
     var descarne = document.getElementById("Descarneid");
     var descarnes = descarne.options[descarne.selectedIndex].value;
+    var codigolote = descarne.options[descarne.selectedIndex].text;
     var bode = document.getElementById("BodegaId");
     var bodega = bode.options[bode.selectedIndex].value;
     var numpielesSIN = document.getElementById('NumeroPielesInput').value;
@@ -390,8 +392,8 @@ var Guardarbodetripas = () => {
     var peso = document.getElementById('PesoInput').value;
     var personal = document.getElementById('personalId');
     var personales = personal.options[personal.selectedIndex].value;
-    var guarda = new BodegaTripa(clasifica, descarnes, bodega, numpieles, peso, medidas, personales, '', accion);
-    guarda.GuardaClasificacionTripa(clasifica, descarnes, bodega, medidas, personales);
+    var guarda = new BodegaTripa(clasifica, descarnes, bodega,codigolote, numpieles, peso, medidas, personales, '', accion);
+    guarda.GuardaClasificacionTripa(clasifica, descarnes,codigolote, bodega, medidas, personales);
 
 
 }
@@ -413,11 +415,14 @@ var controlnumeropieltripa = () => {
     var descarne = document.getElementById("PielesInput").value;
     var tripa = document.getElementById("NumeroPielesInput").value;
     if (descarne <= tripa) {
-        $("#mensajeper").addClass("hidden");
-       
-    } else {
-        $("#mensajeper").removeClass("hidden");
-        $('#graba').prop('disabled', true);
+        if (descarne == tripa) {
+            $("#mensajeper").addClass("hidden");
+            $("#graba").prop('disabled', false);
+        } else {
+            $("#mensajeper").removeClass("hidden");
+            $('#graba').prop('disabled', true);
+
+        }
     }
 }
 ////////// control pieles descarne
@@ -439,6 +444,7 @@ var controlnumeropielesDes = () => {
     }
 
 }
+  
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
     var pesaje = new Pelambre('', '', '', '', '', '', accion);

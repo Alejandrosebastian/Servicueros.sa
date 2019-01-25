@@ -67,9 +67,10 @@ class ClaseJSLotes {
         $.post(accion,
             { coolo, numeropieles },
             (respuesta) => {
-                console.log(respuesta);
+                
                 if (respuesta[0].code == 'no') {
-                    $('#MensajeLoteNumeroPieles').addClass('hiidden');
+                    alert("El numero de pieles excede a lo almacenado");
+
                     $('#numpieles').css('visibility', 'visible');
                     $('#graba').addClass('hidden');
                 } else if (respuesta[0].code == 'no!') {

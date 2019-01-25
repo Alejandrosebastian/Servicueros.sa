@@ -174,76 +174,76 @@ namespace ServicuerosSA.Models
                     case 1:
                         ingresocod = "B";
                         break;
-                    case 3:
+                    case 2:
                         ingresocod = "C";
                         break;
-                    case 4:
+                    case 3:
                         ingresocod = "D";
                         break;
-                    case 5:
+                    case 4:
                         ingresocod = "E";
                         break;
-                    case 6:
+                    case 5:
                         ingresocod = "F";
                         break;
-                    case 7:
+                    case 6:
                         ingresocod = "G";
                         break;
-                    case 8:
+                    case 7:
                         ingresocod = "H";
                         break;
-                    case 9:
+                    case 8:
                         ingresocod = "I";
                         break;
-                    case 10:
+                    case 9 :
                         ingresocod = "J";
                         break;
-                    case 11:
+                    case 10:
                         ingresocod = "K";
                         break;
-                    case 12:
+                    case 11:
                         ingresocod = "L";
                         break;
-                    case 13:
+                    case 12:
                         ingresocod = "M";
                         break;
-                    case 14:
+                    case 13:
                         ingresocod = "N";
                         break;
-                    case 15:
+                    case 14:
                         ingresocod = "O";
                         break;
-                    case 16:
+                    case 15:
                         ingresocod = "P";
                         break;
-                    case 17:
+                    case 16:
                         ingresocod = "Q";
                         break;
-                    case 18:
+                    case 17:
                         ingresocod = "R";
                         break;
-                    case 19:
+                    case 18:
                         ingresocod = "S";
                         break;
-                    case 20:
+                    case 19:
                         ingresocod = "T";
                         break;
-                    case 21:
+                    case 20:
                         ingresocod = "U";
                         break;
-                    case 22:
+                    case 21:
                         ingresocod = "V";
                         break;
-                    case 23:
+                    case 22:
                         ingresocod = "W";
                         break;
-                    case 24:
+                    case 23:
                         ingresocod = "X";
                         break;
-                    case 25:
+                    case 24:
                         ingresocod = "Y";
                         break;
-                    case 26:
+                    case 25:
                         ingresocod = "Z";
                         break;
 

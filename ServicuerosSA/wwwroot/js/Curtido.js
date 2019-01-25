@@ -1,5 +1,5 @@
 ﻿class Curtidojs {
-    constructor(tipotripa, numbombo, numpieles, medida, formula, fecha, peso, bodega, personal, Codicurtido,accion) {
+    constructor(tipotripa, numbombo, numpieles, medida, formula, fecha, peso, bodega, personal, Codicurtido,codigolote,accion) {
         this.tipotripa = tipotripa;
         this.numbombo = numbombo;
         this.numpieles = numpieles;
@@ -10,6 +10,7 @@
         this.bodega = bodega;
         this.personal = personal;
         this.Codicurtido = Codicurtido;
+        this.codigolote = codigolote;
         this.accion = accion;
     }
 
@@ -65,11 +66,12 @@
                     var accion = this.accion;
                     var personal = this.personal;
                     var Codicurtido = this.Codicurtido;
+                    var codigolote = this.codigolote;
                     $.ajax({
                         type: "POST",
                         url: accion,
                         data: {
-                            tipotripa, numbombo, numpieles,medida, formula, fecha, peso, bodega, personal, Codicurtido
+                            tipotripa, numbombo, numpieles,medida, formula, fecha, peso, bodega, personal, Codicurtido, codigolote
                         },
                         success: (respuesta) => {
                             if (respuesta[0].code == "ok") {
