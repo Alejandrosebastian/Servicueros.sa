@@ -260,7 +260,7 @@ namespace ServicuerosSA.Models
                 if (compara != item.codicurtido)
                 {
                     dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionCurtido' onclick='imprimirCurtido(&#039;" + item.codicurtido + "&#039;);componentesFormulaCurtido(&#039;" + item.codicurtido + "&#039;)'>Imprimir Detalle con Formula</a> " +
-                       "<a class='btn btn-success' onclick='EliminarCurtido(&#039;" + ya + "&#039;)'>Eliminar</a>" +
+                    
                            "</td>" +
                            "</tr>";
                 }

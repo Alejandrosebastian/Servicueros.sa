@@ -25,8 +25,9 @@ namespace ServicuerosSA.Models
         }
        public List<Descarne> Claselistadescarnes()
         {
-         return _contexto.Descarne.Where(d => d.Activo == true).ToList();
-        }
+              return _contexto.Descarne.Where(d => d.Activo == true).ToList();
+                                    
+       }
        
        public List<IdentityError> Modelonumeropieles(int numdes, int numet)
         {
@@ -80,14 +81,24 @@ namespace ServicuerosSA.Models
                            cl.Detalle,
                            bt.peso
                        }).ToList();
+            string compara = "";
             foreach(var item in res)
             {
-                datos +="<tr>"+
+                datos += "<tr>" +
                     "<td>" + item.CodigoLote + "</td>" +
                     "<td>" + item.NumeroPieles + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
-                    "<td>" + item.peso + "</td>" +
-                    "</tr>";
+                    "<td>" + item.peso + "</td>"+
+                     "</tr>";
+                //string ya = item.CodigoLote;
+                //if (compara != item.codi)
+                //{
+                //    datos += "<td>"  +
+                //       "<a class='btn btn-success' onclick='EliminarCurtido(&#039;" + ya + "&#039;)'>Eliminar</a>" +
+                //           "</td>" +
+                //           "</tr>";
+                //}
+
             }
             object[] objetodatos = { datos };
             lista.Add(objetodatos);
