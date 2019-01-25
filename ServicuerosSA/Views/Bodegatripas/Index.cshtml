@@ -7,7 +7,7 @@
 <p>
     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#IngresoClasificacionTripa" onclick="listaPersonal(); Listatipotripa(); listadescarne(); bodegastri(); medidas();">Nueva Clasificacion</a>
     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#ImpresionClasiTripa" onclick=" ImprimirClasiTripa();">Reporte de Clasificación en Tripa</a>
-    <a class="btn btn-info" asp-action="Create">Reporte de Carnaza</a>
+    <a href="#" class="btn btn-default" data-toggle="modal" data-target="#ImpresionCarnaza" onclick="ImprimirCarnaza();">Reporte de Clasificación en Carnaza</a>
 
 </p>
 <table class="table">
@@ -140,7 +140,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="EtiquetaModal">
-                    Reporte de Lotes
+                    Reporte de Clasificacion Tripa
                 </h4>
             </div>
 
@@ -179,6 +179,59 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
+            </div>
+        </div>
+    </div>
+</div>
+@**IMPRESION CARNAZA*@
+<div class="modal fade" id="ImpresionCarnaza" tabindex="-1" role="dialog" aria-labelledby="EtiquetaModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="EtiquetaModal">
+                    Reporte de Carnaza
+                </h4>
+            </div>
+
+            <div class="modal-body" id="impresion">
+
+                <div class="modal-body" id="areaImprimir">
+                    @* Hoja de lote *@
+                    <div class="form-group">
+                        <table class="table table-bordered SaltoDePagina">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Codigo lote
+                                    </th>
+                                    <th>
+                                        NumeroPieles
+                                    </th>
+                                    <th>
+                                        ClasificacionTripa
+                                    </th>
+                                    <th>
+                                        Peso
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody id="TablaCarnaza"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                
             </div>
         </div>
     </div>

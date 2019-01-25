@@ -150,8 +150,7 @@ class Formulas {
             accion,
             {},
             (respuesta) => {
-               /// console.log(respuesta);
-                $.each(respuesta, (index, val) => {
+                    $.each(respuesta, (index, val) => {
                     $('#TablaCarnaza').html(val[0]);
                 });
             });

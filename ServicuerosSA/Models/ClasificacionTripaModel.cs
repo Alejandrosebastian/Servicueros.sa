@@ -157,13 +157,14 @@ namespace ServicuerosSA.Models
             var res = (from bt in _contexto.Bodegatripa
                        join de in _contexto.Descarne on bt.DescarneId equals de.DescarneId
                        join cl in _contexto.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
-                       where bt.ClasificacionTripaId == 8 && bt.ClasificacionTripaId == 9
+                       where cl.Detalle == "carnaza" || cl.Detalle == "malas"
                        select new
                        {
                            de.CodigoLote,
                            bt.NumeroPieles,
                            cl.Detalle,
                            bt.peso
+
                        }).ToList();
             foreach (var item in res)
             {
@@ -174,7 +175,7 @@ namespace ServicuerosSA.Models
                     "<td>" + item.peso + "</td>" +
                     "</tr>";
             }
-            object[] objetodatos = { desc };
+            object[] objetodatos= {desc};
             lista.Add(objetodatos);
             return lista;
         }
@@ -185,7 +186,7 @@ namespace ServicuerosSA.Models
             var res = (from bt in _contexto.Bodegatripa
                        join de in _contexto.Descarne on bt.DescarneId equals de.DescarneId
                        join cl in _contexto.ClasificacionTripa on bt.ClasificacionTripaId equals cl.ClasificacionTripaId
-                       where bt.activo == true && bt.ClasificacionTripaId != 8 && bt.ClasificacionTripaId != 9
+                       where bt.activo == true && cl.Detalle !="carnaza" && cl.Detalle != "malas"
                        select new
                        {
                            de.CodigoLote,
