@@ -81,7 +81,7 @@ namespace ServicuerosSA.Models
                            cl.Detalle,
                            bt.peso
                        }).ToList();
-            string compara = "";
+            
             foreach(var item in res)
             {
                 datos += "<tr>" +
