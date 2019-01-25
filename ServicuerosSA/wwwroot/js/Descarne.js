@@ -1,7 +1,7 @@
 ﻿class Descarne {
 
     constructor(PelambreId, cantidad,fecha,   PersonalId, codigolote,codiunidescarne,accion) {
-        this.pelambre = PelambreId;
+        this.PelambreId = PelambreId;
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.PersonalId = PersonalId;
@@ -44,7 +44,7 @@
     
     }
 
-    GuardarPelambre(personal, pelambre) {
+    GuardarPelambre() {
         if (pelambre == '0') {
             $("#mensajep").removeClass("hidden");
         } else {
@@ -61,8 +61,10 @@
                     if (this.codigolote == '') {
                         $("#mensajep").removeClass("hidden");
                     } else {
+                        var pelambre = this.PelambreId;
                         var cantidad = this.cantidad;
                         var fecha = this.fecha;
+                        var personal = this.PersonalId;
                         var codigolote = this.codigolote;
                         var codiunidescarne = this.codiunidescarne;
                         var accion = this.accion;
@@ -75,16 +77,14 @@
                             },
                             success: (respuesta) => {
                                 if (respuesta[0].code == "ok") {
-                                    this.limpiarcajas();
                                     swal("Pelambre", "Se guardo exitosamente", "success");
                                     ListaIndexDescarne();
+                                    this.limpiarcajas();
                                     this.limpiacajasPelambre();
-
                                 } else {
                                     this.limpiarcajas();
                                     this.limpiacajasPelambre();
                                     swal("Pelambre", "Ocurrio un error", "error");
-
                                 }
                             }
                         });
@@ -95,11 +95,9 @@
     }
 
     limpiacajasPelambre() {
-        var select = document.getElementById("PelambreId");
-        var length = select.options.length;
-        for (i = 1; i < length; i++) {
-            select.options[i] = null;
-        }
+        document.getElementById("PelambreId").options.length = 1;
+       
+        
 
     }
 
@@ -113,8 +111,9 @@
                 data: {},
                 success: (respuesta) => {
                     if (0 < respuesta.length) {
+                        console.log(respuesta);
                         for (var i = 0; i < respuesta.length; i++) {
-                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigo. respuesta[i].codigopelambre);
+                            document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].codigo , respuesta[i].codigopelambre);
                             contador++;
                         }
                     }

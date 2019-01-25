@@ -13,6 +13,8 @@ namespace ServicuerosSA.Models
         public string Observaciones { get; set; }
         public decimal NPieles { get; set; }
         public string codicurtido { get; set; }
+        public bool Activo { get; set; }
+        public string codigolote { get; set; }
         //RELACIONES
         public int FormulaId { get; set; }
         public Formula Formula { get; set; }

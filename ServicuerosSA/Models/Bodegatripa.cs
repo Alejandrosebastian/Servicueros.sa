@@ -13,7 +13,8 @@ namespace ServicuerosSA.Models
         public decimal NumeroPieles { get; set; }
         public int peso { get; set; }
         public DateTime fecha { get; set; }
-        
+        public string codigolote { get; set; }
+
         //Relaciones
         public int DescarneId { get; set; }
         public Descarne Descarnes { get; set; }

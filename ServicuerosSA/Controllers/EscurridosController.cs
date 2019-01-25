@@ -13,6 +13,7 @@ namespace ServicuerosSA.Controllers
     public class EscurridosController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private EscurridoModels listacurtido;
 
         public EscurridosController(ApplicationDbContext context)
         {
@@ -25,7 +26,10 @@ namespace ServicuerosSA.Controllers
             var applicationDbContext = _context.Escurrido.Include(e => e.Bombos);
             return View(await applicationDbContext.ToListAsync());
         }
-
+        public List<Curtido> listacurtidoscbx()
+        {
+            return listacurtido.Modelolistacurtido();
+        }
         // GET: Escurridos/Details/5
         public async Task<IActionResult> Details(int? id)
         {

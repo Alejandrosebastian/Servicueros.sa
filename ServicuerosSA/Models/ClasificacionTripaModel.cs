@@ -93,9 +93,22 @@ namespace ServicuerosSA.Models
             lista.Add(objetodatos);
             return lista; 
        }
-        public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne, int bodega, decimal numeropieles,  int peso, int medida, int personal)
+        public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne,  int bodega, string codigolote, decimal numeropieles, int peso, int medida, int personal)
         {
             List<IdentityError> listatripa = new List<IdentityError>();
+            List<DescarnelistId> descarnelista = (from de in _contexto.Descarne
+                                                  where de.codiunidescarne == codigolote
+                                                  select new DescarnelistId
+                                                  {
+                                                      activo = de.Activo,
+                                                      cantidad = de.Cantidad,
+                                                      fecha = de.Fecha,
+                                                      codiunicodescarne = de.codigodescarne,
+                                                      codigolote = de.CodigoLote,
+                                                      descarneId = de.DescarneId
+                                                  }).ToList();
+            
+
             try
             {
                 var guardatripas = new Bodegatripa
@@ -103,6 +116,7 @@ namespace ServicuerosSA.Models
                     ClasificacionTripaId = tipotripa,
                     DescarneId = descarne,
                     BodegaId = bodega,
+                    codigolote = codigolote,
                     NumeroPieles = numeropieles,
                     peso = peso,
                     MedidaId = medida,
@@ -110,28 +124,61 @@ namespace ServicuerosSA.Models
                     fecha = DateTime.Now,
                     activo = true
                 };
-                
+
                 _contexto.Bodegatripa.Add(guardatripas);
                 _contexto.SaveChanges();
-
+                
                 ///desactivo atras
-                var descarnes = (from des in _contexto.Descarne
-                               where des.DescarneId == descarne
-                               select new Descarne
-                               {
-                                   
-                                   PelambreId = descarne,
-                                   PersonalId = des.PersonalId,
-                                   Activo = false,
-                                   Cantidad = des.Cantidad,
-                                   codigodescarne = des.codigodescarne,
-                                   CodigoLote = des.CodigoLote,
-                                   DescarneId = des.DescarneId
-                                    
-                               }).FirstOrDefault();
+                Descarne descarnes = (from des in _contexto.Descarne
+                                      where des.DescarneId == descarne
+                                      select new Descarne
+                                      {
+                                          PelambreId = des.PelambreId,
+                                          PersonalId = des.PersonalId,
+                                          Activo = false,
+                                          Cantidad = des.Cantidad,
+                                          codigodescarne = codigolote,
+                                          CodigoLote = des.CodigoLote,
+                                          DescarneId = descarne,
+                                          Fecha= des.Fecha,
+                                          codiunidescarne = des.codiunidescarne
+                                      }).FirstOrDefault();
 
                 _contexto.Descarne.Update(descarnes);
                 _contexto.SaveChanges();
+
+
+                var descarneNuevo =   (from des in _contexto.Descarne
+                                          where des.DescarneId == descarne
+                                          select new Descarne
+                                      {
+                                          PelambreId = des.PelambreId,
+                                          PersonalId = des.PersonalId,
+                                          Activo = true,
+                                          Cantidad = des.Cantidad,
+                                          codigodescarne = codigolote,
+                                          CodigoLote = des.CodigoLote,
+                                          
+                                          Fecha = des.Fecha, 
+                                          codiunidescarne = des.codiunidescarne
+                                      }).FirstOrDefault();
+
+                Descarne dato = new Descarne()
+                {
+                    PelambreId = descarneNuevo.PelambreId,
+                    PersonalId = descarneNuevo.PersonalId,
+                    Activo = true,
+                    Cantidad = descarneNuevo.Cantidad - Convert.ToInt32(numeropieles),
+                    codigodescarne = codigolote,
+                    CodigoLote = descarneNuevo.CodigoLote,
+                    Fecha = descarneNuevo.Fecha,
+                    codiunidescarne = descarneNuevo.codiunidescarne
+                };
+
+                _contexto.Descarne.Add(dato);
+                _contexto.SaveChanges();
+
+
 
 
                 listatripa.Add(new IdentityError
@@ -140,14 +187,15 @@ namespace ServicuerosSA.Models
                     Description = "ok"
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 listatripa.Add(new IdentityError
                 {
-                    Code = "no",
-                    Description = ex.Message.ToString()
+                    Code = ex.Message,
+                    Description = ex.Message
                 });
             }
+        
             return listatripa;
         }
         public List<object[]> ModeloImprimirCarnaza()

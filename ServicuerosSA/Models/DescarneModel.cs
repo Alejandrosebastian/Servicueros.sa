@@ -17,7 +17,6 @@ namespace ServicuerosSA.Models
         }
         public List<Pelambre> Modelolistapelambres()
         {
-            
             return _contexto.Pelambre.Where(p => p.Activo == true).GroupBy(p => p.CodigoLote + p.Codigo).Select(p => p.First()).Distinct().ToList();
         }
         //Completar la consulta con el total de pieles d descarne falta
@@ -30,10 +29,10 @@ namespace ServicuerosSA.Models
                        select new
                        {
                            des.CodigoLote,
-                           des.Pelambres,
-                           des.Cantidad,
-                           des.codigodescarne
-                       });
+                          
+                           des.Cantidad
+                          
+                       }).Distinct();
 
             foreach (var item in res)
             {
