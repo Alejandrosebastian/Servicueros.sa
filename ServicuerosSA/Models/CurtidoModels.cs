@@ -254,8 +254,8 @@ namespace ServicuerosSA.Models
                     "<td>" + item.Detalle + "</td>" +
                     "<td>" + item.Peso + " " + item.Abreviatura + "</td>" +
                     "<td>" + item.Num_bombo + "</td>" +
-                    "<td>" + item.Nombre + "</td>" +
-                     "</tr>";
+                    "<td>" + item.Nombre + "</td>";
+                    
                 string ya = item.codicurtido;
                 if (compara != item.codicurtido)
                 {
