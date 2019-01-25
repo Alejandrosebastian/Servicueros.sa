@@ -146,7 +146,7 @@ namespace ServicuerosSA.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
         //IMPRESION FORMULA
-        public List<ModeloEncabezadoFormula> ControladorImprimirEmcabezadoFormula(string id)
+        public List<ModeloEncabezadoFormula> ControladorImprimirEncabezadoFormula(string id)
         {
             return claseCurtido.ModeloImprimirEncabezadoFormula(id);
         }

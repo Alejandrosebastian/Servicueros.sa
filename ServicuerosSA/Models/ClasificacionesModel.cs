@@ -92,7 +92,7 @@ namespace ServicuerosSA.Models
                     "<td>" + item.Observaciones + "</td>" +
                     "</tr>";
             }
-            object[] datos = {clasi};
+            object[] datos = {clasipelo};
             lista.Add(datos);
             return lista;
 

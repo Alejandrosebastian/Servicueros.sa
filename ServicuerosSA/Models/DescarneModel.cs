@@ -214,7 +214,7 @@ namespace ServicuerosSA.Models
                        {
                            des.CodigoLote,
                            des.Cantidad,
-                           fecha = des.Fecha
+                           fecha = des.Fecha.ToString("dd-MM-yyyy")
                        }).OrderByDescending(f=> f.fecha);
            
             foreach (var item in res)

@@ -7,11 +7,9 @@ using ServicuerosSA.Data;
 namespace ServicuerosSA.Models
 {
     public class CurtidoModels
-        
-
     {
         string dato = "";
-        string datoimprime = "";
+       
         private ApplicationDbContext _contexto;
         private ClasificacionTripa tipotripas;
         public CurtidoModels(ApplicationDbContext contexto)
@@ -125,6 +123,7 @@ namespace ServicuerosSA.Models
                        join b in _contexto.Bombo on cu.BomboId equals b.BomboId
                        join fo in _contexto.Formula on cu.FormulaId equals fo.FormulaId
                        join tp in _contexto.TipoPiel on fo.TipoPielId equals tp.TipoPielId
+                       
                        where cu.CurtidoId == consultaid.CurtidoId
                        select new ModeloEncabezadoFormula
                        {
@@ -260,7 +259,7 @@ namespace ServicuerosSA.Models
                 string ya = item.codicurtido;
                 if (compara != item.codicurtido)
                 {
-                    dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionCurtido' onclick='ImprimirCurtido(&#039;" + item.codicurtido + "&#039;); componentesFormula(&#039;" + item.codicurtido + "&#039;);pesa(&#039;" + item.codicurtido + "&#039;);componentesQuimico(&#039;" + item.codicurtido + "&#039;);'>Imprimir Detalle con Formula</a> " +
+                    dato += "<td>" + "<a class='btn btn-info' data-toggle='modal' data-target='#ImpresionCurtido' onclick='imprimirCurtido(&#039;" + item.codicurtido + "&#039;);componentesFormulaCurtido(&#039;" + item.codicurtido + "&#039;)'>Imprimir Detalle con Formula</a> " +
                        "<a class='btn btn-success' onclick='EliminarCurtido(&#039;" + ya + "&#039;)'>Eliminar</a>" +
                            "</td>" +
                            "</tr>";
