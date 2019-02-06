@@ -81,5 +81,8 @@ namespace ServicuerosSA.Data
 
 
         public DbSet<ServicuerosSA.Models.ClasificacionWB> ClasificacionWB { get; set; }
+        public DbSet<ServicuerosSA.Models.Clasiweb> ClasificacionesWebblue { get; set; }
+
+
     }
 }

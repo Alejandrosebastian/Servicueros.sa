@@ -1,4 +1,5 @@
-﻿class Descarne {
+﻿
+class Descarne {
 
     constructor(PelambreId, cantidad,fecha,   PersonalId, codigolote,codiunidescarne,accion) {
         this.PelambreId = PelambreId;
@@ -11,23 +12,7 @@
          this.accion = accion;
 
     }
-    //ListaDescarne() {
-    //    var accion = this.accion;
-    //    var contador = 1;
-    //    $.ajax({
-    //        type: "POST",
-    //        url: accion,
-    //        data: {},
-    //        success: (respuesta) => {
-    //            if (0 < respuesta.length) {
-    //                for (var i = 0; i < respuesta.length; i++) {
-    //                    document.getElementById('PelambreId').options[contador] = new Option(respuesta[i].nombre, respuesta[i].formulaId);
-    //                    contador++;
-    //                }
-    //            }
-    //        }
-    //    });
-    //}
+    
 
     ListaIndexdescarne() {
         var accion = this.accion;
@@ -77,14 +62,14 @@
                             },
                             success: (respuesta) => {
                                 if (respuesta[0].code == "ok") {
-                                    swal("Pelambre", "Se guardo exitosamente", "success");
+                                    swal("Descarne", "Se guardo exitosamente", "success");
                                     ListaIndexDescarne();
                                     this.limpiarcajas();
                                     this.limpiacajasPelambre();
                                 } else {
                                     this.limpiarcajas();
                                     this.limpiacajasPelambre();
-                                    swal("Pelambre", "Ocurrio un error", "error");
+                                    swal("Descarne", "Ocurrio un error", "error");
                                 }
                             }
                         });
@@ -127,7 +112,6 @@
                 url: accion,
                 data: { id },
                 success: (respuesta) => {
-                   
                     document.getElementById('TotalPielesInput').value = respuesta;
                     $('#TotalPielesInput').value = respuesta;
                     $("#TotalPielesInput").removeClass("hidden");
@@ -142,7 +126,6 @@
                 url: accion,
                 data: { id },
                 success: (respuesta) => {
-                   
                     document.getElementById('codiloteInput').value = respuesta[0].codigoLote;
                     $('#codigoloteInput').value = respuesta[0].codigoLote;
                     $('#codigoloteInput').removeClass('hidden');

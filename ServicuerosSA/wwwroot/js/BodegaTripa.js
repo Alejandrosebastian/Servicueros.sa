@@ -50,10 +50,17 @@
                                 success: (respuesta) => {
                                     console.log(respuesta);
                                     if (respuesta[0].code == 'ok') {
-                                swal('Clasificacion Tripa', "Se guardo con exito", 'success');
+                                        $('#IngresoClasificacionTripa').modal('hide');
+                                        swal('Clasificacion Tripa', "Se guardo con exito", 'success');
+                                        listatripasindex();
+                                        this.limpiarcajas();
+                                        this.limpiarcajascombo();
+                                       
+                                        
+                                        
                                     } else {
-                                swal('Clasificacion Tripa', respuesta[0].description, 'error');
-
+                                        swal('Clasificacion Tripa', respuesta[0].description, 'error');
+                                        
                                     }      
                                     this.limpiarcajas();
                                 }
@@ -146,7 +153,6 @@
             url: accion,
             data: { id },
             success: (respuesta) => {
-                
                 $('#PielesInput').text(respuesta[0].cantidad);
                 $('#PielesInput').removeClass("hidden");
             }
@@ -164,18 +170,23 @@
             });
       
     }
+    limpiarcajascombo() {
+    document.getElementById("Descarneid").options.length = 1;
+    }
+
     limpiarcajas() {
         document.getElementById('Descarneid').selectIndex = 0;
-        document.getElementById('PielesInput').value = '';
+        document.getElementById('PielesInput').text = '';
         document.getElementById('ClasificaciontripaId').selectIndex = 0;
         document.getElementById('NumeroPielesInput').value = '';
         document.getElementById('personalId').selectedIndex = 0;
         document.getElementById('PesoPesoInput').selecttext = 0;
 
-        $('#IngresoClasificacionTripa').html = '';
+        
         $('#IngresoClasificacionTripa').modal('hide');
        
         listatripasindex();
+        this.limpiarcajascombo();
 
     }
     

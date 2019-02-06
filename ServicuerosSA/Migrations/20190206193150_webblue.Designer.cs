@@ -11,9 +11,10 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190206193150_webblue")]
+    partial class webblue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -365,22 +366,6 @@ namespace ServicuerosSA.Migrations
                     b.HasIndex("PersonalId");
 
                     b.ToTable("ClasificacionWB");
-                });
-
-            modelBuilder.Entity("ServicuerosSA.Models.Clasiweb", b =>
-                {
-                    b.Property<int>("clasiwebId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ClasificacionwbId");
-
-                    b.Property<string>("Detalle");
-
-                    b.HasKey("clasiwebId");
-
-                    b.HasIndex("ClasificacionwbId");
-
-                    b.ToTable("ClasificacionesWebblue");
                 });
 
             modelBuilder.Entity("ServicuerosSA.Models.Cliente", b =>
@@ -921,14 +906,6 @@ namespace ServicuerosSA.Migrations
                     b.HasOne("ServicuerosSA.Models.Personal", "personal")
                         .WithMany()
                         .HasForeignKey("PersonalId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("ServicuerosSA.Models.Clasiweb", b =>
-                {
-                    b.HasOne("ServicuerosSA.Models.ClasificacionWB", "clasificacionwb")
-                        .WithMany()
-                        .HasForeignKey("ClasificacionwbId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

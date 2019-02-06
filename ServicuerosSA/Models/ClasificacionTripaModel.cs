@@ -25,7 +25,7 @@ namespace ServicuerosSA.Models
         }
        public List<Descarne> Claselistadescarnes()
         {
-              return _contexto.Descarne.Where(d => d.Activo == true).ToList();
+              return _contexto.Descarne.Where(d => d.Activo == true && d.Cantidad > 0).ToList();
                                     
        }
        
@@ -159,6 +159,7 @@ namespace ServicuerosSA.Models
                 _contexto.SaveChanges();
 
 
+
                 var descarneNuevo =   (from des in _contexto.Descarne
                                           where des.DescarneId == descarne
                                           select new Descarne
@@ -173,21 +174,24 @@ namespace ServicuerosSA.Models
                                           Fecha = des.Fecha, 
                                           codiunidescarne = des.codiunidescarne
                                       }).FirstOrDefault();
-
-                Descarne dato = new Descarne()
+                if ((descarneNuevo.Cantidad - Convert.ToInt32(numeropieles)) > 0)
                 {
-                    PelambreId = descarneNuevo.PelambreId,
-                    PersonalId = descarneNuevo.PersonalId,
-                    Activo = true,
-                    Cantidad = descarneNuevo.Cantidad - Convert.ToInt32(numeropieles),
-                    codigodescarne = codigolote,
-                    CodigoLote = descarneNuevo.CodigoLote,
-                    Fecha = descarneNuevo.Fecha,
-                    codiunidescarne = descarneNuevo.codiunidescarne
-                };
+                    Descarne dato = new Descarne()
+                    {
+                        PelambreId = descarneNuevo.PelambreId,
+                        PersonalId = descarneNuevo.PersonalId,
+                        Activo = true,
+                        Cantidad = descarneNuevo.Cantidad - Convert.ToInt32(numeropieles),
+                        codigodescarne = codigolote,
+                        CodigoLote = descarneNuevo.CodigoLote,
+                        Fecha = descarneNuevo.Fecha,
+                        codiunidescarne = descarneNuevo.codiunidescarne
+                    };
 
-                _contexto.Descarne.Add(dato);
-                _contexto.SaveChanges();
+                    _contexto.Descarne.Add(dato);
+                    _contexto.SaveChanges();
+
+                }
 
 
 

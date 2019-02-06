@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +15,13 @@ namespace ServicuerosSA.Controllers
     {
         private readonly ApplicationDbContext _context;
         private EscurridoModels listacurtido;
+        private CurtidoModels listnumpi;
 
         public EscurridosController(ApplicationDbContext context)
         {
             _context = context;
+            listacurtido = new EscurridoModels(context);
+            listnumpi = new CurtidoModels(context);
         }
 
         // GET: Escurridos
@@ -29,6 +33,11 @@ namespace ServicuerosSA.Controllers
         public List<Curtido> listacurtidoscbx()
         {
             return listacurtido.Modelolistacurtido();
+        }
+
+        public List<IdentityError> Controaldornumeropieles(int curtidId, int valor)
+        {
+            return listacurtido.Modelonumeropielescurrido(curtidId, valor);
         }
         // GET: Escurridos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -160,5 +169,17 @@ namespace ServicuerosSA.Controllers
         {
             return _context.Escurrido.Any(e => e.EscurridoId == id);
         }
+
+        public decimal controladorunescurtidoescurrir(string id)
+        {
+            return _context.Curtido.Where(c => c.codigolote == id && c.Activo == true).Sum(c => c.NPieles);
+        }
+        public List<IdentityError> Controladordurdaescurrdio(int bombo, int cantidad, string codigolote, DateTime fecha, string curtido, int personal, string codiuniescurridio)
+        {
+            return listacurtido.GuardarEscurrido(bombo, cantidad, codigolote, fecha, curtido, personal, codiuniescurridio);
+        }
+
+
     }
+   
 }
