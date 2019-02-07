@@ -11,9 +11,10 @@ using System;
 namespace ServicuerosSA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190206200542_webblues")]
+    partial class webblues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -372,13 +373,13 @@ namespace ServicuerosSA.Migrations
                     b.Property<int>("clasiwebId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ClasificacionwbId");
-
                     b.Property<string>("Detalle");
+
+                    b.Property<int>("EscurridoId");
 
                     b.HasKey("clasiwebId");
 
-                    b.HasIndex("ClasificacionwbId");
+                    b.HasIndex("EscurridoId");
 
                     b.ToTable("ClasificacionesWebblue");
                 });
@@ -926,9 +927,9 @@ namespace ServicuerosSA.Migrations
 
             modelBuilder.Entity("ServicuerosSA.Models.Clasiweb", b =>
                 {
-                    b.HasOne("ServicuerosSA.Models.ClasificacionWB", "clasificacionwb")
+                    b.HasOne("ServicuerosSA.Models.Escurrido", "Escurridos")
                         .WithMany()
-                        .HasForeignKey("ClasificacionwbId")
+                        .HasForeignKey("EscurridoId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

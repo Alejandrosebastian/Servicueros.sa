@@ -8,9 +8,9 @@ $().ready(() => {
     listatripasindex();
     ImprimirCarnaza();
     ImprimirClasiTripa();
-    ListaIndexcurtido();
+   /// ListaIndexcurtido();
     ImprimirClasiPelo();
-
+    ListaIndexcurtido();
 
 
 
@@ -31,6 +31,7 @@ $().ready(() => {
     //Listatipotripa();
     tablaFormulas();
     TablaPelo();
+    
     
 });
 
@@ -99,41 +100,7 @@ var ListaIndexcurtido = () => {
     listacurti.ListaIndexCurt();
 }
 
-var GuardaPelambre = () => {
-    var bombos = document.getElementById('bomboId');
-    var bombo = bombos.options[bombos.selectedIndex].value;
-    var formulas = document.getElementById('formulaId');
-    var formula = formulas.options[formulas.selectedIndex].value;
-    var obsrvaciones = document.getElementById('observacion').value;
-    var accion = 'Pelambres/ControladorGuardarPelambre';
-    var cajafecha = document.getElementById('fecha').value;
-    var personales = document.getElementById('personalId');
-    var personal = personales.options[personales.selectedIndex].value;
-    var totalcheck = $('input:checkbox:checked').length;
-    var contador = 0;
-    var bodegaid = new Array;
-    var codlote = new Array;
-    var peso = 0;
-    var pieles = 0;
-    var dt = new Date();
-    var month = dt.getMonth() + 1;
-    var day = dt.getDate();
-    var year = dt.getFullYear();
-    var fecha = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
-    var codigoUnico='';
-    $("input:checkbox:checked").each(function () {
-        var ya = ($(this).val()).split("|");
-        contador++;
-        var guardaPelambre = new Pelambre(cajafecha, obsrvaciones, ya[0], bombo, formula, ya[3], accion);
-        if (contador != totalcheck) {
-            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, '');
-        } else {
-            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, 'limpia');
-        }
-    });
-   
 
-}
 var ListaIndex = () => {
     var accion = '../Pelambres/ControladorListaIndex';
     var index = new Pelambre('', '', '', '', '', '', accion);
@@ -342,20 +309,28 @@ var ImprimirClasiPelo = () => {
     var imprimirclasipelo = new Formulas('', '', '', '', accion);
     imprimirclasipelo.CuerpoClasiPelo();
 }
-///////
+///////combo pelambres
 var ListaPelambreDescarne = () => {
     var accion = 'Descarnes/Controladorlistapelambre';
     var descarne = new Descarne('','','','','','',accion);
     descarne.listapelambre();
 }
+////combo curtido para escurrido
+var listaescurrido = () => {
+    var accion = 'Escurridos/listacurtidoscbx';
+    var escu = new Escurridojs('', '', '', '', '','','',accion);
+    escu.listacurtidos();
+}
+
 var NumeroPielesPelambre = () => {
     var accion = 'Descarnes/ControladorUnPelambreDescarne';
     var combopelambres = document.getElementById('PelambreId');
     var unpelabrecombo = combopelambres.options[combopelambres.selectedIndex].text;
-    
     var des = new Descarne('', '', '', '', '', '', accion);
     des.NumeroPielesPelambre(unpelabrecombo);
 }
+
+
 var numeropielestripa = () => {
     var accion = 'Bodegatripas/Controladorundescarnetripa';
     var ya = document.getElementById('Descarneid');
@@ -381,6 +356,27 @@ var GuardaDescarne = () => {
     var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
     var guades = new Descarne(pelambre,cantidad,d,personal,codigolote,fech,accion);
     guades.GuardarPelambre();
+}
+var GuardaEscurrido = () => {
+    var accion = 'Escurridos/Controladordurdaescurrdio';
+    var curtidos = document.getElementById("CurtidoId");
+    var curtido = curtidos.options[curtidos.selectedIndex].value;
+    var bombos = document.getElementById("bomboId");
+    var bombo = bombos.options[bombos.selectedIndex].value;
+    var cantidad = document.getElementById("Cantidad").value;
+    var codigolotecurt = curtidos.options[curtidos.selectedIndex].text;
+    var personales = document.getElementById("personalId");
+    var personal = personales.options[personales.selectedIndex].value;
+    var d = new Date();
+    var fecha = d.getDate();
+    var dt = new Date();
+    var month = dt.getMonth() + 1;
+    var day = dt.getDate();
+    var year = dt.getFullYear();
+    var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
+    var guarda = new Escurridojs(bombo, cantidad, codigolotecurt, fecha, curtido, personal, fech, accion);
+    guarda.Guardaescurrdio();
+
 }
 ///////// guardar clasificacion en tripa
 var Guardarbodetripas = () => {
@@ -419,18 +415,16 @@ var controlnumeropieles = () => {
 ///////////////////clsificacaion tripa
 
 var controlnumeropieltripa = () => {
-    var descarne = document.getElementById("PielesInput").value;
+    var descarne = $("#PielesInput").html();
     var tripa = document.getElementById("NumeroPielesInput").value;
-    if (descarne <= tripa) {
-        if (descarne == tripa) {
-            $("#mensajeper").addClass("hidden");
-            $("#graba").prop('disabled', false);
+    if (parseInt(tripa) > parseInt(descarne)) {
+        $("#mensajeper").removeClass("hidden");
+        $('#graba').prop('disabled', true);
         } else {
-            $("#mensajeper").removeClass("hidden");
-            $('#graba').prop('disabled', true);
-
+        $("#mensajeper").addClass("hidden");
+        $("#graba").prop('disabled', false);
         }
-    }
+    
 }
 ////////// control pieles descarne
 var controlnumeropielesDes = () => {
@@ -451,7 +445,7 @@ var controlnumeropielesDes = () => {
     }
 
 }
-  
+
 var pesa = (id) => {
     var accion = 'Pelambres/COntroladorImprimirPesaje';
     var pesaje = new Pelambre('', '', '', '', '', '', accion);
@@ -484,14 +478,7 @@ var TablaPelo = () => {
 }
 /////////////////////Curtido
 
-var llenaTablaCurtidoModal = () => {
-    var ids = document.getElementById('ClasificaciontripaId');
-    var id = ids.options[ids.selectedIndex].value;
-    var accion = 'Curtidos/ControladorListaChecks';
-    var curtido = new Curtidojs('', '', '', '', '', '', '', '','','', accion);
 
-    curtido.LLenaTablaModalCurtido(id);
-}
 ////// medida
 var medidas = () => {
     var accion = '../Medidas/listasmedidas';
@@ -511,9 +498,40 @@ var seleccionFormula = () => {
 
     }
 }
-
+var GuardaPelambre = () => {
+    var bombos = document.getElementById('bomboId');
+    var bombo = bombos.options[bombos.selectedIndex].value;
+    var formulas = document.getElementById('formulaId');
+    var formula = formulas.options[formulas.selectedIndex].value;
+    var obsrvaciones = document.getElementById('observacion').value;
+    var accion = 'Pelambres/ControladorGuardarPelambre';
+    var cajafecha = document.getElementById('fecha').value;
+    var personales = document.getElementById('personalId');
+    var personal = personales.options[personales.selectedIndex].value;
+    var totalcheck = $('input:checkbox:checked').length;
+    var contador = 0;
+    var bodegaid = new Array;
+    var codlote = new Array;
+    var peso = 0;
+    var pieles = 0;
+    var dt = new Date();
+    var month = dt.getMonth() + 1;
+    var day = dt.getDate();
+    var year = dt.getFullYear();
+    var fecha = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
+    var codigoUnico = '';
+    $("input:checkbox:checked").each(function () {
+        var ya = ($(this).val()).split("|");
+        contador++;
+        var guardaPelambre = new Pelambre(cajafecha, obsrvaciones, ya[0], bombo, formula, ya[3], accion);
+        if (contador != totalcheck) {
+            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, '');
+        } else {
+            guardaPelambre.GuardaPelambre(personal, ya[1], ya[3], ya[2], fecha, 'limpia');
+        }
+    });
+ }
 //////guardar curtido
-
 var guardarCurtido = () => {
     var accion = 'Curtidos/ControladorGuardaCurtido';
     var bombos = document.getElementById('bomboId');
@@ -522,28 +540,27 @@ var guardarCurtido = () => {
     var formulaId = formulas.options[formulas.selectedIndex].value;
     var personales = document.getElementById('personalId');
     var personalId = personales.options[personales.selectedIndex].value;
-    var d = new Date()
+    var d = new Date();
+    var contador = 0;
     var fecha = d.getDate();
     var dt = new Date();
     var month = dt.getMonth() + 1;
     var day = dt.getDate();
     var year = dt.getFullYear();
     var fech = day + '|' + month + '|' + year + '|' + dt.getHours() + '|' + dt.getMinutes() + '|' + dt.getSeconds();
-
     $('#ListaCurtido tr').each(function () {
         var celdas = $(this).find('td');
-        
-        var BodegaId = ($(celdas[1]).html());
-        var BodegaTripaId = ($(celdas[2]).html());
+        var ClasificacionTripa = ($(celdas[1]).html());
+        var BodegaId = ($(celdas[2]).html());
         var MedidaId = ($(celdas[3]).html());
         var CodigoLote = ($(celdas[4]).html());
-        var Detalle = ($(celdas[5]).html());
-        var NumeroPieles = ($(celdas[6]).html());
-        var peso = ($(celdas[7]).html());
-        var Abreviatura = ($(celdas[8]).html());
-
-        $(this).find('td input:checkbox:checked').each(() => {
-             var clase = new Curtidojs(BodegaTripaId, bomboId, NumeroPieles, MedidaId, formulaId, '', peso, BodegaId,personalId,fech, accion);
+        var NumeroPieles = ($(celdas[5]).html());
+        var peso = ($(celdas[6]).html());
+        var fecha = ($(celdas[7]).html());
+        var ch = $(celdas[0]).html();
+        var BodegaTripaId = $(ch).attr('id');
+        $(this).find("input:checkbox:checked").each(() => {
+            var clase = new Curtidojs(BodegaTripaId, bomboId, NumeroPieles, MedidaId, formulaId, fecha, peso, BodegaId, personalId, fech, CodigoLote, accion);
              clase.Guardacurtido();
         });
 
@@ -553,6 +570,36 @@ var guardarCurtido = () => {
 
 var listatripas = () => {
     var accion = 'Curtidos/listatripas';
-    var curti = new Curtidojs('', '', '', '', '', '', '', '','','',accion);
+    var curti = new Curtidojs('', '', '', '', '', '', '', '', '', '', '',accion);
     curti.ClaseListaClasificacionTripacurtido();
+}
+
+///////////////////////////////para curtido
+var ListaCuridoCheck = () => {
+    var accion = 'Curtidos/ControladorListacurtido';
+    var escu = new Curtidojs('', '', '', '', '', '', '', '', '', '', '', accion);
+    escu.LLenaTablaModalCurtido();
+}
+
+var numeropielescurtido = () =>
+{
+    var accion = 'Escurridos/controladorunescurtidoescurrir';
+    var combocurtido = document.getElementById('CurtidoId');
+    var uncurtido = combocurtido.options[combocurtido.selectedIndex].text;
+    var cur = new Escurridojs('', '', '', '', '','','', accion);
+    cur.NumeroPielesCurtido(uncurtido);
+
+}
+/////////control numero pieles escurrdio
+var controlpielesescurrir = () => {
+    var curti = document.getElementById("TotalPielesInput").value;
+    var canti = document.getElementById("Cantidad").value;
+    if (canti > curti) {
+            $("#mensajeca").removeClass("hidden");
+        $("#guarda").addClass("hidden");
+        
+    } else {
+        $("#mensajeca").addClass("hidden");
+        $("#guarda").removeClass("hidden");
+    }
 }

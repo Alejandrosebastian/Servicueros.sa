@@ -80,7 +80,7 @@ namespace ServicuerosSA.Models
                 {
                     datos += "<tr>" +
                         "<td>" +
-                        "<input type='checkbox' class='form-control' value=" + item.Bodega1Id + "/>" +
+                        "<input type='checkbox' class='form-control' value=" + item.Bodega1Id + "|" + item.Codigolote + "|" + item.NumeroPieles + "|" + item.Peso + ' ' + "/>" +
                         "</td>" +
                         "<td>" + item.Codigolote + "</td>" +
                         "<td>" + item.Detalle + "</td>" +
@@ -110,7 +110,7 @@ namespace ServicuerosSA.Models
                 {
                     datos += "<tr>" +
                         "<td>" +
-                        "<input type='checkbox' class='form-control' value=" + item.Bodega1Id + "/>" +
+                        "<input type='checkbox' class='form-control' value=" + item.Bodega1Id + "|" + item.Codigolote + "|" + item.NumeroPieles + "|" + item.Peso + ' ' + "/>" +
                         "</td>" +
                         "<td>" + item.Codigolote + "</td>" +
                         "<td>" + item.Detalle + "</td>" +

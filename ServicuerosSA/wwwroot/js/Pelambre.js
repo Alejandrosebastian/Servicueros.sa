@@ -15,7 +15,7 @@ class Pelambre {
             url: accion,
             data: {},
             success: (respuesta) => {
-                $.each(respuesta, (index, val) => {
+                $.each(respuesta,(index, val) => {
                     $('#LotesLista').html(val[0]);
                 });
             }
@@ -24,7 +24,6 @@ class Pelambre {
 
     ListaIndeXTipoPiel(tipopielId, clasificacionId) {
         var accion = this.accion;
-        
         $.ajax({
             type: "POST",
             url: accion,
@@ -93,7 +92,9 @@ class Pelambre {
                             },
                             success: (respuesta) => {
                                 if (total == 'limpia') {
+
                                     this.limpiarcajas();
+
                                 }
                             }
                         });

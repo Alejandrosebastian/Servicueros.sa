@@ -20,6 +20,7 @@ namespace ServicuerosSA.Models
         public DateTime Fecha { get; set; }
         public string CodigoLote { get; set; }
         public bool Activo { get; set; }
+        public string codiuniescurridio { get; set; }
         //RELACIONES
         public int BomboId { get; set; }
         public Bombo Bombos { get; set; }

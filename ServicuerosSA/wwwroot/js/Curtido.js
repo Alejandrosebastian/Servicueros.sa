@@ -15,19 +15,7 @@
     }
 
 
-    ListaIndexCurtido() {
-        var accion = this.accion;
-        $.ajax({
-            type: "POST",
-            url: accion,
-            data: {},
-            success: (respuesta) => {
-                $.each(respuesta, (index, val) => {
-                    $('#CurtidoLista').html(val[0]);
-                });
-            }
-        });
-    }
+    
 
     ListaIndexCurt() {
         var accion = this.accion;
@@ -55,18 +43,18 @@
                 if (this.personal == '0') {
                     document.getElementById('mensajep').innerHTML = "Seleccione al personal asignado";
                 } else {
+                    var tipotripa = this.tipotripa;
                     var numbombo = this.numbombo;
+                    var medida = this.medida;
+                    var numpieles = this.numpieles;
                     var formula = this.formula;
                     var fecha = this.fecha;
-                    var tipotripa = this.tipotripa;
-                    var numpieles = this.numpieles;
-                    var medida = this.medida;
                     var peso = this.peso;
                     var bodega = this.bodega;
-                    var accion = this.accion;
                     var personal = this.personal;
                     var Codicurtido = this.Codicurtido;
                     var codigolote = this.codigolote;
+                    var accion = this.accion;
                     $.ajax({
                         type: "POST",
                         url: accion,
@@ -75,8 +63,9 @@
                         },
                         success: (respuesta) => {
                             if (respuesta[0].code == "ok") {
-                                this.limpiarcajas();
                                 swal("Curtido", "Se guardo exitosamente", "success");
+                                ListaIndexCurt();
+                                this.limpiarcajas();
                             } else {
                                 this.limpiarcajas();
                                 swal("Curtido", "Ocurrio un error", "error");
@@ -88,12 +77,12 @@
             }
         }
     }
-    LLenaTablaModalCurtido(id) {
+    LLenaTablaModalCurtido() {
         var accion = this.accion;
         $.post(accion,
-            { id },
+            {  },
             (respuesta) => {
-                
+                console.log(respuesta);
                 $.each(respuesta, (index, val) => {
                     $('#ListaCurtido').html(val[0]);
                 });
@@ -107,11 +96,9 @@
             url: accion,
             data: {},
             success: (respuesta) => {
-               
                 if (0 < respuesta.length) {
-
                     for (var i = 0; i < respuesta.length; i++) {
-                        document.getElementById('ClasificaciontripaId').options[contador] = new Option(respuesta[i].detalle.toUpperCase(), respuesta[i].clasificacionTripaId);
+                        document.getElementById('ClasificaciontripaId').options[contador] = new Option(respuesta[i].detalle.toUpperCase(),respuesta[i].clasificacionTripaId);
                         contador++;
                     }
                 }
@@ -125,8 +112,9 @@
         document.getElementById('formulaId').selectedIndex = 0;
         document.getElementById('personalId').selectedIndex = 0;
         document.getElementById('fecha').value = '';
+        $('#ListaCurtido').html('');
         $('#IngresoCurtido').modal('hide');
-        //ListaIndexCurtido;
+        ListaIndexCurt();
 
     }
     //Cabecera formula Curtido
@@ -175,7 +163,6 @@
             { id },
             (respuesta) => {
                 $.each(respuesta, (index, val) => {
-
                     $('#TablaDetalleFormula').html(val[0]);
                 });
             }

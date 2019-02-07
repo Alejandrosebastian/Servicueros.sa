@@ -21,7 +21,7 @@ namespace ServicuerosSA.Models
         {
             return _contexto.ClasificacionTripa.OrderBy(cl => cl.Detalle).ToList();
         }
-        public List<IdentityError> ClaseGuardaCurtido(int tipotripa, int numbombo, decimal numpieles,int medida, int formula, DateTime fecha, int peso, int Bodega, int personal, string Codicurtido)
+        public List<IdentityError> ClaseGuardaCurtido(int tipotripa, int numbombo, decimal numpieles,int medida, int formula, DateTime fecha, int peso, int Bodega, int personal, string Codicurtido, string Codigolote)
         {
             List<IdentityError> Listaerrores = new List<IdentityError>();
             IdentityError error = new IdentityError();
@@ -38,7 +38,9 @@ namespace ServicuerosSA.Models
                         Peso = peso,
                         BodegaId = Bodega,
                         PersonalId = personal,
-                        codicurtido = Codicurtido
+                        codicurtido = Codicurtido,
+                        codigolote = Codigolote,
+                        Activo = true
                     };
                     _contexto.Curtido.Add(guardaCurtido);
                     _contexto.SaveChanges();
@@ -77,34 +79,42 @@ namespace ServicuerosSA.Models
         {
             List<object[]> lista = new List<object[]>();
             string lis = "";
-            var curt = (from cu in _contexto.Curtido
-            join bo in _contexto.Bombo on cu.BomboId equals bo.BomboId
-            join fo in _contexto.Formula on cu.FormulaId equals fo.FormulaId
-            join bod in _contexto.Bodegatripa on cu.BodegaTripaId equals bod.BodegaTripaId
-            join clasi in _contexto.ClasificacionTripa on bod.ClasificacionTripaId equals clasi.ClasificacionTripaId
-            join me in _contexto.Medida on cu.MedidaId equals me.MedidaId
-            join bode in _contexto.Bodega on cu.BodegaId equals bode.BodegaId
+            var curt = (from bdt in _contexto.Bodegatripa
+                        join des in _contexto.Descarne on bdt.DescarneId equals des.DescarneId
+                        join pel in _contexto.Pelambre on des.PelambreId equals pel.PelambreId
+                        join fo in _contexto.Formula on pel.FormulaId equals fo.FormulaId
+                        join bo in _contexto.Bombo on pel.BomboId equals bo.BomboId
+                        join me in _contexto.Medida on bdt.MedidaId equals me.MedidaId
+                        join per in _contexto.Personal on bdt.PersonalId equals per.PersonalId
+                        join bod in _contexto.Bodega1 on pel.Bodega1Id equals bod.Bodega1Id
+                        where bdt.activo == true
+                        select new
+                        {
+                            bdt.BodegaTripaId,
+                            bdt.ClasificacionTripaId,
+                            bdt.DescarneId,
+                            bdt.PersonalId,
+                            bod.BodegaId,
+                            me.MedidaId,
+                            bdt.codigolote,
+                            bdt.peso,
+                            bdt.NumeroPieles,
+                            bdt.fecha
+                            
+                        });
 
-
-             select new
-             {   fecha= DateTime.Now,
-                 bode.NombreBodega,
-                 clasi.Detalle,
-                 cu.Peso,
-                 me.Abreviatura,
-                 bo.Num_bombo,
-                 fo.Nombre
-
-             });
             foreach (var item in curt)
             {
                 lis += "<tr>" +
+                    
+                    "<td><input type='checkbox' class='form-control' value=" + item.BodegaTripaId + "/dato" + " id=" + item.BodegaTripaId + " /></td>" +
+                    "<td class='hidden'>" + item.ClasificacionTripaId + "</td>" +
+                    "<td class='hidden'>" + item.BodegaId + "</td>" +
+                    "<td class='hidden'>" + item.MedidaId + "</td>" +
+                    "<td>" + item.codigolote + "</td>" +
+                    "<td>" + item.NumeroPieles + "</td>" +
+                    "<td>" + item.peso + "</td>" +
                     "<td>" + item.fecha + "</td>" +
-                    "<td>" + item.NombreBodega + "</td>" +
-                    "<td>" + item.Detalle + "</td>" +
-                    "<td>" + item.Peso + " " + item.Abreviatura + "</td>" +
-                    "<td>" + item.Num_bombo + "</td>" +
-                    "<td>" + item.Nombre + "</td>" +
                      "</tr>";
             }
             object[] datos = { lis };
