@@ -49,8 +49,9 @@ namespace ServicuerosSA.Controllers
         // GET: Bodegatripas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Bodegatripa.Include(b => b.ClasificacionTripa).Include(b => b.Descarnes);
-            return View(await applicationDbContext.ToListAsync());
+            // var applicationDbContext = _context.Bodegatripa.Include(b => b.ClasificacionTripa).Include(b => b.Descarnes);
+            //return View(await applicationDbContext.ToListAsync());
+            return View();
         }
 
         // GET: Bodegatripas/Details/5

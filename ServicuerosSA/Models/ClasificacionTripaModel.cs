@@ -81,29 +81,72 @@ namespace ServicuerosSA.Models
                            cl.Detalle,
                            bt.peso
                        }).ToList();
-            
+            string compara = "";
             foreach(var item in res)
             {
                 datos += "<tr>" +
                     "<td>" + item.CodigoLote + "</td>" +
                     "<td>" + item.NumeroPieles + "</td>" +
                     "<td>" + item.Detalle + "</td>" +
-                    "<td>" + item.peso + "</td>"+
-                     "</tr>";
-                //string ya = item.CodigoLote;
-                //if (compara != item.codi)
-                //{
-                //    datos += "<td>"  +
-                //       "<a class='btn btn-success' onclick='EliminarCurtido(&#039;" + ya + "&#039;)'>Eliminar</a>" +
-                //           "</td>" +
-                //           "</tr>";
-                //}
+                    "<td>" + item.peso + "</td>";
+                   
+                string ya = item.CodigoLote;
+                if (compara != item.CodigoLote)
+                {
+                    datos += "<td>" +
+                       "<a class='btn btn-success' onclick='EliminarClasiTripa(&#039;" + ya + "&#039;)'>Eliminar</a>" +
+                           "</td>" +
+                           "</tr>";
+                }
 
             }
             object[] objetodatos = { datos };
             lista.Add(objetodatos);
             return lista; 
        }
+        //ELIMINAR
+        public List<IdentityError> ClaseEliminarClasiTripa(string CodigoLote)
+        {
+            List<IdentityError> listaerrores = new List<IdentityError>();
+            try
+            {
+                var cla = from ct in _contexto.Bodegatripa
+                          where ct.codigolote == CodigoLote
+                          select new Bodegatripa { BodegaTripaId = ct.BodegaTripaId, ClasificacionTripaId = ct.ClasificacionTripaId, DescarneId = ct.DescarneId };
+                 foreach (var item in cla.ToList())
+                 {
+                    var descarne = (from d in _contexto.Descarne
+                                       where d.DescarneId == item.DescarneId
+                                       select new Descarne
+                                       {
+                                           Activo= true,
+                                           Cantidad = d.Cantidad,
+                                           Fecha = d.Fecha,
+                                           DescarneId= d.DescarneId,
+                                           PersonalId= d.PersonalId,
+                                           PelambreId= d.PelambreId
+          
+
+
+                                       }).FirstOrDefault();
+                    _contexto.Descarne.Update(descarne);
+                    _contexto.SaveChanges();
+                    _contexto.Bodegatripa.Remove(item);
+                    _contexto.SaveChanges();
+
+                 }
+            }
+            catch(Exception e)
+            {
+                listaerrores.Add(new IdentityError
+                {
+                    Code = e.Message,
+                    Description = e.Message
+                });
+            }
+            return listaerrores;
+        }
+
         public List<IdentityError> Claseguardabodetripa(int tipotripa, int descarne,  int bodega, string codigolote, decimal numeropieles, int peso, int medida, int personal)
         {
             List<IdentityError> listatripa = new List<IdentityError>();

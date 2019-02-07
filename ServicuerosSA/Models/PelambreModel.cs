@@ -394,7 +394,6 @@ namespace ServicuerosSA.Models
                     _contexto.Bodega1.Update(bodega1);
                     _contexto.SaveChanges();
 
-                 
                     _contexto.Pelambre.Remove(item);
                     _contexto.SaveChanges();
 

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<ServicuerosSA.Models.Bodegatripa>
+@{
     ViewData["Title"] = "Clasificacion tripa";
 }
 
@@ -28,7 +29,7 @@
             <th></th>
 
         </tr>
-       
+
     </thead>
 
     <tbody id="BodegaTripa"> </tbody>
@@ -105,24 +106,24 @@
                     </div>
 
                     @*<table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Codigo lote
-                    </th>
-                    <th>
-                        Numero de pieles
-                    </th>
-                    <th>
-                        Peso
-                    </th>
-                    <th>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Codigo lote
+                                    </th>
+                                    <th>
+                                        Numero de pieles
+                                    </th>
+                                    <th>
+                                        Peso
+                                    </th>
+                                    <th>
 
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="Descarneslista"></tbody>
-        </table>*@
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="Descarneslista"></tbody>
+                        </table>*@
                     @*<tbody id="Tripaslista" ></tbody>*@
                 </form>
             </div>
@@ -181,7 +182,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="Impresion('areaImprimir');">Imprimir</button>
             </div>
         </div>
@@ -235,7 +236,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                
+
             </div>
         </div>
     </div>

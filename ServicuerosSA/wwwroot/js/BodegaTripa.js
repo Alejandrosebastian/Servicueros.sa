@@ -64,6 +64,15 @@
             }
         }
     }
+    EliminarClasificacionTripa(CodigoLote) {
+        var accion = this.accion;
+        $.post(accion, { CodigoLote },
+            (respuesta) => {
+                ListaIndex(1);
+                alert("El registro se ha borrado con exito!!!");
+            }
+        );
+    }
     bodegatripa() {
         var bodegatripaId = this.numeropieles;
         var accion = this.accion;
@@ -76,8 +85,6 @@
             }
         });
     }
-
-
     ClaseListaClasificacionTripa() {
         var accion = this.accion;
         var contador = 1;
@@ -177,8 +184,5 @@
        
         listatripasindex();
 
-    }
-    
-    
-   
+    } 
 }

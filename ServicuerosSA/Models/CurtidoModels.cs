@@ -135,7 +135,7 @@ namespace ServicuerosSA.Models
                            FechaValida = DateTime.Now.ToString(),
                            NombreEntregado = pe.Nombres + " " + pe.Apellidos,
                            NombreProcesado = fo.TipoProceso,
-                           Codigo = cu.codicurtido,
+                           Codigo = cu.codigolote,
                            Parada = cu.CurtidoId.ToString(),
                            Peso = cu.Peso.ToString(),
                            Promedio = (cu.Peso / cu.NPieles).ToString(),

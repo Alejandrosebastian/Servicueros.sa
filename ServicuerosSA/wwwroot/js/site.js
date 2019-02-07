@@ -95,7 +95,7 @@ var listadescarne = () => {
 //LISTA CURTIDO
 var ListaIndexcurtido = () => {
     var accion = '../Curtidos/ControladorListaIndexCurtido';
-    var listacurti = new Curtidojs('', '', '', '', '', '', '', '', '', '', accion);
+    var listacurti = new Curtidojs('', '', '', '', '', '', '', '', '', '','',accion);
     listacurti.ListaIndexCurt();
 }
 
@@ -227,6 +227,13 @@ var EliminarPelambre = (id) => {
     }
    
 }
+var EliminarClasiTripa = (id) => {
+    var c = confirm("Esta seguro que desea borrar el registro");
+    if (c == true) {
+        var accion = 'Pelambres/ControladorEliminarPelambre';
+        var pelambre = new Pelambre('', '', '', '', '', '', accion);
+        pelambre.EliminaPelambre(id);
+}
 var EliminarDescarne = (id) => {
     var r = confirm("Esta seguro que desea borrar el registro");
     if (r == true) {
@@ -243,12 +250,12 @@ var ImprimirPelambre = (id) => {
 //IMPRESION FORMULA CURTIDO
 var imprimirCurtido = (id) => {
     var accion = 'Curtidos/ControladorImprimirEncabezadoFormula';
-    var impresioncurtido = new Curtidojs('', '', '', '', '', '', '', '', '', '', accion);
+    var impresioncurtido = new Curtidojs('', '', '', '', '', '', '', '', '', '','', accion);
     impresioncurtido.CabeceraFormulaCurtido(id);
 }
 var componentesFormulaCurtido = (id) => {
     var accion = 'Curtidos/ControladorComponentesFormula';
-    var impresioncomponetescurtido = new Curtidojs('','','','','','','','','','',accion);
+    var impresioncomponetescurtido = new Curtidojs('','','','','','','','','','','',accion);
     impresioncomponetescurtido.CuerpoFormulaCurtido(id);
 }
 ////////////////
